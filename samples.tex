@@ -238,7 +238,7 @@
 \definecolor{violet}{RGB}{115, 0, 205}
 \definecolor{brown}{RGB}{150, 50, 10}
 \definecolor{green}{RGB}{5,110, 35}
-\definecolor{emphcolor}{rgb}{.98,.98,.70}
+\definecolor{emphcolor}{rgb}{.90,.98,.90}
 
 \def\bl{\color{black}}
 %\def\bl{\color{brown}}
@@ -263,20 +263,20 @@
 \def\grV{{\gr\V}}
 
 \renewcommand*{\emph}[1]{%
-   \kern-0.6ex 
+   \kern-0.2ex 
    \smash{\tikz[baseline]
-   \node[ rectangle,       fill=emphcolor,  rounded corners, 
-          inner xsep=.9ex, inner ysep=.2ex, anchor=base,
+   \node[ rectangle, fill=emphcolor, rounded corners, 
+          inner xsep=.3ex, inner ysep=.2ex, anchor=base,
           minimum height = 3ex
          ]{#1};
    }
-   \kern-1.7ex 
+   \kern-1.2ex 
 }
 
 \begin{document}
 \raggedbottom
 \begin{center}
-   {\huge\bfseries Bacheca\\[3ex] \normalfont\normalsize 
+   {\huge\bfseries Scretch paper\\[3ex] \normalfont\normalsize 
    A.A. \& V.V.\vskip-1ex 
    Università di Torino\vskip-1ex \monthname\ \the\year}
 \end{center}
@@ -286,7 +286,7 @@
 \bigskip\hfil
 \parbox{0.9\textwidth}{
    \textbf{Abstract} \ 
-   Poche idee ben confuse.
+   Poche idee, ben confuse.
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -317,7 +317,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Global samples}\label{samples}
+\section{Uniform samples}\label{samples}
 \def\medrel#1{\parbox[t]{6ex}{\hfil$#1$}}
 \def\ceq#1#2#3{\parbox[t]{25ex}{$\displaystyle #1$}\medrel{#2}$\displaystyle  #3$}
 \def\uuu{{\mathds 1}}
@@ -326,35 +326,72 @@
 
 Fix a tuple of variables $x$ and let $\bar x=\<x_i:i<\omega\>$, where $|x_i|=|x|$.
 %
-For $p(\bar x)\in S(\U)$ and $q(x)\subseteq L(\U)$ we define
+For $p(\bar x)\in S(\U)$ and $\psi(x)\in L(\U)$ we define
 
-\ceq{\hfill\emph{$\Av_{p\restriction n}\,q(x)$}}{=}{\frac1n\Big|\big\{i<n\ :\ p(\bar x)\proves q(x_i)\big\}\Big|}
+\ceq{\hfill\emph{$\Av_{p\restriction n}\,\psi(x)$}}{=}{\frac1n\Big|\big\{i<n\ :\ p(\bar x)\proves\psi(x_i)\big\}\Big|}
 
-If $p(\bar x)$ is the type containing $\bar x=\bar a$ for some $\bar a\in \U^{|x|\cdot\omega}$, we write \emph{$\Av_{\bar a{\restriction n}}\,q(x)$.} 
+If $p(\bar x)$ is the type containing $\bar x=\bar a$ for some $\bar a\in \U^{|x|\cdot\omega}$, we write \emph{$\Av_{\bar a{\restriction n}}\,\psi(x)$.} 
 
 \begin{definition}
-      We say that $p(\bar x)\in S(\U)$ is a \emph{global sample\/} if the limit below exists for every formula $\phi(x)\in L(\U)$.
+We say that $p(\bar x)\in S(\U)$ is a \emph{sample\/} if the limit below exists for every formula $\psi(x)\in L(\U)$.
 
-      \ceq{\hfill\emph{$\Av_p\,\phi(x)$}}{=}{\lim_{n\to\infty}\Av_{p\restriction n}\,\phi(x).}\QED
+\ceq{\hfill\emph{$\Av_p\,\psi(x)$}}{=}{\lim_{n\to\infty}\Av_{p\restriction n}\,\psi(x).}
+
+Let $\phi(x,z)\in L$ be given. We say that $p(\bar x)$ is a \emph{$\phi$-sample\/} if the formula $\psi(x)$ above is restricted to range over those of the form $\phi(x,b)$ for $b\in\U^{|z|}$.
+
+We say that $p(\bar x)$ is a \emph{uniform $\phi$-sample\/} if it is a sample and for every $\epsilon>0$ there is an $k$ such that $\Av_{p\restriction n}\,\phi(x,b)$ is within $\epsilon$ from $\Av_p\,\phi(x,b)$ for all $n>k$ and $b\in\U^{|z|}$.
+
+We say that $p(\bar x)$ is a \emph{uniform sample\/} if it is a  uniform $\phi$-sample for all $\phi(x,z)\in L$.\QED
 \end{definition}
+Define
 
-Qualche esempio in cui il limite non esiste?
+\ceq{\hfill\emph{$\Av_{p\restriction n}\,q(x)$}}
+{=}
+{\inf\Big\{\Av_{p\restriction n}\,\psi(x)\ :\ \psi(x)\in q\Big\}}
+
+Clearly the infimum above is attained.
 
 \begin{proposition}
-      If $p(\bar x)$ is a global sample, then $\displaystyle\lim_{n\to\infty}\Av_{p\restriction n}\,q(x)$ exists for any $q(x)\subseteq L(\U)$. 
+      If $p(\bar x)$ is a uniform sample and $q(x)\subseteq L(\U)$, then the limit below exists and
+      
+      \ceq{\hfill\lim_{n\to\infty}\Av_{p\restriction n}\,q(x)}
+      {=}
+      {\inf\Big\{\Av_p\,\phi(x)\ :\ \phi(x)\in q\Big\}}
+      
 \end{proposition}
 
 \begin{proof}
-      ???
-\end{proof}
+      
+      
 
-\begin{definition}
-      Let $\bar x=\<x_i:i<\omega\>$ and $|x_i|=|x|$.
+      Fix $\epsilon>0$.
       %
-      We say that the type $p(\bar x)\in S(\U)$ is a \emph{uniform global sample\/} if it is a global sample and for every $\phi(x,z)\in L$, every $b\in\U^{|z|}$, and every $\epsilon>0$, there is an $n$ such that $\Av_{p\restriction n}\,\phi(x,b)$ is within $\epsilon$ from $\Av_p\,\phi(x,b)$ for all $b\in\U^{|z|}$.\QED
-\end{definition}
+      Let $\phi(x)\in q$ be such that $\Av_p\,\phi(x)$ is within $\epsilon$ from the infimum above.
+      %
+      Let $k$ be such that $\Av_{p\restriction n}\,\phi(x)$ is within $\epsilon$ from  $\Av_p\,\phi(x)$ for every $n>k$.
+      %
+      Then, for every $n>k$,
 
-Qualche esempio in cui l'uniformità è rilevante?
+      \ceq{\hfill\Av_{p\restriction n}\,q(x)}
+      {\le}
+      {\Av_{p\restriction n}\,\phi(x)}
+
+      \ceq{}
+      {\le}
+      {\Av_p\,\phi(x) + \epsilon}
+
+      \ceq{}
+      {\le}
+      {\inf\Big\{\Av_p\,\phi(x)\ :\ \phi(x)\in q\Big\} + 2\epsilon}
+
+      For the converse inequality, let $\psi_n(x)$ be such that $\Av_p\,\psi_n(x)=\Av_{p\restriction n}\,q(x)$. Then for all $n$
+
+      \ceq{\hfill\inf\Big\{\Av_p\,\phi(x)\ :\ \phi(x)\in q\Big\}}
+      {\le}
+      {\Av_{p\restriction n}\,\psi(x)}
+
+
+\end{proof}
 
 \begin{proposition}
       Let $\bar x=\<x_i:i<\omega\>$ and $|x_i|=|x|$ and let $p(\bar x)\in S(\U)$.
@@ -362,7 +399,7 @@ Qualche esempio in cui l'uniformità è rilevante?
       Then the following are equivalent 
       \begin{itemize}
             \item[1.] $p(\bar x)$ is a uniform global sample;
-            \item[2.] for every $\epsilon>0$, there is an $n$ and a formula $\theta(\bar x)\in p$ such that $\Av_n\big(\bar a;\phi(x,b)\big)$ is within $\epsilon$ from $\Av\big(p;\phi(x,b)\big)$ for all $b\in\U^{|z|}$ and all $\bar a\models\theta(\bar x)$.
+            \item[2.] for every $\epsilon>0$, there is an $n$ and a formula $\theta(\bar x)\in p$ such that $\Av_n\big(\bar a;\phi(x,b)\big)$ is within $\epsilon$ from $\Av_p\phi(x,b)$ for all $b\in\U^{|z|}$ and all $\bar a\models\theta(\bar x)$.
       \end{itemize}
 \end{proposition}
 
@@ -370,19 +407,25 @@ Qualche esempio in cui l'uniformità è rilevante?
 ???
 \end{proof}
 
+Vale anche/solo/nemmeno la versione non uniforme della proposizione?
+
+\begin{corollary}
+      Let $p(\bar x)$ bea global sample finitely satisfied in $M$.
+      %
+      Let $q'(x)=q(x)\cup\{\phi(x)\}$ for $q(x)\in S(M)$ and $\phi(x)\in L(\U)$.
+      %
+      Then $\Av_p\,q'(x)$ is either $0$ or $1$.
+\end{corollary}
+\begin{proof}
+???
+Under the assumptions of the corollary, for every $\epsilon>0$ there is an $n$ and a tuple $\bar a\in M^{|x|\cdot\omega}$ such that $\Av_{\bar a{\restriction n}}\,q'(x)$ is within $\epsilon$ from $\Av_p\,q'(x)$. As $\Av_{\bar a{\restriction n}}\,q'(x)$
+\end{proof}
+
 Note that, if $p(\bar x)$ is definable, say over $M$, then there is a formula $\psi_{m/n}(z)\in L(M)$ such that
 
 \ceq{\hfill\psi_{m/n}(z)}{\IFF}{\Av_n\big(p(\bar x);\phi(x,z)\big)=\frac{m}{n}.}
 
-Assume that $p(\bar x)$ is a global sample finitely satisfied in $M$.
-%
-Then, under the assumptions of the proposition above, for every $\epsilon>0$ there is an $n$ and a tuple $\bar a\in M^{|x|\cdot n}$ such that $\Av_n\big(\bar a;\phi(x,b)\big)$ is within $\epsilon$ from $\Av\big(p;\phi(x,b)\big)$ for all $b\in\U^{|z|}$.
 
-Let $p(\bar x)$ be as above.
-%
-Let $q'(x)=q(x)\cup\{\phi(x)\}$ for some $q(x)\in S(M)$ and $\phi(x)\in L(\U)$.
-%
-Then $\Av\big(p;q'(x)\big)$ exists and is either $0$ or $1$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
