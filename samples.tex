@@ -319,14 +319,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Uniform samples}\label{samples}
 \def\medrel#1{\parbox[t]{6ex}{\hfil$#1$}}
-\def\ceq#1#2#3{\parbox[t]{25ex}{$\displaystyle #1$}\medrel{#2}$\displaystyle  #3$}
+\def\ceq#1#2#3{\parbox[t]{27ex}{$\displaystyle #1$}\medrel{#2}$\displaystyle  #3$}
 \def\uuu{{\mathds 1}}
 \def\gruuu{{\mathds 1}}
 \def\Av{{\rm Av}}
 
 Fix a tuple of variables $x$ and let $\bar x=\<x_i:i<\omega\>$, where $|x_i|=|x|$.
 %
-For $p(\bar x)\in S(\U)$ and $\psi(x)\in L(\U)$ we define
+For $p(\bar x)\in S(\U)$ and $\psi(x)\in L(\U)$ we define ($n>1$)
 
 \ceq{\hfill\emph{$\Av_{p\restriction n}\,\psi(x)$}}{=}{\frac1n\Big|\big\{i<n\ :\ p(\bar x)\proves\psi(x_i)\big\}\Big|}
 
@@ -339,7 +339,7 @@ We say that $p(\bar x)\in S(\U)$ is a \emph{sample\/} if the limit below exists 
 
 Let $\phi(x,z)\in L$ be given. We say that $p(\bar x)$ is a \emph{$\phi$-sample\/} if the formula $\psi(x)$ above is restricted to range over those of the form $\phi(x,b)$ for $b\in\U^{|z|}$.
 
-We say that $p(\bar x)$ is a \emph{uniform $\phi$-sample\/} if it is a sample and for every $\epsilon>0$ there is an $k$ such that $\Av_{p\restriction n}\,\phi(x,b)$ is within $\epsilon$ from $\Av_p\,\phi(x,b)$ for all $n>k$ and $b\in\U^{|z|}$.
+We say that $p(\bar x)$ is a \emph{uniform $\phi$-sample\/} if it is a sample and for every $\epsilon>0$ there is a $k$ such that $\Av_{p\restriction n}\,\phi(x,b)$ is within $\epsilon$ from $\Av_p\,\phi(x,b)$ for all $n>k$ and $b\in\U^{|z|}$.
 
 We say that $p(\bar x)$ is a \emph{uniform sample\/} if it is a  uniform $\phi$-sample for all $\phi(x,z)\in L$.\QED
 \end{definition}
@@ -352,7 +352,7 @@ Define
 Clearly the infimum above is attained.
 
 \begin{proposition}
-      If $p(\bar x)$ is a uniform sample and $q(x)\subseteq L(\U)$, then the limit below exists and
+      If $p(\bar x)$ is a sample and $q(x)\subseteq L(\U)$, then
       
       \ceq{\hfill\lim_{n\to\infty}\Av_{p\restriction n}\,q(x)}
       {=}
@@ -361,9 +361,6 @@ Clearly the infimum above is attained.
 \end{proposition}
 
 \begin{proof}
-      
-      
-
       Fix $\epsilon>0$.
       %
       Let $\phi(x)\in q$ be such that $\Av_p\,\phi(x)$ is within $\epsilon$ from the infimum above.
@@ -384,14 +381,40 @@ Clearly the infimum above is attained.
       {\le}
       {\inf\Big\{\Av_p\,\phi(x)\ :\ \phi(x)\in q\Big\} + 2\epsilon}
 
-      For the converse inequality, let $\psi_n(x)$ be such that $\Av_p\,\psi_n(x)=\Av_{p\restriction n}\,q(x)$. Then for all $n$
+      For the converse inequality we pick a sequence of integers $n_i$ a formula  $\psi_i(x)\in q$ as follows. Start with $n_0=1$ and $\psi_0=\top$. Then, inductively let $n_{i+1}$ be such that $\Av_{p\restriction {n_{i+1}}}\,q(x)\le\Av_p\,\psi_i(x)+\epsilon$. Let  $\Av_{p\restriction {n_{i+1}}}\,\psi_i(x)=\Av_{p\restriction {n_{i+1}}}\,q(x)$.
+      
+      
+      such that $\Av_{p\restriction {n_i}}\,\psi_i(x)=\Av_{p\restriction {n_i}}\,q(x)$.
+      %
+      We can also require that $\Av_{p\restriction {n_{i+1}}}\,\psi_{i+1}(x)\le\Av_p\,\psi_i(x)+\epsilon$.
+      %
+      In fact, first chose $n_{i+1}$ such that $\Av_{p\restriction {n_{i+1}}}\,q(x)\le\Av_p\,\psi_i(x)+\epsilon$ then 
+      
+      Then for all $n$
 
       \ceq{\hfill\inf\Big\{\Av_p\,\phi(x)\ :\ \phi(x)\in q\Big\}}
       {\le}
-      {\Av_{p\restriction n}\,\psi(x)}
+      {\inf\Big\{\Av_p\,\psi_n(x)\ :\ n<\omega\Big\}}
 
-
+      \ceq{}
+      {\le}
+      {\Av_{p\restriction n}\,q(x) - \epsilon}
 \end{proof}
+
+
+\begin{corollary}
+      Let $p(\bar x)$ be a sample finitely satisfied in $M$.
+      %
+      Let $q'(x)=q(x)\cup\{\phi(x)\}$ for $q(x)\in S(M)$ and $\phi(x)\in L(\U)$.
+      %
+      Then $\Av_p\,q'(x)$ is either $0$ or $1$.
+\end{corollary}
+\begin{proof}
+Under the assumptions of the corollary, for every $\epsilon>0$ there is an $n$ and a tuple $\bar a\in M^{|x|\cdot\omega}$ such that $\Av_{\bar a{\restriction n}}\,q'(x)$ is within $\epsilon$ from $\Av_p\,q'(x)$. As $\Av_{\bar a{\restriction n}}\,q'(x)$
+\end{proof}
+
+
+
 
 \begin{proposition}
       Let $\bar x=\<x_i:i<\omega\>$ and $|x_i|=|x|$ and let $p(\bar x)\in S(\U)$.
@@ -408,18 +431,6 @@ Clearly the infimum above is attained.
 \end{proof}
 
 Vale anche/solo/nemmeno la versione non uniforme della proposizione?
-
-\begin{corollary}
-      Let $p(\bar x)$ bea global sample finitely satisfied in $M$.
-      %
-      Let $q'(x)=q(x)\cup\{\phi(x)\}$ for $q(x)\in S(M)$ and $\phi(x)\in L(\U)$.
-      %
-      Then $\Av_p\,q'(x)$ is either $0$ or $1$.
-\end{corollary}
-\begin{proof}
-???
-Under the assumptions of the corollary, for every $\epsilon>0$ there is an $n$ and a tuple $\bar a\in M^{|x|\cdot\omega}$ such that $\Av_{\bar a{\restriction n}}\,q'(x)$ is within $\epsilon$ from $\Av_p\,q'(x)$. As $\Av_{\bar a{\restriction n}}\,q'(x)$
-\end{proof}
 
 Note that, if $p(\bar x)$ is definable, say over $M$, then there is a formula $\psi_{m/n}(z)\in L(M)$ such that
 
