@@ -312,7 +312,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Preliminaries}\label{pre}
 \def\medrel#1{\parbox[t]{6ex}{\hfil$#1$}}
-\def\ceq#1#2#3{\parbox[t]{27ex}{$\displaystyle #1$}\medrel{#2}$\displaystyle  #3$}
+\def\ceq#1#2#3{\parbox[t]{23ex}{$\displaystyle #1$}\medrel{#2}$\displaystyle  #3$}
 \def\uuu{{\mathds 1}}
 \def\gruuu{{\mathds 1}}
 \def\Av{{\rm Av}}
@@ -321,17 +321,25 @@
 
 The \emph{finite expansion\/} of a structure $M$ is a many-sorted expansion that has a sort for $M$, which we call the home-sort, a sort for the natural numbers, and a sort for the finite multisets of elements of $M^n$, for any $n<\omega$.
 %
-We call these multisets \emph{samples\/} of $M^n$.
-%
 Recall that a multiset is a function $s:M\to\omega$.
 %
-We write  \emph{ $a\in s$\/} for $s(a)$, and this is interpreted as the number of occurreces of $a\in s$.
+We interpret $s(s)$ as the number of occurreces of $a$ in $s$.
 %
-The \emph{size\/} of a sample $s$ is defined as follows
+For this reason, we use the following suggestive notation:
+\begin{itemize}
+  \item[1.] \ceq{\hfill\emph{$a\in s$} }
+  {=}
+  {s(a)}\hfill  this is called the  \emph{multiplicity\/} of $a$ in $s$;
+  \item[2.] \ceq{\hfill\emph{$|s|$} }
+  {=}
+  {\sum_{a\in M} a\in s}\hfill  this is called the  \emph{size\/} of $s$;
+  \item[3.] 
+  \ceq{\hfill\emph{$\big|\big\{a\in s\ :\ \phi(a\,;b)\big\}\big|$} }
+  {=}
+  {\sum_{a\,\models\phi(x;b)} a\in s}
+\end{itemize}
 
-\ceq{\hfill\emph{$|s|$} }
-{=}
-{\sum_{a\in M} a\in s}
+We call these multisets \emph{samples\/} of $M^n$.
 
 We will write \emph{$M^{\rm f}$\/} for the expansion above.
 %
@@ -339,7 +347,9 @@ The language of $M^{\rm f}$ is denoted by \emph{$L^{\rm f}$.}
 %
 It expands $L$ and the language of arithmetic.
 %
-Moreover, $L^{\rm f}$ has a function $a\in s$ for the number of occurrences of the tuple $a$ in the sample $s$,  and a funtion $|s|$ for the size of the sample $s$.
+Moreover, $L^{\rm f}$ has a symbols for the functions in \ssf{1}-\ssf{3} above.
+%
+In particular, \ssf{3} requires a symbol for every $\phi(x\,;z)\in L$.
 
 
 For ease of exposition we may also use rational numbers, though these need not have their own sort as they are interpretable in the naturar numbers.
@@ -376,14 +386,7 @@ For every formula $\phi(x\,;z)\in L$ and every $b\in\U^{|z|}$ we define
 \ceq{\hfill\emph{$\Av_{s}\,\phi(x\,;b)$} }
 {=}
 {\frac{\big|\big\{a\in s\ :\ \phi(a\,;b)\big\}\big|}
-{|s|}},\smallskip
-
-where we use the following suggestive abbreviation\smallskip
-
-
-\ceq{\hfill\emph{$\big|\big\{a\in s\ :\ \phi(a\,;b)\big\}\big|$} }
-{=}
-{\sum_{a\,\models\phi(x;b)} a\in s}
+{|s|}},
 
 %
 %If we pretend that hyperrational are elements of $\U^{\rm f*}$, then $\Av_{s}\,\phi(x\,;b)$, as a function of $s$ and $b$, is definable in $\U^{\rm f*}$. 
@@ -415,11 +418,11 @@ This is known as the \emph{Loeb measure.}
   %
   Let $M$ be a model.
   %
-  For every sample $s\subseteq\U^{|x|}$, and every $\epsilon$, there is a sample $s_\epsilon\subseteq M^{|x|}$ such that $\Av_s\phi(x\,;b)\approx_\epsilon\Av_{s_\epsilon}\,\phi(x\,;b)$ for all $b\in M^{|z|}$.
+  For every sample $s\subseteq\U^{|x|}$, and every $\epsilon$, there is a sample $s_{M,\epsilon}\subseteq M^{|x|}$ such that $\Av_s\phi(x\,;b)\approx_\epsilon\Av_{s_{M,\epsilon}}\,\phi(x\,;b)$ for all $b\in M^{|z|}$.
   
-  Moreover, the cardinality of $s_\epsilon$ soley depends on $\epsilon$, namely
+  Moreover, the cardinality of $s_{M,\epsilon}$ soley depends on $\epsilon$, namely
 
-  \ceq{\hfill |s_\epsilon|}{\le}{c\,\frac{k}{\epsilon^{\scriptscriptstyle 2}}\ln\frac k\epsilon}
+  \ceq{\hfill |s_{M,\epsilon}|}{\le}{c\,\frac{k}{\epsilon^{\scriptscriptstyle 2}}\ln\frac k\epsilon}
 
   where $c$ is an absolute constant.
 \end{theorem}
@@ -429,7 +432,7 @@ This is known as the \emph{Loeb measure.}
 \end{proof}
 
 \begin{remark}[???]
-  When the model $M$ in the theorem above is $\omega_1$-saturated, we can claim that there is a (necessarily finite) sample $s_M\subseteq M^{|x|}$ such that $\Av_s\phi(x\,;b)\approx\Av_{s_M}\,\phi(x\,;b)$.\QED
+  When the model $M$ in the theorem above is sufficiently (?) saturated, we can claim that there is a (necessarily finite) sample $s_M\subseteq M^{|x|}$ such that $\Av_s\phi(x\,;b)\approx\Av_{s_M}\,\phi(x\,;b)$.\QED
 \end{remark}
 
 \begin{definition}[???]
@@ -445,21 +448,21 @@ For invariant samples the Vapnik-Chervonenkis Theorem can be strengthened as fol
   %
   Let $M$ be any model.
   %
-  For every sample $s\subseteq\U^{|x|}$ that is invariant for $\phi(x\,;z)$ over $M$, and every $\epsilon$, there is a sample $s_\epsilon\subseteq M^{|x|}$ such that $\Av_s\phi(x\,;b)\approx_\epsilon\Av_{s_\epsilon}\,\phi(x\,;b)$ for all $b\in M^{|z|}$.
+  For every sample $s\subseteq\U^{|x|}$ that is invariant for $\phi(x\,;z)$ over $M$, and every $\epsilon$, there is a sample $s_{M,\epsilon}\subseteq M^{|x|}$ such that $\Av_s\phi(x\,;b)\approx_\epsilon\Av_{s_{M,\epsilon}}\,\phi(x\,;b)$ for all $b\in\U^{|z|}$.
 \end{corollary}
 
 \begin{proof}
-  By the theorem above, there is a sample $s_\epsilon\subseteq M^{|x|}$ such that $\Av_s\phi(x\,;b)\approx_\epsilon\Av_{s_\epsilon}\,\phi(x\,;b)$ for all $b\in M^{|z|}$.
+  By the theorem above, there is a sample $s_{M,\epsilon}\subseteq M^{|x|}$ such that $\Av_s\phi(x\,;b)\approx_\epsilon\Av_{s_{M,\epsilon}}\,\phi(x\,;b)$ for all $b\in M^{|z|}$.
   
-  Suppose for a contradiction that $\Av_s\phi(x\,;b')\not\approx_\epsilon\Av_{s_\epsilon}\,\phi(x\,;b')$ for some $b'\in\U^{|z|}$.
+  Suppose for a contradiction that $\Av_s\phi(x\,;b')\not\approx_\epsilon\Av_{s_{M,\epsilon}}\,\phi(x\,;b')$ for some $b'\in\U^{|z|}$.
   %
   Pick a sample $s'\subseteq\U^{|x|}$ such that $b'\cnonfork_{M}s'\equiv_Ms$.
   %
-  By invariance, $\Av_{s'}\phi(x\,;b')\not\approx_\epsilon\Av_{s_\epsilon}\,\phi(x\,;b')$.
+  By invariance, $\Av_{s'}\phi(x\,;b')\not\approx_\epsilon\Av_{s_{M,\epsilon}}\,\phi(x\,;b')$.
   %
   As $b'\cnonfork_{M}s'$, the same formula holds for some $b\in M^{|z|}$.
   %
-  Once again by invariance, $\Av_s\phi(x\,;b)\not\approx_\epsilon\Av_{s_\epsilon}\,\phi(x\,;b)$.
+  Once again by invariance, $\Av_s\phi(x\,;b)\not\approx_\epsilon\Av_{s_{M,\epsilon}}\,\phi(x\,;b)$.
   %
   A contradiction.
 \end{proof}
@@ -484,7 +487,7 @@ The following is stronger form of invariance.
   A formula $\phi(x\,;z)\in L$ is \emph{distal\/} if there is a formula $\psi(x\,;z_1,\dots z_n)\in L$ such that for every finite sample $s$ and every $b\in\U^{|x|}$ there are $a_1,\dots,a_n\in s^{|z|}$ such that $\psi(x\,;a_1,\dots,a_n)\iff p(x)$, where $p(x)=\tp_\phi(b/....s)$.\QED
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}[(false)]
   The following are equivalent
   \begin{itemize}
     \item[1.] $\phi(x\,;z)\in L$ is distal;
