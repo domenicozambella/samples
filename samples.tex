@@ -312,14 +312,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Preliminaries}\label{pre}
 \def\medrel#1{\parbox[t]{6ex}{\hfil$#1$}}
-\def\ceq#1#2#3{\parbox[t]{18ex}{$\displaystyle #1$}\medrel{#2}$\displaystyle  #3$}
+\def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\medrel{#2}$\displaystyle  #3$}
 \def\uuu{{\mathds 1}}
 \def\gruuu{{\mathds 1}}
 \def\Av{{\rm Av}}
 \def\st{{\rm st}}
 
 
-The \emph{finite (fractional) expansion\/} of a structure $M$ is a many-sorted expansion that has a sort for $M$, which we call the home-sort, a sort for the natural numbers, and a sort for the finite fractional multisets of elements of $M^n$, for any $n<\omega$.
+The \emph{finite (fractional) expansion\/} of a structure $M$ is a many-sorted expansion that has a sort for $M$, which we call the home-sort, a sort for $\RR$, the set of real numbers, and a sort for the finite fractional multisets of elements of $M^n$, for any $n<\omega$.
 %
 A \emph{(fractional) multiset\/} is a function $s:M^n\to\RR^+\cup\{0\}$.
 %
@@ -329,7 +329,7 @@ We interpret $s(a)$ as the number of occurreces of $a$ in $s$.
 %
 For this reason, we use the following suggestive notation:
 \begin{itemize}
-  \item[1.] \ceq{\hfill\emph{$a\in s$} }
+  \item[1.] \ceq{\hfill\emph{$a\in s$}\vphantom{\sum_x} }
   {=}
   {s(a)}\hfill  this is called the  \emph{multiplicity\/} of $a$ in $s$;
   \item[2.] \ceq{\hfill\emph{$|s|$} }
@@ -351,7 +351,7 @@ It expands $L$ and the language of arithmetic.
 %
 Moreover, $L^{\rm f}$ has a symbols for the functions in \ssf{1}-\ssf{3} above.
 %
-In particular, \ssf{3} requires a symbol for every $\phi(x\,;z)\in L$.
+In particular, claim \ssf{3} requires a symbol for every $\phi(x\,;z)\in L$.
 
 
 %For ease of exposition we may also use rational numbers, though these need not have their own sort as they are interpretable in the naturar numbers.
@@ -364,7 +364,9 @@ We will write \emph{$\U^{\rm f*}$\/} for this expansion.
 %
 As all saturated models of cardinality $\kappa$ are isomorphic, we can assume that $\U$ is the home-sort of $\U^{\rm f*}$.
 
- We write \emph{$\supp(s)$\/} for the \emph{support\/} of $s$, that is, the subset of $\U^n$ where $x\in s$ is positive. Note that its cardinality is either finite of $\kappa$. If $s$ is a sample in $\U^{\rm f*}$, we write \emph{$s\subseteq\U^n$\/} as a shorthand of $\supp(s)\subseteq\U^n$.
+ We write \emph{$\supp(s)$\/} for the \emph{support\/} of $s$, that is, the subset of $\U^n$ where $x\in s$ is positive. Note that $\supp(s)$ is a definable subset of $\U^n$, hence its cardinality is either finite of $\kappa$. Moreover, $s\subseteq\M^n$ for some small model $M$, then $\supp(s)$ is finite.
+ 
+ If $s$ is a sample in $\U^{\rm f*}$, we write \emph{$s\subseteq\U^n$\/} as a shorthand of $\supp(s)\subseteq\U^n$.
 
 % \begin{definition}[???]
 %   We say that $\U$ is \emph{pseudofinite\/} every definable set is the support of a sample.\QED
@@ -399,7 +401,7 @@ If $a$ and $b$ are hyperreals, we write \emph{$a\approx_\epsilon b$\/} for $|a-b
 %
 We write \emph{$a\approx b$\/} if $a\approx_\epsilon b$ holds for every $\epsilon$.
 %
-If $\mu$ is a real number we write $a\approx_\epsilon \mu$ if there is a standard rational $b\approx_{\epsilon/2} a$ such that $|b-\mu|<\epsilon/2$ (this last inequality is evaluated in the standard real line). 
+%If $\mu$ is a real number we write $a\approx_\epsilon \mu$ if there is a standard rational $b\approx_{\epsilon/2} a$ such that $|b-\mu|<\epsilon/2$ (this last inequality is evaluated in the standard real line). 
 %
 We write $\st(a)$, for the standard part of the hyperrational number $a$.
 %
@@ -412,11 +414,11 @@ This measure has an unique extension to a Lebesgue probability measure on a $\si
 This is known as the \emph{Loeb measure.}
 
 \begin{lemma}
-  For every formula $\phi(x\,;z)\in L$, every sample $s\subseteq\U^{|x|}$ and every infinite $B\subseteq\U^{|z|}$ such that $\Av_s\phi(x\,;b)\not\approx0$ for every $b\in B$, there is a finite cover $B_1,\dots B_n$ of $B$ such that the types $\{\phi(x\,;b):b\in B_i\}$ are consistent.
+  For every formula $\phi(x\,;z)\in L$, every sample $s\subseteq\U^{|x|}$ and every infinite $B\subseteq\U^{|z|}$ such that $\Av_s\phi(x\,;b)\not\approx0$ for every $b\in B$, there is a finite cover $B_1,\dots, B_n$ of $B$ such that the types $\{\phi(x\,;b):b\in B_i\}$ are consistent.
 \end{lemma}
 
 \begin{proof}
-  Let $M^{\rm f*}\preceq\U^{\rm f*}$ be a sufficiently saturated model containing $B$. Define  for every $\epsilon$
+  Let $M^{\rm f*}\preceq\U^{\rm f*}$ be a sufficiently saturated model such that $B\subseteq M^{|z|}$. Define  for every $\epsilon$
   
   \ceq{\hfill B_\epsilon}{=}{\Big\{b\in B\ :\ \Av_s\phi(x\,;b)>\epsilon\Big\}.}
 
@@ -424,7 +426,7 @@ Define also
 
   \ceq{\hfill p_\epsilon(w)}{=}{\Big\{\Av_w\phi(x\,;b)>\epsilon :\ b\in B_\epsilon\Big\}.}
 
-By saturation there is an $s'\in M^{\rm f*}$ that realises all these types. As $s'\subseteq M^{|x|}$ then $\supp(s')$ is finite. Clearly, we can assume that $a\in s'$ is standard for all $a$. So the claim follows.
+By saturation there is an $s'\in M^{\rm f*}$ that realises the union of all these types. As $s'\subseteq M^{|x|}$ then $\supp(s')$ is finite. Clearly, we can assume that $a\in s'$ is standard for all $a$. So the claim follows.
 \end{proof}
 
 \begin{theorem}
