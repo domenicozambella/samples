@@ -319,11 +319,13 @@
 \def\st{{\rm st}}
 
 
-The \emph{finite expansion\/} of a structure $M$ is a many-sorted expansion that has a sort for $M$, which we call the home-sort, a sort for the natural numbers, and a sort for the finite multisets of elements of $M^n$, for any $n<\omega$.
+The \emph{finite (fractional) expansion\/} of a structure $M$ is a many-sorted expansion that has a sort for $M$, which we call the home-sort, a sort for the natural numbers, and a sort for the finite fractional multisets of elements of $M^n$, for any $n<\omega$.
 %
-Recall that a multiset is a function $s:M\to\omega$.
+A \emph{(fractional) multiset\/} is a function $s:M^n\to\RR^+\cup\{0\}$.
 %
-We interpret $s(s)$ as the number of occurreces of $a$ in $s$.
+We say that $s$ is \emph{finite\/} if it is almost always $0$.
+%
+We interpret $s(a)$ as the number of occurreces of $a$ in $s$.
 %
 For this reason, we use the following suggestive notation:
 \begin{itemize}
@@ -352,7 +354,7 @@ Moreover, $L^{\rm f}$ has a symbols for the functions in \ssf{1}-\ssf{3} above.
 In particular, \ssf{3} requires a symbol for every $\phi(x\,;z)\in L$.
 
 
-For ease of exposition we may also use rational numbers, though these need not have their own sort as they are interpretable in the naturar numbers.
+%For ease of exposition we may also use rational numbers, though these need not have their own sort as they are interpretable in the naturar numbers.
 
 Let $\U$ be a monster model of cardinality $\kappa$, an inaccessible cardinal larger than the cardinality of $L$.
 %
@@ -362,7 +364,7 @@ We will write \emph{$\U^{\rm f*}$\/} for this expansion.
 %
 As all saturated models of cardinality $\kappa$ are isomorphic, we can assume that $\U$ is the home-sort of $\U^{\rm f*}$.
 
- We write \emph{$\S(s)$\/} for the \emph{support\/} of $s$, that is, the subset of $\U^n$ where $x\in s$ is positive. Note that its cardinality is either finite of $\kappa$. If $s$ is a sample in $\U^{\rm f*}$, we write \emph{$s\subseteq\U^n$\/} as a shorthand of $\S(s)\subseteq\U^n$.
+ We write \emph{$\supp(s)$\/} for the \emph{support\/} of $s$, that is, the subset of $\U^n$ where $x\in s$ is positive. Note that its cardinality is either finite of $\kappa$. If $s$ is a sample in $\U^{\rm f*}$, we write \emph{$s\subseteq\U^n$\/} as a shorthand of $\supp(s)\subseteq\U^n$.
 
 % \begin{definition}[???]
 %   We say that $\U$ is \emph{pseudofinite\/} every definable set is the support of a sample.\QED
@@ -391,9 +393,9 @@ For every formula $\phi(x\,;z)\in L$ and every $b\in\U^{|z|}$ we define
 %
 %If we pretend that hyperrational are elements of $\U^{\rm f*}$, then $\Av_{s}\,\phi(x\,;b)$, as a function of $s$ and $b$, is definable in $\U^{\rm f*}$. 
 
-Below, $\epsilon$ always ranges over the positive standard rational.
+Below, $\epsilon$ always ranges over the positive standard reals.
 %
-If $a$ and $b$ are hyperrationals, we write \emph{$a\approx_\epsilon b$\/} for $|a-b|<\epsilon$.
+If $a$ and $b$ are hyperreals, we write \emph{$a\approx_\epsilon b$\/} for $|a-b|<\epsilon$.
 %
 We write \emph{$a\approx b$\/} if $a\approx_\epsilon b$ holds for every $\epsilon$.
 %
@@ -435,7 +437,7 @@ This is known as the \emph{Loeb measure.}
   When the model $M$ in the theorem above is sufficiently (?) saturated, we can claim that there is a (necessarily finite) sample $s_M\subseteq M^{|x|}$ such that $\Av_s\phi(x\,;b)\approx\Av_{s_M}\,\phi(x\,;b)$.\QED
 \end{remark}
 
-\begin{definition}[???]
+\begin{definition}
   Let  $\phi(x\,;z)\in L$.
   %
   We say that the sample $s\subseteq\U^{|x|}$ is \emph{invariant\/} for $\phi(x\,;z)$ over $A$ if, for every $s'\equiv_As$ and every $b\in\U^{|z|}$, we have $\Av_s\,\phi(x\,;b)\approx\Av_{s'}\,\phi(x\,;b)$.\QED
@@ -474,7 +476,7 @@ The following is stronger form of invariance.
   % Let  $\phi(x\,;z)\in L$.
   %
   %We say that a sample $s$ of $M^{|x|}$ is $\phi$-smooth over $M$ if there is a finite $S\subseteq M^{|x|}$ such that $\Av_s\,\phi(x\,;b)\approx\Av_S\,\phi(x\,;b)$ for all $b\in M^{|z|}$.
-  We say that a sample $s\subseteq\U^{|x|}$ is \emph{smooth\/} for $\phi(x\,;z)$ over $A$ if for any other sample $s'$ such that $\Av_s\,\phi(x\,;b)\approx\Av_{s'}\,\phi(x\,;b)$ for all $b\in M^{|z|}$, the same equivalence holds for all $b\in\U^{|z|}$.\QED
+  We say that a sample $s\subseteq\U^{|x|}$ is \emph{smooth\/} for $\phi(x\,;z)$ over $M$ if for any other sample $s'$ such that $\Av_s\,\phi(x\,;b)\approx\Av_{s'}\,\phi(x\,;b)$ for all $b\in M^{|z|}$, the same equivalence holds for all $b\in\U^{|z|}$.\QED
 \end{definition}
 
 \begin{definition}[???]
