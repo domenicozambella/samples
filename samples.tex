@@ -312,7 +312,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Preliminaries}\label{pre}
 \def\medrel#1{\parbox[t]{6ex}{\hfil$#1$}}
-\def\ceq#1#2#3{\parbox[t]{23ex}{$\displaystyle #1$}\medrel{#2}$\displaystyle  #3$}
+\def\ceq#1#2#3{\parbox[t]{18ex}{$\displaystyle #1$}\medrel{#2}$\displaystyle  #3$}
 \def\uuu{{\mathds 1}}
 \def\gruuu{{\mathds 1}}
 \def\Av{{\rm Av}}
@@ -411,7 +411,21 @@ This measure has an unique extension to a Lebesgue probability measure on a $\si
 %
 This is known as the \emph{Loeb measure.}
 
+\begin{lemma}
+  For every formula $\phi(x\,;z)\in L$, every sample $s\subseteq\U^{|x|}$ and every infinite $B\subseteq\U^{|z|}$ such that $\Av_s\phi(x\,;b)\not\approx0$ for every $b\in B$, there is a finite cover $B_1,\dots B_n$ of $B$ such that the types $\{\phi(x\,;b):b\in B_i\}$ are consistent.
+\end{lemma}
 
+\begin{proof}
+  Let $M^{\rm f*}\preceq\U^{\rm f*}$ be a sufficiently saturated model containing $B$. Define  for every $\epsilon$
+  
+  \ceq{\hfill B_\epsilon}{=}{\Big\{b\in B\ :\ \Av_s\phi(x\,;b)>\epsilon\Big\}.}
+
+Define also
+
+  \ceq{\hfill p_\epsilon(w)}{=}{\Big\{\Av_w\phi(x\,;b)>\epsilon :\ b\in B_\epsilon\Big\}.}
+
+By saturation there is an $s'\in M^{\rm f*}$ that realises all these types. As $s'\subseteq M^{|x|}$ then $\supp(s')$ is finite. Clearly, we can assume that $a\in s'$ is standard for all $a$. So the claim follows.
+\end{proof}
 
 \begin{theorem}
   Let  $\phi(x\,;z)\in L$ be a nip formula.
@@ -480,7 +494,7 @@ The following is stronger form of invariance.
 \end{definition}
 
 \begin{definition}[???]
-  A sample $s\subseteq\U^{|x|}$ is \emph{finitely satisfiable\/} for $\phi(x\,;z)$ in $M$ if, for every $b\in\U^{|z|}$ such that $\Av_s\phi(x\,;b)\not\approx_\epsilon0$, there is  $a\in M^{|z|}$ such that $\phi(a\,;b)$.
+  A sample $s\subseteq\U^{|x|}$ is \emph{finitely satisfiable\/} for $\phi(x\,;z)$ in $M$ if, for every $b\in\U^{|z|}$ such that $\Av_s\phi(x\,;b)\not\approx0$, there is  $a\in M^{|z|}$ such that $\phi(a\,;b)$.
   
   We say that $s$ is \emph{generically stable\/} for $\phi(x\,;z)$ over $M$ if it is both invariant and finitely satisfiable for $\phi(x\,;z)$ over $M$.\QED
 \end{definition}
