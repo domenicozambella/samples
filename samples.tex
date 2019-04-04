@@ -364,7 +364,11 @@ We will write \emph{$\U^{\rm f*}$\/} for this expansion.
 %
 As all saturated models of cardinality $\kappa$ are isomorphic, we can assume that $\U$ is the home-sort of $\U^{\rm f*}$.
 
- We write \emph{$\supp(s)$\/} for the \emph{support\/} of $s$, that is, the subset of $\U^n$ where $x\in s$ is positive. Note that $\supp(s)$ is a definable subset of $\U^n$, hence its cardinality is either finite of $\kappa$. Moreover, $s\subseteq\M^n$ for some small model $M$, then $\supp(s)$ is finite.
+ We write \emph{$\supp(s)$\/} for the \emph{support\/} of $s$, that is, the subset of $\U^n$ where $x\in s$ is positive.
+ %
+ Note that $\supp(s)$ is a definable subset of $\U^{\rm f*}$, hence its cardinality is either finite or $\kappa$.
+ %
+ Moreover, $s\subseteq M^n$ for some small model $M$, then $\supp(s)$ is finite.
  
  If $s$ is a sample in $\U^{\rm f*}$, we write \emph{$s\subseteq\U^n$\/} as a shorthand of $\supp(s)\subseteq\U^n$.
 
@@ -380,7 +384,7 @@ As all saturated models of cardinality $\kappa$ are isomorphic, we can assume th
   Difficile da scrivere senza hand-waving.
   % Suppose  $\U^{\rm f*}\models \E x\,\phi(x)$.
   % %
-  % Every formula with parameters in $M^{\rm f}$ is equivalent to a formula with parameters in $M$.  
+  % Every formula with parameters in $M^{\rm f}$ is equivalent to a formula with parameters in $M$.
 \end{proof}
 
 Let $s\subseteq\U^{|x|}$ be a sample.
@@ -393,7 +397,7 @@ For every formula $\phi(x\,;z)\in L$ and every $b\in\U^{|z|}$ we define
 {|s|}},
 
 %
-%If we pretend that hyperrational are elements of $\U^{\rm f*}$, then $\Av_{s}\,\phi(x\,;b)$, as a function of $s$ and $b$, is definable in $\U^{\rm f*}$. 
+%If we pretend that hyperrational are elements of $\U^{\rm f*}$, then $\Av_{s}\,\phi(x\,;b)$, as a function of $s$ and $b$, is definable in $\U^{\rm f*}$.
 
 Below, $\epsilon$ always ranges over the positive standard reals.
 %
@@ -401,11 +405,11 @@ If $a$ and $b$ are hyperreals, we write \emph{$a\approx_\epsilon b$\/} for $|a-b
 %
 We write \emph{$a\approx b$\/} if $a\approx_\epsilon b$ holds for every $\epsilon$.
 %
-%If $\mu$ is a real number we write $a\approx_\epsilon \mu$ if there is a standard rational $b\approx_{\epsilon/2} a$ such that $|b-\mu|<\epsilon/2$ (this last inequality is evaluated in the standard real line). 
+%If $\mu$ is a real number we write $a\approx_\epsilon \mu$ if there is a standard rational $b\approx_{\epsilon/2} a$ such that $|b-\mu|<\epsilon/2$ (this last inequality is evaluated in the standard real line).
 %
 We write $\st(a)$, for the standard part of the hyperrational number $a$.
 %
-That is, the unique real number $\mu$ such that $\mu\approx a$. 
+That is, the unique real number $\mu$ such that $\mu\approx a$.
 
 The standard part of $\Av_s$ induces a finite probability measure on the algebra of definable subsets of $\U^{|x|}$.
 %
@@ -414,11 +418,13 @@ This measure has an unique extension to a Lebesgue probability measure on a $\si
 This is known as the \emph{Loeb measure.}
 
 \begin{lemma}
-  For every formula $\phi(x\,;z)\in L$, every sample $s\subseteq\U^{|x|}$ and every infinite $B\subseteq\U^{|z|}$ such that $\Av_s\phi(x\,;b)\not\approx0$ for every $b\in B$, there is a finite cover $B_1,\dots, B_n$ of $B$ such that the types $\{\phi(x\,;b):b\in B_i\}$ are consistent.
+  For every formula $\phi(x\,;z)\in L$, every sample $s\subseteq\U^{|x|}$ and every infinite $B\subseteq\U^{|z|}$ such that $\Av_s\phi(x\,;b)\not\approx0$ for every $b\in B$, there is a finite cover of $B$, say $B_1,\dots, B_n$, such that all types $\{\phi(x\,;b):b\in B_i\}$ are consistent.
 \end{lemma}
 
 \begin{proof}
-  Let $M^{\rm f*}\preceq\U^{\rm f*}$ be a sufficiently saturated model such that $B\subseteq M^{|z|}$. Define  for every $\epsilon$
+  Let $M^{\rm f*}\preceq\U^{\rm f*}$ be sufficiently saturated and such that $B\subseteq M^{|z|}$.
+  %
+  Define  for every $\epsilon$
   
   \ceq{\hfill B_\epsilon}{=}{\Big\{b\in B\ :\ \Av_s\phi(x\,;b)>\epsilon\Big\}.}
 
@@ -426,8 +432,22 @@ Define also
 
   \ceq{\hfill p_\epsilon(w)}{=}{\Big\{\Av_w\phi(x\,;b)>\epsilon :\ b\in B_\epsilon\Big\}.}
 
-By saturation there is an $s'\in M^{\rm f*}$ that realises the union of all these types. As $s'\subseteq M^{|x|}$ then $\supp(s')$ is finite. Clearly, we can assume that $a\in s'$ is standard for all $a$. So the claim follows.
+By saturation, there is an $s'\in M^{\rm f*}$ that realises the union of all these types.
+%
+Then $\Av_{s'}\phi(x\,;b)\not\approx0$ for every $b\in B$.
+%
+As $s'\subseteq M^{|x|}$ then $\supp(s')$ is finite.
+%
+Clearly, we can assume that $a\in s'$ is a standard number for all $a$.
+%
+So the claim follows.
 \end{proof}
+
+The following is an immediate consequence.
+
+\begin{corollary}
+  For every formula $\phi(x\,;z)\in L$, every sample $s\subseteq\U^{|x|}$ and every sequence of indiscernibles $\<b_i:i<\omega\>$ such that $\Av_s\phi(x\,;b_i)\not\approx0$ for every $i<\omega$, the type $\{\phi(x\,;b_i):i<\omega\}$ is consistent.\QED
+\end{corollary}
 
 \begin{theorem}
   Let  $\phi(x\,;z)\in L$ be a nip formula.
@@ -447,6 +467,17 @@ By saturation there is an $s'\in M^{\rm f*}$ that realises the union of all thes
 
 \begin{proof}
   Questo è Vapnik-Chervonenkis.
+\end{proof}
+
+
+\begin{lemma}
+  Let $\phi(x\,;z)\in L$ be a nip formula and let $s\subseteq\U^{|x|}$ be asample.
+  %
+  There is no sequence $\<b_i:i<\omega\>$ of indiscernibles such that $\Av_s\big[\phi(x\,;b_i)\niff\phi(x\,;b_j)\big]\not\approx 0$ for all $i<j<\omega$.
+\end{lemma}
+
+\begin{proof}
+  Suppose 
 \end{proof}
 
 \begin{remark}[???]
@@ -523,7 +554,11 @@ The following is stronger form of invariance.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Uniform samples}\label{samples}
-We call $\U$ the domain of the home sort. This curries all the structure. The domain of the second sort, 
+We call $\U$ the domain of the home sort.
+%
+This curries all the structure.
+%
+The domain of the second sort, 
 
 Fix a tuple of variables $x$ and let $\bar x=\<x_i:i<\omega\>$, where $|x_i|=|x|$.
 %
@@ -542,7 +577,9 @@ we write \emph{$\Av_{\bar a{\restriction n}}\,\psi(x)$.}
 
   \ceq{\hfill\emph{$\Av_p\,\psi(x)$}}{=}{\lim_{n\to\infty}\Av_{p\restriction n}\,\psi(x).}
 
-  Let $\phi(x,z)\in L$ be given. We say that $p(\bar x)$ is a \emph{$\phi$-sample\/} 
+  Let $\phi(x,z)\in L$ be given.
+  %
+  We say that $p(\bar x)$ is a \emph{$\phi$-sample\/} 
   if the formula $\psi(x)$ above is restricted to range over those of the form $\phi(x,b)$ 
   for $b\in\U^{|z|}$.
 
