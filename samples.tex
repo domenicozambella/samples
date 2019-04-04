@@ -461,18 +461,18 @@ This is known as the \emph{Loeb measure.}
 \begin{corollary}
   Let $\psi(x\,;z)\in L$ be a nip formula and let $s\subseteq\U^{|x|}$ be a sample.
   %
-  There is no infinite set $C$ such that $\Av_s\big[\psi(x\,;c)\niff\psi(x\,;c')\big]>\epsilon$ for all $c,c'\in C$.
+  Then there is no infinite set $C$ such that $\Av_s\big[\psi(x\,;c)\niff\psi(x\,;c')\big]>\epsilon$ for all $c,c'\in C$, $c\neq c'$.
 \end{corollary}
 
 \begin{proof}
-  Apply Lemma~\ref{lem_cons} to the folmula $\phi(x\,;z,z') = [\psi(x\,;z)\niff\psi(x\,;z')]$ and the set $B=C^2$.
+  Apply Lemma~\ref{lem_cons} to the folmula $\phi(x\,;z,z') = [\psi(x\,;z)\niff\psi(x\,;z')]$ and the set $B=\{\<c,c'\>\in C^2:c\neq c'\}$.
   %
   Without loss of generality, we may assume that the sets $B_i$ given by the lemma form a partition of the complete graph on $C$.
   %
   By the Ramsey theorem there is an infinite $A\subseteq C$ such that $\{\psi(x\,;a)\niff\psi(x\,;a') : a,a'\in A, a\neq a'\}$ is consistent. Clearly this is a contradiction as soon as $|A|>2$.
 \end{proof}
 
-The following is another immediate consequence of the lemma.
+The following is another immediate consequence of the lemma (it holds also when $\phi(x\,;z)$ is not nip, though the proof is lengthier).
 
 \begin{corollary}
   For every nip formula $\phi(x\,;z)\in L$, every sample $s\subseteq\U^{|x|}$ and every sequence of indiscernibles $\<b_i:i<\omega\>$ such that $\Av_s\phi(x\,;b_i)>\epsilon$ for every $i<\omega$, the type $\{\phi(x\,;b_i):i<\omega\}$ is consistent.\QED
