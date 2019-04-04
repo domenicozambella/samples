@@ -417,39 +417,8 @@ This measure has an unique extension to a Lebesgue probability measure on a $\si
 %
 This is known as the \emph{Loeb measure.}
 
-\begin{lemma}
-  For every formula $\phi(x\,;z)\in L$, every sample $s\subseteq\U^{|x|}$ and every infinite $B\subseteq\U^{|z|}$ such that $\Av_s\phi(x\,;b)\not\approx0$ for every $b\in B$, there is a finite cover of $B$, say $B_1,\dots, B_n$, such that all types $\{\phi(x\,;b):b\in B_i\}$ are consistent.
-\end{lemma}
 
-\begin{proof}
-  Let $M^{\rm f*}\preceq\U^{\rm f*}$ be sufficiently saturated and such that $B\subseteq M^{|z|}$.
-  %
-  Define  for every $\epsilon$
-  
-  \ceq{\hfill B_\epsilon}{=}{\Big\{b\in B\ :\ \Av_s\phi(x\,;b)>\epsilon\Big\}.}
-
-Define also
-
-  \ceq{\hfill p_\epsilon(w)}{=}{\Big\{\Av_w\phi(x\,;b)>\epsilon :\ b\in B_\epsilon\Big\}.}
-
-By saturation, there is an $s'\in M^{\rm f*}$ that realises the union of all these types.
-%
-Then $\Av_{s'}\phi(x\,;b)\not\approx0$ for every $b\in B$.
-%
-As $s'\subseteq M^{|x|}$ then $\supp(s')$ is finite.
-%
-Clearly, we can assume that $a\in s'$ is a standard number for all $a$.
-%
-So the claim follows.
-\end{proof}
-
-The following is an immediate consequence.
-
-\begin{corollary}
-  For every formula $\phi(x\,;z)\in L$, every sample $s\subseteq\U^{|x|}$ and every sequence of indiscernibles $\<b_i:i<\omega\>$ such that $\Av_s\phi(x\,;b_i)\not\approx0$ for every $i<\omega$, the type $\{\phi(x\,;b_i):i<\omega\}$ is consistent.\QED
-\end{corollary}
-
-\begin{theorem}
+\begin{theorem}\label{thm_VC}
   Let  $\phi(x\,;z)\in L$ be a nip formula.
   %
   %Let $\M\preceq\U$ (there is no requirement on the cardinality of $\M$).
@@ -462,7 +431,7 @@ The following is an immediate consequence.
 
   \ceq{\hfill |s_{M,\epsilon}|}{\le}{c\,\frac{k}{\epsilon^{\scriptscriptstyle 2}}\ln\frac k\epsilon}
 
-  where $c$ is an absolute constant.
+  where $c$ is an absolute constant and $k$ is the VC-dimension of $\phi(x\,;z)$.
 \end{theorem}
 
 \begin{proof}
@@ -470,14 +439,43 @@ The following is an immediate consequence.
 \end{proof}
 
 
-\begin{lemma}
-  Let $\phi(x\,;z)\in L$ be a nip formula and let $s\subseteq\U^{|x|}$ be asample.
-  %
-  There is no sequence $\<b_i:i<\omega\>$ of indiscernibles such that $\Av_s\big[\phi(x\,;b_i)\niff\phi(x\,;b_j)\big]\not\approx 0$ for all $i<j<\omega$.
+\begin{lemma}\label{lem_cons}
+  For every nip formula $\phi(x\,;z)\in L$, every sample $s\subseteq\U^{|x|}$ and every infinite $B\subseteq\U^{|z|}$ such that $\Av_s\phi(x\,;b)>\epsilon$ for every $b\in B$, there is a finite cover of $B$, say $B_1,\dots, B_n$, such that all types $p_i(x)=\{\phi(x\,;b):b\in B_i\}$ are consistent.
 \end{lemma}
 
 \begin{proof}
-  Suppose 
+  Let $M$ be any model containing $B$.
+  %
+  Fix some $\epsilon'<\epsilon$.
+  %
+  Let $s_{M.\epsilon'}$ be the sample given by Theorem~\ref{thm_VC}.
+  %
+  Then $\supp(s)$ is finite, say $\supp(s)=\{a_1,\dots,a_n\}$.
+  %
+  Let $B_i=\{b\in B:\phi(a_i\,;b)\}$.
+  % 
+  As $\Av_{s_{M.\epsilon'}}\phi(x\,;b)>0$ for all $b\in B$, these $B_i$ are the required cover of $B$.
+\end{proof}
+
+The following is an immediate consequence of the lemma.
+
+\begin{corollary}
+  For every formula $\phi(x\,;z)\in L$, every sample $s\subseteq\U^{|x|}$ and every sequence of indiscernibles $\<b_i:i<\omega\>$ such that $\Av_s\phi(x\,;b_i)>\epsilon$ for every $i<\omega$, the type $\{\phi(x\,;b_i):i<\omega\}$ is consistent.\QED
+\end{corollary}
+
+
+\begin{corollary}
+  Let $\psi(x\,;z)\in L$ be a nip formula and let $s\subseteq\U^{|x|}$ be a sample.
+  %
+  There is no infinite set $C$ such that $\Av_s\big[\psi(x\,;c)\niff\psi(x\,;c')\big]>\epsilon$ for all $c,c'\in C$.
+\end{corollary}
+
+\begin{proof}
+  Apply Lemma~\ref{lem_cons} to the folmula $\phi(x\,;z,z') = [\psi(x\,;z)\niff\psi(x\,;z')]$ and the set $B=C^2$.
+  %
+  Without loss of generality, we may assume that the sets $B_i$ given by the lemma form a partition of the complete graph on $C$.
+  %
+  By the Ramsey theorem there is an infinite $A\subseteq C$ such that $\{\psi(x\,;a)\niff\psi(x\,;a') : a,a'\in A, a\neq a'\}$ is consistent. Clearly this is a contradiction as soon as $|A|>2$.
 \end{proof}
 
 \begin{remark}[???]
@@ -487,7 +485,7 @@ The following is an immediate consequence.
 \begin{definition}
   Let  $\phi(x\,;z)\in L$.
   %
-  We say that the sample $s\subseteq\U^{|x|}$ is \emph{invariant\/} for $\phi(x\,;z)$ over $A$ if, for every $s'\equiv_As$ and every $b\in\U^{|z|}$, we have $\Av_s\,\phi(x\,;b)\approx\Av_{s'}\,\phi(x\,;b)$.\QED
+  We say that the sample $s\subseteq\U^{|x|}$ is \emph{invariant\/} for $\phi(x\,;z)$ over $M$ if, for every $s'\equiv_Ms$ and every $b\in\U^{|z|}$, we have $\Av_s\,\phi(x\,;b)\approx\Av_{s'}\,\phi(x\,;b)$.\QED
 \end{definition}
 
 For invariant samples the Vapnik-Chervonenkis Theorem can be strengthened as follows.
@@ -519,12 +517,14 @@ For invariant samples the Vapnik-Chervonenkis Theorem can be strengthened as fol
 The following is stronger form of invariance.
 
 
-\begin{definition}[???]
+\begin{definition}
   % Let  $\phi(x\,;z)\in L$.
   %
   %We say that a sample $s$ of $M^{|x|}$ is $\phi$-smooth over $M$ if there is a finite $S\subseteq M^{|x|}$ such that $\Av_s\,\phi(x\,;b)\approx\Av_S\,\phi(x\,;b)$ for all $b\in M^{|z|}$.
   We say that a sample $s\subseteq\U^{|x|}$ is \emph{smooth\/} for $\phi(x\,;z)$ over $M$ if for any other sample $s'$ such that $\Av_s\,\phi(x\,;b)\approx\Av_{s'}\,\phi(x\,;b)$ for all $b\in M^{|z|}$, the same equivalence holds for all $b\in\U^{|z|}$.\QED
 \end{definition}
+
+Clearly, smooth impies invariant.
 
 \begin{definition}[???]
   A sample $s\subseteq\U^{|x|}$ is \emph{finitely satisfiable\/} for $\phi(x\,;z)$ in $M$ if, for every $b\in\U^{|z|}$ such that $\Av_s\phi(x\,;b)\not\approx0$, there is  $a\in M^{|z|}$ such that $\phi(a\,;b)$.
