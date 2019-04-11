@@ -312,7 +312,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Preliminaries}\label{pre}
 \def\medrel#1{\parbox[t]{6ex}{\hfil$#1$}}
-\def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\medrel{#2}$\displaystyle  #3$}
+\def\ceq#1#2#3{\parbox[t]{23ex}{$\displaystyle #1$}\medrel{#2}$\displaystyle  #3$}
 \def\uuu{{\mathds 1}}
 \def\gruuu{{\mathds 1}}
 \def\Av{{\rm Av}}
@@ -370,7 +370,7 @@ We denote by \emph{$\U^{\rm f^+_*}$\/} some elementary extension of $\U^{\rm f_*
 %
 Hence we have $\U^{\rm f}\prec\U^{\rm f_*}\prec\U^{\rm f^+_*}$.
 %
-Elements of sample-sort in these models are called  \emph{finite samples,} \emph{samples,} and \emph{external samples\/} respectively.\QED
+Elements of sample-sort in these models are called  \emph{finite samples,} \emph{internal samples,} and \emph{external samples\/} respectively.\QED
 %
 %Elements  of sample-sort in $\U^{\rm f_*}$ are called \emph{smoth samples.}
 \end{definition}
@@ -499,7 +499,7 @@ As authomorphisms of $\U$ extend to automorphisms of $\U^{\rm f^+_*}$, hence an 
 The converse need not be true in general, but we have the following.
 
 \begin{fact}
-  For every internal sample $s$ following are equivalent
+  For every internal sample $s$, the following are equivalent
   \begin{itemize}
     \item[1.] $s$ is invariant for $\phi(x\,;z)$ over $M$;
     \item[2.] $s$ is smooth for $\phi(x\,;z)$ over $M$.
@@ -571,7 +571,7 @@ The following non-uniform version of the corollay above holds without assumption
 \end{proof}
 
 \begin{definition}
-  A  external sample $s$ is \emph{finitely satisfiable\/} for $\phi(x\,;z)$ in $M$ if, for every $b\in\U^{|z|}$ such that $\Av_s\phi(x\,;b)\not\approx0$, there is  $a\in M^{|z|}$ such that $\phi(a\,;b)$.\QED
+  An external sample $s$ is \emph{finitely satisfiable\/} for $\phi(x\,;z)$ in $M$ if, for every $b\in\U^{|z|}$ such that $\Av_s\phi(x\,;b)\not\approx0$, there is  $a\in M^{|z|}$ such that $\phi(a\,;b)$.\QED
 \end{definition}
 
 \begin{fact}
@@ -596,9 +596,22 @@ The following non-uniform version of the corollay above holds without assumption
 
 
 \begin{definition}
-  A external sample $s$ is \emph{definable\/} for $\phi(x\,;z)$ over $M$ if, for every $\epsilon$, the set $\{b\in\U^{|z|}:\Av_s\phi(x\,;b)<\epsilon\}$ is definable over $M$.\QED
+  An external sample $s$ is \emph{definable\/} for $\phi(x\,;z)$ over $M$ if, for every $\epsilon$, the set $\{b\in\U^{|z|}:\Av_s\phi(x\,;b)<\epsilon\}$ is definable over $M$.\QED
 \end{definition}
 
+\begin{fact}
+  Let  $\phi(x\,;z)\in L$.
+  %
+  Let $M$ be any model.
+  %
+  Every external sample $s$ that is smooth for $\phi(x\,;z)$ over $M$, is definable for $\phi(x\,;z)$ over $M$.
+\end{fact}
+
+\begin{proof}
+  The set $\{b\in\U^{|z|}:\Av_s\phi(x\,;b)<\epsilon\}$ is definable in $\U^{\rm f_*}$ because, by invariance of $s$, we may replace $s$ with any internal sample $s'\equiv_Ms$.
+  %
+  As this set is invariat over $M$, it is definable over $M^{\rm f}$ and therefore, over $M$.
+\end{proof}
 
 % The following is stronger form of invariance.
 
@@ -617,14 +630,14 @@ The following non-uniform version of the corollay above holds without assumption
 \end{definition}
 
 \begin{definition}
-  A formula $\phi(x\,;z)\in L$ is \emph{distal\/} if there is a formula $\psi(x\,;z_1,\dots z_n)\in L$ such that for every finite sample $s\in\U^{\rm f}$ and every $b\in\U^{|x|}$ there are $a_1,\dots,a_n\in \supp(s)$ such that $\psi(x\,;a_1,\dots,a_n)\iff p(x)$, where $p(x)=\tp_\phi(b/\supp(s))$.\QED
+  A formula $\phi(x\,;z)\in L$ is \emph{distal\/} if there is a formula $\psi(x\,;z_1,\dots z_n)\in L$ such that for every finite set $A\subseteq\U^{\rm f}$ and every $b\in\U^{|x|}$ there are $a_1,\dots,a_n\in \supp(s)$ such that $\psi(x\,;a_1,\dots,a_n)\iff p(x)$, where $p(x)=\tp_\phi(b/A)$.\QED
 \end{definition}
 
 \begin{theorem}[(false)]
   The following are equivalent
   \begin{itemize}
     \item[1.] $\phi(x\,;z)\in L$ is distal;
-    \item[2.] if $s$ is generically stable for $\phi(x\,;z)$ over $M$ then $s$ is smooth for $\phi(x\,;z)$ over $M$.
+    \item[2.] for every external sample $s\in\U^{\rm f^+_*}$, if $s$ is generically stable for $\phi(x\,;z)$ over $M$ then $s$ is smooth for $\phi(x\,;z)$ over $M$.
   \end{itemize}
 \end{theorem}
 
