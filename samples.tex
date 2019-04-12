@@ -325,9 +325,9 @@ We will be maily interested in function that take non negatove values.
 %
 These will be interpreted as \emph{(fractional) multisets}.
 %
-Namely $s(a)$ interpreted as the number of occurreces of $a$ in $s$.
+Namely $s(a)$ interpreted as the number of times $a$ occurs in $s$.
 %
-For this reason, we use the following suggestive notation:
+We use the following suggestive notation:
 \begin{itemize}
   \item[1.] \ceq{\hfill\emph{$a\in s$}\vphantom{\sum_x} }
   {=}
@@ -347,11 +347,13 @@ We will write \emph{$M^{\rm f}$\/} for the expansion above.
 %
 The language of $M^{\rm f}$ is denoted by \emph{$L^{\rm f}$.}
 %
-It expands $L$, the language of rings, and the language of vector spaces over $\RR$, which are interpreted in their natural sort. 
+It expands $L$, the language of rings, and the language of vector spaces over $\RR$.
+%
+Each interpreted in the obvious sort. 
 %
 Moreover, $L^{\rm f}$ has a symbols for the functions in \ssf{1}-\ssf{3} above.
 %
-In particular, claim \ssf{3} requires a symbol for every $\phi(x\,;z)\in L$.
+In particular, \ssf{3} requires a symbol for every $\phi(x\,;z)\in L$.
 
 
 %For ease of exposition we may also use rational numbers, though these need not have their own sort as they are interpretable in the naturar numbers.
@@ -520,6 +522,49 @@ The following is a useful characterization of smoothness.
 This is a contradiction.
 \end{proof}
 
+\begin{definition}\label{def_uniform_sample}
+  Let $\B\subseteq\U^{|z|}$ be arbitrary.
+  %
+  We say that $s$ is \emph{uniform\/} on $\B$ for $\phi(x\,;z)$ over $M$ if for every $\epsilon$ there is a finite sample $s_0\in M^{\rm f}$ such that $\Av_s\phi(x,b)\approx_\epsilon\Av_{s_0}\phi(x,b)$ for every $b\in\B$. Reference to $\phi(x\,;z)$ and $M$ will be omitted when clear from the context.\QED
+\end{definition}
+
+
+\begin{lemma}\label{lem_cons}
+  Let $s$ be uniform on $\B$ for $\phi(x\,;z)$ over $M$ and such that $\Av_s\phi(x\,;b)>\epsilon$ for every $b\in\B$. Then there is a finite cover of $\B$, say $\B_1,\dots,\B_n$, such that all types $p_i(x)=\{\phi(x\,;b):b\in\B_i\}$ are consistent.
+\end{lemma}
+
+\begin{proof}
+  Let $s_0\in M^{\rm f}$ be as in Definition~\ref{def_uniform_sample}.
+  %
+  As $s_0$ is finite, we may assume that $\supp(s_0)=\{a_1,\dots,a_n\}$.
+  %
+  Let $\B_i=\{b\in\B:\phi(a_i\,;b)\}$.
+  % 
+  As $\Av_{s_0}\phi(x\,;b)>0$ for all $b\in\B$, these $\B_i$ are the required cover of $\B$.
+\end{proof}
+
+\begin{corollary}
+  If $s$ be uniform on $\<b_i:i<\omega\>$ for $\phi(x\,;z)$ over $M$, where $\<b_i:i<\omega\>$ is a sequence of indiscernibles such that $\Av_s\phi(x\,;b_i)>\epsilon$ for every $i<\omega$, then the type $\{\phi(x\,;b_i):i<\omega\}$ is consistent.\QED
+\end{corollary}
+
+\begin{corollary}
+  Let $s$ be uniform on $\C$ for $\phi(x\,;z)$ over $M$.
+  %
+  Then $\Av_s\big[\psi(x\,;c)\niff\psi(x\,;c')\big]>\epsilon$ does not hold for all $c,c'\in\C$, $c\neq c'$.
+\end{corollary}
+
+\begin{proof}
+  Suppose for a contradiction that a set $\C$ as above exists. Apply Lemma~\ref{lem_cons} to the folmula $\phi(x\,;z,z') = [\psi(x\,;z)\niff\psi(x\,;z')]$ and the set $\B=\{\<c,c'\>\in\C^2:c\neq c'\}$.
+  %
+ The sets $\B_i$ obtained from the lemma induce a finite coloring of the complete graph on $\C$.
+ %
+ By the Ramsey theorem there is an infinite monochromatic set $A\subseteq\C$.
+ %
+ Hence $\{\psi(x\,;a)\niff\psi(x\,;a') : a,a'\in A, a\neq a'\}$ is consistent.
+ %
+ As $|A|>2$ this is impossible.
+\end{proof}
+
 
 % The following is stronger form of invariance.
 
@@ -575,48 +620,9 @@ For smooth external samples the Vapnik-Chervonenkis Theorem can be strengthened 
   A contradiction.
 \end{proof}
 
-\begin{lemma}\label{lem_cons}
-  For every nip formula $\phi(x\,;z)\in L$, every external sample $s$ and every infinite set $B\subseteq\U^{|z|}$ such that $\Av_s\phi(x\,;b)>\epsilon$ for every $b\in B$, there is a finite cover of $B$, say $B_1,\dots, B_n$, such that all types $p_i(x)=\{\phi(x\,;b):b\in B_i\}$ are consistent.
-\end{lemma}
 
-\begin{proof}
-  Let $M$ be any model containing $B$.
-  %
-  Fix some $\epsilon'<\epsilon$.
-  %
-  Let $s_{M,\epsilon'}$ be the hyper given by Theorem~\ref{thm_VC}.
-  %
-  Then $\supp(s_{M,\epsilon'})$ is finite, say $\supp(s_{M,\epsilon'})=\{a_1,\dots,a_n\}$.
-  %
-  Let $B_i=\{b\in B:\phi(a_i\,;b)\}$.
-  % 
-  As $\Av_{s_{M.\epsilon'}}\phi(x\,;b)>0$ for all $b\in B$, these $B_i$ are the required cover of $B$.
-\end{proof}
-
-
-\begin{corollary}
-  Let $\psi(x\,;z)\in L$ be a nip formula and let $s$ be an external sample.
-  %
-  Then there is no infinite set $C$ such that $\Av_s\big[\psi(x\,;c)\niff\psi(x\,;c')\big]>\epsilon$ for all $c,c'\in C$, $c\neq c'$.
-\end{corollary}
-
-\begin{proof}
-  Suppose for a contradiction that a set $C$ as above exists. Apply Lemma~\ref{lem_cons} to the folmula $\phi(x\,;z,z') = [\psi(x\,;z)\niff\psi(x\,;z')]$ and the set $B=\{\<c,c'\>\in C^2:c\neq c'\}$.
-  %
- The sets $B_i$ obtained from the lemma induce a finite coloring of the complete graph on $C$.
- %
- By the Ramsey theorem there is an infinite monochromatic set $A\subseteq C$.
- %
- Hence $\{\psi(x\,;a)\niff\psi(x\,;a') : a,a'\in A, a\neq a'\}$ is consistent.
- %
- This is impossible for $|A|>2$.
-\end{proof}
 
 The following is another immediate consequence of the lemma (it holds also when $\phi(x\,;z)$ is not nip, though the proof is lengthier).
-
-\begin{corollary}
-  For every nip formula $\phi(x\,;z)\in L$, every external sample $s$ and every sequence of indiscernibles $\<b_i:i<\omega\>$ such that $\Av_s\phi(x\,;b_i)>\epsilon$ for every $i<\omega$, the type $\{\phi(x\,;b_i):i<\omega\}$ is consistent.\QED
-\end{corollary}
 
 
 
