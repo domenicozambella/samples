@@ -372,7 +372,7 @@ We denote by \emph{$\U^{\rm f^+_*}$\/} some elementary extension of $\U^{\rm f_*
 %
 Hence we have $\U^{\rm f}\prec\U^{\rm f_*}\prec\U^{\rm f^+_*}$.
 %
-Elements of sample-sort in these models are called  \emph{finite samples,} \emph{internal samples,} and \emph{external samples\/} respectively.\QED
+Elements of sample-sort in these models are called  \emph{finite samples,} \emph{internal samples,} and \emph{(external) samples\/} respectively.\QED
 %
 %Elements  of sample-sort in $\U^{\rm f_*}$ are called \emph{smoth samples.}
 \end{definition}
@@ -418,13 +418,13 @@ This is known as the \emph{Loeb measure.}
 
 
 
-\begin{definition} We say that the external sample $s$ is \emph{smooth\/} for $\phi(x\,;z)$ over $M$ if, for every $s'\equiv_Ms$ and every $b\in\U^{|z|}$, we have $\Av_{s'}\,\phi(x\,;b)\approx\Av_{s}\,\phi(x\,;b)$.\QED
+\begin{definition} We say that a sample $s$ is \emph{smooth\/} for $\phi(x\,;z)$ over $M$ if, for every $s'\equiv_Ms$ and every $b\in\U^{|z|}$, we have $\Av_{s'}\,\phi(x\,;b)\approx\Av_{s}\,\phi(x\,;b)$.\QED
 \end{definition}
 
 \begin{definition}
   Let  $\phi(x\,;z)\in L$ and let $M$ be a model.
   %
- An external sample $s$ is 
+ An external $s$ is 
   \begin{itemize}
     \item[1.]\noindent \emph{invariant\/} if, for every $b'\equiv_Mb\in\U^{|z|}$, we have $\Av_s\,\phi(x\,;b)\approx\Av_{s}\,\phi(x\,;b')$.
     \item[2.] \noindent \emph{definable\/} if, for every $\epsilon$, the set $\{b\in\U^{|z|}:\Av_s\phi(x\,;b)<\epsilon\}$ is definable over $M$.
@@ -452,7 +452,7 @@ This is known as the \emph{Loeb measure.}
   
   \ssf{3.} Let $b\in\U^{|z|}$ be such that  $\Av_s\phi(x\,;b)>\epsilon$.
   %
-  Pick a  external sample $s'$  such that $s\equiv_Ms'\cnonfork_{M^{\rm f}}b$.
+  Pick a sample $s'$  such that $s\equiv_Ms'\cnonfork_{M^{\rm f}}b$.
   %
   By the smoothness of $s$, we obtain $\Av_{s'}\phi(x\,;b)>\epsilon$.
   %
@@ -474,13 +474,13 @@ The converse need not be true in general, but we have the following.
 \end{fact}
 
 \begin{proof}
-  By the fact above, implication \ssf{2}$\IMP$\ssf{1} holds for every external sample.
+  By the fact above, implication \ssf{2}$\IMP$\ssf{1} holds for every sample.
   %
   We prove \ssf{1}$\IMP$\ssf{2}.
   %
   Let $s\in\U^{\rm f_*}$ be an invariat internal sample.
   %  
-  Assume for a contradiction that $\Av_{s'}\,\phi(x\,;b)\not\approx_\epsilon\Av_{s}\,\phi(x\,;b)$ for some $b\in\U^{|x|}$ and some external sample $s'\equiv_M s$.
+  Assume for a contradiction that $\Av_{s'}\,\phi(x\,;b)\not\approx_\epsilon\Av_{s}\,\phi(x\,;b)$ for some $b\in\U^{|x|}$ and some sample $s'\equiv_M s$.
   %
   Pick a internal sample $s''\equiv_{M,s}s'$. 
   %
@@ -507,7 +507,7 @@ The following is a useful characterization of smoothness.
   %
   Let $\mu$ be the standard part of $\Av_s\phi(x\,;b)$
   %
-  Let $s'$ be an external sample such that $s\equiv_Ms'\cnonfork_{M^{\rm f}}b$.
+  Let $s'$ be a sample such that $s\equiv_Ms'\cnonfork_{M^{\rm f}}b$.
   %
   By smoothness, $\Av_{s'}\phi(x\,;b)\approx\mu$.
   %
@@ -525,12 +525,12 @@ This is a contradiction.
 \begin{definition}\label{def_uniform_sample}
   Let $\B\subseteq\U^{|z|}$ be arbitrary.
   %
-  We say that $s$ is \emph{uniform\/} on $\B$ for $\phi(x\,;z)$ over $M$ if for every $\epsilon$ there is a finite sample $s_0\in M^{\rm f}$ such that $\Av_s\phi(x,b)\approx_\epsilon\Av_{s_0}\phi(x,b)$ for every $b\in\B$. Reference to $\phi(x\,;z)$ and $M$ will be omitted when clear from the context.\QED
+  We say that $s$ is \emph{uniform\/} for $\phi(x\,;z)$ on $\B$ over $M$ if for every $\epsilon$ there is a finite sample $s_0\in M^{\rm f}$ such that $\Av_s\phi(x,b)\approx_\epsilon\Av_{s_0}\phi(x,b)$ for every $b\in\B$. (The sample $s_0$ depends on $\epsilon$ and $M$.) Reference to $\phi(x\,;z)$ and $M$ will be omitted when clear from the context.\QED
 \end{definition}
 
 
 \begin{lemma}\label{lem_cons}
-  Let $s$ be uniform on $\B$ for $\phi(x\,;z)$ over $M$ and such that $\Av_s\phi(x\,;b)>\epsilon$ for every $b\in\B$. Then there is a finite cover of $\B$, say $\B_1,\dots,\B_n$, such that all types $p_i(x)=\{\phi(x\,;b):b\in\B_i\}$ are consistent.
+  Let $s$ be uniform on $\B$ over $M$ and such that $\Av_s\phi(x\,;b)>\epsilon$ for every $b\in\B$. Then there is a finite cover of $\B$, say $\B_1,\dots,\B_n$, such that all types $p_i(x)=\{\phi(x\,;b):b\in\B_i\}$ are consistent.
 \end{lemma}
 
 \begin{proof}
@@ -582,26 +582,19 @@ This is a contradiction.
 \begin{theorem}\label{thm_VC}
   Let  $\phi(x\,;z)\in L$ be a nip formula.
   %
-  For every external sample $s$ there is a finite sample $s_0\in M^{\rm f}$ such that $\Av_s\phi(x\,;b)\approx_\epsilon\Av_{s_0}\,\phi(x\,;b)$ for all $b\in M^{|z|}$. (The sample $s_0$ depends on $\epsilon$ and $M$.)
-  
-  Moreover, the cardinality of $s_0$ soley depends on $\epsilon$, namely
-
-  \ceq{\hfill |s_0|}{\le}{c\,\frac{k}{\epsilon^{\scriptscriptstyle 2}}\ln\frac k\epsilon}
-
-  where $c$ is an absolute constant and $k$ is the VC-dimension of $\phi(x\,;z)$.
+  Then every sample is uniform for $\phi(x\,;z)$ on $M$ for over $M$.
 \end{theorem}
 
 \begin{proof}
   Questo è Vapnik-Chervonenkis.
 \end{proof}
 
-
-For smooth external samples the Vapnik-Chervonenkis Theorem can be strengthened as follows. (The difference is that below $b$ ranges over $\U^{|z|}$.)
+For smooth samples the Vapnik-Chervonenkis Theorem can be strengthened as follows. (The difference is that below $b$ ranges over $\U^{|z|}$.)
 
 \begin{corollary}
   Let  $\phi(x\,;z)\in L$ be nip.
   %
-  For every smooth external sample $s$ there is a finite sample $s_0\in M^{\rm f}$ such that $\Av_s\phi(x\,;b)\approx_\epsilon\Av_{s_0}\,\phi(x\,;b)$ for all $b\in\U^{|z|}$.
+  Every smooth sample $s$ is uniform for $\phi(x\,;z)$ on $\U$ over $M$.
 \end{corollary}
 
 \begin{proof}
@@ -619,10 +612,6 @@ For smooth external samples the Vapnik-Chervonenkis Theorem can be strengthened 
   %
   A contradiction.
 \end{proof}
-
-
-
-The following is another immediate consequence of the lemma (it holds also when $\phi(x\,;z)$ is not nip, though the proof is lengthier).
 
 
 
