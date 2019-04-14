@@ -453,9 +453,9 @@ This is known as the \emph{Loeb measure.}
   %
   By the smoothness of $s$, we obtain $\sbar\phi(s';b)>\epsilon$.
   %
-  Let $s_0\in M^{\rm f}$ such that $\sbar\phi(s_0\,;b)>\epsilon$.
+  Let $r\in M^{\rm f}$ such that $\sbar\phi(r\,;b)>\epsilon$.
   %
-  Clearly, some element of $\supp(s_0)$ proves $\ssf{3}$.
+  Clearly, some element of $\supp(r)$ proves $\ssf{3}$.
 \end{proof}
 
 Smooth samples are invariant. 
@@ -496,15 +496,15 @@ The following is a useful characterization of smoothness.
   The following are equivalent for every external sample $s$
   \begin{itemize}
     \item[1.] $s$ is smooth;
-    \item[2.] for every $b\in\U^{|z|}$ there is a finite sample $s_0\in M^{\rm f}$ such that $\sbar\phi(s\,;b)\approx_\epsilon\sbar\phi(s_0\,;b)$. (The sample $s_0$ depends on $M$, $\epsilon$ and $b$.)
-    \item[3.] ????? there are some finite samples $s_1,\dots,s_n\in M^{\rm f}$ such that for every $b\in\U^{|z|}$ we have $\sbar\phi(s\,;b)\approx_\epsilon\sbar\phi(s_i\,;b)$ for some $s_i$. (The samples $s_1,\dots,s_n$ as well as the number $n$ depend on $\epsilon$ and $M$.)
+    \item[2.] for every $b\in\U^{|z|}$ there is a finite sample $r\in M^{\rm f}$ such that $\sbar\phi(s\,;b)\approx_\epsilon\sbar\phi(r\,;b)$. (The sample $r$ depends on $M$, $\epsilon$ and $b$.)
+    \item[3.] there are some finite samples $r_1,\dots,r_n\in M^{\rm f}$ such that for every $b\in\U^{|z|}$ we have $\sbar\phi(s\,;b)\approx_\epsilon\sbar\phi(r_i\,;b)$ for some $s_i$. (The samples $r_1,\dots,r_n$ as well as the number $n$ depend on $\epsilon$ and $M$.)
   \end{itemize}
 \end{lemma}
 
 \begin{proof}
-  Implication \ssf{3}$\IMP$\ssf{1} is clear.
+  \ssf{1}$\IMP$\ssf{2}.
   %
-  We prove \ssf{1}$\IMP$\ssf{2}, so, fix a $b\in\U^{|z|}$.
+  Let $b\in\U^{|z|}$ be arbitrary.
   %
   Let $\mu$ be the standard part of $\sbar\phi(s\,;b)$.
   %
@@ -512,13 +512,23 @@ The following is a useful characterization of smoothness.
   %
   By smoothness, $\sbar\phi(s';b)\approx\mu$.
   %
-  As $s'\cnonfork_{M^{\rm f}}b$ there is an $s_0\in M^{\rm f}$ such that $\sbar\phi(s_0\,;b )\approx_\epsilon\mu$.
+  As $s'\cnonfork_{M^{\rm f}}b$ there is an $r\in M^{\rm f}$ such that $\sbar\phi(r\,;b )\approx_\epsilon\mu$.
 
-  We prove \ssf{2}$\IMP$\ssf{3} by compactness.
+  \ssf{1}$\IMP$\ssf{3}.
   %
-  Suppose not, then the following global type is finitely consistent, hence realized in $\U^{\rm f^+_*}$
+  Let $s'\equiv_Ms$ be an internal sample.
+  %
+  By smoothness we it suffices to prove \ssf{3} with $s'$ for $s$.
+  %
+  The type 
 
-  This contradicts \ssf{2}.
+  \ceq{\hfill p(z)}{=}{\Big\{\sbar\phi(s';z)\not\approx_\epsilon\sbar\phi(r\,;z)\ :\ r\in M^{\rm f}\Big\}}
+  
+  is inconsistent by \ssf{2} (clearly $s'$ is smooth).
+  %
+  Hence compatness yields the required $r_1,\dots,r_n\in M^{\rm f}$.
+
+  All the other implications are evident.
 \end{proof}
 
 \begin{definition}\label{def_approximable_sample}
@@ -526,7 +536,7 @@ The following is a useful characterization of smoothness.
   %
   Let $\B\subseteq\U^{|z|}$ be arbitrary.
   %
-  We say that $s$ is \emph{approximable\/} on $\B$ if for every $\epsilon$ there is a finite sample $s_0\in M^{\rm f}$ such that $\sbar\phi(s,b)\approx_\epsilon\sbar\phi(s_0,b)$ for every $b\in\B$. (The sample $s_0$ depends on $\epsilon$ and $M$.) We add \emph{for $\phi(x\,;z)$ over $M$\/} when these are not clear from the context.\QED
+  We say that $s$ is \emph{approximable\/} on $\B$ if for every $\epsilon$ there is a finite sample $r\in M^{\rm f}$ such that $\sbar\phi(s,b)\approx_\epsilon\sbar\phi(r,b)$ for every $b\in\B$. (The sample $r$ depends on $\epsilon$ and $M$.) We add \emph{for $\phi(x\,;z)$ over $M$\/} when these are not clear from the context.\QED
 \end{definition}
 
 \begin{lemma}\label{lem_cons}
@@ -536,13 +546,13 @@ The following is a useful characterization of smoothness.
 \end{lemma}
 
 \begin{proof}
-  Let $s_0\in M^{\rm f}$ be as in Definition~\ref{def_approximable_sample}.
+  Let $r\in M^{\rm f}$ be as in Definition~\ref{def_approximable_sample}.
   %
-  As $s_0$ is finite, we may assume that $\supp(s_0)=\{a_1,\dots,a_n\}$.
+  As $r$ is finite, we may assume that $\supp(r)=\{a_1,\dots,a_n\}$.
   %
   Let $\B_i=\{b\in\B:\phi(a_i\,;b)\}$.
   % 
-  As $\sbar\phi(s_0\,;b)>0$ for all $b\in\B$, these $\B_i$ are the required cover of $\B$.
+  As $\sbar\phi(r\,;b)>0$ for all $b\in\B$, these $\B_i$ are the required cover of $\B$.
 \end{proof}
 
 \begin{corollary}
@@ -614,17 +624,17 @@ For smooth samples the Vapnik-Chervonenkis Theorem can be strengthened as follow
 \end{corollary}
 
 \begin{proof}
-  By Theorem~\ref{thm_VC}, there is an $s_0\in M^{\rm f}$ such that $\sbar\phi(s\,;b)\approx_\epsilon\sbar\phi(s_0\,;b)$ for all $b\in M^{|z|}$.
+  By Theorem~\ref{thm_VC}, there is an $r\in M^{\rm f}$ such that $\sbar\phi(s\,;b)\approx_\epsilon\sbar\phi(r\,;b)$ for all $b\in M^{|z|}$.
   
-  Suppose for a contradiction that $\sbar\phi(s\,;b')\not\approx_\epsilon\sbar\phi(s_0\,;b')$ for some $b'\in\U^{|z|}$.
+  Suppose for a contradiction that $\sbar\phi(s\,;b')\not\approx_\epsilon\sbar\phi(r\,;b')$ for some $b'\in\U^{|z|}$.
   %
   Pick a  $s'\subseteq\U^{|x|}$ such that $b'\cnonfork_{M}s'\equiv_Ms$.
   %
-  By the smoothness of $s$, we obtain $\sbar\phi(s';b')\not\approx_\epsilon\sbar\phi(s_0\,;b')$.
+  By the smoothness of $s$, we obtain $\sbar\phi(s';b')\not\approx_\epsilon\sbar\phi(r\,;b')$.
   %
   As $b'\cnonfork_{M}s'$, the same formula holds for some $b\in M^{|z|}$.
   %
-  Once again by smoothness, $\sbar\phi(s\,;b)\not\approx_\epsilon\sbar\phi(s_0\,;b)$.
+  Once again by smoothness, $\sbar\phi(s\,;b)\not\approx_\epsilon\sbar\phi(r\,;b)$.
   %
   A contradiction.
 \end{proof}
