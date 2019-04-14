@@ -415,13 +415,13 @@ This is known as the \emph{Loeb measure.}
 
 
 
-\begin{definition} We say that a sample $s$ is \emph{smooth\/} for $\phi(x\,;z)$ over $M$ if, for every $s'\equiv_Ms$ and every $b\in\U^{|z|}$, we have $\Av_{s'}\,\phi(x\,;b)\approx\Av_{s}\,\phi(x\,;b)$.\QED
+\begin{definition} Let $\phi(x\,;z)\in L$ and $M$ be given. We say that a sample $s$ is \emph{smooth\/} if, for every $s'\equiv_Ms$ and every $b\in\U^{|z|}$, we have $\Av_{s'}\,\phi(x\,;b)\approx\Av_{s}\,\phi(x\,;b)$. When $\phi(x\,;z)$ and $M$ are not clear from the context we add: \emph{for $\phi(x\,;z)$ over $M$.}\QED
 \end{definition}
 
 \begin{definition}
-  Let  $\phi(x\,;z)\in L$ and let $M$ be a model.
+  Let $\phi(x\,;z)\in L$ and $M$ be given.
   %
- An external $s$ is 
+ An external sample $s$ is 
   \begin{itemize}
     \item[1.]\noindent \emph{invariant\/} if, for every $b'\equiv_Mb\in\U^{|z|}$, we have $\Av_s\,\phi(x\,;b)\approx\Av_{s}\,\phi(x\,;b')$.
     \item[2.] \noindent \emph{definable\/} if, for every $\epsilon$, the set $\{b\in\U^{|z|}:\Av_s\phi(x\,;b)<\epsilon\}$ is definable over $M$.
@@ -433,7 +433,7 @@ This is known as the \emph{Loeb measure.}
 
 
 \begin{fact}
-  Smooth samples are generically stable. (For some given $\phi(x\,;z)$ and $M$.)
+  Smooth samples are generically stable.
 \end{fact}
 
 \begin{proof}
@@ -463,10 +463,12 @@ Smooth samples are invariant.
 The converse need not be true in general, but we have the following.
 
 \begin{fact}
+  Let $\phi(x\,;z)\in L$ and $M$ be given.
+  %
   For every internal sample $s$, the following are equivalent
   \begin{itemize}
-    \item[1.] $s$ is invariant for $\phi(x\,;z)$ over $M$;
-    \item[2.] $s$ is smooth for $\phi(x\,;z)$ over $M$.
+    \item[1.] $s$ is invariant;
+    \item[2.] $s$ is smooth.
   \end{itemize}
 \end{fact}
 
@@ -489,9 +491,11 @@ The converse need not be true in general, but we have the following.
 The following is a useful characterization of smoothness.
 
 \begin{lemma}
+  Let $\phi(x\,;z)\in L$ and $M$ be given.
+  %
   The following are equivalent for every external sample $s$
   \begin{itemize}
-    \item[1.] $s$ is smooth over $M$;
+    \item[1.] $s$ is smooth;
     \item[2.] for every $b\in\U^{|z|}$ there is a finite sample $s_0\in M^{\rm f}$ such that $\Av_s\phi(x\,;b)\approx_\epsilon\Av_{s_0}\phi(x\,;b)$. (The sample $s_0$ depends on $M$, epsilon and $b$.)
     \item[3.] there are some finite samples $s_1,\dots,s_n\in M^{\rm f}$ such that for every $b\in\U^{|z|}$ we have $\Av_s\phi(x\,;b)\approx_\epsilon\Av_{s_i}\phi(x\,;b)$ for some $s_i$. (The samples $s_1,\dots,s_n$ as well as the number $n$ depend on $\epsilon$ and $M$.)
   \end{itemize}
@@ -512,28 +516,30 @@ The following is a useful characterization of smoothness.
 
   We prove \ssf{2}$\IMP$\ssf{3} by compactness.
   %
-  Suppose not, then the following global type is dinitely consistent, hence realized in $\U^{\rm f^+_*}$
+  Suppose not, then the following global type is finitely consistent, hence realized in $\U^{\rm f^+_*}$
 
-\ceq{\hfill p(y)}{=}{\Big\{\Av_y\phi(x,b)\not\approx_\epsilon\Av_{s_0}\phi(x\,;b)\ :\  s_0\in M^{\rm f},\ b\in\U^{|z|}\Big\}}
+  \ceq{\hfill p(y)}{=}{\Big\{\Av_y\phi(x,b)\not\approx_\epsilon\Av_{s_0}\phi(x\,;b)\ :\  s_0\in M^{\rm f},\ b\in\U^{|z|}\Big\}}
 
-This is a contradiction.
+  This is a contradiction.
 \end{proof}
 
-\begin{definition}\label{def_uniform_sample}
-  Let $\phi(x\,;z)\in L$.
+\begin{definition}\label{def_approximable_sample}
+  Let $\phi(x\,;z)\in L$ and $M$ be given.
   %
   Let $\B\subseteq\U^{|z|}$ be arbitrary.
   %
-  We say that $s$ is \emph{uniform\/} on $\B$ if for every $\epsilon$ there is a finite sample $s_0\in M^{\rm f}$ such that $\Av_s\phi(x,b)\approx_\epsilon\Av_{s_0}\phi(x,b)$ for every $b\in\B$. (The sample $s_0$ depends on $\epsilon$ and $M$.) We add \emph{for $\phi(x\,;z)$ over $M$\/} when these are not clear from the context.\QED
+  We say that $s$ is \emph{approximable\/} on $\B$ if for every $\epsilon$ there is a finite sample $s_0\in M^{\rm f}$ such that $\Av_s\phi(x,b)\approx_\epsilon\Av_{s_0}\phi(x,b)$ for every $b\in\B$. (The sample $s_0$ depends on $\epsilon$ and $M$.) We add \emph{for $\phi(x\,;z)$ over $M$\/} when these are not clear from the context.\QED
 \end{definition}
 
 
 \begin{lemma}\label{lem_cons}
-  Let $s$ be uniform on $\B$ and such that $\Av_s\phi(x\,;b)>\epsilon$ for every $b\in\B$. Then there is a finite cover of $\B$, say $\B_1,\dots,\B_n$, such that all types $p_i(x)=\{\phi(x\,;b):b\in\B_i\}$ are consistent.
+  Let $\phi(x\,;z)\in L$ and $M$ be given.
+  %
+  Let $s$ be approximable on $\B$ and such that $\Av_s\phi(x\,;b)>\epsilon$ for every $b\in\B$. Then there is a finite cover of $\B$, say $\B_1,\dots,\B_n$, such that all types $p_i(x)=\{\phi(x\,;b):b\in\B_i\}$ are consistent.
 \end{lemma}
 
 \begin{proof}
-  Let $s_0\in M^{\rm f}$ be as in Definition~\ref{def_uniform_sample}.
+  Let $s_0\in M^{\rm f}$ be as in Definition~\ref{def_approximable_sample}.
   %
   As $s_0$ is finite, we may assume that $\supp(s_0)=\{a_1,\dots,a_n\}$.
   %
@@ -543,25 +549,29 @@ This is a contradiction.
 \end{proof}
 
 \begin{corollary}
-  If $s$ be uniform on $\<b_i:i<\omega\>$ for $\phi(x\,;z)$ over $M$, where $\<b_i:i<\omega\>$ is a sequence of indiscernibles such that $\Av_s\phi(x\,;b_i)>\epsilon$ for every $i<\omega$, then the type $\{\phi(x\,;b_i):i<\omega\}$ is consistent.\QED
+  Let $\phi(x\,;z)\in L$ and $M$ be given.
+  %
+  If $s$ be approximable on $\<b_i:i<\omega\>$, where $\<b_i:i<\omega\>$ is a sequence of indiscernibles such that $\Av_s\phi(x\,;b_i)>\epsilon$ for every $i<\omega$, then the type $\{\phi(x\,;b_i):i<\omega\}$ is consistent.\QED
 \end{corollary}
 
 \begin{corollary}
-  Let $s$ be uniform on $\C$ for $\phi(x\,;z)$ over $M$.
+  Let $\phi(x\,;z)\in L$ and $M$ be given.
   %
-  Then $\Av_s\big[\psi(x\,;c)\niff\psi(x\,;c')\big]>\epsilon$ does not hold for all $c,c'\in\C$, $c\neq c'$.
+  Let $s$ be approximable on $\C$.
+  %
+  Then for every $\epsilon$ is a pair of distict $c,c'\in\C$ such that $\Av_s\big[\phi(x\,;c)\niff\phi(x\,;c')\big]<\epsilon$
 \end{corollary}
 
 \begin{proof}
-  Suppose for a contradiction that a set $\C$ as above exists. Apply Lemma~\ref{lem_cons} to the folmula $\phi(x\,;z,z') = [\psi(x\,;z)\niff\psi(x\,;z')]$ and the set $\B=\{\<c,c'\>\in\C^2:c\neq c'\}$.
+  Suppose for a contradiction that $\Av_s\big[\phi(x\,;c)\niff\phi(x\,;c')\big]\ge\epsilon$ for all $c,c'\in\C$. Apply Lemma~\ref{lem_cons} to the folmula $\psi(x\,;z,z') = [\phi(x\,;z)\niff\phi(x\,;z')]$ and the set $\B=\{\<c,c'\>\in\C^2:c\neq c'\}$.
   %
- The sets $\B_i$ obtained from the lemma induce a finite coloring of the complete graph on $\C$.
+ The sets $\B_i$ obtained from Lemma~\ref{lem_cons} induce a finite coloring of the complete graph on $\C$.
  %
  By the Ramsey theorem there is an infinite monochromatic set $A\subseteq\C$.
  %
- Hence $\{\psi(x\,;a)\niff\psi(x\,;a') : a,a'\in A, a\neq a'\}$ is consistent.
+ Hence $\{\phi(x\,;a)\niff\phi(x\,;a') : a,a'\in A, a\neq a'\}$ is consistent.
  %
- As $|A|>2$ this is impossible.
+ As $|A|>2$, this is impossible.
 \end{proof}
 
 
@@ -591,7 +601,7 @@ This is a contradiction.
 \begin{theorem}\label{thm_VC}
   Let $\phi(x\,;z)\in L$ be a nip formula.
   %
-  Then every sample is uniform on $M$ over $M$.
+  Then every sample is approximable on $M$ over $M$.
 \end{theorem}
 
 \begin{proof}
@@ -603,7 +613,7 @@ For smooth samples the Vapnik-Chervonenkis Theorem can be strengthened as follow
 \begin{corollary}
   Let  $\phi(x\,;z)\in L$ be nip.
   %
-  Every smooth sample $s$ is uniform for $\phi(x\,;z)$ on $\U$ over $M$.
+  Every smooth sample $s$ is approximable on $\U$ over $M$.
 \end{corollary}
 
 \begin{proof}
@@ -621,8 +631,6 @@ For smooth samples the Vapnik-Chervonenkis Theorem can be strengthened as follow
   %
   A contradiction.
 \end{proof}
-
-
 
 \begin{definition}
   A formula $\phi(x\,;z)\in L$ is \emph{distal\/} if there is a formula $\psi(x\,;z_1,\dots z_n)\in L$ such that for every finite set $A\subseteq\U^{\rm f}$ and every $b\in\U^{|x|}$ there are $a_1,\dots,a_n\in \supp(s)$ such that $\psi(x\,;a_1,\dots,a_n)\iff p(x)$, where $p(x)=\tp_\phi(b/A)$.\QED
