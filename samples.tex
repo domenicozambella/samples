@@ -413,9 +413,7 @@ This measure has an unique extension to a Lebesgue probability measure on a $\si
 %
 This is known as the \emph{Loeb measure.}
 
-
-
-\begin{definition} Let $\phi(x\,;z)\in L$ and $M$ be given. We say that a sample $s$ is \emph{smooth\/} if, for every $s'\equiv_Ms$ and every $b\in\U^{|z|}$, we have $\Av_{s'}\,\phi(x\,;b)\approx\Av_{s}\,\phi(x\,;b)$. When $\phi(x\,;z)$ and $M$ are not clear from the context we add: \emph{for $\phi(x\,;z)$ over $M$.}\QED
+\begin{definition} Let $\phi(x\,;z)\in L$ and $M$ be given. We say that a sample $s$ is \emph{smooth\/} if, for every $s'\equiv_Ms$ and every $b\in\U^{|z|}$, we have $\Av_{s'}\,\phi(x\,;b)\approx\Av_{s}\,\phi(x\,;b)$. When $\phi(x\,;z)$ and $M$ are not clear from the context we will say \emph{smooth for $\phi(x\,;z)$ over $M$.}\QED
 \end{definition}
 
 \begin{definition}
@@ -426,9 +424,9 @@ This is known as the \emph{Loeb measure.}
     \item[1.]\noindent \emph{invariant\/} if, for every $b'\equiv_Mb\in\U^{|z|}$, we have $\Av_s\,\phi(x\,;b)\approx\Av_{s}\,\phi(x\,;b')$.
     \item[2.] \noindent \emph{definable\/} if, for every $\epsilon$, the set $\{b\in\U^{|z|}:\Av_s\phi(x\,;b)<\epsilon\}$ is definable over $M$.
     \item [3.]\noindent  \emph{satisfiable\/} if, for all $b\in\U^{|z|}$, if $\Av_s\phi(x\,;b)\not\approx0$, then  $\phi(a\,;b)$ for some $a\in M^{|z|}$.
-    \item[4.] \noindent  \emph{generically stable\/} if all of the above holds. 
+    \item[4.] \noindent  \emph{generically stable\/} if all of the above holds.\QED 
   \end{itemize}
-  When $\phi(x\,;z)$ and $M$ are not clear from the context we add: \emph{for $\phi(x\,;z)$ over/in $M$.}
+  %When $\phi(x\,;z)$ and $M$ are not clear from the context we add: \emph{for $\phi(x\,;z)$ over/in $M$.}
   \end{definition}
 
 
@@ -496,8 +494,8 @@ The following is a useful characterization of smoothness.
   The following are equivalent for every external sample $s$
   \begin{itemize}
     \item[1.] $s$ is smooth;
-    \item[2.] for every $b\in\U^{|z|}$ there is a finite sample $s_0\in M^{\rm f}$ such that $\Av_s\phi(x\,;b)\approx_\epsilon\Av_{s_0}\phi(x\,;b)$. (The sample $s_0$ depends on $M$, epsilon and $b$.)
-    \item[3.] there are some finite samples $s_1,\dots,s_n\in M^{\rm f}$ such that for every $b\in\U^{|z|}$ we have $\Av_s\phi(x\,;b)\approx_\epsilon\Av_{s_i}\phi(x\,;b)$ for some $s_i$. (The samples $s_1,\dots,s_n$ as well as the number $n$ depend on $\epsilon$ and $M$.)
+    \item[2.] for every $b\in\U^{|z|}$ there is a finite sample $s_0\in M^{\rm f}$ such that $\Av_s\phi(x\,;b)\approx_\epsilon\Av_{s_0}\phi(x\,;b)$. (The sample $s_0$ depends on $M$, $\epsilon$ and $b$.)
+    \item[3.] ????? there are some finite samples $s_1,\dots,s_n\in M^{\rm f}$ such that for every $b\in\U^{|z|}$ we have $\Av_s\phi(x\,;b)\approx_\epsilon\Av_{s_i}\phi(x\,;b)$ for some $s_i$. (The samples $s_1,\dots,s_n$ as well as the number $n$ depend on $\epsilon$ and $M$.)
   \end{itemize}
 \end{lemma}
 
@@ -506,7 +504,7 @@ The following is a useful characterization of smoothness.
   %
   We prove \ssf{1}$\IMP$\ssf{2}, so, fix a $b\in\U^{|z|}$.
   %
-  Let $\mu$ be the standard part of $\Av_s\phi(x\,;b)$
+  Let $\mu$ be the standard part of $\Av_s\phi(x\,;b)$.
   %
   Let $s'$ be a sample such that $s\equiv_Ms'\cnonfork_{M^{\rm f}}b$.
   %
@@ -518,9 +516,7 @@ The following is a useful characterization of smoothness.
   %
   Suppose not, then the following global type is finitely consistent, hence realized in $\U^{\rm f^+_*}$
 
-  \ceq{\hfill p(y)}{=}{\Big\{\Av_y\phi(x,b)\not\approx_\epsilon\Av_{s_0}\phi(x\,;b)\ :\  s_0\in M^{\rm f},\ b\in\U^{|z|}\Big\}}
-
-  This is a contradiction.
+  This contradicts \ssf{2}.
 \end{proof}
 
 \begin{definition}\label{def_approximable_sample}
@@ -530,7 +526,6 @@ The following is a useful characterization of smoothness.
   %
   We say that $s$ is \emph{approximable\/} on $\B$ if for every $\epsilon$ there is a finite sample $s_0\in M^{\rm f}$ such that $\Av_s\phi(x,b)\approx_\epsilon\Av_{s_0}\phi(x,b)$ for every $b\in\B$. (The sample $s_0$ depends on $\epsilon$ and $M$.) We add \emph{for $\phi(x\,;z)$ over $M$\/} when these are not clear from the context.\QED
 \end{definition}
-
 
 \begin{lemma}\label{lem_cons}
   Let $\phi(x\,;z)\in L$ and $M$ be given.
@@ -599,7 +594,7 @@ The following is a useful characterization of smoothness.
 \section{The nip formulas}\label{nip}
 
 \begin{theorem}\label{thm_VC}
-  Let $\phi(x\,;z)\in L$ be a nip formula.
+  Let $\phi(x\,;z)\in L$ and $M$ be given and assume that $\phi(x\,;z)$ is nip.
   %
   Then every sample is approximable on $M$ over $M$.
 \end{theorem}
