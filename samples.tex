@@ -113,6 +113,7 @@
 \def\EMtp{\textrm{{\small EM}\mbox{-}tp}}
 
 \newcommand{\cev}[1]{\reflectbox{\ensuremath{\vec{\reflectbox{\ensuremath{#1}}}}}}
+\newcommand{\sbar}[1]{\mkern 1.8mu\overline{\mkern-1.8mu#1\mkern-1mu}\mkern 1mu}
 
 \def\nonfork{\mathop{\raise0.2ex\hbox{
    \ooalign{\hidewidth$\vert$\hidewidth\cr\raise-0.9ex\hbox{$\smile$}}}}}
@@ -387,13 +388,14 @@ Let $s$ be an external sample.
 %
 For every formula $\phi(x\,;z)\in L$ and every $b\in\U^{|z|}$ we define
 
-\ceq{\hfill\emph{$\Av_{s}\,\phi(x\,;b)$} }
+\ceq{\hfill\emph{$\Av_{x/s}\phi(x\,;b)$} }
 {=}
 {\frac{\big|\big\{a\in s\ :\ \phi(a\,;b)\big\}\big|}
 {|s|}},
 
+When possible we abbreviate $\Av_{x/s}\phi(x\,;b)$ with \emph{$\sbar\phi(s\,;b)$}.
 %
-%If we pretend that hyperrational are elements of $\U^{\rm f^+_*}$, then $\Av_{s}\,\phi(x\,;b)$, as a function of $s$ and $b$, is definable in $\U^{\rm f^+_*}$.
+%If we pretend that hyperrational are elements of $\U^{\rm f^+_*}$, then $\sbar\phi(s\,;b)$, as a function of $s$ and $b$, is definable in $\U^{\rm f^+_*}$.
 
 Below, $\epsilon$ always ranges over the positive standard reals.
 %
@@ -413,7 +415,7 @@ This measure has an unique extension to a Lebesgue probability measure on a $\si
 %
 This is known as the \emph{Loeb measure.}
 
-\begin{definition} Let $\phi(x\,;z)\in L$ and $M$ be given. We say that a sample $s$ is \emph{smooth\/} if, for every $s'\equiv_Ms$ and every $b\in\U^{|z|}$, we have $\Av_{s'}\,\phi(x\,;b)\approx\Av_{s}\,\phi(x\,;b)$. When $\phi(x\,;z)$ and $M$ are not clear from the context we will say \emph{smooth for $\phi(x\,;z)$ over $M$.}\QED
+\begin{definition} Let $\phi(x\,;z)\in L$ and $M$ be given. We say that a sample $s$ is \emph{smooth\/} if, for every $s'\equiv_Ms$ and every $b\in\U^{|z|}$, we have $\sbar\phi(s';b)\approx\sbar\phi(s\,;b)$. When $\phi(x\,;z)$ and $M$ are not clear from the context we will say \emph{smooth for $\phi(x\,;z)$ over $M$.}\QED
 \end{definition}
 
 \begin{definition}
@@ -421,9 +423,9 @@ This is known as the \emph{Loeb measure.}
   %
  An external sample $s$ is 
   \begin{itemize}
-    \item[1.]\noindent \emph{invariant\/} if, for every $b'\equiv_Mb\in\U^{|z|}$, we have $\Av_s\,\phi(x\,;b)\approx\Av_{s}\,\phi(x\,;b')$.
-    \item[2.] \noindent \emph{definable\/} if, for every $\epsilon$, the set $\{b\in\U^{|z|}:\Av_s\phi(x\,;b)<\epsilon\}$ is definable over $M$.
-    \item [3.]\noindent  \emph{satisfiable\/} if, for all $b\in\U^{|z|}$, if $\Av_s\phi(x\,;b)\not\approx0$, then  $\phi(a\,;b)$ for some $a\in M^{|z|}$.
+    \item[1.]\noindent \emph{invariant\/} if, for every $b'\equiv_Mb\in\U^{|z|}$, we have $\sbar\phi(s\,;b)\approx\sbar\phi(s\,;b')$.
+    \item[2.] \noindent \emph{definable\/} if, for every $\epsilon$, the set $\{b\in\U^{|z|}:\sbar\phi(s\,;b)<\epsilon\}$ is definable over $M$.
+    \item [3.]\noindent  \emph{satisfiable\/} if, for all $b\in\U^{|z|}$, if $\sbar\phi(s\,;b)\not\approx0$, then  $\phi(a\,;b)$ for some $a\in M^{|z|}$.
     \item[4.] \noindent  \emph{generically stable\/} if all of the above holds.\QED 
   \end{itemize}
   %When $\phi(x\,;z)$ and $M$ are not clear from the context we add: \emph{for $\phi(x\,;z)$ over/in $M$.}
@@ -437,21 +439,21 @@ This is known as the \emph{Loeb measure.}
 \begin{proof}
   We prove in turn \ssf{1}-\ssf{3} of the definition above.
   
-  \ssf{1.} If $s$ is smooth for $\phi(x\,;z)$ over $M$, then there is an internal sample $s'\in\U^{\rm f_*}$ such that $\Av_{s'}\,\phi(x\,;b)\approx\Av_{s}\,\phi(x\,;b)$ for all $b\in\U^{|z|}$.
+  \ssf{1.} If $s$ is smooth for $\phi(x\,;z)$ over $M$, then there is an internal sample $s'\in\U^{\rm f_*}$ such that $\sbar\phi(s';b)\approx\sbar\phi(s\,;b)$ for all $b\in\U^{|z|}$.
   %
   Then \ssf{1} follows.
   
-  \ssf{2.} The set $\{b\in\U^{|z|}:\Av_s\phi(x\,;b)<\epsilon\}$ is definable in $\U^{\rm f_*}$ because, by invariance of $s$, we may replace $s$ with any internal sample $s'\equiv_Ms$.
+  \ssf{2.} The set $\{b\in\U^{|z|}:\sbar\phi(s\,;b)<\epsilon\}$ is definable in $\U^{\rm f_*}$ because, by invariance of $s$, we may replace $s$ with any internal sample $s'\equiv_Ms$.
   %
   As this set is invariat over $M$, it is definable over $M^{\rm f}$ and therefore, over $M$.
   
-  \ssf{3.} Let $b\in\U^{|z|}$ be such that  $\Av_s\phi(x\,;b)>\epsilon$.
+  \ssf{3.} Let $b\in\U^{|z|}$ be such that  $\sbar\phi(s\,;b)>\epsilon$.
   %
   Pick a sample $s'$  such that $s\equiv_Ms'\cnonfork_{M^{\rm f}}b$.
   %
-  By the smoothness of $s$, we obtain $\Av_{s'}\phi(x\,;b)>\epsilon$.
+  By the smoothness of $s$, we obtain $\sbar\phi(s';b)>\epsilon$.
   %
-  Let $s_0\in M^{\rm f}$ such that $\Av_{s_0}\phi(x\,;b)>\epsilon$.
+  Let $s_0\in M^{\rm f}$ such that $\sbar\phi(s_0\,;b)>\epsilon$.
   %
   Clearly, some element of $\supp(s_0)$ proves $\ssf{3}$.
 \end{proof}
@@ -477,11 +479,11 @@ The converse need not be true in general, but we have the following.
   %
   Let $s\in\U^{\rm f_*}$ be an invariat internal sample.
   %  
-  Assume for a contradiction that $\Av_{s'}\,\phi(x\,;b)\not\approx_\epsilon\Av_{s}\,\phi(x\,;b)$ for some $b\in\U^{|x|}$ and some sample $s'\equiv_M s$.
+  Assume for a contradiction that $\sbar\phi(s';b)\not\approx_\epsilon\sbar\phi(s\,;b)$ for some $b\in\U^{|x|}$ and some sample $s'\equiv_M s$.
   %
   Pick a internal sample $s''\equiv_{M,s}s'$. 
   %
-  Then $\Av_{s''}\,\phi(x\,;b)\not\approx_\epsilon\Av_{s}\,\phi(x\,;b)$.
+  Then $\sbar\phi(s''\,;b)\not\approx_\epsilon\sbar\phi(s\,;b)$.
   %
   As $s''\equiv_Ms$ are both in $\U^{\rm f_*}$, this contradicts the invariance of $s$.
 \end{proof}
@@ -494,8 +496,8 @@ The following is a useful characterization of smoothness.
   The following are equivalent for every external sample $s$
   \begin{itemize}
     \item[1.] $s$ is smooth;
-    \item[2.] for every $b\in\U^{|z|}$ there is a finite sample $s_0\in M^{\rm f}$ such that $\Av_s\phi(x\,;b)\approx_\epsilon\Av_{s_0}\phi(x\,;b)$. (The sample $s_0$ depends on $M$, $\epsilon$ and $b$.)
-    \item[3.] ????? there are some finite samples $s_1,\dots,s_n\in M^{\rm f}$ such that for every $b\in\U^{|z|}$ we have $\Av_s\phi(x\,;b)\approx_\epsilon\Av_{s_i}\phi(x\,;b)$ for some $s_i$. (The samples $s_1,\dots,s_n$ as well as the number $n$ depend on $\epsilon$ and $M$.)
+    \item[2.] for every $b\in\U^{|z|}$ there is a finite sample $s_0\in M^{\rm f}$ such that $\sbar\phi(s\,;b)\approx_\epsilon\sbar\phi(s_0\,;b)$. (The sample $s_0$ depends on $M$, $\epsilon$ and $b$.)
+    \item[3.] ????? there are some finite samples $s_1,\dots,s_n\in M^{\rm f}$ such that for every $b\in\U^{|z|}$ we have $\sbar\phi(s\,;b)\approx_\epsilon\sbar\phi(s_i\,;b)$ for some $s_i$. (The samples $s_1,\dots,s_n$ as well as the number $n$ depend on $\epsilon$ and $M$.)
   \end{itemize}
 \end{lemma}
 
@@ -504,13 +506,13 @@ The following is a useful characterization of smoothness.
   %
   We prove \ssf{1}$\IMP$\ssf{2}, so, fix a $b\in\U^{|z|}$.
   %
-  Let $\mu$ be the standard part of $\Av_s\phi(x\,;b)$.
+  Let $\mu$ be the standard part of $\sbar\phi(s\,;b)$.
   %
   Let $s'$ be a sample such that $s\equiv_Ms'\cnonfork_{M^{\rm f}}b$.
   %
-  By smoothness, $\Av_{s'}\phi(x\,;b)\approx\mu$.
+  By smoothness, $\sbar\phi(s';b)\approx\mu$.
   %
-  As $s'\cnonfork_{M^{\rm f}}b$ there is an $s_0\in M^{\rm f}$ such that $\Av_{s_0}\phi(x\,;b )\approx_\epsilon\mu$.
+  As $s'\cnonfork_{M^{\rm f}}b$ there is an $s_0\in M^{\rm f}$ such that $\sbar\phi(s_0\,;b )\approx_\epsilon\mu$.
 
   We prove \ssf{2}$\IMP$\ssf{3} by compactness.
   %
@@ -524,13 +526,13 @@ The following is a useful characterization of smoothness.
   %
   Let $\B\subseteq\U^{|z|}$ be arbitrary.
   %
-  We say that $s$ is \emph{approximable\/} on $\B$ if for every $\epsilon$ there is a finite sample $s_0\in M^{\rm f}$ such that $\Av_s\phi(x,b)\approx_\epsilon\Av_{s_0}\phi(x,b)$ for every $b\in\B$. (The sample $s_0$ depends on $\epsilon$ and $M$.) We add \emph{for $\phi(x\,;z)$ over $M$\/} when these are not clear from the context.\QED
+  We say that $s$ is \emph{approximable\/} on $\B$ if for every $\epsilon$ there is a finite sample $s_0\in M^{\rm f}$ such that $\sbar\phi(s,b)\approx_\epsilon\sbar\phi(s_0,b)$ for every $b\in\B$. (The sample $s_0$ depends on $\epsilon$ and $M$.) We add \emph{for $\phi(x\,;z)$ over $M$\/} when these are not clear from the context.\QED
 \end{definition}
 
 \begin{lemma}\label{lem_cons}
   Let $\phi(x\,;z)\in L$ and $M$ be given.
   %
-  Let $s$ be approximable on $\B$ and such that $\Av_s\phi(x\,;b)>\epsilon$ for every $b\in\B$. Then there is a finite cover of $\B$, say $\B_1,\dots,\B_n$, such that all types $p_i(x)=\{\phi(x\,;b):b\in\B_i\}$ are consistent.
+  Let $s$ be approximable on $\B$ and such that $\sbar\phi(s\,;b)>\epsilon$ for every $b\in\B$. Then there is a finite cover of $\B$, say $\B_1,\dots,\B_n$, such that all types $p_i(x)=\{\phi(x\,;b):b\in\B_i\}$ are consistent.
 \end{lemma}
 
 \begin{proof}
@@ -540,13 +542,13 @@ The following is a useful characterization of smoothness.
   %
   Let $\B_i=\{b\in\B:\phi(a_i\,;b)\}$.
   % 
-  As $\Av_{s_0}\phi(x\,;b)>0$ for all $b\in\B$, these $\B_i$ are the required cover of $\B$.
+  As $\sbar\phi(s_0\,;b)>0$ for all $b\in\B$, these $\B_i$ are the required cover of $\B$.
 \end{proof}
 
 \begin{corollary}
   Let $\phi(x\,;z)\in L$ and $M$ be given.
   %
-  If $s$ be approximable on $\<b_i:i<\omega\>$, where $\<b_i:i<\omega\>$ is a sequence of indiscernibles such that $\Av_s\phi(x\,;b_i)>\epsilon$ for every $i<\omega$, then the type $\{\phi(x\,;b_i):i<\omega\}$ is consistent.\QED
+  If $s$ be approximable on $\<b_i:i<\omega\>$, where $\<b_i:i<\omega\>$ is a sequence of indiscernibles such that $\sbar\phi(s\,;b_i)>\epsilon$ for every $i<\omega$, then the type $\{\phi(x\,;b_i):i<\omega\}$ is consistent.\QED
 \end{corollary}
 
 \begin{corollary}
@@ -576,8 +578,8 @@ The following is a useful characterization of smoothness.
 % \begin{definition}
 %   Let  $\phi(x\,;z)\in L$.
   
-%   We say that a sample $s$ of $M^{|x|}$ is $\phi$-smooth over $M$ if there is a finite $S\subseteq M^{|x|}$ such that $\Av_s\,\phi(x\,;b)\approx\Av_S\,\phi(x\,;b)$ for all $b\in M^{|z|}$.
-%   We say that an external sample $s$ is \emph{smooth\/} for $\phi(x\,;z)$ over $M$ if for any other sample $s'$ such that $\Av_s\,\phi(x\,;b)\approx\Av_{s'}\,\phi(x\,;b)$ for all $b\in M^{|z|}$, the same equivalence holds for all $b\in\U^{|z|}$.\QED
+%   We say that a sample $s$ of $M^{|x|}$ is $\phi$-smooth over $M$ if there is a finite $S\subseteq M^{|x|}$ such that $\sbar\phi(s\,;b)\approx\sbar\phi(s\,;b)$ for all $b\in M^{|z|}$.
+%   We say that an external sample $s$ is \emph{smooth\/} for $\phi(x\,;z)$ over $M$ if for any other sample $s'$ such that $\sbar\phi(s\,;b)\approx\sbar\phi(s';b)$ for all $b\in M^{|z|}$, the same equivalence holds for all $b\in\U^{|z|}$.\QED
 % \end{definition}
 
 % Clearly, smooth impies invariant.
@@ -612,17 +614,17 @@ For smooth samples the Vapnik-Chervonenkis Theorem can be strengthened as follow
 \end{corollary}
 
 \begin{proof}
-  By Theorem~\ref{thm_VC}, there is an $s_0\in M^{\rm f}$ such that $\Av_s\phi(x\,;b)\approx_\epsilon\Av_{s_0}\,\phi(x\,;b)$ for all $b\in M^{|z|}$.
+  By Theorem~\ref{thm_VC}, there is an $s_0\in M^{\rm f}$ such that $\sbar\phi(s\,;b)\approx_\epsilon\sbar\phi(s_0\,;b)$ for all $b\in M^{|z|}$.
   
-  Suppose for a contradiction that $\Av_s\phi(x\,;b')\not\approx_\epsilon\Av_{s_0}\,\phi(x\,;b')$ for some $b'\in\U^{|z|}$.
+  Suppose for a contradiction that $\sbar\phi(s\,;b')\not\approx_\epsilon\sbar\phi(s_0\,;b')$ for some $b'\in\U^{|z|}$.
   %
   Pick a  $s'\subseteq\U^{|x|}$ such that $b'\cnonfork_{M}s'\equiv_Ms$.
   %
-  By the smoothness of $s$, we obtain $\Av_{s'}\phi(x\,;b')\not\approx_\epsilon\Av_{s_0}\,\phi(x\,;b')$.
+  By the smoothness of $s$, we obtain $\sbar\phi(s';b')\not\approx_\epsilon\sbar\phi(s_0\,;b')$.
   %
   As $b'\cnonfork_{M}s'$, the same formula holds for some $b\in M^{|z|}$.
   %
-  Once again by smoothness, $\Av_s\phi(x\,;b)\not\approx_\epsilon\Av_{s_0}\,\phi(x\,;b)$.
+  Once again by smoothness, $\sbar\phi(s\,;b)\not\approx_\epsilon\sbar\phi(s_0\,;b)$.
   %
   A contradiction.
 \end{proof}
