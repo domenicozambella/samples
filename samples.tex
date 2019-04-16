@@ -134,6 +134,7 @@
 \def\pmi{\leftarrow}
 \def\iff{\leftrightarrow}
 \def\niff{\mathrel{{\leftrightarrow}\llap{\raisebox{-.1ex}{{\small$/$}}\hskip.5ex}}}
+\def\nimp{\mathrel{{\rightarrow}\llap{\raisebox{-.1ex}{{\small$/$}}\hskip.5ex}}}
 \def\nequiv{\mathrel{\mbox{$\equiv$\llap{{\small$/$}\hskip.3ex}}}}
 
 \def\isomap{\rlap{\kern0.8ex\raisebox{1ex}{\scriptsize$\sim$}}\rightarrow}
@@ -507,7 +508,7 @@ The following is a useful characterization of smoothness.
     \item[1.] $s$ is smooth;
     \item[2.] for every $b\in\U^{|z|}$ there is a finite sample $r\in M^{\rm f}$ such that $\sbar\phi(s\,;b)\approx_\epsilon\sbar\phi(r\,;b)$ (the sample $r$ depends on $\epsilon$ and $b$);
     \item[3.] there are some finite samples $r_1,\dots,r_n\in M^{\rm f}$ such that for every $b\in\U^{|z|}$ we have $\sbar\phi(s\,;b)\approx_\epsilon\sbar\phi(r_i\,;b)$ for some $r_i$ (the samples $r_1,\dots,r_n$ as well as the number $n$ depend on $\epsilon$, but not on $b$);
-    \item[4.] there are finitely many formulas $\psi_i(x)\in L(M)$ such that for every $b\in\U^{|z|}$ we have that $\psi_i(x)\imp\phi(x\,;b)\imp\psi_j(x)$ and $\Av_{x/s}[\psi_j(x)\not\imp\psi_i(x)]<\epsilon$ for some $i,j$.
+    \item[4.] there are finitely many formulas $\theta_i(x)\in L(M)$ such that for every $b\in\U^{|z|}$ we have that $\theta_i(x)\imp\phi(x\,;b)\imp\theta_j(x)$ and $\sbar\theta_j(s)-\sbar\theta_i(s)<\epsilon$ for some $i,j$.
   \end{itemize}
 \end{lemma}
 
