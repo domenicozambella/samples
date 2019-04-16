@@ -329,7 +329,7 @@ We use the following suggestive notation:
 \begin{itemize}
   \item[1.] \ceq{\hfill\emph{$a\in s$}\vphantom{\sum_x} }
   {=}
-  {s(a)}\hfill  this is called the  \emph{multiplicity\/} of $a$ in $s$;
+  {|s(a)|}\hfill  this is called the  \emph{multiplicity\/} of $a$ in $s$;
   \item[2.] \ceq{\hfill\emph{$|s|$} }
   {=}
   {\sum_{a\in M} a\in s}\hfill  this is called the \emph{size\/} of $s$;
@@ -345,7 +345,7 @@ We will write \emph{$M^{\rm f}$\/} for the expansion above.
 %
 The language of $M^{\rm f}$ is denoted by \emph{$L^{\rm f}$.}
 %
-It expands $L$, the language of rings with a constat for every real number, and the language of vector spaces over $\RR$.
+It expands $L$, the language of rings, and the language of vector spaces over $\RR$.
 %
 Each interpreted in the obvious sort. 
 %
@@ -379,6 +379,7 @@ The use of $\U^{\rm f^+_*}$ is not ideal, it is introduced to replace the use of
 
  We write \emph{$\supp(s)$\/} for the \emph{support\/} of $s$, that is, the set of those $a$ in $\U^{\rm f^+_*}$ such that $a\in s$ is positive.
  
+
 
 % \begin{definition}[???]
 %   We say that $\U$ is \emph{pseudofinite\/} every definable set is the support of a sample.\QED
@@ -418,22 +419,22 @@ This is known as the \emph{Loeb measure.}
 \begin{definition} Let $\phi(x\,;z)\in L$ and $M$ be given. We say that a sample $s$ is \emph{smooth\/} if, for every $s'\equiv_Ms$ and every $b\in\U^{|z|}$, we have $\sbar\phi(s';b)\approx\sbar\phi(s\,;b)$. When $\phi(x\,;z)$ and $M$ are not clear from the context we will say \emph{smooth for $\phi(x\,;z)$ over $M$.}\QED
 \end{definition}
 
-\begin{definition}
+\begin{definition}\label{def_genstable}
   Let $\phi(x\,;z)\in L$ and $M$ be given.
   %
  An external sample $s$ is 
   \begin{itemize}
     \item[1.]\noindent \emph{invariant\/} if, for every $b,b'\in\U^{|z|}$ such that $b\equiv_Mb'$, we have $\sbar\phi(s\,;b)\approx\sbar\phi(s\,;b')$.
     \item[2.] \noindent \emph{definable\/} if, for every $\epsilon$, the set $\{b\in\U^{|z|}:\sbar\phi(s\,;b)<\epsilon\}$ is definable over $M$.
-    \item [3.]\noindent  \emph{satisfiable\/} if, for all $b\in\U^{|z|}$, if $\sbar\phi(s\,;b)\not\approx0$, then  $\phi(a\,;b)$ for some $a\in M^{|z|}$.
-    \item[4.] \noindent  \emph{generically stable\/} if all of the above holds.\QED 
+    \item [3.]\noindent  \emph{satisfiable\/} if, for all $b\in\U^{|z|}$, if $\sbar\phi(s\,;b)>\epsilon$, then  $\phi(r\,;b)>\epsilon$ for some $r\in M^{\rm f}$.
+    \item[4.] \noindent  \emph{generically stable\/} if all of the above hold.\QED 
   \end{itemize}
   %When $\phi(x\,;z)$ and $M$ are not clear from the context we add: \emph{for $\phi(x\,;z)$ over/in $M$.}
   \end{definition}
 
   Smooth roughly means internal and invariant.
 
-  \begin{fact}
+  \begin{fact}\label{fact_smoothinternalinvariant}
     Let $\phi(x\,;z)\in L$ and $M$ be given.
     %
     The following are equivalent for every external sample $s$
@@ -472,17 +473,19 @@ This is known as the \emph{Loeb measure.}
 
 
 \begin{fact}
-  Smooth samples are generically stable.
+  For any given $\phi(x\,;z)\in L$ and $M$, smooth samples are generically stable.
 \end{fact}
 
 \begin{proof}
-  We prove in turn \ssf{1}-\ssf{3} of the definition above.
+  Assume $s$ is smooth and prove in turn \ssf{1}-\ssf{3} of Definition~\ref{def_genstable}.
   
-  \ssf{1.} This follows easily from the fact above.
+  \ssf{1.} Invariance follows immediately from Fact~\ref{fact_smoothinternalinvariant}.
   
-  \ssf{2.} The set $\{b\in\U^{|z|}:\sbar\phi(s\,;b)<\epsilon\}$ is definable in $\U^{\rm f_*}$ because, by invariance of $s$, we may replace $s$ with any internal sample $s'\equiv_Ms$.
+  \ssf{2.} Note that the set $\{b\in\U^{|z|}:\sbar\phi(s\,;b)<\epsilon\}$ is definable in $\U^{\rm f_*}$. In fact, by the smoothness of $s$, we may replace $s$ with any internal sample $s'\equiv_Ms$.
   %
-  As this set is invariat over $M$, it is definable over $M^{\rm f}$ and therefore, over $M$.
+  By what proved above, this set is invariat over $M$.
+  %
+  Therefore it is definable over $M^{\rm f}$, or equivalently, over $M$.
   
   \ssf{3.} Let $b\in\U^{|z|}$ be such that  $\sbar\phi(s\,;b)>\epsilon$.
   %
@@ -491,8 +494,6 @@ This is known as the \emph{Loeb measure.}
   By the smoothness of $s$, we obtain $\sbar\phi(s';b)>\epsilon$.
   %
   Let $r\in M^{\rm f}$ such that $\sbar\phi(r\,;b)>\epsilon$.
-  %
-  Clearly, some element of $\supp(r)$ proves $\ssf{3}$.
 \end{proof}
 
 
@@ -504,8 +505,9 @@ The following is a useful characterization of smoothness.
   The following are equivalent for every external sample $s$
   \begin{itemize}
     \item[1.] $s$ is smooth;
-    \item[2.] for every $b\in\U^{|z|}$ there is a finite sample $r\in M^{\rm f}$ such that $\sbar\phi(s\,;b)\approx_\epsilon\sbar\phi(r\,;b)$. (The sample $r$ depends on $\epsilon$ and $b$.)
-    \item[3.] there are some finite samples $r_1,\dots,r_n\in M^{\rm f}$ such that for every $b\in\U^{|z|}$ we have $\sbar\phi(s\,;b)\approx_\epsilon\sbar\phi(r_i\,;b)$ for some $r_i$. (The samples $r_1,\dots,r_n$ as well as the number $n$ depend on $\epsilon$, but not on $b$.)
+    \item[2.] for every $b\in\U^{|z|}$ there is a finite sample $r\in M^{\rm f}$ such that $\sbar\phi(s\,;b)\approx_\epsilon\sbar\phi(r\,;b)$ (the sample $r$ depends on $\epsilon$ and $b$);
+    \item[3.] there are some finite samples $r_1,\dots,r_n\in M^{\rm f}$ such that for every $b\in\U^{|z|}$ we have $\sbar\phi(s\,;b)\approx_\epsilon\sbar\phi(r_i\,;b)$ for some $r_i$ (the samples $r_1,\dots,r_n$ as well as the number $n$ depend on $\epsilon$, but not on $b$);
+    \item[4.] there are finitely many formulas $\psi_i(x)\in L(M)$ such that for every $b\in\U^{|z|}$ we have that $\psi_i(x)\imp\phi(x\,;b)\imp\psi_j(x)$ and $\Av_{x/s}[\psi_j(x)\not\imp\psi_i(x)]<\epsilon$ for some $i,j$.
   \end{itemize}
 \end{lemma}
 
@@ -536,7 +538,7 @@ The following is a useful characterization of smoothness.
   %
   Hence compatness yields the required $r_1,\dots,r_n\in M^{\rm f}$.
 
-  The other implications are evident.
+  The proof of equivalence $\ssf{3}\IFF\ssf{4}$ is left to the reader. The other implications are evident.
 \end{proof}
 
 \begin{definition}\label{def_approximable_sample}
