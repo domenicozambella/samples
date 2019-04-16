@@ -321,7 +321,7 @@
 
 The \emph{finite (fractional) expansion\/} of a structure $M$ is a many-sorted expansion that has a sort for $M$, which we call the home-sort, a sort for $\RR$, the set of real numbers, and, for every $n$, a sort for the functions $s:M^n\to\RR$ that are almost always $0$. 
 
-These functions will be interpreted as \emph{(signed and fractional) multisets}.
+These functions are interpreted as \emph{(signed and fractional) multisets}.
 %
 Namely $s(a)$ interpreted as the number of times $a$ occurs in $s$.
 %
@@ -332,7 +332,7 @@ We use the following suggestive notation:
   {s(a)}\hfill  this is called the  \emph{multiplicity\/} of $a$ in $s$;
   \item[2.] \ceq{\hfill\emph{$|s|$} }
   {=}
-  {\sum_{a\in M} a\in s}\hfill  this is called the  \emph{size\/} of $s$;
+  {\sum_{a\in M} a\in s}\hfill  this is called the \emph{size\/} of $s$;
   \item[3.] 
   \ceq{\hfill\emph{$\big|\big\{a\in s\ :\ \phi(a\,;b)\big\}\big|$}}
   {=}
@@ -345,7 +345,7 @@ We will write \emph{$M^{\rm f}$\/} for the expansion above.
 %
 The language of $M^{\rm f}$ is denoted by \emph{$L^{\rm f}$.}
 %
-It expands $L$, the language of rings, and the language of vector spaces over $\RR$.
+It expands $L$, the language of rings with a constat for every real number, and the language of vector spaces over $\RR$.
 %
 Each interpreted in the obvious sort. 
 %
@@ -423,13 +423,52 @@ This is known as the \emph{Loeb measure.}
   %
  An external sample $s$ is 
   \begin{itemize}
-    \item[1.]\noindent \emph{invariant\/} if, for every $b'\equiv_Mb\in\U^{|z|}$, we have $\sbar\phi(s\,;b)\approx\sbar\phi(s\,;b')$.
+    \item[1.]\noindent \emph{invariant\/} if, for every $b,b'\in\U^{|z|}$ such that $b\equiv_Mb'$, we have $\sbar\phi(s\,;b)\approx\sbar\phi(s\,;b')$.
     \item[2.] \noindent \emph{definable\/} if, for every $\epsilon$, the set $\{b\in\U^{|z|}:\sbar\phi(s\,;b)<\epsilon\}$ is definable over $M$.
     \item [3.]\noindent  \emph{satisfiable\/} if, for all $b\in\U^{|z|}$, if $\sbar\phi(s\,;b)\not\approx0$, then  $\phi(a\,;b)$ for some $a\in M^{|z|}$.
     \item[4.] \noindent  \emph{generically stable\/} if all of the above holds.\QED 
   \end{itemize}
   %When $\phi(x\,;z)$ and $M$ are not clear from the context we add: \emph{for $\phi(x\,;z)$ over/in $M$.}
   \end{definition}
+
+  Smooth roughly means internal and invariant.
+
+  \begin{fact}
+    Let $\phi(x\,;z)\in L$ and $M$ be given.
+    %
+    The following are equivalent for every external sample $s$
+
+    \begin{itemize}
+      \item[1.] $s$ is smooth;
+      \item[2.] there is an invariant internal sample $s'\equiv_Ms$.
+    \end{itemize}
+  \end{fact}
+
+\begin{proof}
+  \ssf{1}$\IMP$\ssf{2}.
+  %
+  Let $s$ be smooth and let $s'\equiv_Ms$ be any internal sample.
+  %
+  If $b,b'\in\U^{|z|}$ and $b\equiv_Mb'$, then $b'=fb$ for some $f\in\Aut(\U^{\rm f_*}/M)$.
+  %
+  Then $\sbar\phi(s';fb)\approx\sbar\phi(f^{-1}s'\,;b)$.
+  %
+  Moreover, by smothness $\sbar\phi(f^{-1}s'\,;b)\approx\sbar\phi(s';b)$. The infariace in $s'$ follows.
+  
+  \ssf{2}$\IMP$\ssf{1}.
+  %
+  It suffices to prove that if $s$ is internal and invariant then it is smooth.
+  %
+  Suppose for a contradiction that there is an $s'\equiv_Ms$ busuch that $\sbar\phi(s'\,;b)\not\approx_\epsilon\sbar\phi(s\,;b)$.
+  %
+  Pick a internal sample $s''\equiv_{M,s}s'$. 
+  %
+  Then $\sbar\phi(s''\,;b)\not\approx_\epsilon\sbar\phi(s\,;b)$.
+  %
+  As $s''\equiv_Ms$ are both in $\U^{\rm f_*}$, then $s''=fs$ for some $f\in\Aut(\U^{\rm f_*}/M)$.
+  %
+  Hence we obtan $\sbar\phi(s\,;f^{-1}b)\not\approx_\epsilon\sbar\phi(s\,;b)$ which contradics the invariance of $s$.
+\end{proof}
 
 
 \begin{fact}
@@ -439,9 +478,7 @@ This is known as the \emph{Loeb measure.}
 \begin{proof}
   We prove in turn \ssf{1}-\ssf{3} of the definition above.
   
-  \ssf{1.} If $s$ is smooth for $\phi(x\,;z)$ over $M$, then there is an internal sample $s'\in\U^{\rm f_*}$ such that $\sbar\phi(s';b)\approx\sbar\phi(s\,;b)$ for all $b\in\U^{|z|}$.
-  %
-  Then \ssf{1} follows.
+  \ssf{1.} This follows easily from the fact above.
   
   \ssf{2.} The set $\{b\in\U^{|z|}:\sbar\phi(s\,;b)<\epsilon\}$ is definable in $\U^{\rm f_*}$ because, by invariance of $s$, we may replace $s$ with any internal sample $s'\equiv_Ms$.
   %
@@ -458,35 +495,6 @@ This is known as the \emph{Loeb measure.}
   Clearly, some element of $\supp(r)$ proves $\ssf{3}$.
 \end{proof}
 
-Smooth samples are invariant. 
-%
-The converse need not be true in general, but we have the following.
-
-\begin{fact}
-  Let $\phi(x\,;z)\in L$ and $M$ be given.
-  %
-  For every internal sample $s$, the following are equivalent
-  \begin{itemize}
-    \item[1.] $s$ is invariant;
-    \item[2.] $s$ is smooth.
-  \end{itemize}
-\end{fact}
-
-\begin{proof}
-  By the fact above, implication \ssf{2}$\IMP$\ssf{1} holds for every sample.
-  %
-  We prove \ssf{1}$\IMP$\ssf{2}.
-  %
-  Let $s\in\U^{\rm f_*}$ be an invariat internal sample.
-  %  
-  Assume for a contradiction that $\sbar\phi(s';b)\not\approx_\epsilon\sbar\phi(s\,;b)$ for some $b\in\U^{|x|}$ and some sample $s'\equiv_M s$.
-  %
-  Pick a internal sample $s''\equiv_{M,s}s'$. 
-  %
-  Then $\sbar\phi(s''\,;b)\not\approx_\epsilon\sbar\phi(s\,;b)$.
-  %
-  As $s''\equiv_Ms$ are both in $\U^{\rm f_*}$, this contradicts the invariance of $s$.
-\end{proof}
 
 The following is a useful characterization of smoothness.
 
@@ -496,8 +504,8 @@ The following is a useful characterization of smoothness.
   The following are equivalent for every external sample $s$
   \begin{itemize}
     \item[1.] $s$ is smooth;
-    \item[2.] for every $b\in\U^{|z|}$ there is a finite sample $r\in M^{\rm f}$ such that $\sbar\phi(s\,;b)\approx_\epsilon\sbar\phi(r\,;b)$. (The sample $r$ depends on $M$, $\epsilon$ and $b$.)
-    \item[3.] there are some finite samples $r_1,\dots,r_n\in M^{\rm f}$ such that for every $b\in\U^{|z|}$ we have $\sbar\phi(s\,;b)\approx_\epsilon\sbar\phi(r_i\,;b)$ for some $s_i$. (The samples $r_1,\dots,r_n$ as well as the number $n$ depend on $\epsilon$ and $M$.)
+    \item[2.] for every $b\in\U^{|z|}$ there is a finite sample $r\in M^{\rm f}$ such that $\sbar\phi(s\,;b)\approx_\epsilon\sbar\phi(r\,;b)$. (The sample $r$ depends on $\epsilon$ and $b$.)
+    \item[3.] there are some finite samples $r_1,\dots,r_n\in M^{\rm f}$ such that for every $b\in\U^{|z|}$ we have $\sbar\phi(s\,;b)\approx_\epsilon\sbar\phi(r_i\,;b)$ for some $r_i$. (The samples $r_1,\dots,r_n$ as well as the number $n$ depend on $\epsilon$, but not on $b$.)
   \end{itemize}
 \end{lemma}
 
@@ -528,7 +536,7 @@ The following is a useful characterization of smoothness.
   %
   Hence compatness yields the required $r_1,\dots,r_n\in M^{\rm f}$.
 
-  All the other implications are evident.
+  The other implications are evident.
 \end{proof}
 
 \begin{definition}\label{def_approximable_sample}
@@ -536,7 +544,7 @@ The following is a useful characterization of smoothness.
   %
   Let $\B\subseteq\U^{|z|}$ be arbitrary.
   %
-  We say that $s$ is \emph{approximable\/} on $\B$ if for every $\epsilon$ there is a finite sample $r\in M^{\rm f}$ such that $\sbar\phi(s,b)\approx_\epsilon\sbar\phi(r,b)$ for every $b\in\B$. (The sample $r$ depends on $\epsilon$ and $M$.) We add \emph{for $\phi(x\,;z)$ over $M$\/} when these are not clear from the context.\QED
+  We say that $s$ is \emph{approximable\/} on $\B$ if for every $\epsilon$ there is a finite sample $r\in M^{\rm f}$ such that $\sbar\phi(s,b)\approx_\epsilon\sbar\phi(r,b)$ for every $b\in\B$. (The sample $r$ depends on $\epsilon$.) We add \emph{for $\phi(x\,;z)$ over $M$\/} when these are not clear from the context.\QED
 \end{definition}
 
 \begin{lemma}\label{lem_cons}
@@ -566,11 +574,11 @@ The following is a useful characterization of smoothness.
   %
   Let $s$ be approximable on $\C$.
   %
-  Then for every $\epsilon$ is a pair of distict $c,c'\in\C$ such that $\Av_s\big[\phi(x\,;c)\niff\phi(x\,;c')\big]<\epsilon$
+  Then for every $\epsilon$ there is a pair of distict $c,c'\in\C$ such that $\Av_{x/s}\big[\phi(x\,;c)\niff\phi(x\,;c')\big]<\epsilon$
 \end{corollary}
 
 \begin{proof}
-  Suppose for a contradiction that $\Av_s\big[\phi(x\,;c)\niff\phi(x\,;c')\big]\ge\epsilon$ for all $c,c'\in\C$. Apply Lemma~\ref{lem_cons} to the folmula $\psi(x\,;z,z') = [\phi(x\,;z)\niff\phi(x\,;z')]$ and the set $\B=\{\<c,c'\>\in\C^2:c\neq c'\}$.
+  Suppose for a contradiction that $\Av_{x/s}\big[\phi(x\,;c)\niff\phi(x\,;c')\big]\ge\epsilon$ for all $c,c'\in\C$. Apply Lemma~\ref{lem_cons} to the folmula $\psi(x\,;z,z') = [\phi(x\,;z)\niff\phi(x\,;z')]$ and the set $\B=\{\<c,c'\>\in\C^2:c\neq c'\}$.
   %
  The sets $\B_i$ obtained from Lemma~\ref{lem_cons} induce a finite coloring of the complete graph on $\C$.
  %
