@@ -417,7 +417,11 @@ This measure has an unique extension to a Lebesgue probability measure on a $\si
 %
 This is known as the \emph{Loeb measure.}
 
-\begin{definition} Let $\phi(x\,;z)\in L$ and $M$ be given. We say that a sample $s$ is \emph{smooth\/} if, for every $s'\equiv_Ms$ and every $b\in\U^{|z|}$, we have $\sbar\phi(s';b)\approx\sbar\phi(s\,;b)$. When $\phi(x\,;z)$ and $M$ are not clear from the context we will say \emph{smooth for $\phi(x\,;z)$ over $M$.}\QED
+\section{Some formula-by-formula notions}
+
+All definitions and facts in this section are relative to some given formula $\phi(x\,;z)\in L$ and some model $M$. 
+
+\begin{definition} Let $\phi(x\,;z)\in L$ and $M$ be given. We say that a sample $s$ is \emph{smooth\/} if, for every $s'\equiv_Ms$ and every $b\in\U^{|z|}$, we have $\sbar\phi(s';b)\approx\sbar\phi(s\,;b)$.\QED
 \end{definition}
 
 \begin{definition}\label{def_genstable}
@@ -497,7 +501,6 @@ This is known as the \emph{Loeb measure.}
   Let $r\in M^{\rm f}$ such that $\sbar\phi(r\,;b)>\epsilon$.
 \end{proof}
 
-
 The following is a useful characterization of smoothness.
 
 \begin{lemma}
@@ -547,13 +550,13 @@ The following is a useful characterization of smoothness.
   %
   Let $\B\subseteq\U^{|z|}$ be arbitrary.
   %
-  We say that $s$ is \emph{approximable\/} on $\B$ if for every $\epsilon$ there is a finite sample $r\in M^{\rm f}$ such that $\sbar\phi(s,b)\approx_\epsilon\sbar\phi(r,b)$ for every $b\in\B$. (The sample $r$ depends on $\epsilon$.) We add \emph{for $\phi(x\,;z)$ over $M$\/} when these are not clear from the context.\QED
+  We say that $s$ is \emph{(uniformly) approximable\/} on $\B$ if for every $\epsilon$ there is a finite sample $r\in M^{\rm f}$ such that $\sbar\phi(s,b)\approx_\epsilon\sbar\phi(r,b)$ for every $b\in\B$. (The sample $r$ depends on $\epsilon$, not on $b$.)\QED
 \end{definition}
 
 \begin{lemma}\label{lem_cons}
   Let $\phi(x\,;z)\in L$ and $M$ be given.
   %
-  Let $s$ be approximable on $\B$ and such that $\sbar\phi(s\,;b)>\epsilon$ for every $b\in\B$. Then there is a finite cover of $\B$, say $\B_1,\dots,\B_n$, such that all types $p_i(x)=\{\phi(x\,;b):b\in\B_i\}$ are consistent.
+  Let $s$ be approximable on $\B$ and such that $\sbar\phi(s\,;b)>\epsilon$ for every $b\in\B$. Then there is a finite cover of $\B$, say $\B_1,\dots,\B_n$, such that all the types $p_i(x)=\{\phi(x\,;b):b\in\B_i\}$ are consistent.
 \end{lemma}
 
 \begin{proof}
@@ -581,13 +584,13 @@ The following is a useful characterization of smoothness.
 \end{corollary}
 
 \begin{proof}
-  Suppose for a contradiction that $\Av_{x/s}\big[\phi(x\,;c)\niff\phi(x\,;c')\big]\ge\epsilon$ for all $c,c'\in\C$. Apply Lemma~\ref{lem_cons} to the folmula $\psi(x\,;z,z') = [\phi(x\,;z)\niff\phi(x\,;z')]$ and the set $\B=\{\<c,c'\>\in\C^2:c\neq c'\}$.
+  Suppose for a contradiction that $\Av_{x/s}\big[\phi(x\,;c)\niff\phi(x\,;c')\big]\ge\epsilon$ for all distict $c,c'\in\C$. Apply Lemma~\ref{lem_cons} to the folmula $\psi(x\,;z,z') = [\phi(x\,;z)\niff\phi(x\,;z')]$ and the set $\B=\{\<c,c'\>\in\C^2\, :\, c{\neq} c'\}$.
   %
  The sets $\B_i$ obtained from Lemma~\ref{lem_cons} induce a finite coloring of the complete graph on $\C$.
  %
  By the Ramsey theorem there is an infinite monochromatic set $A\subseteq\C$.
  %
- Hence $\{\phi(x\,;a)\niff\phi(x\,;a') : a,a'\in A, a\neq a'\}$ is consistent.
+ Hence $\{\phi(x\,;a)\niff\phi(x\,;a')\  :\  a,a'{\in} A,\ a{\neq} a'\}$ is consistent.
  %
  As $|A|>2$, this is impossible.
 \end{proof}
@@ -651,14 +654,16 @@ For smooth samples the Vapnik-Chervonenkis Theorem can be strengthened as follow
 \end{proof}
 
 \begin{definition}
-  A formula $\phi(x\,;z)\in L$ is \emph{distal\/} if there is a formula $\psi(x\,;z_1,\dots z_n)\in L$ such that for every finite set $A\subseteq\U^{\rm f}$ and every $b\in\U^{|x|}$ there are $a_1,\dots,a_n\in \supp(s)$ such that $\psi(x\,;a_1,\dots,a_n)\iff p(x)$, where $p(x)=\tp_\phi(b/A)$.\QED
+  We say that $\phi(x\,;z)\in L$ is \emph{distal\/} if there is a formula $\psi(x\,;z_1,\dots z_n)\in L$ such that for every finite set $B\subseteq\U$ and every $a\in\U^{|x|}$ there are $b_1,\dots,b_n\in B$ such that $\psi(a\,;b_1,\dots,b_n)$ and $\psi(x\,;b_1,\dots,b_n)$ decides all formulas $\theta(x)\in L(B)$.\QED
 \end{definition}
+
 
 \begin{theorem}[(false)]
   The following are equivalent
   \begin{itemize}
     \item[1.] $\phi(x\,;z)\in L$ is distal;
-    \item[2.] for every sample $s\in\U^{\rm f^+_*}$, if $s$ is generically stable for $\phi(x\,;z)$ over $M$ then $s$ is smooth for $\phi(x\,;z)$ over $M$.
+    \item[2.] for every sample $s\in\U^{\rm f^+_*}$, if $s$ is generically stable then $s$ is smooth.
+
   \end{itemize}
 \end{theorem}
 
