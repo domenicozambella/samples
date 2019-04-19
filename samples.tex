@@ -429,9 +429,10 @@ All definitions and facts in this section are relative to some given formula $\p
   %
  An external sample $s$ is 
   \begin{itemize}
-    \item[1.]\noindent \emph{invariant\/} if, for every $b,b'\in\U^{|z|}$ such that $b\equiv_Mb'$, we have $\sbar\phi(s\,;b)\approx\sbar\phi(s\,;b')$.
-    \item[2.] \noindent \emph{definable\/} if, for every $\epsilon$, the set $\{b\in\U^{|z|}:\sbar\phi(s\,;b)<\epsilon\}$ is definable over $M$.
-    \item [3.]\noindent  \emph{satisfiable\/} if, for all $b\in\U^{|z|}$, if $\sbar\phi(s\,;b)>\epsilon$, then  $\phi(r\,;b)>\epsilon$ for some $r\in M^{\rm f}$.
+    \item[1.]\noindent \emph{invariant\/} if, for every $b,b'\in\U^{|z|}$ such that $b\equiv_Mb'$, we have $\sbar\phi(s\,;b)\approx\sbar\phi(s\,;b')$;
+    \item[2.] \noindent \emph{definable\/} if, for every $\epsilon$, the set $\{b\in\U^{|z|}:\sbar\phi(s\,;b)<\epsilon\}$ is definable over $M$;
+    % \item [3.]\noindent  \emph{satisfiable\/} if, for all $b\in\U^{|z|}$, if $\sbar\phi(s\,;b)>\epsilon$, then  $\phi(r\,;b)>\epsilon$ for some $r\in M^{\rm f}$.
+    \item [3.]\noindent  \emph{finitely satisfiable\/} if, for all $b\in\U^{|z|}$ there is an $r\in M^{\rm f}$ such that  $\sbar\phi(s\,;b)\approx_\epsilon\phi(r\,;b)$;
     \item[4.] \noindent  \emph{generically stable\/} if all of the above hold.\QED 
   \end{itemize}
   %When $\phi(x\,;z)$ and $M$ are not clear from the context we add: \emph{for $\phi(x\,;z)$ over/in $M$.}
@@ -465,7 +466,7 @@ All definitions and facts in this section are relative to some given formula $\p
   %
   It suffices to prove that if $s$ is internal and invariant then it is smooth.
   %
-  Suppose for a contradiction that there is an $s'\equiv_Ms$ busuch that $\sbar\phi(s'\,;b)\not\approx_\epsilon\sbar\phi(s\,;b)$.
+  Suppose for a contradiction that there is an $s'\equiv_Ms$ such that $\sbar\phi(s'\,;b)\not\approx_\epsilon\sbar\phi(s\,;b)$.
   %
   Pick a internal sample $s''\equiv_{M,s}s'$. 
   %
@@ -645,7 +646,7 @@ For smooth samples the Vapnik-Chervonenkis Theorem can be strengthened as follow
   Pick a  $s'\subseteq\U^{|x|}$ such that $b'\cnonfork_{M}s'\equiv_Ms$.
   %
   By the smoothness of $s$, we obtain $\sbar\phi(s';b')\not\approx_\epsilon\sbar\phi(r\,;b')$.
-  %
+  %    
   As $b'\cnonfork_{M}s'$, the same formula holds for some $b\in M^{|z|}$.
   %
   Once again by smoothness, $\sbar\phi(s\,;b)\not\approx_\epsilon\sbar\phi(r\,;b)$.
@@ -653,10 +654,20 @@ For smooth samples the Vapnik-Chervonenkis Theorem can be strengthened as follow
   A contradiction.
 \end{proof}
 
-\begin{definition}
-  We say that $\phi(x\,;z)\in L$ is \emph{distal\/} if there is a formula $\psi(x\,;z_1,\dots z_n)\in L$ such that for every finite set $B\subseteq\U$ and every $a\in\U^{|x|}$ there are $b_1,\dots,b_n\in B$ such that $\psi(a\,;b_1,\dots,b_n)$ and $\psi(x\,;b_1,\dots,b_n)$ decides all formulas $\theta(x)\in L(B)$.\QED
+\begin{definition}[??]
+  We say that $\phi(x\,;z)\in L$ is \emph{distal\/} if there is a formula $\psi(x\,;z_1,\dots z_n)\in L$ such that for every finite set $B\subseteq\U$ and every $a\in\U^{|x|}$ there are $b_1,\dots,b_n\in B$ such that $\psi(a\,;b_1,\dots,b_n)$ and $\psi(x\,;b_1,\dots,b_n)$ decides all formulas $\phi(x\,; b)$ for $b\in B$.\QED
 \end{definition}
 
+\begin{definition}[??*]
+  We say that $\phi(x\,;z)\in L$ is \emph{distal\/} if there is a formula $\psi(x_1,\dots,x_n\,;z)\in L$ such that for every finite set $A\subseteq\U^{|x|}$ and every $b\in\U^{|z|}$ there are $a_1,\dots,a_n\in B$ such that $\psi(a_1,\dots,a_n,\;z)$ and $\psi(a_1,\dots,a_n,\,z)$ decides all formulas $\phi(a\,; z)$ for $a\in A$.\QED
+\end{definition}
+
+For every finite sample $r\in M^{\rm f}$ and every $\mu\in\RR$ there is a formula $\psi(z)\in L(\supp r)$ such that $\sbar\phi(r\,;z)=\mu \iff \psi(z)$. The formula $\psi(z)$ depends on $r$.
+
+When $\phi(x\,;z)$ is distal 
+
+
+If  $\phi(x\,;z)$ is distal then there is a formula $\psi$ such that  for every $r\in M^f$ there is $r_0\in M^{}$
 
 \begin{theorem}[(false)]
   The following are equivalent
@@ -666,6 +677,11 @@ For smooth samples the Vapnik-Chervonenkis Theorem can be strengthened as follow
 
   \end{itemize}
 \end{theorem}
+
+There is a formula $\psi(x_1,\dots,x_n\,;z)$ such that for every $r\in M^{\rm f}$ 
+
+there are $a_1,\dots,a_n$ such that $\phi(r\,;b)=\mu$ $\psi(x_1,\dots,x_n\,;z)$
+
 
 \end{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
