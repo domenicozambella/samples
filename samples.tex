@@ -317,67 +317,97 @@
 \def\uuu{{\mathds 1}}
 \def\gruuu{{\mathds 1}}
 \def\Av{{\rm Av}}
-\def\st{{\rm st}}
+\def\st{{\rm ft}}
 
-The \emph{finite (fractional) expansion\/} of a structure $M$ is a many-sorted expansion that has a sort for $M$, which we call the home-sort, a sort for $\RR$, the set of real numbers, and, for every $n$, a sort for the functions $s:M^n\to\RR$ that are almost always $0$. 
+Let $M$ be a structure of signature $L$. The \emph{finite (fractional) sample expansion\/} of $M$ is a many-sorted expansion that has a sort for $M$, which we call the home-sort, a sort for $\RR$, the set of real numbers, and for each $n$ a sort for $F_n$, an $\RR$-vector space of functions $f:M^n\to\RR$. We refer collectively to these vector spaces as \emph{sample-sort.} Variabels (or tuples of variables) of sample-sort are denoted with sumbolds $x^{\rm s}, y^{\rm s}$ and variations thereof.   
 
-These functions are interpreted as \emph{(signed and fractional) multisets}.
-%
-Namely $s(a)$ interpreted as the number of times $a$ occurs in $s$.
-%
-We use the following suggestive notation:
-\begin{itemize}
-  \item[1.] \ceq{\hfill\emph{$a\in s$}\vphantom{\sum_x} }
-  {=}
-  {|s(a)|}\hfill  this is called the  \emph{multiplicity\/} of $a$ in $s$;
-  \item[2.] \ceq{\hfill\emph{$|s|$} }
-  {=}
-  {\sum_{a\in M} a\in s}\hfill  this is called the \emph{size\/} of $s$;
-  \item[3.] 
-  \ceq{\hfill\emph{$\big|\big\{a\in s\ :\ \phi(a\,;b)\big\}\big|$}}
-  {=}
-  {\sum_{a\,\models\phi(x;b)} a\in s.}
-\end{itemize}
+% These functions are interpreted as \emph{(signed and fractional) multisets}.
+% %
+% Namely $r(a)$ interpreted as the number of times $a$ occurs in $r$.
+% %
+% We use the following suggestive notation:
+% \begin{itemize}
+%   \item[1.] \ceq{\hfill\emph{$a\in r$}\vphantom{\sum_x} }
+%   {=}
+%   {|r(a)|}\hfill  this is called the  \emph{multiplicity\/} of $a$ in $r$;
+%   \item[2.] \ceq{\hfill\emph{$|r|$} }
+%   {=}
+%   {\sum_{a\in M} a\in r}\hfill  this is called the \emph{size\/} of $r$;
+%   \item[3.] 
+%   \ceq{\hfill\emph{$\big|\big\{a\in r\ :\ \phi(a\,;b)\big\}\big|$}}
+%   {=}
+%   {\sum_{a\,\models\phi(x;b)} a\in r.}
+% \end{itemize}
 
-We call these multisets \emph{samples\/} and refer to their sorts collectively as \emph{sample-sort}.
+% We call these multisets \emph{samples\/} and refer to their sorts collectively as \emph{sample-sort}.
 
 We will write \emph{$M^{\rm f}$\/} for the expansion above.
 %
 The language of $M^{\rm f}$ is denoted by \emph{$L^{\rm f}$.}
 %
-It expands $L$, the language of rings, and the language of vector spaces over $\RR$.
+It expands $L$, the language of $\RR$ as an ordered rings, and the language of vector spaces over $\RR$.
 %
-Each interpreted in the obvious sort. 
+Each interpreted in the obvious sort.
 %
-Moreover, $L^{\rm f}$ has a symbols for the functions in \ssf{1}-\ssf{3} above.
+Moreover, for every $\phi(x\,;z)\in L$ in $L^{\rm f}$ there is a symbol $\sbar\phi(x^{\rm s}\,;z)$ for a function $F_{|x|}\times M^{|z|}\to\RR$.
 %
-In particular, \ssf{3} requires a symbol for every $\phi(x\,;z)\in L$.
-
-
-%For ease of exposition we may also use rational numbers, though these need not have their own sort as they are interpretable in the naturar numbers.
-
-Let $\U$ be a monster model of cardinality $\kappa$, a cardinal larger than the cardinality of $L$.
-%
-We introduce two elementary extension of $\U^{\rm f}$.
-
+%For the moment we only require that $\sbar\phi(f\,;b)\neq0$ then $\E x\,\phi(x\,;b)$.
 
 \begin{definition}
-We denote by \emph{$\U^{\rm f_*}$\/} a saturated elementary extension of $\U^{\rm f}$ of cardinality $\kappa$.
-%
-As all saturated models of cardinality $\kappa$ are isomorphic, we can assume that $\U$ is the home-sort of $\U^{\rm f_*}$.
-%
-We denote by \emph{$\U^{\rm f^+_*}$\/} some elementary extension of $\U^{\rm f_*}$ that realizes all types in $S(\U^{\rm f_*})$.
-%
-Hence we have $\U^{\rm f}\prec\U^{\rm f_*}\prec\U^{\rm f^+_*}$.
-%
-Elements of sample-sort in these models are called  \emph{finite samples,} \emph{internal samples,} and \emph{(external) samples\/} respectively.\QED
-%
-%Elements  of sample-sort in $\U^{\rm f_*}$ are called \emph{smoth samples.}
+  Let $\U$ be a monster model of cardinality $\kappa>|L|$.
+  %`'
+  We denote by \emph{$\U^{\rm s}$\/} a saturated elementary extension of $\U^{\rm f}$ of cardinality $\kappa$.
+  %
+  As all saturated models of cardinality $\kappa$ are isomorphic, we can assume that $\U$ is the home-sort of $\U^{\rm s}$.
+  %
+  Elements $r\in\U^{\rm f}$ are called \emph{finite samples,} elements in $s\in\U^{\rm s}$ are called  \emph{smooth samples.}\QED
 \end{definition}
 
-The use of $\U^{\rm f^+_*}$ is not ideal, it is introduced to replace the use of global types of sample-sort which also have drawbacks.
+Below, $\epsilon$ always ranges over the positive standard reals.
+%
+If $a$ and $b$ are hyperreals, we write \emph{$a\approx_\epsilon b$\/} for $|a-b|<\epsilon$.
+%
+We write \emph{$a\approx b$\/} if $a\approx_\epsilon b$ holds for every $\epsilon$.
 
- We write \emph{$\supp(s)$\/} for the \emph{support\/} of $s$, that is, the set of those $a$ in $\U^{\rm f^+_*}$ such that $a\in s$ is positive.
+\begin{notation}
+  In general, for any global type $p(x)\in S(\U)$ and formula $\phi(x\,;z)\in L$ we write 
+  
+  \ceq{\hfill\emph{$\phi(p\,;\U)$}}{=}{\Big\{ b\in\U^{|z|}\ :\ \phi(x,\; b)\in p\Big\}}
+  
+  This notation intentionally confuses $p$ with any of its realizations in some elementary extension of $\U$.
+  %
+  Sets of this form are called \emph{externally definable.}
+  
+  We extend this notation to global samples.
+  %
+  If $\phi(x\,;z)\in L$ and $p(x^{\rm s})$ is a global sample, we write $\sbar\phi(p\,;b)$ for the unique $\mu\in\RR$ such that $p(x^{\rm s})\proves \bar\phi(x^{\rm s}\,;b)\approx\mu$.\QED
+\end{notation}
+
+\begin{definition}\label{def_smooth_global}
+  Let $\phi(x\,;z)\in L$. We say that the global type $p(x^{\rm s})$ is \emph{smooth\/} if there is a smooth sample $s$ such that $\sbar\phi(s\,;b)\approx\sbar\phi(p\,;b)$ for all $b\in\U^{|z|}$.\QED
+\end{definition}
+
+\begin{definition}\label{def_genstable}
+  Let $\phi(x\,;z)\in L$ and $M$ be given.
+  %
+  A global sample $p(x^{\rm s})$ is
+  \begin{itemize}
+    \item[1.]\noindent \emph{invariant\/} if $\bar\phi(p\,;z)$ is invariant under $\Aut(\U/M)$, that is, $\bar\phi(p\,;b)\approx\bar\phi(p\,;fb)$ for every $b\in\U^{|z|}$ and $f\in\Aut(\U/M)$;
+    \item[2.] \noindent \emph{definable\/} if, for every $\epsilon$, the set $\{b\in\U^{|z|}:\sbar\phi(p\,;b)<\epsilon\}$ is definable over $M$;
+    \item [3.]\noindent  \emph{finitely satisfiable\/} if, for all $b\in\U^{|z|}$ there is an $r\in M^{\rm f}$ such that  $\sbar\phi(p\,;b)\approx_\epsilon\sbar\phi(r\,;b)$;
+    \item[4.] \noindent  \emph{generically stable\/} if all of the above hold.\QED 
+  \end{itemize}
+  %When $\phi(x\,;z)$ and $M$ are not clear from the context we add: \emph{for $\phi(x\,;z)$ over/in $M$.}
+  \end{definition}
+
+
+\section{Old stuff}
+
+ 
+ %
+ We write \emph{$\supp(p)$\/} for the \emph{support\/} of $p$, that is, the set of those $a$ in $\U$ such that $p\proves (a\in x^{\rm s})>\epsilon$ for some standard positive $\epsilon$.
+ %
+ If $s$ is a smooth sample  \emph{$\supp(s)$\/} is defined to be  \emph{$\supp(p)$\/} for $p(x^{\rm s})=\tp(s/\U^{\rm f})$. 
  
 
 
@@ -398,13 +428,8 @@ When possible we abbreviate $\Av_{x/s}\phi(x\,;b)$ with \emph{$\sbar\phi(s\,;b)$
 %
 %If we pretend that hyperrational are elements of $\U^{\rm f^+_*}$, then $\sbar\phi(s\,;b)$, as a function of $s$ and $b$, is definable in $\U^{\rm f^+_*}$.
 
-Below, $\epsilon$ always ranges over the positive standard reals.
-%
-If $a$ and $b$ are hyperreals, we write \emph{$a\approx_\epsilon b$\/} for $|a-b|<\epsilon$.
-%
-We write \emph{$a\approx b$\/} if $a\approx_\epsilon b$ holds for every $\epsilon$.
-%
-%If $\mu$ is a real number we write $a\approx_\epsilon \mu$ if there is a standard rational $b\approx_{\epsilon/2} a$ such that $|b-\mu|<\epsilon/2$ (this last inequality is evaluated in the standard real line).
+\section{Old stuff}
+
 %
 We write $\st(a)$, for the standard part of the hyperrational number $a$.
 %
@@ -416,7 +441,6 @@ This measure has an unique extension to a Lebesgue probability measure on a $\si
 %
 This is known as the \emph{Loeb measure.}
 
-\section{Some formula-by-formula notions}
 
 All definitions and facts in this section are relative to some given formula $\phi(x\,;z)\in L$ and some model $M$. 
 
@@ -455,7 +479,7 @@ All definitions and facts in this section are relative to some given formula $\p
   %
   Let $s$ be smooth and let $s'\equiv_Ms$ be any internal sample.
   %
-  If $b,b'\in\U^{|z|}$ and $b\equiv_Mb'$, then $b'=fb$ for some $f\in\Aut(\U^{\rm f_*}/M)$.
+  If $b,b'\in\U^{|z|}$ and $b\equiv_Mb'$, then $b'=fb$ for some $f\in\Aut(\U^{\rm s}/M)$.
   %
   Then $\sbar\phi(s';fb)\approx\sbar\phi(f^{-1}s'\,;b)$.
   %
@@ -471,7 +495,7 @@ All definitions and facts in this section are relative to some given formula $\p
   %
   Then $\sbar\phi(s''\,;b)\not\approx_\epsilon\sbar\phi(s\,;b)$.
   %
-  As $s''\equiv_Ms$ are both in $\U^{\rm f_*}$, then $s''=fs$ for some $f\in\Aut(\U^{\rm f_*}/M)$.
+  As $s''\equiv_Ms$ are both in $\U^{\rm s}$, then $s''=fs$ for some $f\in\Aut(\U^{\rm s}/M)$.
   %
   Hence we obtan $\sbar\phi(s\,;f^{-1}b)\not\approx_\epsilon\sbar\phi(s\,;b)$ which contradics the invariance of $s$.
 \end{proof}
@@ -486,7 +510,7 @@ All definitions and facts in this section are relative to some given formula $\p
   
   \ssf{1.} Invariance follows immediately from Fact~\ref{fact_smoothinternalinvariant}.
   
-  \ssf{2.} Note that the set $\{b\in\U^{|z|}:\sbar\phi(s\,;b)<\epsilon\}$ is definable in $\U^{\rm f_*}$. In fact, by the smoothness of $s$, we may replace $s$ with any internal sample $s'\equiv_Ms$.
+  \ssf{2.} Note that the set $\{b\in\U^{|z|}:\sbar\phi(s\,;b)<\epsilon\}$ is definable in $\U^{\rm s}$. In fact, by the smoothness of $s$, we may replace $s$ with any internal sample $s'\equiv_Ms$.
   %
   By what proved above, this set is invariat over $M$.
   %
