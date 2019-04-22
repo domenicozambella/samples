@@ -325,7 +325,7 @@ Let $M$ be a structure of signature $L$.
 %
 We call the sort of $F_n$ \emph{sample-sort.}
 %
-Variables of sample-sort are denoted with sumbolds $x^{\rm s}, y^{\rm s}$ and variations thereof.   
+Variables of sample-sort are denoted with symbols $x^{\rm s}, y^{\rm s}$ and variations thereof.   
 
 % These functions are interpreted as \emph{(signed and fractional) multisets}.
 % %
@@ -373,18 +373,8 @@ We write \emph{$a\approx b$\/} if $a\approx_\epsilon b$ holds for every $\epsilo
   As all saturated models of cardinality $\kappa$ are isomorphic, we can assume that $\U$ is the home-sort of $\U^{\rm f*}$.
   %
   Elements $r\in\U^{\rm f}$ are called \emph{finite samples,} elements in $s\in\U^{\rm f*}$ are called \emph{internal samples.}
-  
-  (1) A \emph{global sample\/} is a maximally consistent set of formulas of the form $\sbar\phi(x^{\rm s}\,;b)\approx_\epsilon\mu$, where $b\in\U^{|z|}$, $\epsilon,\mu\in\RR$, and $\phi(x\,;z)\in L$.
 
-  (1) A \emph{global sample\/} is a maximally consistent set of formulas of the form $\sbar\phi(x^{\rm s})\approx_\epsilon\mu$, where $\phi(x)\in L(\U)$, and $\epsilon,\mu\in\RR$.
-  
-  (2) A \emph{global sample\/} is a global type $p(x^{\rm s})\in S(\U)$.
-  
-  (3) A \emph{global sample\/} is a global type $p(x^{\rm s})\in S(\U,\RR))$.
-  
-  (4) A \emph{global sample\/} is a global type $p(x^{\rm s})\in S(\U^{\rm f})$.
-  
-  (5) A \emph{global sample\/} is a global type $p(x^{\rm s})\in S(\U^{\rm f*})$.\QED
+  A \emph{global sample\/} is a maximally consistent set of formulas of the form $\sbar\phi(x^{\rm s})\approx_\epsilon\mu$, where $\phi(x)\in L(\U)$, and $\epsilon,\mu\in\RR$.\QED
 \end{definition}
 
 \begin{notation}
@@ -408,15 +398,58 @@ We write \emph{$a\approx b$\/} if $a\approx_\epsilon b$ holds for every $\epsilo
   \QED
 \end{notation}
 
-% \begin{definition}\label{def_smooth_global}
-%   Let $\phi(x\,;z)\in L$ be given. We say that $p(x^{\rm s})\in S(\U^{\rm f})$ is a \emph{smooth sample\/} if there is an internal sample $s$ such that $\sbar\phi(s\,;b)\approx\sbar\phi(p\,;b)$ for all $b\in\U^{|z|}$.\QED
-% \end{definition}
-
 \begin{definition}\label{def_smooth_global}
   A global sample $p(x^{\rm s})$ is \emph{smooth\/} if it is realized in $\U^{\rm f*}$.\QED
 \end{definition}
 
+\begin{definition}\label{def_} 
+  Let $M$ be given. A global sample $p(x^{\rm s})$ is
+  \begin{itemize}
+    \item[1.]\noindent\emph{invariant\/} if $\sbar\phi(p\,;b)\approx\sbar\phi(p\,;b')$ for every $b\equiv_{M^{\rm f}}b'$ and every  $\phi(x\,;z)\in L$.
+    \item[2.]\noindent\emph{finitely satisfiable\/} if for every finite subset of $p$ is realized in  $M^{\rm f}$.
+    \item[3.]\noindent\emph{definable\/} if, for every $\epsilon$, the set $\{b\in\U^{|z|}:\sbar\phi(p\,;b)<\epsilon\}$ is definable over $M^{\rm f}$.\QED
+  \end{itemize}
+\end{definition}
 
+Explicitely, \ssf{2} above means that if $\sbar\psi_i(x^{\rm s})\approx_\epsilon\mu_i$ are some finitely many formulas in $p$, then there is an $r\in M^{\rm f}$ such that $\sbar\psi_i(r)\approx_\epsilon\mu_i$ for all $i$.
+%
+We may also rephrase this by saying that for every finitely many $\psi_i(x)\in L(\U)$ there is an $r\in M^{\rm f}$ such that $\sbar\psi_i(r)\approx_\epsilon\sbar\psi_i(p)$ for all $i$.
+
+\begin{fact}
+  Let $M$ be given. Then every smooth invariant sample is finitely satisfiable and definable.
+\end{fact}
+
+\begin{proof}
+  Let $s$ be an internal sample that realizes an invariant global sample $p(x^{\rm s})$.
+  %
+  Let $\phi_i(x^{\rm s}\,;b)\approx_\epsilon\mu_i$ be some finitely many formulas in $p$.
+  %
+  Let $b'$ be such that $s\cnonfork_{M^{\rm f}}b'\equiv_{M^{\rm f}}b$.
+  %
+  By invariance, $\sbar\phi_i(s\,;b')\approx\mu_i$. 
+  %
+  Therefore there is an $r\in M^{\rm f}$ such that $\sbar\phi_i(r\,;b')\approx_\epsilon\mu_i$.
+  %
+  As $b'\equiv_{M^{\rm f}}b$, we obtain  $\sbar\phi_i(r\,;b)\approx_\epsilon\mu_i$.
+  %
+  This proves finite satisfiability.
+  %
+  Clearly $\{b:\sbar\phi(p\,;b)<\epsilon\}=\{b:\sbar\phi(s\,;b)<\epsilon\}$ is definable in $\U^{\rm f*}$. By invariance it is definable in $M^{\rm f}$. 
+\end{proof}
+
+\begin{fact}
+  Let $M$ be given. Then every global sample that is finitely satisfiable is invariant.
+\end{fact}
+
+\begin{proof}
+  Let $b\equiv_{M^{\rm f}}b'$ be given.
+  %
+  Let $r\in M^{\rm f}$ be such that $\sbar\phi(p\,;b)\approx_\epsilon\sbar\phi(r\,;b)$ and $\sbar\phi(p\,;b')\not\approx_\epsilon\sbar\phi(r;b')$.
+  %
+  But $\sbar\phi(r\,;b)\approx\sbar\phi(r;b')$ and therefore $\sbar\phi(p\,;b)\approx_\epsilon\sbar\phi(p\,;b')$.
+  %
+  As $\epsilon$ is arbitrary,  $\sbar\phi(p\,;b)\approx\sbar\phi(p\,;b')$ follows.
+\end{proof}
 
 \begin{lemma}
   The following are equivalent for every global sample $p(x^{\rm s})$
@@ -511,34 +544,6 @@ We write \emph{$a\approx b$\/} if $a\approx_\epsilon b$ holds for every $\epsilo
 
 
 
-\begin{fact}
-  Let $\phi(x\,;z)\in L$ and $M$ be given.
-  %
-  Let $p(x^{\rm s})$ be a smooth sample.
-  %
-  Then if $p$ is invariant, it is approximable and definable.
-\end{fact}
-
-\begin{proof}
-  Let $s\in\U^{\rm f*}$ be such that $\sbar\phi(s\,;b)\approx\sbar\phi(p\,;b)$ for all $b\in\U^{|z|}$.
-  %
-  Assuming \ssf{1} of Definition~\ref{def_genstable}, we prove \ssf{2} and \ssf{3}. 
-  
-  \ssf{1}$\IMP$\ssf{2.} Let $\mu\in\RR$ be such that $\sbar\phi(p\,;b)\approx\mu\in\RR$.
-  %
-  Let $b'$ be such that $s\cnonfork_{M^{\rm f}}b'\equiv_{M^{\rm f}}b$.
-  %
-  By \ssf{1}, $\sbar\phi(s\,;b')\approx\mu$. 
-  %
-  Therefore there is an $r\in M^{\rm f}$ such that $\sbar\phi(r\,;b')\approx_\epsilon\mu$.
-  %
-  As $b'\equiv_{M^{\rm f}}b$, we obtain  $\sbar\phi(r\,;b)\approx_\epsilon\mu$.
-
-  \ssf{1}$\IMP$\ssf{3.} The set $\{b:\sbar\phi(p\,;b)<\epsilon\}$ coincides with 
-  $\{b:\sbar\phi(s\,;b)<\epsilon\}$, hence is definable in $\U^{\rm f*}$.
-  %
-  As it is invariat over $M^{\rm f}$, it is definable over $M^{\rm f}$.
-\end{proof}
 
 The following is a useful characterization of smooth samples.
 
