@@ -311,7 +311,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Samples}\label{samples}
+\section{Abstract samples}\label{samples}
 \def\medrel#1{\parbox[t]{6ex}{\hfil$#1$}}
 \def\ceq#1#2#3{\parbox[t]{19ex}{$\displaystyle #1$}\medrel{#2}$\displaystyle  #3$}
 \def\uuu{{\mathds 1}}
@@ -321,9 +321,7 @@
 
 Let $M$ be a structure of signature $L$.
 %
- The \emph{finite (fractional) sample expansion\/} of $M$ is a many-sorted expansion that has a sort for $M$, which we call the home-sort, a sort for $\RR$, as ordered field, and for each $n$ a sort for $F_n$, an $\RR$-vector space of functions $f:M^n\to\RR$.
-%
-We call the sort of $F_n$ \emph{sample-sort.}
+The \emph{finite (fractional) sample expansion\/} of $M$ is a many-sorted expansion that has a sort for $M$, which we call the home-sort, a sort for $\RR$, as ordered field, and for each $n$ a sort for $F_n$, which we say are of \emph{sample-sort.}
 %
 Variables of sample-sort are denoted with symbols $x^{\rm s}, y^{\rm s}$ and variations thereof.   
 
@@ -367,14 +365,14 @@ We write \emph{$a\approx b$\/} if $a\approx_\epsilon b$ holds for every $\epsilo
 
 \begin{definition}
   Let $\U$ be a monster model of cardinality $\kappa>|L|$.
-  %`'
+  %
   We denote by \emph{$\U^{\rm f*}$\/} a saturated elementary extension of $\U^{\rm f}$ of cardinality $\kappa$.
   %
   As all saturated models of cardinality $\kappa$ are isomorphic, we can assume that $\U$ is the home-sort of $\U^{\rm f*}$.
   %
   Elements $r\in\U^{\rm f}$ are called \emph{finite samples,} elements in $s\in\U^{\rm f*}$ are called \emph{internal samples.}
 
-  A \emph{global sample\/} is a maximally consistent set of formulas of the form $\sbar\phi(x^{\rm s})\approx_\epsilon\mu$, where $\phi(x)\in L(\U)$, and $\epsilon,\mu\in\RR$.\QED
+  Finally, a \emph{global sample\/} is a maximally consistent set of formulas of the form $\sbar\phi(x^{\rm s})\approx_\epsilon\mu$, where $\phi(x)\in L(\U)$, and $\epsilon,\mu\in\RR$.\QED
 \end{definition}
 
 \begin{notation}
@@ -403,7 +401,9 @@ We write \emph{$a\approx b$\/} if $a\approx_\epsilon b$ holds for every $\epsilo
 \end{definition}
 
 \begin{definition}\label{def_} 
-  Let $M$ be given. A global sample $p(x^{\rm s})$ is
+  Let $M$ be given.
+  %
+  A global sample $p(x^{\rm s})$ is
   \begin{itemize}
     \item[1.]\noindent\emph{invariant\/} if $\sbar\phi(p\,;b)\approx\sbar\phi(p\,;b')$ for every $b\equiv_{M^{\rm f}}b'$ and every  $\phi(x\,;z)\in L$.
     \item[2.]\noindent\emph{finitely satisfiable\/} if for every finite subset of $p$ is realized in  $M^{\rm f}$.
@@ -415,7 +415,7 @@ Explicitely, \ssf{2} above means that if $\sbar\psi_i(x^{\rm s})\approx_\epsilon
 %
 We may also rephrase this by saying that for every finitely many $\psi_i(x)\in L(\U)$ there is an $r\in M^{\rm f}$ such that $\sbar\psi_i(r)\approx_\epsilon\sbar\psi_i(p)$ for all $i$.
 
-\begin{fact}
+\begin{fact}\label{fact_smooth=>fs}
   Let $M$ be given. Then every smooth invariant sample is finitely satisfiable and definable.
 \end{fact}
 
@@ -430,7 +430,7 @@ We may also rephrase this by saying that for every finitely many $\psi_i(x)\in L
   %
   Therefore there is an $r\in M^{\rm f}$ such that $\sbar\phi_i(r\,;b')\approx_\epsilon\mu_i$.
   %
-  As $b'\equiv_{M^{\rm f}}b$, we obtain  $\sbar\phi_i(r\,;b)\approx_\epsilon\mu_i$.
+  As $b'\equiv_{M^{\rm f}}b$, we obtain $\sbar\phi_i(r\,;b)\approx_\epsilon\mu_i$.
   %
   This proves finite satisfiability.
   %
@@ -450,6 +450,53 @@ We may also rephrase this by saying that for every finitely many $\psi_i(x)\in L
   %
   As $\epsilon$ is arbitrary,  $\sbar\phi(p\,;b)\approx\sbar\phi(p\,;b')$ follows.
 \end{proof}
+
+
+\begin{fact}
+  Let $M$ be given.
+  %
+  Let $p(x^{\rm s})$ be a smooth sample.
+  %
+  Then for every $\phi(x\,;z)\in L$ and every $\epsilon$ there are some finitely many $r_i\in M^{\rm f}$, say $0\le i<n$, such that for every $b\in\U^{|z|}$ we have $\phi(p\,;b)\approx_\epsilon\phi(r_i\,;b)$ for some $i$.
+\end{fact}
+
+\begin{proof}
+  Let $s$ be an internal sample that realizes $p(x^{\rm s})$.
+  %
+  Let $\phi(x\,;z)\in L$ and $\epsilon$ be fixed.
+  %
+  The type
+
+  \ceq{\hfill p(z)}{=}{\Big\{\sbar\phi(s\,;z)\not\approx_\epsilon\sbar\phi(r\,;z)\ :\ r\in M^{\rm f}\Big\}}
+  
+  is inconsistent by Fact~\ref{fact_smooth=>fs}.
+  %
+  Hence compatness yields the required $r_i\in M^{\rm f}$.
+\end{proof}
+
+
+\section{Concrete samples}
+
+In this section we assume that for every $\phi(x),\psi(x)\in L(\U)$ if $\phi(x)\imp\psi(x)$ then $\sbar\phi(x^{\rm s})\le\sbar\psi(x^{\rm s})$.
+
+
+\begin{fact}
+  Let $M$ be given.
+  %
+  Let $p(x^{\rm s})$ be global sample.
+  %
+  Suppose for every $\phi(x)\in L(\U)$ and $\epsilon$ there are $\theta_1(x), \theta_2(x)\in L(M)$ such that $\theta_1(x)\imp\phi(x)\imp\theta_2(x)$ and $\sbar\theta_2(p)\approx_\epsilon\sbar\theta_1(p)$.
+  %
+  Then $p$ is finitely satifiable.
+\end{fact}
+
+\begin{proof}
+  By elementarity there is an $r\in M$ such that $\sbar\theta_2(r)\approx_\epsilon\sbar\theta_1(r)\approx_\epsilon\theta_i(p)$. Then 
+\end{proof}
+
+
+
+
 
 \begin{lemma}
   The following are equivalent for every global sample $p(x^{\rm s})$
