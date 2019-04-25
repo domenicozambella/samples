@@ -321,21 +321,21 @@
 
 Let $M$ be a structure of signature $L$.
 %
-The \emph{finite (fractional) sample expansion\/} of $M$ is a many-sorted expansion that has a sort for $M$, which we call the home-sort, a sort for $\RR$, as ordered field, and a sort, called the  \emph{sample-sort,} for the set of functions $f:M\to\RR$ that are almot always $0$.
+The \emph{finite (fractional) sample expansion\/} of $M$ is a many-sorted expansion that has a sort for $M$, which we call the home-sort, a sort for $\RR$ as ordered field, and a \emph{sample-sort\/} for the set of functions $s:M\to\RR$ that are almot always $0$.
 %
-We write \emph{$M^{\rm f}$\/}$=\<M,\RR,F\>$ for the expansion above.
+We write \emph{$M^{\rm f}$\/}$=\<M,\RR,S\>$ for the expansion above.
 
-Variables of sample-sort are denoted with symbols $x^{\rm s}, y^{\rm s}$ and variations thereof.
-%
+Below $x$ is always a tuple of variables of the home sort, $x^{\rm s}$ a tuple of variables of the sample-sort, and $z$ a tuple of variables of the mixed sort.
+
 The language of $M^{\rm f}$ is denoted by \emph{$L^{\rm f}$.}
 %
 It expands the laguage of each sort, that is, $L$, the language of orders, the language of real vector spaces.
 %
-Moreover, for every $\phi(x\,;z,z^{\rm s})\in L^{\rm f}$ there is a symbol for a function 
+Moreover, for every $\phi(x\,;z)\in L^{\rm f}$ there is a symbol for a function 
 
-\ceq{\hfill\sbar\phi(x^{\rm s}\,;z,z^{\rm s})}
+\ceq{\hfill\sbar\phi(x^{\rm s};z)}
 {:}
-{F^{|x|}\times M^{|z|}\times F^{|z^{\rm s}|}\ \ \longrightarrow\ \ \RR}.
+{S^{|x|}\times M^{z}\ \ \longrightarrow\ \ \RR}.
 
 %For the moment we only require that $\sbar\phi(f\,;b)\neq0$ then $\E x\,\phi(x\,;b)$.
 
@@ -346,7 +346,7 @@ If $a$ and $b$ are (hyper)reals, we write \emph{$a\approx_\epsilon b$\/} for $|a
 We write \emph{$a\approx b$\/} if $a\approx_\epsilon b$ holds for every $\epsilon$.
 
 \begin{definition}
-  Let $\U$ be a monster model of cardinality $\kappa>|L|$ and let $\U^{\rm f}=\<\U,\RR,\F\>$ be the corresponding expansion.
+  Let $\U$ be a monster model of cardinality $\kappa>|L|$ and let $\U^{\rm f}=\<\U,\RR,\S\>$ be the corresponding expansion.
   %
   We denote by \emph{$\U^{\rm f*}$\/} a saturated elementary extension of $\U^{\rm f}$ of cardinality $\kappa$.
   %
@@ -358,6 +358,17 @@ We write \emph{$a\approx b$\/} if $a\approx_\epsilon b$ holds for every $\epsilo
 \end{definition}
 
 Note that $\U^{\rm f}$ is not saturated but it is homogeneous.
+
+
+\begin{notation}
+  For any global type $p(x^{\rm s})\in S(\U)$ and formula $\psi(x^{\rm s}\,;z^{\rm f})\in L^{\rm f}$ we write 
+  
+  \ceq{\hfill\emph{$\psi(p\,;\U^z)$}}{=}{\Big\{ b\in\U^{z^{\rm f}}\ :\ \psi(x^{\rm s}\,; b)\in p\Big\}}
+  
+  (the same notation applies with $x$ for $x^{\rm s}$). This notation intentionally confuses $p$ with any of its realizations in some elementary extension of $\U^{\rm f}$.
+  %
+  Sets of this form are called \emph{externally definable.}\QED
+\end{notation}
 
 
 \begin{definition}\label{def_smooth_global}
@@ -372,58 +383,21 @@ The following notions are standard
   %
   A global sample $p(x^{\rm s})$ is
   \begin{itemize}
-    \item[1.]\noindent\emph{invariant\/} if for every formula $\phi(x^{\rm s}\,;z,z
-    ^{\rm s})$ the set $\phi(p\,;\U,\F)$ is invariant over $M^{\rm f}$;
+    \item[1.]\noindent\emph{invariant\/} if for every formula $\phi(x^{\rm s}\,;z
+    ^{\rm f})$ the set $\phi(p\,;\U^{\rm f})$ is invariant over $M^{\rm f}$;
     \item[2.]\noindent\emph{finitely satisfiable\/} if for every finite subset of $p(x^{\rm s})$ is realized in  $M^{\rm f}$.
-    \item[3.]\noindent\emph{definable\/} if, for every $\psi(x^{\rm s}\,;z,z^{\rm s})\in L^{\rm f}$, the set $\psi(p\,;\U,\F)$ is definable over $M^{\rm f}$.\QED
+    \item[3.]\noindent\emph{definable\/} if, for every $\psi(x^{\rm s}\,;z^{\rm f})\in L^{\rm f}$, the set $\psi(p\,;\U^{\rm f})$ is definable over $M^{\rm f}$.\QED
   \end{itemize}
 \end{definition}
 
-
-
-\begin{notation}
-  For any global type $p(x^{\rm s})\in S(\U)$ and formula $\psi(x^{\rm s}\,;z)\in L^{\rm f}$ we write 
-  
-  \ceq{\hfill\emph{$\psi(p\,;\U)$}}{=}{\Big\{ b\in\U^{|z|}\ :\ \psi(x^{\rm s}\,; b)\in p\Big\}}
-  
-  (the same notation applies with $x$ for $x^{\rm s}$). This notation intentionally confuses $p$ with any of its realizations in some elementary extension of $\U^{\rm f}$.
-  %
-  Sets of this form are called \emph{externally definable.}
-  %
-  The type $p(x^{\rm s})$ may be identified with a collection of externally definable sets.
-  
-  We extend this notation to functions.
-  %
-  If $\phi(x\,;z)\in L$ and $p(x^{\rm s})$ is a global sample, we write $\sbar\phi(p\,;b)$ for the unique $\mu\in\RR$ such that $p(x^{\rm s})\proves \bar\phi(x^{\rm s}\,;b)\approx\mu$.
-  %
-  In analogy to the terminology above, we may say that $\sbar\phi(p\,;z)$ is an \emph{externally definable\/} real valued function.
-  %
-  A global sample may be identified with a family of externally definable functions.
-  \QED
-\end{notation}
-
-Explicitely, \ssf{2} above means that if $\sbar\psi_i(x^{\rm s})\approx_\epsilon\mu_i$ are some finitely many formulas in $p$, then there is an $r\in M^{\rm f}$ such that $\sbar\psi_i(r)\approx_\epsilon\mu_i$ for all $i$.
-%
-We may also rephrase this by saying that for every finitely many $\psi_i(x)\in L(\U)$ there is an $r\in M^{\rm f}$ such that $\sbar\psi_i(r)\approx_\epsilon\sbar\psi_i(p)$ for all $i$.
 
 \begin{fact}
   Let $M$ be given.
   %
   Let $p(x^{\rm s})$ be a global sample.  
   %
-  Then, if $p$ is finitely satisfiable , it is is invariant.
+  Then, if $p$ is finitely satisfiable, it is is invariant.\QED
 \end{fact}
-
-\begin{proof}
-  Let $b\equiv_{M^{\rm f}}b'$ be given.
-  %
-  Let $r\in M^{\rm f}$ be such that $\sbar\phi(p\,;b)\approx_\epsilon\sbar\phi(r\,;b)$ and $\sbar\phi(p\,;b')\not\approx_\epsilon\sbar\phi(r;b')$.
-  %
-  But $\sbar\phi(r\,;b)\approx\sbar\phi(r;b')$ and therefore $\sbar\phi(p\,;b)\approx_\epsilon\sbar\phi(p\,;b')$.
-  %
-  As $\epsilon$ is arbitrary,  $\sbar\phi(p\,;b)\approx\sbar\phi(p\,;b')$ follows.
-\end{proof}
-
 
 \begin{fact}\label{fact_smooth=>fs}
   Let $M$ be given.
@@ -434,11 +408,11 @@ We may also rephrase this by saying that for every finitely many $\psi_i(x)\in L
 \end{fact}
 
 \begin{proof}
-  Let $s$ be an internal sample that realizes an invariant global sample $p(x^{\rm s})$.
+  Let $a^{\rm s}$ be an internal sample that realizes $p(x^{\rm s})$.
   %
-  Let $\sbar\phi_i(x^{\rm s}\,;b)\approx_\epsilon\mu_i$ be some finitely many formulas in $p$.
+  Let $\phi_i(x^{\rm s}\,;z^{\rm f})\in L^{\rm f}$ and assume $\phi_i(x^{\rm s}\,;b^{\rm f})\in p$.
   %
-  Let $b'$ be such that $s\cnonfork_{M^{\rm f}}b'\equiv_{M^{\rm f}}b$.
+  Let $b_0^{\rm f}$ be such that $s\cnonfork_{M^{\rm f}}b_0^{\rm f}\equiv_{M^{\rm f}}b^{\rm f}$.
   %
   By invariance, $\sbar\phi_i(s\,;b')\approx\mu_i$. 
   %
