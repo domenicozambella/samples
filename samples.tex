@@ -114,6 +114,9 @@
 
 \newcommand{\cev}[1]{\reflectbox{\ensuremath{\vec{\reflectbox{\ensuremath{#1}}}}}}
 \newcommand{\sbar}[1]{\mkern 3mu\overline{\mkern-3mu#1\mkern-1mu}\mkern 1mu}
+\newcommand{\barM}{\mkern 4mu\overline{\mkern-4mu M\mkern-2mu}\mkern 2mu}
+\newcommand{\barU}{\mkern 2mu\overline{\mkern-2mu\U\mkern-2mu}\mkern 2mu}
+\newcommand{\barL}{\mkern 2.5mu\overline{\mkern-2.5mu L\mkern-3.5mu}\mkern 3.5mu}
 
 \def\nonfork{\mathop{\raise0.2ex\hbox{
    \ooalign{\hidewidth$\vert$\hidewidth\cr\raise-0.9ex\hbox{$\smile$}}}}}
@@ -324,55 +327,41 @@ Let $M$ be a structure of signature $L$.
 %
 The \emph{fractional multiset expansion\/} of $M$ is a many-sorted expansion that has a sort for $M$, which we call the home-sort, a sort for $\RR$, and a \emph{sample-sort\/} for the set of functions $s:M\to\RR$ that are almot always $0$.
 %
-We write \emph{$\sbar M$\/}$=\<M,\RR,M^{\rm s}\>$ for the expansion above.
+We write \emph{$\barM$\/}$=\<M,\RR,M^{\rm s}\>$ for the expansion above.
 
 Below $x,y,z$ are always tuples of variables of home-sort, $x^{\rm s},y^{\rm s},z^{\rm s}$ are tuples of sample-sort of the same the length of $x,y$, respectively $z$.
 
-The language of $\sbar M$ is denoted by \emph{$\sbar L$.}
+The language of $\barM$ is denoted by \emph{$\barL$.}
 %
-It expands $L$, the language of ordered rings (on $\RR$), the language of real vector spaces (on $M^{\rm s}$).
-%
-Moreover, for every $\phi(x\,;z)\in L$ there is a symbol for a function 
-
-\ceq{\hfill\sbar\phi(x^{\rm s};z)}
-{:}
-{S^{|x|}\times M^{|z|}\ \ \longrightarrow\ \ \RR}.
-
-%For the moment we only require that $\sbar\phi(f\,;b)\neq0$ then $\E x\,\phi(x\,;b)$.
-
-Below, $\epsilon$ always ranges over the positive standard reals.
-%
-If $a$ and $b$ are (hyper)reals, we write \emph{$a\approx_\epsilon b$\/} for $|a-b|<\epsilon$.
-%
-We write \emph{$a\approx b$\/} if $a\approx_\epsilon b$ holds for every $\epsilon$.
+It will be defined in the next section as it is not relevat for at present. 
 
 \begin{definition}
-  Let $\U$ be a monster model of cardinality $\kappa>|L|$ and let $\sbar\U=\<\U,\RR,\U^{\rm s}\>$ be the corresponding expansion.
+  Let $\U$ be a monster model of cardinality $\kappa>|L|$ and let $\barU=\<\U,\RR,\U^{\rm s}\>$ be the corresponding expansion.
   %
-  We denote by \emph{$\sbar\U^*$\/} a saturated elementary extension of $\sbar\U$ of cardinality $\kappa$.
+  We denote by \emph{$\barU^*$\/} a saturated elementary extension of $\barU$ of cardinality $\kappa$.
   %
-  As all saturated models of cardinality $\kappa$ are isomorphic, we can assume that $\sbar\U^*=\<\U,\,\RR^*,\U^{\rm s*}\>$, where $\RR^*$ and $\U^{\rm s*}$ are suitable saturated extensions of $\RR$, respectively $\U^{\rm s}$.
+  As all saturated models of cardinality $\kappa$ are isomorphic, we can assume that $\barU^*=\<\U,\,\RR^*,\U^{\rm s*}\>$, where $\RR^*$ and $\U^{\rm s*}$ are suitable saturated extensions of $\RR$, respectively $\U^{\rm s}$.
   %
   Elements $\U^{\rm s}$ are called \emph{finite samples,} elements in $\U^{\rm s*}$ are called \emph{internal samples.}
 
-  Finally, a \emph{global sample\/} is a type $p(x^{\rm s})\in S(\U,\sbar M)$, where $M$ is a model which will be clear from the context.\QED
+  Finally, a \emph{global sample\/} is a type $p(x^{\rm s})\in S(\U,\barM)$, where $M$ is a model which will be clear from the context.\QED
 \end{definition}
 
 
 \begin{notation}
-  For any global type $p(x^{\rm s})\in S(\U,\sbar M)$, formula $\psi(x^{\rm s}\,;z)\in\sbar L(\sbar M)$, and $b\in\U^{|z|}$ we write \emph{$\psi(p\,;b)$} for $\psi(x^{\rm s}\,; b)\in p$.
+  For any global type $p(x^{\rm s})\in S(\U,\barM)$, formula $\psi(x^{\rm s}\,;z)\in\barL(\barM)$, and $b\in\U^{|z|}$ we write \emph{$\psi(p\,;b)$} for $\psi(x^{\rm s}\,; b)\in p$.
   %
   We also write
   
   \ceq{\hfill\emph{$\psi(p\,;\U)$}}{=}{\Big\{ b\in\U^{|z|}\ :\ \psi(p\,;b)\Big\}}
   
-  (the same notation applies with $x$ for $x^{\rm s}$). This notation intentionally confuses $p$ with any of its realizations in some elementary extension of $\sbar\U$.
+  (the same notation applies with $x$ for $x^{\rm s}$). This notation intentionally confuses $p$ with any of its realizations in some elementary extension of $\barU$.
   %
   Sets of this form are called \emph{externally definable.}\QED
 \end{notation}
 
 \begin{definition}\label{def_smooth_global}
-  A global sample $p(x^{\rm s})$ is \emph{smooth\/} if it is realized in $\sbar\U^*$.\QED
+  A global sample $p(x^{\rm s})$ is \emph{smooth\/} if it is realized in $\barU^*$.\QED
 \end{definition}
 
 The following notions are standard 
@@ -382,9 +371,9 @@ The following notions are standard
   %
   A global sample $p(x^{\rm s})$ is
   \begin{itemize}
-    \item[1.]\noindent\emph{home-sort invariant\/} if for any $\phi(x^{\rm s}\,;z)\in\sbar L(\sbar M)$ the set $\phi(p\,;\U)$ is invariant over $\sbar M$;
-    \item[2.]\noindent\emph{finitely satisfiable\/} if for every finite subset of $p(x^{\rm s})$ is realized in $\sbar M$;
-    \item[3.]\noindent\emph{definable\/} if, for every $\psi(x^{\rm s}\,;z)\in\sbar L(\sbar M)$, the set $\psi(p\,;\U)$ is definable over $\sbar M$.\QED
+    \item[1.]\noindent\emph{invariant\/} if for any $\phi(x^{\rm s}\,;z)\in\barL(\barM)$ the set $\phi(p\,;\U)$ is invariant over $\barM$;
+    \item[2.]\noindent\emph{finitely satisfiable\/} if for every formula in $p(x^{\rm s})$ is satisfied in $\barM$;
+    \item[3.]\noindent\emph{definable\/} if, for every $\psi(x^{\rm s}\,;z)\in\barL(\barM)$, the set $\psi(p\,;\U)$ is definable over $\barM$.\QED
   \end{itemize}
 \end{definition}
 
@@ -408,89 +397,95 @@ The following notions are standard
 \begin{proof}
   Let $s$ be an internal sample that realizes $p(x^{\rm s})$.
   %
-  Let $\phi(x^{\rm s}\,;b)\in p$ for some $\phi(x^{\rm s}\,;z)\in \sbar L(\sbar M)$ and $b\in\U^{|z|}$.
+  Let $\phi(x^{\rm s}\,;b)\in p$ for some $\phi(x^{\rm s}\,;z)\in \barL(\barM)$ and $b\in\U^{|z|}$.
   %
-  Let $b'$ be such that $s\cnonfork_{\sbar M}b'\equiv_{\sbar M}b$.
+  Let $b'$ be such that $s\cnonfork_{\barM}b'\equiv_{\barM}b$.
   %
   By invariance, $\phi(s\,;b')$.
   %
   Therefore there is an $r\in M^{\rm s}$ such that $\phi(r\,;b')$.
   %
-  As $b'\equiv_{\sbar M}b$, we obtain $\phi(r\,;b)$.
+  As $b'\equiv_{\barM}b$, we obtain $\phi(r\,;b)$.
   %
   This proves finite satisfiability.
   
-  Now, let $\psi(x^{\rm s}\,;z)\in \sbar L(\sbar M)$. As $\psi(p\,;\U)=\psi(s\,;\U)$ is definable in $\sbar\U^*$.
+  Now, let $\psi(x^{\rm s}\,;z)\in \barL(\barM)$. As $\psi(p\,;\U)=\psi(s\,;\U)$ is definable in $\barU^*$.
   %
-  By invariance it is definable in $\sbar M$. 
+  By invariance it is definable in $\barM$. 
 \end{proof}
 
-% \begin{fact}
-%   Let $M$ be given.
-%   %
-%   Let $p(x^{\rm s})$ be a smooth invariant sample.
-%   %
-%   Then for every $\phi(x^{\rm s}\,;z)\in L$ there are some finitely many $r_i\in \sbar M$, say $0\le i<n$, such that for every $b\in\U^{|z|}$ we have $\phi(p\,;b)\iff\phi(r_i\,;b)$ for some $i$.
-% \end{fact}
 
-% \begin{proof}
-%   Let $s$ be an internal sample that realizes $p(x^{\rm s})$.
-%   %
-%   Let $\phi(x\,;z)\in L$ and $\epsilon$ be fixed.
-%   %
-%   The type
-
-%   \ceq{\hfill p(z)}{=}{\Big\{\phi(s\,;z)\niff\phi(r\,;z)\ :\ r\in \sbar M\Big\}}
-  
-%   is inconsistent by Fact~\ref{fact_smooth=>fs}.
-%   %
-%   Hence compatness yields the required $r_i\in \sbar M$.
-% \end{proof}
-
-\begin{fact}
+\begin{lemma}
   Let $M$ be given.
   %
   For every global sample $p(x^{\rm s})$ the following are equivalent
   \begin{itemize}
     \item[1.] $p$ is smooth and invariant;
-    \item[2.] $p$ is definable and for every $\phi(x^{\rm s}\,;z)\in L$ there are some finitely many $r_i\in \sbar M$, say $0\le i<n$, such that for every $b\in\U^{|z|}$ we have $\phi(p\,;b)\iff\phi(r_i\,;b)$ for some $i$;
+    \item[2.] $p$ is definable and for every $\phi(x^{\rm s}\,;z)\in L$ there are some finitely many $r_i\in \barM$, say $0\le i<n$, such that for every $b\in\U^{|z|}$ we have $\phi(p\,;b)\iff\phi(r_i\,;b)$ for some $i$;
     \item[3.] $p$ is definable and finitely satisfiable.
   \end{itemize}
-\end{fact}
+\end{lemma}
 
 \begin{proof}
   \ssf{1}$\IMP$\ssf{2} definability has been proved above.
   %
   Let $s$ be an internal sample that realizes $p(x^{\rm s})$.
   %
-  Let $\phi(x\,;z)\in L$ and $\epsilon$ be fixed.
+  Let $\phi(x^{\rm s}\,;z)\in\barL(\barM)$.
   %
   The type
 
-  \ceq{\hfill q(z)}{=}{\Big\{\phi(s\,;z)\niff\phi(r\,;z)\ :\ r\in \sbar M\Big\}}
+  \ceq{\hfill q(z)}{=}{\Big\{\phi(s\,;z)\niff\phi(r\,;z)\ :\ r\in \barM\Big\}}
   
   is inconsistent by Fact~\ref{fact_smooth=>fs}.
   %
-  Hence compatness yields the required $r_i\in\sbar M$.
+  Hence compatness yields the required $r_i\in\barM$.
 
   \ssf{2}$\IMP$\ssf{3} Is clear.
 
   \ssf{3}$\IMP$\ssf{1} 
   Invariance has been proved above.
   %
-  For any $\phi(x^{\rm s}\,;z)\in \sbar L(\sbar M)$ and $r\in M^{\rm s}$ there is a formula $\theta(z)\in L(M)$ defining the set $\{b\in\U^{|z|}:\phi(p\,;b)\iff\phi(r\,;b)\}$.
+  For any $\phi(x^{\rm s}\,;z)\in \barL(\barM)$ and $r\in M^{\rm s}$ there is a formula $\theta(z)\in L(M)$ defining the set $\{b\in\U^{|z|}:\phi(p\,;b)\iff\phi(r\,;b)\}$.
   %
-  Let $q(x^{\rm s})$ contain the formulas
+  Let $q(x^{\rm s})$ be the type containing all the formulas
 
   \ceq{\,}{\,}{\A z\Big[\theta(z)\wedge\phi(r\,;z)\imp\phi(x^{\rm s};z)\Big].}
 
-  It is clear that $q(x^{\rm s})$ is equivalent to $p(x^{\rm s})$.  
+  as $\phi(x^{\rm s}\,;z)$ and $r$ range as above.
   %
-  As $q(x^{\rm s})$ is a type over $\sbar M$, it is realized in $\sbar\U^*$.
+  This type is consistent and is equivalent to $p(x^{\rm s})$.  
+  %
+  As $q(x^{\rm s})$ is a type over $\barM$, it is realized in $\barU^*$.
 \end{proof}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Less abstract samples}
+
+
+
+, the language of ordered rings (on $\RR$), the language of real vector spaces (on $M^{\rm s}$).
+%
+Moreover, for every $\phi(x\,;z)\in L$ there is a symbol for a function 
+
+\ceq{\hfill\sbar\phi(x^{\rm s};z)}
+{:}
+{S^{|x|}\times M^{|z|}\ \ \longrightarrow\ \ \RR}.
+
+%For the moment we only require that $\sbar\phi(f\,;b)\neq0$ then $\E x\,\phi(x\,;b)$.
+
+Below, $\epsilon$ always ranges over the positive standard reals.
+%
+If $a$ and $b$ are (hyper)reals, we write \emph{$a\approx_\epsilon b$\/} for $|a-b|<\epsilon$.
+%
+We write \emph{$a\approx b$\/} if $a\approx_\epsilon b$ holds for every $\epsilon$.
 
 In this section we assume that for every $\phi(x),\psi(x)\in L(\U)$ if $\phi(x)\imp\psi(x)$ then $\sbar\phi(x^{\rm s})\le\sbar\psi(x^{\rm s})$.
 
@@ -508,13 +503,13 @@ In this section we assume that for every $\phi(x),\psi(x)\in L(\U)$ if $\phi(x)\
 \begin{proof}
   Let $\phi_i(x)$, for $0\le i<n$, be given.
   %
-  We claim that there is an $r\in \sbar M$ such that $\sbar\phi_i(p)\approx_{3\epsilon}\sbar\phi_i(r)$ for every $i$.
+  We claim that there is an $r\in \barM$ such that $\sbar\phi_i(p)\approx_{3\epsilon}\sbar\phi_i(r)$ for every $i$.
   
   Let $\theta_{i,1}(x)$ and $\theta_{i,2}(x)$ be as in the fact.
   %
   As $\theta_{i,1}(p)\le\phi_i(p)\le\theta_{i,2}(p)$, then $\theta_{i,1}(p)\approx_\epsilon\phi_i(p)$.
   %
-  By elementarity there is an $r\in \sbar M$ such that $\theta_{i,1}(r)\approx_\epsilon\theta_{i,1}(p)$ and $\theta_{i,2}(r)\approx_\epsilon\theta_{i,2}(p)$.
+  By elementarity there is an $r\in \barM$ such that $\theta_{i,1}(r)\approx_\epsilon\theta_{i,1}(p)$ and $\theta_{i,2}(r)\approx_\epsilon\theta_{i,2}(p)$.
   %
   Then the claim follows immediately.
 \end{proof}
@@ -527,9 +522,9 @@ In this section we assume that for every $\phi(x),\psi(x)\in L(\U)$ if $\phi(x)\
   The following are equivalent for every global sample $p(x^{\rm s})$
   \begin{itemize}
     \item[1.] $p$ is smooth and invariant;
-    \item[2.] for every finite $B\subseteq\U^{|z|}$ and every $\epsilon$, there is an $r\in \sbar M$ such that $\sbar\phi(p\,;b)\approx_\epsilon\sbar\phi(r\,;b)$ for all $b\in B$;
-    \item[2.] for every $\phi_i(x\,;z)\in L$, every $b_i\in\U^{|z|}$, and every $\epsilon$, there is an $r\in \sbar M$ such that $\sbar\phi_i(p\,;b_i)\approx_\epsilon\sbar\phi_i(r\,;b_i)$, for every $0\le i<n$;
-    \item[2.] for every $\psi_0(x),\dots,\psi_{n-1}(x)\in L(\U)$ and every $\epsilon$, there is an $r\in \sbar M$ such that $\sbar\psi_i(p)\approx_\epsilon\sbar\psi_i(r)$, for every $i<n$;
+    \item[2.] for every finite $B\subseteq\U^{|z|}$ and every $\epsilon$, there is an $r\in \barM$ such that $\sbar\phi(p\,;b)\approx_\epsilon\sbar\phi(r\,;b)$ for all $b\in B$;
+    \item[2.] for every $\phi_i(x\,;z)\in L$, every $b_i\in\U^{|z|}$, and every $\epsilon$, there is an $r\in \barM$ such that $\sbar\phi_i(p\,;b_i)\approx_\epsilon\sbar\phi_i(r\,;b_i)$, for every $0\le i<n$;
+    \item[2.] for every $\psi_0(x),\dots,\psi_{n-1}(x)\in L(\U)$ and every $\epsilon$, there is an $r\in \barM$ such that $\sbar\psi_i(p)\approx_\epsilon\sbar\psi_i(r)$, for every $i<n$;
     \item[4.] there are finitely many formulas $\theta_i(x)\in L(M)$ such that for every $b\in\U^{|z|}$ we have that $\theta_i(x)\imp\phi(x\,;b)\imp\theta_j(x)$ and $\sbar\theta_j(p)-\sbar\theta_i(p)<\epsilon$ for some $i,j$.
   \end{itemize}
 \end{lemma}
@@ -544,13 +539,13 @@ In this section we assume that for every $\phi(x),\psi(x)\in L(\U)$ if $\phi(x)\
   %
   Let $\mu_i\in\RR$ be such that $\sbar\phi(p\,;b_i)\approx\mu_i$ for every $i<n$.
   %
-  Let $\bar b'$ be such that $s\cnonfork_{\sbar M}\bar b'\equiv_{\sbar M}\bar b$.
+  Let $\bar b'$ be such that $s\cnonfork_{\barM}\bar b'\equiv_{\barM}\bar b$.
   %
   By invariance, $\sbar\phi(s\,;b'_i)\approx\mu_i$. 
   %
-  Therefore there is an $r\in \sbar M$ such that $\sbar\phi(r\,;b'_i)\approx_\epsilon\mu_i$ for every $i<n$.
+  Therefore there is an $r\in \barM$ such that $\sbar\phi(r\,;b'_i)\approx_\epsilon\mu_i$ for every $i<n$.
   %
-  As $\bar b'\equiv_{\sbar M}\bar b$, we obtain  $\sbar\phi(r\,;b_i)\approx_\epsilon\mu_i$.
+  As $\bar b'\equiv_{\barM}\bar b$, we obtain  $\sbar\phi(r\,;b_i)\approx_\epsilon\mu_i$.
 
 
   \ssf{1}$\IMP$\ssf{2}.
@@ -560,13 +555,13 @@ In this section we assume that for every $\phi(x),\psi(x)\in L(\U)$ if $\phi(x)\
   %
   Let $\mu_i\in\RR$ be such that $\sbar\phi_i(p\,;b_i)\approx\mu_i$.
   %
-  Let $\bar b'$ be such that $s\cnonfork_{\sbar M}\bar b'\equiv_{\sbar M}\bar b$.
+  Let $\bar b'$ be such that $s\cnonfork_{\barM}\bar b'\equiv_{\barM}\bar b$.
   %
   By invariance, $\sbar\phi_i(s\,;b'_i)\approx\mu_i$. 
   %
-  Therefore there is an $r\in \sbar M$ such that $\sbar\phi_i(r\,;b'_i)\approx_\epsilon\mu_i$ for every $i<n$.
+  Therefore there is an $r\in \barM$ such that $\sbar\phi_i(r\,;b'_i)\approx_\epsilon\mu_i$ for every $i<n$.
   %
-  As $\bar b'\equiv_{\sbar M}\bar b$, we obtain  $\sbar\phi_i(r\,;b_i)\approx_\epsilon\mu_i$.
+  As $\bar b'\equiv_{\barM}\bar b$, we obtain  $\sbar\phi_i(r\,;b_i)\approx_\epsilon\mu_i$.
 
 
   \ssf{1}$\IMP$\ssf{3}.
@@ -575,11 +570,11 @@ In this section we assume that for every $\phi(x),\psi(x)\in L(\U)$ if $\phi(x)\
   %
   The type 
 
-  \ceq{\hfill p(z)}{=}{\Big\{\sbar\phi(s\,;z)\not\approx_\epsilon\sbar\phi(r\,;z)\ :\ r\in \sbar M\Big\}}
+  \ceq{\hfill p(z)}{=}{\Big\{\sbar\phi(s\,;z)\not\approx_\epsilon\sbar\phi(r\,;z)\ :\ r\in \barM\Big\}}
   
   is inconsistent by \ssf{2}.
   %
-  Hence compatness yields the required $r_1,\dots,r_n\in \sbar M$.
+  Hence compatness yields the required $r_1,\dots,r_n\in \barM$.
 
   \ssf{3}$\IMP$\ssf{2}. Clear.
 
@@ -587,11 +582,11 @@ In this section we assume that for every $\phi(x),\psi(x)\in L(\U)$ if $\phi(x)\
   %
   We prove that $p$ is invariant.
   %
-  Pick some $b\equiv_{\sbar M}b'$ and some $\epsilon$.
+  Pick some $b\equiv_{\barM}b'$ and some $\epsilon$.
   %
-  Let $r,r'\in \sbar M$ be such that $\sbar\phi(p\,;b)\approx_\epsilon\sbar\phi(r\,;b)$ and $\sbar\phi(p\,;b')\not\approx_\epsilon\sbar\phi(r';b')$.
+  Let $r,r'\in \barM$ be such that $\sbar\phi(p\,;b)\approx_\epsilon\sbar\phi(r\,;b)$ and $\sbar\phi(p\,;b')\not\approx_\epsilon\sbar\phi(r';b')$.
   %
-  As $\sbar\phi(r\,;b)\approx\sbar\phi(r';b')$ follows from  $b\equiv_{\sbar M}b'$, we obtain $\sbar\phi(p\,;b)\approx_\epsilon\sbar\phi(p\,;b')$.
+  As $\sbar\phi(r\,;b)\approx\sbar\phi(r';b')$ follows from  $b\equiv_{\barM}b'$, we obtain $\sbar\phi(p\,;b)\approx_\epsilon\sbar\phi(p\,;b')$.
 
   We prove that $p$ is smooth. 
   
@@ -601,16 +596,16 @@ In this section we assume that for every $\phi(x),\psi(x)\in L(\U)$ if $\phi(x)\
 
 
 
-%Clearly, if $s$ is an internal sample, then $p(x^{\rm s})=\tp(s/\sbar\U)$ is a smooth sample w.r.t.\@ any given formula $\phi(x\,;z)\in L$.
+%Clearly, if $s$ is an internal sample, then $p(x^{\rm s})=\tp(s/\barU)$ is a smooth sample w.r.t.\@ any given formula $\phi(x\,;z)\in L$.
 
 \begin{definition}\label{def_genstable}
   Let $\phi(x\,;z)\in L$ and $M$ be given.
   %
   A global sample $p(x^{\rm s})$ is
   \begin{itemize}
-    \item[1.]\noindent \emph{invariant\/} if $\bar\phi(p\,;b)\approx\bar\phi(p\,;b')$ for every $b\equiv_{\sbar M}b'$;
-    \item[2.]\noindent (pointwise) \emph{approximable\/} if, for every $b\in\U^{|z|}$ and every $\epsilon$, there is an $r\in \sbar M$ such that $\sbar\phi(p\,;b)\approx_\epsilon\sbar\phi(r\,;b)$;
-    \item[3.]\noindent \emph{definable\/} if, for every $\epsilon$, the set $\{b\in\U^{|z|}:\sbar\phi(p\,;b)<\epsilon\}$ is definable over $\sbar M$.\QED 
+    \item[1.]\noindent \emph{invariant\/} if $\bar\phi(p\,;b)\approx\bar\phi(p\,;b')$ for every $b\equiv_{\barM}b'$;
+    \item[2.]\noindent (pointwise) \emph{approximable\/} if, for every $b\in\U^{|z|}$ and every $\epsilon$, there is an $r\in \barM$ such that $\sbar\phi(p\,;b)\approx_\epsilon\sbar\phi(r\,;b)$;
+    \item[3.]\noindent \emph{definable\/} if, for every $\epsilon$, the set $\{b\in\U^{|z|}:\sbar\phi(p\,;b)<\epsilon\}$ is definable over $\barM$.\QED 
   \end{itemize}
 \end{definition}
 
@@ -626,7 +621,7 @@ The following is a useful characterization of smooth samples.
  %
  We write \emph{$\supp(p)$\/} for the \emph{support\/} of $p$, that is, the set of those $a$ in $\U$ such that $p\proves (a\in x^{\rm s})>\epsilon$ for some standard positive $\epsilon$.
  %
- If $s$ is a smooth sample  \emph{$\supp(s)$\/} is defined to be  \emph{$\supp(p)$\/} for $p(x^{\rm s})=\tp(s/\sbar\U)$. 
+ If $s$ is a smooth sample  \emph{$\supp(s)$\/} is defined to be  \emph{$\supp(p)$\/} for $p(x^{\rm s})=\tp(s/\barU)$. 
  
 
 
@@ -671,8 +666,8 @@ All definitions and facts in this section are relative to some given formula $\p
   \begin{itemize}
     \item[1.]\noindent \emph{invariant\/} if, for every $b,b'\in\U^{|z|}$ such that $b\equiv_Mb'$, we have $\sbar\phi(s\,;b)\approx\sbar\phi(s\,;b')$;
     \item[2.] \noindent \emph{definable\/} if, for every $\epsilon$, the set $\{b\in\U^{|z|}:\sbar\phi(s\,;b)<\epsilon\}$ is definable over $M$;
-    % \item [3.]\noindent  \emph{satisfiable\/} if, for all $b\in\U^{|z|}$, if $\sbar\phi(s\,;b)>\epsilon$, then  $\phi(r\,;b)>\epsilon$ for some $r\in \sbar M$.
-    \item [3.]\noindent  \emph{finitely satisfiable\/} if, for all $b\in\U^{|z|}$ there is an $r\in \sbar M$ such that  $\sbar\phi(s\,;b)\approx_\epsilon\sbar\phi(r\,;b)$;
+    % \item [3.]\noindent  \emph{satisfiable\/} if, for all $b\in\U^{|z|}$, if $\sbar\phi(s\,;b)>\epsilon$, then  $\phi(r\,;b)>\epsilon$ for some $r\in \barM$.
+    \item [3.]\noindent  \emph{finitely satisfiable\/} if, for all $b\in\U^{|z|}$ there is an $r\in \barM$ such that  $\sbar\phi(s\,;b)\approx_\epsilon\sbar\phi(r\,;b)$;
     \item[4.] \noindent  \emph{generically stable\/} if all of the above hold.\QED 
   \end{itemize}
   %When $\phi(x\,;z)$ and $M$ are not clear from the context we add: \emph{for $\phi(x\,;z)$ over/in $M$.}
@@ -696,7 +691,7 @@ All definitions and facts in this section are relative to some given formula $\p
   %
   Let $s$ be smooth and let $s'\equiv_Ms$ be any internal sample.
   %
-  If $b,b'\in\U^{|z|}$ and $b\equiv_Mb'$, then $b'=fb$ for some $f\in\Aut(\sbar\U^*/M)$.
+  If $b,b'\in\U^{|z|}$ and $b\equiv_Mb'$, then $b'=fb$ for some $f\in\Aut(\barU^*/M)$.
   %
   Then $\sbar\phi(s';fb)\approx\sbar\phi(f^{-1}s'\,;b)$.
   %
@@ -712,7 +707,7 @@ All definitions and facts in this section are relative to some given formula $\p
   %
   Then $\sbar\phi(s''\,;b)\not\approx_\epsilon\sbar\phi(s\,;b)$.
   %
-  As $s''\equiv_Ms$ are both in $\sbar\U^*$, then $s''=fs$ for some $f\in\Aut(\sbar\U^*/M)$.
+  As $s''\equiv_Ms$ are both in $\barU^*$, then $s''=fs$ for some $f\in\Aut(\barU^*/M)$.
   %
   Hence we obtan $\sbar\phi(s\,;f^{-1}b)\not\approx_\epsilon\sbar\phi(s\,;b)$ which contradics the invariance of $s$.
 \end{proof}
@@ -723,7 +718,7 @@ All definitions and facts in this section are relative to some given formula $\p
   %
   Let $\B\subseteq\U^{|z|}$ be arbitrary.
   %
-  We say that $s$ is \emph{(uniformly) approximable\/} on $\B$ if for every $\epsilon$ there is a finite sample $r\in \sbar M$ such that $\sbar\phi(s,b)\approx_\epsilon\sbar\phi(r,b)$ for every $b\in\B$. (The sample $r$ depends on $\epsilon$, not on $b$.)\QED
+  We say that $s$ is \emph{(uniformly) approximable\/} on $\B$ if for every $\epsilon$ there is a finite sample $r\in \barM$ such that $\sbar\phi(s,b)\approx_\epsilon\sbar\phi(r,b)$ for every $b\in\B$. (The sample $r$ depends on $\epsilon$, not on $b$.)\QED
 \end{definition}
 
 \begin{lemma}\label{lem_cons}
@@ -733,7 +728,7 @@ All definitions and facts in this section are relative to some given formula $\p
 \end{lemma}
 
 \begin{proof}
-  Let $r\in \sbar M$ be as in Definition~\ref{def_approximable_sample}.
+  Let $r\in \barM$ be as in Definition~\ref{def_approximable_sample}.
   %
   As $r$ is finite, we may assume that $\supp(r)=\{a_1,\dots,a_n\}$.
   %
@@ -811,7 +806,7 @@ For smooth samples the Vapnik-Chervonenkis Theorem can be strengthened as follow
 \end{corollary}
 
 \begin{proof}
-  By Theorem~\ref{thm_VC}, there is an $r\in \sbar M$ such that $\sbar\phi(s\,;b)\approx_\epsilon\sbar\phi(r\,;b)$ for all $b\in M^{|z|}$.
+  By Theorem~\ref{thm_VC}, there is an $r\in \barM$ such that $\sbar\phi(s\,;b)\approx_\epsilon\sbar\phi(r\,;b)$ for all $b\in M^{|z|}$.
   
   Suppose for a contradiction that $\sbar\phi(s\,;b')\not\approx_\epsilon\sbar\phi(r\,;b')$ for some $b'\in\U^{|z|}$.
   %
@@ -834,7 +829,7 @@ For smooth samples the Vapnik-Chervonenkis Theorem can be strengthened as follow
   We say that $\phi(x\,;z)\in L$ is \emph{distal\/} if there is a formula $\psi(x_1,\dots,x_n\,;z)\in L$ such that for every finite set $A\subseteq\U^{|x|}$ and every $b\in\U^{|z|}$ there are $a_1,\dots,a_n\in B$ such that $\psi(a_1,\dots,a_n,\;z)$ and $\psi(a_1,\dots,a_n,\,z)$ decides all formulas $\phi(a\,; z)$ for $a\in A$.\QED
 \end{definition}
 
-For every finite sample $r\in \sbar M$ and every $\mu\in\RR$ there is a formula $\psi(z)\in L(\supp r)$ such that $\sbar\phi(r\,;z)=\mu \iff \psi(z)$. The formula $\psi(z)$ depends on $r$.
+For every finite sample $r\in \barM$ and every $\mu\in\RR$ there is a formula $\psi(z)\in L(\supp r)$ such that $\sbar\phi(r\,;z)=\mu \iff \psi(z)$. The formula $\psi(z)$ depends on $r$.
 
 When $\phi(x\,;z)$ is distal 
 
@@ -850,7 +845,7 @@ If  $\phi(x\,;z)$ is distal then there is a formula $\psi$ such that  for every 
   \end{itemize}
 \end{theorem}
 
-There is a formula $\psi(x_1,\dots,x_n\,;z)$ such that for every $r\in \sbar M$ 
+There is a formula $\psi(x_1,\dots,x_n\,;z)$ such that for every $r\in \barM$ 
 
 there are $a_1,\dots,a_n$ such that $\phi(r\,;b)=\mu$ $\psi(x_1,\dots,x_n\,;z)$
 
