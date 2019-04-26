@@ -58,7 +58,8 @@
    \setlength{\labelsep}{1ex}
    \setlength{\leftmargin}{\labelwidth+\labelsep}
    \let\makelabel\mylabel}}{%
-   \end{list}\vspace*{-\parskip}}
+   \end{list}\vspace*{-\parskip}
+  }
 
 \def\E{\exists}
 \def\A{\forall}
@@ -112,7 +113,7 @@
 \def\EMtp{\textrm{{\small EM}\mbox{-}tp}}
 
 \newcommand{\cev}[1]{\reflectbox{\ensuremath{\vec{\reflectbox{\ensuremath{#1}}}}}}
-\newcommand{\sbar}[1]{\mkern 1.8mu\overline{\mkern-1.8mu#1\mkern-1mu}\mkern 1mu}
+\newcommand{\sbar}[1]{\mkern 3mu\overline{\mkern-3mu#1\mkern-1mu}\mkern 1mu}
 
 \def\nonfork{\mathop{\raise0.2ex\hbox{
    \ooalign{\hidewidth$\vert$\hidewidth\cr\raise-0.9ex\hbox{$\smile$}}}}}
@@ -313,7 +314,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Abstract samples}\label{samples}
 \def\medrel#1{\parbox[t]{6ex}{\hfil$#1$}}
-\def\ceq#1#2#3{\parbox[t]{19ex}{$\displaystyle #1$}\medrel{#2}$\displaystyle  #3$}
+\def\ceq#1#2#3{\parbox[t]{15ex}{$\displaystyle #1$}\medrel{#2}$\displaystyle  #3$}
 \def\uuu{{\mathds 1}}
 \def\gruuu{{\mathds 1}}
 \def\Av{{\rm Av}}
@@ -321,21 +322,21 @@
 
 Let $M$ be a structure of signature $L$.
 %
-The \emph{finite (fractional) sample expansion\/} of $M$ is a many-sorted expansion that has a sort for $M$, which we call the home-sort, a sort for $\RR$ as ordered field, and a \emph{sample-sort\/} for the set of functions $s:M\to\RR$ that are almot always $0$.
+The \emph{fractional multiset expansion\/} of $M$ is a many-sorted expansion that has a sort for $M$, which we call the home-sort, a sort for $\RR$, and a \emph{sample-sort\/} for the set of functions $s:M\to\RR$ that are almot always $0$.
 %
-We write \emph{$M^{\rm f}$\/}$=\<M,\RR,S\>$ for the expansion above.
+We write \emph{$\sbar M \ M^{\rm f}$\/}$=\<M,\RR,S\>$ for the expansion above.
 
-Below $x$ is always a tuple of variables of the home sort, $x^{\rm s}$ a tuple of variables of the sample-sort, and $z$ a tuple of variables of the mixed sort.
+Below $x,y,z$ are always tuples of variables of home-sort, $x^{\rm s},y^{\rm s},z^{\rm s}$ are tuples of sample-sort of the same the length of  $x,y$, respectively $z$.
 
 The language of $M^{\rm f}$ is denoted by \emph{$L^{\rm f}$.}
 %
-It expands the laguage of each sort, that is, $L$, the language of orders, the language of real vector spaces.
+It expands $L$, the language of ordered rings (on $\RR$), the language of real vector spaces (on $S$).
 %
-Moreover, for every $\phi(x\,;z)\in L^{\rm f}$ there is a symbol for a function 
+Moreover, for every $\phi(x\,;z)\in L$ there is a symbol for a function 
 
 \ceq{\hfill\sbar\phi(x^{\rm s};z)}
 {:}
-{S^{|x|}\times M^{z}\ \ \longrightarrow\ \ \RR}.
+{S^{|x|}\times M^{|z|}\ \ \longrightarrow\ \ \RR}.
 
 %For the moment we only require that $\sbar\phi(f\,;b)\neq0$ then $\E x\,\phi(x\,;b)$.
 
@@ -350,26 +351,24 @@ We write \emph{$a\approx b$\/} if $a\approx_\epsilon b$ holds for every $\epsilo
   %
   We denote by \emph{$\U^{\rm f*}$\/} a saturated elementary extension of $\U^{\rm f}$ of cardinality $\kappa$.
   %
-  As all saturated models of cardinality $\kappa$ are isomorphic, we can assume that $\U$ is the home-sort of $\U^{\rm f*}$.
+  As all saturated models of cardinality $\kappa$ are isomorphic, we can assume that $\U^{\rm f*}=\<\U,\RR^*,\S^*\>$, where $\RR^*$ and $ \S^*$ are suitable saturated extensions of $\RR$, respectively $\S$.
   %
-  Elements $r\in\U^{\rm f}$ are called \emph{finite samples,} elements in $s\in\U^{\rm f*}$ are called \emph{internal samples.}
+  Elements $\S$ are called \emph{finite samples,} elements in $\S^*$ are called \emph{internal samples.}
 
   Finally, a \emph{global sample\/} is a type $p(x^{\rm s})\in S(\U^{\rm f})$.\QED
 \end{definition}
 
-Note that $\U^{\rm f}$ is not saturated but it is homogeneous.
-
+Every automorphism of $\U^{\rm f*}$ fixes $\S$ (???).
 
 \begin{notation}
-  For any global type $p(x^{\rm s})\in S(\U)$ and formula $\psi(x^{\rm s}\,;z^{\rm f})\in L^{\rm f}$ we write 
+  For any global type $p(x^{\rm s})\in S(\U)$ and formula $\psi(x^{\rm s}\,;z)\in L^{\rm f}$ we write 
   
-  \ceq{\hfill\emph{$\psi(p\,;\U^z)$}}{=}{\Big\{ b\in\U^{z^{\rm f}}\ :\ \psi(x^{\rm s}\,; b)\in p\Big\}}
+  \ceq{\hfill\emph{$\psi(p\,;\U)$}}{=}{\Big\{ b\in\U^{|z|}\ :\ \psi(x^{\rm s}\,; b)\in p\Big\}}
   
   (the same notation applies with $x$ for $x^{\rm s}$). This notation intentionally confuses $p$ with any of its realizations in some elementary extension of $\U^{\rm f}$.
   %
   Sets of this form are called \emph{externally definable.}\QED
 \end{notation}
-
 
 \begin{definition}\label{def_smooth_global}
   A global sample $p(x^{\rm s})$ is \emph{smooth\/} if it is realized in $\U^{\rm f*}$.\QED
@@ -377,16 +376,14 @@ Note that $\U^{\rm f}$ is not saturated but it is homogeneous.
 
 The following notions are standard 
 
-
 \begin{definition}\label{def_} 
   Let $M$ be given.
   %
   A global sample $p(x^{\rm s})$ is
   \begin{itemize}
-    \item[1.]\noindent\emph{invariant\/} if for every formula $\phi(x^{\rm s}\,;z
-    ^{\rm f})$ the set $\phi(p\,;\U^{\rm f})$ is invariant over $M^{\rm f}$;
-    \item[2.]\noindent\emph{finitely satisfiable\/} if for every finite subset of $p(x^{\rm s})$ is realized in  $M^{\rm f}$.
-    \item[3.]\noindent\emph{definable\/} if, for every $\psi(x^{\rm s}\,;z^{\rm f})\in L^{\rm f}$, the set $\psi(p\,;\U^{\rm f})$ is definable over $M^{\rm f}$.\QED
+    \item[1.]\noindent\emph{home-sort invariant\/} if for any $\phi(x^{\rm s}\,;z)\in L(M^{\rm f})$ the set $\phi(p\,;\U)$ is invariant over $M^{\rm f}$;
+    \item[2.]\noindent\emph{finitely satisfiable\/} if for every finite subset of $p(x^{\rm s})$ is realized in $M^{\rm f}$;
+    \item[3.]\noindent\emph{definable\/} if, for every $\psi(x^{\rm s}\,;z)\in L^{\rm f}$, the set $\psi(p\,;\U)$ is definable over $M^{\rm f}$.\QED
   \end{itemize}
 \end{definition}
 
@@ -408,53 +405,54 @@ The following notions are standard
 \end{fact}
 
 \begin{proof}
-  Let $a^{\rm s}$ be an internal sample that realizes $p(x^{\rm s})$.
+  Let $s$ be an internal sample that realizes $p(x^{\rm s})$.
   %
-  Let $\phi_i(x^{\rm s}\,;z^{\rm f})\in L^{\rm f}$ and assume $\phi_i(x^{\rm s}\,;b^{\rm f})\in p$.
+  Let $\phi(x^{\rm s}\,;b)\in p$ for some $\phi(x^{\rm s}\,;z)\in L^{\rm f}$ and $b\in\U^{|z|}$.
   %
-  Let $b_0^{\rm f}$ be such that $s\cnonfork_{M^{\rm f}}b_0^{\rm f}\equiv_{M^{\rm f}}b^{\rm f}$.
+  Let $b'$ be such that $s\cnonfork_{M^{\rm f}}b'\equiv_{M^{\rm f}}b$.
   %
-  By invariance, $\sbar\phi_i(s\,;b')\approx\mu_i$. 
+  By invariance, $\phi(s\,;b')$.
   %
-  Therefore there is an $r\in M^{\rm f}$ such that $\sbar\phi_i(r\,;b')\approx_\epsilon\mu_i$.
+  Therefore there is an $r\in M^{\rm f}$ such that $\phi(r\,;b')$.
   %
-  As $b'\equiv_{M^{\rm f}}b$, we obtain $\sbar\phi_i(r\,;b)\approx_\epsilon\mu_i$.
+  As $b'\equiv_{M^{\rm f}}b$, we obtain $\phi(r\,;b)$.
   %
   This proves finite satisfiability.
   
-  Now, let $\psi(x^{\rm s}\,;z)\in L^{\rm f}$. As $\psi(p\,;\U)=\psi(s\,;\U)$ is definable in $\U^{\rm f*}$. By invariance it is definable in $M^{\rm f}$. 
+  Now, let $\psi(x^{\rm s}\,;z)\in L^{\rm f}$. As $\psi(p\,;\U)=\psi(s\,;\U)$ is definable in $\U^{\rm f*}$.
+  %
+  By invariance it is definable in $M^{\rm f}$. 
 \end{proof}
 
-\begin{fact}
-  Let $M$ be given.
-  %
-  Let $p(x^{\rm s})$ be a smooth sample.
-  %
-  Then for every $\phi(x\,;z)\in L$ and every $\epsilon$ there are some finitely many $r_i\in M^{\rm f}$, say $0\le i<n$, such that for every $b\in\U^{|z|}$ we have $\sbar\phi(p\,;b)\approx_\epsilon\sbar\phi(r_i\,;b)$ for some $i$.
-\end{fact}
+% \begin{fact}
+%   Let $M$ be given.
+%   %
+%   Let $p(x^{\rm s})$ be a smooth invariant sample.
+%   %
+%   Then for every $\phi(x^{\rm s}\,;z)\in L$ there are some finitely many $r_i\in M^{\rm f}$, say $0\le i<n$, such that for every $b\in\U^{|z|}$ we have $\phi(p\,;b)\iff\phi(r_i\,;b)$ for some $i$.
+% \end{fact}
 
-\begin{proof}
-  Let $s$ be an internal sample that realizes $p(x^{\rm s})$.
-  %
-  Let $\phi(x\,;z)\in L$ and $\epsilon$ be fixed.
-  %
-  The type
+% \begin{proof}
+%   Let $s$ be an internal sample that realizes $p(x^{\rm s})$.
+%   %
+%   Let $\phi(x\,;z)\in L$ and $\epsilon$ be fixed.
+%   %
+%   The type
 
-  \ceq{\hfill p(z)}{=}{\Big\{\sbar\phi(s\,;z)\not\approx_\epsilon\sbar\phi(r\,;z)\ :\ r\in M^{\rm f}\Big\}}
+%   \ceq{\hfill p(z)}{=}{\Big\{\phi(s\,;z)\niff\phi(r\,;z)\ :\ r\in M^{\rm f}\Big\}}
   
-  is inconsistent by Fact~\ref{fact_smooth=>fs}.
-  %
-  Hence compatness yields the required $r_i\in M^{\rm f}$.
-\end{proof}
+%   is inconsistent by Fact~\ref{fact_smooth=>fs}.
+%   %
+%   Hence compatness yields the required $r_i\in M^{\rm f}$.
+% \end{proof}
 
 \begin{fact}
   Let $M$ be given.
   %
   For every global sample $p(x^{\rm s})$ the following are equivalent
   \begin{itemize}
-    \item[1.] $p$ is smooth;
-    \item[2.] $p$ is definable and for every $\phi(x\,;z)\in L$ and every $\epsilon$ there are some finitely many $r_i\in M^{\rm f}$, say $0\le i<n$, such that for every $b\in\U^{|z|}$ we have $\sbar\phi(p\,;b)\approx_\epsilon\sbar\phi(r_i\,;b)$ for some $i$.
-    \item[3.] $p$ is definable and for every $\phi(x)\in L(\U)$ and every $\epsilon$ there is an $r\in M^{\rm f}$ such that $\sbar\phi(p)\approx_\epsilon\sbar\phi(r)$.
+    \item[1.] $p$ is smooth and invariant;
+    \item[2.] $p$ is definable and for every $\phi(x^{\rm s}\,;z)\in L$ there are some finitely many $r_i\in M^{\rm f}$, say $0\le i<n$, such that for every $b\in\U^{|z|}$ we have $\phi(p\,;b)\iff\phi(r_i\,;b)$ for some $i$;
   \end{itemize}
 \end{fact}
 
@@ -467,15 +465,22 @@ The following notions are standard
   %
   The type
 
-  \ceq{\hfill p(z)}{=}{\Big\{\sbar\phi(s\,;z)\not\approx_\epsilon\sbar\phi(r\,;z)\ :\ r\in M^{\rm f}\Big\}}
+  \ceq{\hfill p(z)}{=}{\Big\{\phi(s\,;z)\niff\phi(r\,;z)\ :\ r\in M^{\rm f}\Big\}}
   
   is inconsistent by Fact~\ref{fact_smooth=>fs}.
   %
   Hence compatness yields the required $r_i\in M^{\rm f}$.
 
-  \ssf{2}$\IMP$\ssf{1} For every $r\in M^{\rm f}$ and $\phi(x\,;z)\in L$ let $\theta_{r,\phi}(z)\in $ the formula defining the set $\{b:\sbar\phi(p\,;b)\not\approx_\epsilon\sbar\phi(r\,;b)\}$. By assumption, the following type is finitely consistent
+  \ssf{2}$\IMP$\ssf{1} 
+  For any given $\phi(x^{\rm s}\,;z)\in L^{\rm f}$ let $\theta(z)\in L(M)$ the formula defining the set $\{b\in\U^{|z|}:\phi(p\,;b)\iff\phi(r_i\,;b)\}$ and let $r_i\in M^{\rm f}$ be as in \ssf{2}.
+  %
+  Let $p(x^{\rm s})$ cantain the formulas
 
-  \ceq{\hfill p(x^{\rm s})}{=}{\Big\{\A z\Big[\theta_{r,\phi}(z)\imp\sbar\phi(x^{\rm s}\,;z)\not\approx_\epsilon\sbar\phi(r\,;z)\Big]\ :\ r\in M^{\rm f}\Big\}}
+  \ceq{\,}{\,}{\bigwedge_{i<n}\A z\Big[\theta(z)\wedge\phi(r_i\,;z)\imp\phi(x^{\rm s};z)\Big]}
+
+  as $\phi(x^{\rm s}\,;z)$ ranges in $L^{\rm f}$.
+  %
+  
 \end{proof}
 
 
