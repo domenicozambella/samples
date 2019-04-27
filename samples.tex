@@ -355,7 +355,6 @@ It will be defined in the next section as it is not relevant for the moment.
 
   \ceq{\hfill\emph{$\psi(p\,;\U)$}}{=}{\Big\{ b\in\U^{|z|}\ :\ \psi(p\,;b)\Big\}}
 
-
   Sets of this form are called \emph{externally definable.}
   %
   This notation intentionally confuses $p$ with any of its realizations in some elementary extension of $\barU$.\QED
@@ -378,6 +377,7 @@ The following notions are standard
   \end{itemize}
 \end{definition}
 
+We recall the following evident fact.
 
 \begin{fact}
   Let $M$ be given.
@@ -387,13 +387,15 @@ The following notions are standard
   Then $p$ is invariant.\QED
 \end{fact}
 
-\begin{fact}\label{fact_smooth=>fs}
+The following proposition is an intermediate step towards the subsequent lemma.
+
+\begin{proposition}\label{fact_smooth=>fs}
   Let $M$ be given.
   %
   Let $p(x^{\rm s})$ be an invariant smooth sample.
   %
   Then $p$ is finitely satisfiable and definable.
-\end{fact}
+\end{proposition}
 
 \begin{proof}
   Let $s\in\barU^{\rm s*}$ be an internal sample that realizes $p(x^{\rm s})$.
@@ -415,6 +417,7 @@ The following notions are standard
   As $\psi(p\,;\U)=\psi(s\,;\U)$ is definable in $\barU^*$, by invariance it is definable in $\barM$.
 \end{proof}
 
+Note that a global sample $p(x^{\rm s})$ is finitely satisfiable if for every $\phi(x^{\rm s};z)\in\barL(\barM)$ and every $b\in\U^{|z|}$ there is an $r\in M^{\rm s}$ such that $\phi(p\,;b)\iff\phi(r\,;b)$.
 
 \begin{lemma}
   Let $M$ be given.
@@ -442,7 +445,7 @@ The following notions are standard
   Hence compatness yields the required  $r_i\in M^{\rm s}$.
 
   \ssf{2}$\IMP$\ssf{1}
-  As \ssf{2} implies that $p$ is filitely satisfiable, invariance is clear.
+  As \ssf{2} implies that $p$ is finitely satisfiable, invariance is clear.
   %
   For a given $\phi(x^{\rm s};z)\in \barL(\barM)$ let $r_i\in M^{\rm s}$ be as in \ssf{2}.
   %
@@ -473,26 +476,26 @@ The following notions are standard
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Recycle bin}
 
+We require that $\barL$ includes
+\begin{itemize}
+  \item[1.] $L$, that applies to the home-sort;
+  \item[2.] the language of ordered rings, that applies to $\RR$;
+  \item[3.] the language of real vector spaces, that applies to the sample-sort.
+\end{itemize}
+Moreover, for every $\phi(x\,;z,z^{\rm s})\in\barL$ there is a symbol for a function
 
-
-, the language of ordered rings (on $\RR$), the language of real vector spaces (on $M^{\rm s}$).
-%
-Moreover, for every $\phi(x\,;z)\in L$ there is a symbol for a function
-
-\ceq{\hfill\sbar\phi(x^{\rm s};z)}
+\ceq{\hfill\sbar\phi(x^{\rm s};z,z^{\rm s})}
 {:}
-{S^{|x|}\times M^{|z|}\ \ \longrightarrow\ \ \RR}.
+{\big(M^{\rm s}\big)^{|x|}\times M^{|z|}\times\big(M^{\rm s}\big)^{|z|}\ \ \longrightarrow\ \ \RR}.
 
-%For the moment we only require that $\sbar\phi(f\,;b)\neq0$ then $\E x\,\phi(x\,;b)$.
+We assume that for every $\phi(x),\psi(x)\in\barL(\barU)$ if $\phi(x)\imp\psi(x)$ then $\sbar\phi(x^{\rm s})\le\sbar\psi(x^{\rm s})$.
+
 
 Below, $\epsilon$ always ranges over the positive standard reals.
 %
 If $a$ and $b$ are (hyper)reals, we write \emph{$a\approx_\epsilon b$\/} for $|a-b|<\epsilon$.
 %
 We write \emph{$a\approx b$\/} if $a\approx_\epsilon b$ holds for every $\epsilon$.
-
-In this section we assume that for every $\phi(x),\psi(x)\in L(\U)$ if $\phi(x)\imp\psi(x)$ then $\sbar\phi(x^{\rm s})\le\sbar\psi(x^{\rm s})$.
-
 
 \begin{fact}
   Let $M$ be given.
@@ -595,10 +598,7 @@ In this section we assume that for every $\phi(x),\psi(x)\in L(\U)$ if $\phi(x)\
   We prove that $p$ is smooth.
 
   \ceq{\hfill p(x^{\rm s})}{=}{\Big\{\sbar\phi(x^{\rm s};b)\approx_\epsilon\mu_b\ :\ b\in\U^{|z|}\Big\}}
-
 \end{proof}
-
-
 
 %Clearly, if $s$ is an internal sample, then $p(x^{\rm s})=\tp(s/\barU)$ is a smooth sample w.r.t.\@ any given formula $\phi(x\,;z)\in L$.
 
@@ -830,13 +830,12 @@ For smooth samples the Vapnik-Chervonenkis Theorem can be strengthened as follow
 \end{definition}
 
 \begin{definition}[??*]
-  We say that $\phi(x\,;z)\in L$ is \emph{distal\/} if there is a formula $\psi(x_1,\dots,x_n\,;z)\in L$ such that for every finite set $A\subseteq\U^{|x|}$ and every $b\in\U^{|z|}$ there are $a_1,\dots,a_n\in B$ such that $\psi(a_1,\dots,a_n,\;z)$ and $\psi(a_1,\dots,a_n,\,z)$ decides all formulas $\phi(a\,; z)$ for $a\in A$.\QED
+  We say that $\phi(x\,;z)\in L$ is \emph{distal\/} if there is a formula $\psi(x_1,\dots,x_n\,;z)\in L$ such that for every finite set $A\subseteq\U^{|x|}$ and every $b\in\U^{|z|}$ there are $a_1,\dots,a_n\in A$ such that $\psi(a_1,\dots,a_n,\;z)$ and $\psi(a_1,\dots,a_n,\,z)$ decides all formulas $\phi(a\,; z)$ for $a\in A$.\QED
 \end{definition}
 
 For every finite sample $r\in \barM$ and every $\mu\in\RR$ there is a formula $\psi(z)\in L(\supp r)$ such that $\sbar\phi(r\,;z)=\mu \iff \psi(z)$. The formula $\psi(z)$ depends on $r$.
 
 When $\phi(x\,;z)$ is distal
-
 
 If  $\phi(x\,;z)$ is distal then there is a formula $\psi$ such that  for every $r\in M^f$ there is $r_0\in M^{}$
 
