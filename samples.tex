@@ -233,9 +233,8 @@
 \setlength{\topsep}{0mm}
 
 \def\QED{\noindent\nolinebreak[4]\hspace{\stretch{1}}\rlap{\ \ $\Box$}\medskip}
-\renewenvironment{proof}[1][Proof]%
-{\begin{trivlist}\item[\hskip\labelsep {\bf #1}]}
-{\QED\end{trivlist}}
+\renewcommand\qedsymbol{\QED}
+\renewcommand\proofname{\normalfont\textbf{Proof}}
 
 \newenvironment{void}[1][]%
 {\begin{trivlist}\item[\hskip\labelsep {\bf #1}]}
@@ -349,11 +348,11 @@ It will be defined in the next section as it is not relevant for the moment.
 
 
 \begin{notation}
-  For any global type $p(x^{\rm s})\in S(\U,\barM)$, formula $\psi(x^{\rm s};z)\in\barL(\barM)$, and $b\in\U^{|z|}$ we write \emph{$\psi(p\,;b)$} for $\psi(x^{\rm s}; b)\in p$.
+  For any global type $p(x^{\rm s})\in S(\U,\barM)$, formula $\phi(x^{\rm s};z)\in\barL(\barM)$, and $b\in\U^{|z|}$ we write \emph{$\phi(p\,;b)$} for $\phi(x^{\rm s}; b)\in p$.
   %
   We also write
 
-  \ceq{\hfill\emph{$\psi(p\,;\U)$}}{=}{\Big\{ b\in\U^{|z|}\ :\ \psi(p\,;b)\Big\}}
+  \ceq{\hfill\emph{$\phi(p\,;\U)$}}{=}{\Big\{ b\in\U^{|z|}\ :\ \phi(p\,;b)\Big\}}
 
   Sets of this form are called \emph{externally definable.}
   %
@@ -371,9 +370,9 @@ The following notions are standard
   %
   A global sample $p(x^{\rm s})$ is
   \begin{itemize}
-    \item[1.]\noindent\emph{invariant\/} if for any $\phi(x^{\rm s};z)\in\barL(\barM)$ the set $\phi(p\,;\U)$ is invariant over $\barM$;
-    \item[2.]\noindent\emph{finitely satisfiable\/} if for every formula in $p(x^{\rm s})$ is satisfied in $\barM$;
-    \item[3.]\noindent\emph{definable\/} if, for every $\psi(x^{\rm s};z)\in\barL(\barM)$, the set $\psi(p\,;\U)$ is definable over $\barM$.\QED
+    \item[1.]\noindent\emph{invariant\/} if for every $\phi(x^{\rm s};z)\in\barL(\barM)$ the set $\phi(p\,;\U)$ is invariant over $\barM$;
+    \item[2.]\noindent\emph{finitely satisfiable\/} if every formula in $p(x^{\rm s})$ is satisfied in $\barM$;
+    \item[3.]\noindent\emph{definable\/} if, for every $\phi(x^{\rm s};z)\in\barL(\barM)$, the set $\phi(p\,;\U)$ is definable over $\barM$.\QED
   \end{itemize}
 \end{definition}
 
@@ -387,83 +386,46 @@ We recall the following evident fact.
   Then $p$ is invariant.\QED
 \end{fact}
 
-The following proposition is an intermediate step towards the subsequent lemma.
-
-\begin{proposition}\label{fact_smooth=>fs}
-  Let $M$ be given.
-  %
-  Let $p(x^{\rm s})$ be an invariant smooth sample.
-  %
-  Then $p$ is finitely satisfiable and definable.
-\end{proposition}
-
-\begin{proof}
-  Let $s\in\barU^{\rm s*}$ be an internal sample that realizes $p(x^{\rm s})$.
-  %
-  Let $\phi(x^{\rm s};b)\in p$ for some $\phi(x^{\rm s};z)\in \barL(\barM)$ and $b\in\U^{|z|}$.
-  %
-  Let $b'$ be such that $s\cnonfork_{\barM}b'\equiv_{\barM}b$.
-  %
-  By invariance, $\phi(s\,;b')$.
-  %
-  Therefore there is an $r\in M^{\rm s}$ such that $\phi(r\,;b')$.
-  %
-  As $b'\equiv_{\barM}b$, we obtain $\phi(r\,;b)$.
-  %
-  This proves finite satisfiability.
-
-  Now, let $\psi(x^{\rm s};z)\in \barL(\barM)$.
-  %
-  As $\psi(p\,;\U)=\psi(s\,;\U)$ is definable in $\barU^*$, by invariance it is definable in $\barM$.
-\end{proof}
-
 Note that a global sample $p(x^{\rm s})$ is finitely satisfiable if for every $\phi(x^{\rm s};z)\in\barL(\barM)$ and every $b\in\U^{|z|}$ there is an $r\in M^{\rm s}$ such that $\phi(p\,;b)\iff\phi(r\,;b)$.
 
-\begin{lemma}
+\begin{definition}\label{def_ssf}
+We say that the global sample $p(x^{\rm s})$ is \emph{strongly finitely satisfiable\/} for every $\phi(x^{\rm s};z)\in L$ there finite set of finite samples $R\subseteq M^{\rm s}$ such that for every $b\in\U^{|z|}$ we have $\phi(p\,;b)\iff\phi(r\,;b)$ for some $r\in R$.\QED
+\end{definition}
+
+\begin{lemma}\label{lem_sfs}
   Let $M$ be given.
   %
-  For every global sample $p(x^{\rm s})$ the following are equivalent
+  For every smooth, invariant global sample $p(x^{\rm s})$ the following hold
   \begin{itemize}
-    \item[1.] $p$ is smooth and invariant;
-    \item[2.] $p$ is definable and for every $\phi(x^{\rm s};z)\in L$ there are some finitely many $r_i\in M^{\rm s}$, say $0\le i<n$, such that for every $b\in\U^{|z|}$ we have $\phi(p\,;b)\iff\phi(r_i\,;b)$ for some $i$.
+    \item[1.] $p(x^{\rm s})$ is definable;
+    \item[2.] $p(x^{\rm s})$ is strongly finitely satisfiable
   \end{itemize}
 \end{lemma}
 
 \begin{proof}
-  \ssf{1}$\IMP$\ssf{2} definability has been proved in Fact~\ref{fact_smooth=>fs}.
-  %
   Let $s\in\barU^{\rm s*}$ be an internal sample that realizes $p(x^{\rm s})$.
   %
-  Let $\phi(x^{\rm s};z)\in\barL(\barM)$.
-  %
-  The type
+  Let $\phi(x^{\rm s};z)\in L$ be given.
+  \begin{itemize}
+    \item[1.] As $\phi(p\,;\U)=\phi(s\,;\U)$ is definable in $\barU^*$, by invariance it is definable in $\barM$.
+    \item[2.] First we prove that $p(x^{\rm s})$ is finitely satisfiable.
+    %
+    Let $b\in\U^{|z|}$ be arbitrary and let $b'$ be such that $s\cnonfork_{\barM}b'\equiv_{\barM}b$.
+    %
+    By invariance, $\phi(s\,;b')$.
+    %
+    Therefore there is an $r\in M^{\rm s}$ such that $\phi(r\,;b')$.
+    %
+    As $b'\equiv_{\barM}b$, we obtain $\phi(r\,;b)$.
+    %
+    This proves finite satisfiability. 
+    %
+    By finite satisfiability the following type is inconsistent
+    
+    \ceq{\hfill q(z)}{=}{\Big\{\phi(s\,;z)\niff\phi(r\,;z)\ :\ r\in \barM\Big\}}
 
-  \ceq{\hfill q(z)}{=}{\Big\{\phi(s\,;z)\niff\phi(r\,;z)\ :\ r\in \barM\Big\}}
-
-  is inconsistent by Fact~\ref{fact_smooth=>fs}.
-  %
-  Hence compatness yields the required  $r_i\in M^{\rm s}$.
-
-  \ssf{2}$\IMP$\ssf{1}
-  As \ssf{2} implies that $p$ is finitely satisfiable, invariance is clear.
-  %
-  For a given $\phi(x^{\rm s};z)\in \barL(\barM)$ let $r_i\in M^{\rm s}$ be as in \ssf{2}.
-  %
-  By the definability of $p$ there are some formulas $\theta_i(z)\in L(M)$ that define the sets $\{b\in\U^{|z|}:\phi(p\,;b)\iff\phi(r_i\,;b)\}$.
-  %
-  Note that by \ssf{2}
-
-  \ceq{\,}{\,}{\A z\ \bigvee_{i<n}\theta_i(z).}
-
-  Let $q(x^{\rm s})$ be the type containing the formulas
-
-  \ceq{\,}{\,}{\bigwedge_{i<n}\A z\Big[\theta_i(z)\wedge\phi(r_i\,;z)\imp\phi(x^{\rm s};z)\Big].}
-
-  as $\phi(x^{\rm s};z)$ range as above.
-  %
-  This type is consistent and in fact equivalent to $p(x^{\rm s})$.
-  %
-  As $q(x^{\rm s})$ is a type over $\barM$, it is realized in $\barU^*$.
+    Hence compatness yields the required $R\subseteq M^{\rm s}$.\qedhere
+  \end{itemize}
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -476,10 +438,42 @@ Note that a global sample $p(x^{\rm s})$ is finitely satisfiable if for every $\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Recycle bin}
 
+\begin{fact}
+  Let $M$ and $\phi(x\,;z)\in L$ be given.
+  %
+  Let $p(x^{\rm s})$ be strongly finitely satisfiable global sample.
+  %
+  Then there are finitely many formulas $\theta_i(x)\in L(M)$ such that for every $b\in\U^{|z|}$ we have $\theta_i(x)\imp\phi(x\,;b)\imp\theta_j(x)$ and $\sbar\theta_i(p)\approx_\epsilon\sbar\theta_j(p)$ for some $i,j$.
+\end{fact}
+
+\begin{proof}
+  Let $R\subseteq M^s$ be the finite set of finite samples given by Definition~\ref{def_ssf}. 
+  %
+  Let $A\subseteq\U^{|z|}$ be a finite set containing all $\supp(r)$ for all $r\in R$. 
+  %
+  Let $\theta_i(x)$ enumerate the formulas $x\in B$ and $x\notin B$, as $B$ ranges over the subsets of $A$.
+  
+  We prove that these are formulas are as required by the proposition. Pick some $b\in\U^{|z|}$, and let $r\in R$ be such that $\phi(p\,;b)\iff\phi(r\,;b)$. 
+
+  \ceq{\hfill B_0}
+  {=}
+  {\{a\in\supp(r) : \phi(a\,;b)\}}
+  
+  \ceq{\hfill B_1}
+  {=}
+  {\{a\in\supp(r) : \neg\phi(a\,;b)\}}
+
+  Clearly, $x\in B_0\imp \phi(x\,;b)\imp x\notin B_1$.
+
+
+
+
+\end{proof}
+
 We require that $\barL$ includes
 \begin{itemize}
   \item[1.] $L$, that applies to the home-sort;
-  \item[2.] the language of ordered rings, that applies to $\RR$;
+  \item[2.] the language of ordered rings, that applies to the sort of $\RR$;
   \item[3.] the language of real vector spaces, that applies to the sample-sort.
 \end{itemize}
 Moreover, for every $\phi(x\,;z,z^{\rm s})\in\barL$ there is a symbol for a function
@@ -488,7 +482,20 @@ Moreover, for every $\phi(x\,;z,z^{\rm s})\in\barL$ there is a symbol for a func
 {:}
 {\big(M^{\rm s}\big)^{|x|}\times M^{|z|}\times\big(M^{\rm s}\big)^{|z|}\ \ \longrightarrow\ \ \RR}.
 
-We assume that for every $\phi(x),\psi(x)\in\barL(\barU)$ if $\phi(x)\imp\psi(x)$ then $\sbar\phi(x^{\rm s})\le\sbar\psi(x^{\rm s})$.
+We assume that for every $\phi(x),\phi(x)\in\barL(\barU)$ if $\phi(x)\imp\phi(x)$ then $\sbar\phi(x^{\rm s})\le\sbar\phi(x^{\rm s})$.
+
+
+\begin{definition}
+  Let $\phi(x^{\rm s}\,;z)\in L$ and $M$ be given.
+  %
+  We say that $p(x^{\rm s})$ is \emph{weakly approximable\/} if there are some finitely many $r_i\in M^{\rm s}$, say $0\le i<n$, such that for every $b\in\U^{|z|}$ we have $\phi(p\,;b)\iff\phi(r_i\,;b)$ for some $i$.\QED
+\end{definition}
+
+Let $\phi(x\,;z)\in L$ and $M$ be given.
+%
+Let $\B=\phi(p;\U)$.
+%
+Let $p(x^{\rm s})$ be weakly approximable. Then there is a finite cover of $\B$, say $\B_1,\dots,\B_n$, such that all the types $p_i(x)=\{\phi(x\,;b):b\in\B_i\}$ are consistent.
 
 
 Below, $\epsilon$ always ranges over the positive standard reals.
