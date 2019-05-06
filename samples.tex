@@ -324,7 +324,7 @@
 
 Let $M$ be a structure of signature $L$.
 %
-The \emph{fractional multiset expansion\/} of $M$ is a many-sorted expansion that has a sort for $M$, which we call the home-sort, a sort for $\RR$, and a \emph{sample-sort\/} for the set of functions $s:M\to\RR$ that are almot always $0$.
+The \emph{multiset expansion\/} of $M$ is a many-sorted expansion that has a sort for $M$, which we call the home-sort, a sort for $\RR$, and a \emph{sample-sort\/} for the set of functions $s:M\to\RR$ that are almot always $0$.
 %
 We write \emph{$\barM$\/}$=\<M,\RR,M^{\rm s}\>$ for the expansion above.
 
@@ -332,7 +332,26 @@ Below $x,y,z$ are always tuples of variables of home-sort, $x^{\rm s},y^{\rm s},
 
 The language of $\barM$ is denoted by \emph{$\barL$.}
 %
-It will be defined in the next section as it is not relevant for the moment.
+We require that $\barL$ includes
+\begin{itemize}
+  \item[1.] $L$, that applies to the home-sort;
+  \item[2.] the language of ordered rings, that applies to the sort of $\RR$;
+  \item[3.] the language of real vector spaces, that applies to the sample-sort.
+\end{itemize}
+Moreover, for every $\phi(x\,;z,z^{\rm s})\in\barL$ there is a symbol for a function
+
+\ceq{\hfill\sbar\phi(x^{\rm s};z,z^{\rm s})}
+{:}
+{\big(M^{\rm s}\big)^{|x|}\times M^{|z|}\times\big(M^{\rm s}\big)^{|z|}\ \ \longrightarrow\ \ \RR}.
+
+which is defined as follows
+
+\ceq{\hfill\sbar\phi(s\,;b,r)}
+{=}
+{\sum\Big\{s(a)\ :\ \barM\models\phi(a\,;b,r)\Big\}}
+
+When $\phi(x)$ is the formula $x=x$ we write $|x|$ for $\sbar\phi(x^{\rm s})$.
+
 
 \begin{definition}
   Let $\U$ be a monster model of cardinality $\kappa>|L|$ and let $\barU=\<\U,\RR,\U^{\rm s}\>$ be the corresponding expansion.
@@ -359,10 +378,6 @@ It will be defined in the next section as it is not relevant for the moment.
   This notation intentionally confuses $p$ with any of its realizations in some elementary extension of $\barU$.\QED
 \end{notation}
 
-\begin{definition}\label{def_smooth_global}
-  A global sample $p(x^{\rm s})$ is \emph{smooth\/} if it is realized in $\barU^*$.\QED
-\end{definition}
-
 The following notions are standard
 
 \begin{definition}\label{def_}
@@ -371,9 +386,15 @@ The following notions are standard
   A global sample $p(x^{\rm s})$ is
   \begin{itemize}
     \item[1.]\noindent\emph{invariant\/} if for every $\phi(x^{\rm s};z)\in\barL(\barM)$ the set $\phi(p\,;\U)$ is invariant over $\barM$;
-    \item[2.]\noindent\emph{finitely satisfiable\/} if every formula in $p(x^{\rm s})$ is satisfied in $\barM$;
-    \item[3.]\noindent\emph{definable\/} if, for every $\phi(x^{\rm s};z)\in\barL(\barM)$, the set $\phi(p\,;\U)$ is definable over $\barM$.\QED
+    \item[2.]\noindent\emph{finitely satisfiable\/} if for every $\phi(x^{\rm s})\in p$  there is an $r\in M^{\rm s}$ such that $\phi(p)\iff\phi(r)$;
+    \item[3.]\noindent\emph{definable\/} if for every $\phi(x^{\rm s};z)\in\barL(\barM)$ the set $\phi(p\,;\U)$ is definable over $\barM$.\QED
   \end{itemize}
+\end{definition}
+
+\begin{definition}\label{def_smooth_global}
+  Let $M$ be given.
+  %
+  A global sample is \emph{smooth\/} if it is invariant and realized in $\barU^*$.\QED
 \end{definition}
 
 We recall the following evident fact.
@@ -386,19 +407,21 @@ We recall the following evident fact.
   Then $p$ is invariant.\QED
 \end{fact}
 
-Note that a global sample $p(x^{\rm s})$ is finitely satisfiable if for every $\phi(x^{\rm s};z)\in\barL(\barM)$ and every $b\in\U^{|z|}$ there is an $r\in M^{\rm s}$ such that $\phi(p\,;b)\iff\phi(r\,;b)$.
+%Note that a global sample $p(x^{\rm s})$ is finitely satisfiable if for every finite many $b_i\subseteq\U^{|z|}$ there is an $r\in M^{\rm s}$ such that $\phi(p\,;b_i)\iff\phi(r\,;b_i)$ for all $i$.
 
 \begin{definition}\label{def_ssf}
-We say that the global sample $p(x^{\rm s})$ is \emph{strongly finitely satisfiable\/} for every $\phi(x^{\rm s};z)\in L$ there finite set of finite samples $R\subseteq M^{\rm s}$ such that for every $b\in\U^{|z|}$ we have $\phi(p\,;b)\iff\phi(r\,;b)$ for some $r\in R$.\QED
+  Let $M$ be given.
+  %
+  We say that the global sample $p(x^{\rm s})$ is \emph{strongly finitely satisfiable\/} if for every $\phi(x^{\rm s};z)\in\barL(\barM)$ there is a finite $R\subseteq M^{\rm s}$ such that for every $b\in\U^{|z|}$ we have $p\proves\phi(x^{\rm s};b)\iff\phi(r\,;b)$ for some $r\in R$.\QED
 \end{definition}
 
 \begin{lemma}\label{lem_sfs}
   Let $M$ be given.
   %
-  For every smooth, invariant global sample $p(x^{\rm s})$ the following hold
+  For every smooth global sample $p(x^{\rm s})$ the following hold
   \begin{itemize}
     \item[1.] $p(x^{\rm s})$ is definable;
-    \item[2.] $p(x^{\rm s})$ is strongly finitely satisfiable
+    \item[2.] $p(x^{\rm s})$ is strongly finitely satisfiable.
   \end{itemize}
 \end{lemma}
 
@@ -407,26 +430,44 @@ We say that the global sample $p(x^{\rm s})$ is \emph{strongly finitely satisfia
   %
   Let $\phi(x^{\rm s};z)\in L$ be given.
   \begin{itemize}
-    \item[1.] As $\phi(p\,;\U)=\phi(s\,;\U)$ is definable in $\barU^*$, by invariance it is definable in $\barM$.
+    \item[1.] As $\phi(p\,;\U)=\phi(s\,;\U)$ is definable in $\barU^*$, 
+    by invariance it is definable in $\barM$.
     \item[2.] First we prove that $p(x^{\rm s})$ is finitely satisfiable.
     %
-    Let $b\in\U^{|z|}$ be arbitrary and let $b'$ be such that $s\cnonfork_{\barM}b'\equiv_{\barM}b$.
+    Let $b\in\U^{|z|}$ be given and pick $b'\equiv_{\barM}b$ be such that $s\cnonfork_{\barM}b'$.
     %
-    By invariance, $\phi(s\,;b')$.
+    By invariance, $\phi(s\,;b')\iff\phi(s\,;b)$.
     %
-    Therefore there is an $r\in M^{\rm s}$ such that $\phi(r\,;b')$.
+    Therefore there is an $r\in M^{\rm s}$ such that $\phi(r\,;b')\iff\phi(s\,;b)$.
     %
-    As $b'\equiv_{\barM}b$, we obtain $\phi(r\,;b)$.
+    This proves finite satisfiability.
     %
-    This proves finite satisfiability. 
-    %
-    By finite satisfiability the following type is inconsistent
+    By finite satisfiability, the following type is inconsistent
     
-    \ceq{\hfill q(z)}{=}{\Big\{\phi(s\,;z)\niff\phi(r\,;z)\ :\ r\in \barM\Big\}}
+    \ceq{\hfill q(z)}{=}{\bigg\{\phi(s\,;z)\iff\phi(r\,;z)\ :\ r\in M^{\rm s}\bigg\}}
 
     Hence compatness yields the required $R\subseteq M^{\rm s}$.\qedhere
   \end{itemize}
 \end{proof}
+
+\begin{lemma}
+  Let $M$ be given.
+  %
+  Let $p(x^{\rm s})$ be strongly finitely satisfiable.
+  %
+  Then for some finite $A\subseteq M^{\rm s}$ we have $p(x^{\rm s})\proves\supp(x^{\rm s})=A$.
+\end{lemma}
+
+\begin{proof}
+  Apply Definition~\ref{def_ssf} to the formula $x^{\rm s}(z)>0$.
+  %
+  Then for every $b\in\U^{|z|}$ there is an $r\in R$.
+
+  \ceq{\hfill p(x^{\rm s})}{\proves}{x^{\rm s}(b)>0\iff r(b)>0.}
+
+  As each $r\in R$ has finite support, and $R$ is finite, the lemma follows.
+\end{proof}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -438,22 +479,68 @@ We say that the global sample $p(x^{\rm s})$ is \emph{strongly finitely satisfia
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Recycle bin}
 
+
+
+%
+Then for every $b\in\U^{|z|}$ there is an $r\in R$
+
+\ceq{\hfill p(x^{\rm s})}{\proves}{x^{\rm s}(b)>0\iff r(b)>0} such that
+
+As 
+Write $\supp(R)$ for the union of $\supp(r)$ for $r\in R$.
+%
+Then $p\proves \supp(x^{\rm s}) \subseteq \supp(R)$.
+%
+In particular $p\proves \supp(x^{\rm s}) = A$ for some finite $A\subseteq M$.
+%
+
+
+$\phi(p\,;z) \iff r(z)>0$
+
+% We assume that for every $\phi(x),\phi(x)\in\barL(\barU)$ if $\phi(x)\imp\phi(x)$ then $\sbar\phi(x^{\rm s})\le\sbar\phi(x^{\rm s})$.
+
+
+
+
+
+Let $p(x^{\rm s})$ be global sample that is strongly finitely satisfiable w.r.t.\@ all $\phi(x^{\rm s}\,;z)\in L$.
+%
+Then there is an $r\in M^{\rm s}$ such that 
+
+$x^{\rm s}(z_i)\approx_\epsilon\mu_i$
+
+
+
+
 \begin{fact}
   Let $M$ and $\phi(x\,;z)\in L$ be given.
   %
-  Let $p(x^{\rm s})$ be strongly finitely satisfiable global sample.
+  Let $p(x^{\rm s})$ be a definable, strongly finitely satisfiable global sample.
   %
   Then there are finitely many formulas $\theta_i(x)\in L(M)$ such that for every $b\in\U^{|z|}$ we have $\theta_i(x)\imp\phi(x\,;b)\imp\theta_j(x)$ and $\sbar\theta_i(p)\approx_\epsilon\sbar\theta_j(p)$ for some $i,j$.
 \end{fact}
 
 \begin{proof}
-  Let $R\subseteq M^s$ be the finite set of finite samples given by Definition~\ref{def_ssf}. 
+  Let $\psi_r(z)$, for $r\in R\subseteq M^{\rm s}$
+
+  Let 
+
+
+  Pick finite $F\subseteq\RR$ such that for every $b$ we have $\sbar\phi(p\,;b)\approx_{\epsilon}\mu$ for some $\mu\in F$.
   %
-  Let $A\subseteq\U^{|z|}$ be a finite set containing all $\supp(r)$ for all $r\in R$. 
+  By Definition~\ref{def_ssf} there is a finite set $R\subseteq M^s$ such that for every $b\in\U^{|z|}$ and every $\mu\in F$ we have $\phi(p\,;b)\approx_{\epsilon}\mu\ \iff\ \phi(r\,;b)\approx_{\epsilon}\mu$ for some $r\in R$.
+  %
+  Therefore for every $b\in\U^{|z|}$ we have that $\phi(p\,;b)\approx_{2\epsilon}\phi(r\,;b)$ for some $r\in R$.
+  %
+  Let $A\subseteq\U^{|z|}$ be a finite set containing $\supp(r)$ for all $r\in R$. 
   %
   Let $\theta_i(x)$ enumerate the formulas $x\in B$ and $x\notin B$, as $B$ ranges over the subsets of $A$.
   
-  We prove that these are formulas are as required by the proposition. Pick some $b\in\U^{|z|}$, and let $r\in R$ be such that $\phi(p\,;b)\iff\phi(r\,;b)$. 
+  We prove that these formulas are as required by the proposition.
+  %
+  Fix some $b\in\U^{|z|}$ and let $r\in R$ be such that $\phi(p\,;b)\approx_{2\epsilon}\phi(r\,;b)$.
+  %
+  Let
 
   \ceq{\hfill B_0}
   {=}
@@ -464,26 +551,7 @@ We say that the global sample $p(x^{\rm s})$ is \emph{strongly finitely satisfia
   {\{a\in\supp(r) : \neg\phi(a\,;b)\}}
 
   Clearly, $x\in B_0\imp \phi(x\,;b)\imp x\notin B_1$.
-
-
-
-
 \end{proof}
-
-We require that $\barL$ includes
-\begin{itemize}
-  \item[1.] $L$, that applies to the home-sort;
-  \item[2.] the language of ordered rings, that applies to the sort of $\RR$;
-  \item[3.] the language of real vector spaces, that applies to the sample-sort.
-\end{itemize}
-Moreover, for every $\phi(x\,;z,z^{\rm s})\in\barL$ there is a symbol for a function
-
-\ceq{\hfill\sbar\phi(x^{\rm s};z,z^{\rm s})}
-{:}
-{\big(M^{\rm s}\big)^{|x|}\times M^{|z|}\times\big(M^{\rm s}\big)^{|z|}\ \ \longrightarrow\ \ \RR}.
-
-We assume that for every $\phi(x),\phi(x)\in\barL(\barU)$ if $\phi(x)\imp\phi(x)$ then $\sbar\phi(x^{\rm s})\le\sbar\phi(x^{\rm s})$.
-
 
 \begin{definition}
   Let $\phi(x^{\rm s}\,;z)\in L$ and $M$ be given.
@@ -859,6 +927,38 @@ There is a formula $\psi(x_1,\dots,x_n\,;z)$ such that for every $r\in \barM$
 
 there are $a_1,\dots,a_n$ such that $\phi(r\,;b)=\mu$ $\psi(x_1,\dots,x_n\,;z)$
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We say that $p(x)$ is honestly definable if for every $\varphi(x,y)\in L$ there is a formula $\psi(y,z)\in L$ such that for every finite $A$, there is a $b$ such that
+
+$$A\subseteq\psi(\U,b)\subseteq \phi(p,\U)$$
+
+For $\varphi(x,y)\in L$ and $m\in M$ let 
+
+$$\varphi_m(x,y)\quad=\quad\varphi(m,y)\leftrightarrow\varphi(x,y)$$
+
+$$A \subseteq\psi_{m,\phi}({\cal U})\subseteq \phi_m(p,\U)$$
+
+If $p(x)$ is generically stable (definition as in the OP) then for every $\varphi(x,y)\in L$ and $m\in M$ there is a formula $\vartheta_{\varphi,m}(y)$ such that for every $a$ in the monster model
+
+$$\vartheta_{\varphi,m}(a)\quad\Leftrightarrow\quad[\varphi(m,a)\leftrightarrow\varphi(x,a)]\in p$$
+
+Let $q(x)$ be an $M$-invariant global type such that  $q_{\restriction M}(x)=p_{\restriction M}(x)$. Then both $q$ and $p$ contain the formulas
+
+$$\A y\ \Big[\vartheta_{\varphi,m}(y)\rightarrow\big[\varphi(m,y)\leftrightarrow\varphi(x,y)\big]\Big]$$
+
+We write $p(x)\sim_Mq(x)$ if 
+
+$\phi(p\,;\U)\neq\0\IFF\phi(q\,;\U)\neq\0$ 
+
+for every $\phi(x,z)\in L(M)$ 
 
 \end{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
