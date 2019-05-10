@@ -324,7 +324,7 @@
 
 Let $M$ be a structure of signature $L$.
 %
-The \emph{multiset expansion\/} of $M$ is a many-sorted expansion that has a sort for $M$, which we call the home-sort, a sort for $\RR$, and a \emph{sample-sort\/} for the set of functions $s:M\to\RR$ that are almot always $0$.
+The \emph{multiset expansion\/} of $M$ is a many-sorted expansion that has a sort for $M$, which we call the home-sort, a sort for $\RR$, and a \emph{sample-sort\/} for the set of functions $s:M\to\RR$ that have finite support (i.e.\@ are almost always $0$).
 %
 We write \emph{$\barM$\/}$=\<M,\RR,M^{\rm s}\>$ for the expansion above.
 
@@ -350,7 +350,7 @@ which is defined as follows
 {=}
 {\sum\Big\{s(a)\ :\ \barM\models\phi(a\,;b,r)\Big\}}
 
-When $\phi(x)$ is the formula $x=x$ we write $|x|$ for $\sbar\phi(x^{\rm s})$.
+When $\phi(x)$ is the formula $x=x$ we write $|x^{\rm s}|$ for $\sbar\phi(x^{\rm s})$.
 
 
 \begin{definition}
@@ -362,7 +362,7 @@ When $\phi(x)$ is the formula $x=x$ we write $|x|$ for $\sbar\phi(x^{\rm s})$.
   %
   Elements $\U^{\rm s}$ are called \emph{finite samples,} elements in $\U^{\rm s*}$ are called \emph{internal samples.}
 
-  Finally, a \emph{global sample\/} is a type $p(x^{\rm s})\in S(\U,\barM)$, where $M$ is a model which will be clear from the context.\QED
+  Finally, a \emph{global sample\/} is a type $p(x^{\rm s})$ that is complete among formulas without quantifiers of sample-sort and with parameters in $\U,\barM$, where $M$ is a model which will be clear from the context.\QED
 \end{definition}
 
 
@@ -394,7 +394,7 @@ The following notions are standard
 \begin{definition}\label{def_smooth_global}
   Let $M$ be given.
   %
-  A global sample is \emph{smooth\/} if it is invariant and realized in $\barU^*$.\QED
+  A global sample is \emph{smooth\/} if it is invariant and internal (i.e.\@ realized in $\barU^*$).\QED
 \end{definition}
 
 We recall the following evident fact.
@@ -412,8 +412,36 @@ We recall the following evident fact.
 \begin{definition}\label{def_ssf}
   Let $M$ be given.
   %
-  A global sample $p(x^{\rm s})$ is \emph{uniformly finitely satisfiable\/} if for every $\phi(x^{\rm s};z)\in\barL(\barM)$ there is a finite $R\subseteq M^{\rm s}$ such that for every $b\in\U^{|z|}$ we have $p\proves\phi(x^{\rm s};b)\iff\phi(r\,;b)$ for some $r\in R$.\QED
+  A global sample $p(x^{\rm s})$ is \emph{uniformly (finitely) satisfiable\/} if for every $\phi(x^{\rm s};z)\in\barL(\barM)$ there is a finite $R\subseteq M^{\rm s}$ such that for every $b\in\U^{|z|}$ we have $p\proves\phi(x^{\rm s};b)\iff\phi(r\,;b)$ for some $r\in R$.\QED
 \end{definition}
+
+Let  $p(x^{\rm s})$ be a global sample. The support of $p(x^{\rm s})$  is the set of those $a\subseteq\U$ such that $p(x^{\rm s})\proves x^{\rm s}(a)\neq0$.
+
+\begin{lemma}\label{lem_finsupp}
+  Let $M$ be given.
+  %
+  The support of a uniformly satisfiable samples is a finite subset of $M$.
+\end{lemma}
+
+\begin{proof}
+  Apply Definition~\ref{def_ssf} to the formula $x^{\rm s}(z)\neq0$.
+  %
+  Then for every $b\in\U^{|z|}$ there is an $r\in R$.
+
+  \ceq{\hfill p(x^{\rm s})}{\proves}{x^{\rm s}(b)\neq0\imp r(b)\neq0.}
+
+  As each $r\in R$ has finite support, and $R$ is finite, the lemma follows.
+\end{proof}
+
+\begin{fact}\label{fact_finite_support}
+  Let $M$ be given.
+  %
+  Let $p(x^{\rm s})$ be a global type with finite support, say $A=\{a_1,\dots,a_n\}$.
+  %
+  Then  there is type $q(y)$, where $y=y_1,\dots,y_n$ is a tuple of variables of real-sort, with parameters in $\U,\barM$ and no variable of sample sort such that $p(x^{\rm s})$ is equivalrnt to
+
+  \hfil$\E y\ \Big[ q(y)\ \cup\ \{x^{\rm s}(a_i)=y_i : i=1,\dots,n\}\Big]$
+\end{fact}
 
 \begin{lemma}\label{lem_sfs}
   Let $M$ be given.
@@ -450,24 +478,32 @@ We recall the following evident fact.
   \end{itemize}
 \end{proof}
 
+
+
 \begin{lemma}
   Let $M$ be given.
   %
-  Let $p(x^{\rm s})$ be uniformly finitely satisfiable.
-  %
-  Then for some finite $A\subseteq M^{\rm s}$ we have $p(x^{\rm s})\proves\supp(x^{\rm s})=A$.
+  Let $p(x^{\rm s})$ be a global type, then the following are equivalent
+  \begin{itemize}
+    \item[1.] $p(x^{\rm s})$ is smooth;
+    \item[2.] $p(x^{\rm s})$ is uniformly finitely satisfiable.
+  \end{itemize}
 \end{lemma}
 
+
 \begin{proof}
-  Apply Definition~\ref{def_ssf} to the formula $x^{\rm s}(z)>0$.
+  Implication \ssf{1}$\IMP$\ssf{2} has been proved in Lemma~\ref{lem_sfs}. 
   %
-  Then for every $b\in\U^{|z|}$ there is an $r\in R$.
-
-  \ceq{\hfill p(x^{\rm s})}{\proves}{x^{\rm s}(b)>0\iff r(b)>0.}
-
-  As each $r\in R$ has finite support, and $R$ is finite, the lemma follows.
+  Here we prove \ssf{2}$\IMP$\ssf{1}. 
+  %
+  By Lemma~\ref{lem_finsupp},  $p(x^{\rm s})$ has a finite support $A\subseteq M$.   
+  %
+  Now apply Fact~\ref{fact_finite_support}.
+  %
+  As the type $q(y)$ is relized in $\barU^*$, so is  $p(x^{\rm s})$.
+  %
+  Invariance is clear by finite satisfiability.
 \end{proof}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -479,8 +515,25 @@ We recall the following evident fact.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Recycle bin}
 
+Below, $\epsilon$ always ranges over the positive standard reals.
+%
+If $a$ and $b$ are (hyper)reals, we write \emph{$a\approx_\epsilon b$\/} for $|a-b|<\epsilon$.
+%
+We write \emph{$a\approx b$\/} if $a\approx_\epsilon b$ holds for every $\epsilon$.
 
 
+\begin{lemma}
+  Let $M$ be given.
+  %
+  Let $p(x^{\rm s})$ be smooth.
+  %
+  Then for every $\epsilon$ there are finitely many formulas $\theta_i(x)\in L(M)$ such that for every $b\in\U^{|z|}$ we have $\theta_i(x)\imp\phi(x\,;b)\imp\theta_j(x)$ and $\sbar\theta_i(p)\approx_\epsilon\sbar\theta_j(p)$ for some $i,j$.
+\end{lemma}
+
+\begin{proof}
+
+
+\end{proof}
 %
 Then for every $b\in\U^{|z|}$ there is an $r\in R$
 
@@ -565,12 +618,6 @@ Let $\B=\phi(p;\U)$.
 %
 Let $p(x^{\rm s})$ be weakly approximable. Then there is a finite cover of $\B$, say $\B_1,\dots,\B_n$, such that all the types $p_i(x)=\{\phi(x\,;b):b\in\B_i\}$ are consistent.
 
-
-Below, $\epsilon$ always ranges over the positive standard reals.
-%
-If $a$ and $b$ are (hyper)reals, we write \emph{$a\approx_\epsilon b$\/} for $|a-b|<\epsilon$.
-%
-We write \emph{$a\approx b$\/} if $a\approx_\epsilon b$ holds for every $\epsilon$.
 
 \begin{fact}
   Let $M$ be given.
