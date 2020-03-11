@@ -86,6 +86,7 @@
 \def\dcl{\mathop{\rm dcl}}
 \def\acl{\mathop{\rm acl}}
 \def\fp{{\rm fp}}
+\def\lh{{\rm lh\,}}
 \def\cf{\mathop{\rm cf}}
 \def\rad{\mathop{\rm rad}}
 \def\eq{{{\rm eq}}}
@@ -111,6 +112,7 @@
 \def\pmDelta{\Delta\hskip-.3ex\raisebox{1ex}{\tiny$\pm$}}
 \def\pmDeltatp{\noindent\pmDelta\hskip-.3ex\textrm{-tp}}
 \def\EMtp{\textrm{{\small EM}\mbox{-}tp}}
+\def\Fr{\mathop{\rm Fr}}
 
 \newcommand{\cev}[1]{\reflectbox{\ensuremath{\vec{\reflectbox{\ensuremath{#1}}}}}}
 \newcommand{\sbar}[1]{\mkern 3mu\overline{\mkern-3mu#1\mkern-1mu}\mkern 1mu}
@@ -305,7 +307,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}\label{intro}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -316,7 +317,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Abstract samples}\label{samples}
 \def\medrel#1{\parbox[t]{6ex}{\hfil$#1$}}
-\def\ceq#1#2#3{\parbox[t]{15ex}{$\displaystyle #1$}\medrel{#2}$\displaystyle  #3$}
+\def\ceq#1#2#3{\parbox[t]{15ex}{$\displaystyle #1$}\medrel{\displaystyle #2}$\displaystyle  #3$}
 \def\uuu{{\mathds 1}}
 \def\gruuu{{\mathds 1}}
 \def\Av{{\rm Av}}
@@ -324,187 +325,291 @@
 
 Let $M$ be a structure of signature $L$.
 %
-The \emph{multiset expansion\/} of $M$ is a many-sorted expansion that has a sort for $M$, which we call the home-sort, a sort for $\RR$, and a \emph{sample-sort\/} for the set of functions $s:M\to\RR$ that have finite support (i.e.\@ are almost always $0$).
+The \emph{sample-expansion\/} of $M$ is a 3-sorted expansion $\<M,\omega,\bar M\>$, where $\bar M=M^{<\omega}$.
+These three sorts are called \emph{home-sort,} \emph{integer-sort,} and \emph{sample-sort,} respectively.
+We put a bar over the symbols that denotes elements of sample-sort.
+The \emph{size\/} of a sample $\bar a\in\bar M$ is the length of $\bar a$ as an element of $M^{<\omega}$.
+This is denoted by \emph{$\lh\bar a$.}
+The same symbol $\bar a$ may  be used for tuples of samples of the same size.
+The usual notation \emph{$|\bar a|$\/} is used the length of such tuples, for instance, if $\bar a\in\bar M^n$ then  $|\bar a|=n$.
+We write \emph{$\bar a.i$\/} for the $i$-th element of the sample $\bar a$.
+Then  $\bar a_i\in M^{|\bar a|}$.
 %
-We write \emph{$\barM$\/}$=\<M,\RR,M^{\rm s}\>$ for the expansion above.
-
-Below $x,y,z$ are always tuples of variables of home-sort, $x^{\rm s},y^{\rm s},z^{\rm s}$ are tuples of sample-sort of the same the length of $x,y$, respectively $z$.
-
-The language of $\barM$ is denoted by \emph{$\barL$.}
-%
-We require that $\barL$ includes
+The language of this expansion is denoted by $\barL$; it comprises
 \begin{itemize}
-  \item[1.] $L$, that applies to the home-sort;
-  \item[2.] the language of ordered rings, that applies to the sort of $\RR$;
-  \item[3.] the language of real vector spaces, that applies to the sample-sort.
+  \item[1.] all symbols of $L$, these apply to the home-sort;
+  \item[2.] $0,1,+,\cdot$ which apply to the integer-sort;
+  \item[3.] a ternary relation of sort $\bar M,\omega, M$ that holds if $\bar x.i=y$.
+  \item[4.] for every $\phi(x)\in\barL$, where here for clarity $|x|=1$,  there is relation symbol of sort $\bar M,\omega$ that holds for those $\bar a$ and $i<\lh\bar a$ such that $\phi(\bar a.i)$;
+  %\item[4'.]  for every $\phi(x\,;y,\bar z)\in\barL$ there is relation symbol of sort $\bar M,\omega$ that holds for those $\bar a$ and $i$ such that $\phi(\bar a.i)$;
 \end{itemize}
-Moreover, for every $\phi(x\,;z,z^{\rm s})\in\barL$ there is a symbol for a function
+  
+When $\phi(x)$ is the formula $x=x$, then \ssf{4} above implies that $\lh\bar x$ is definable.
+Also, from \ssf{4} it easily follows that the function $|\{i<\lh\bar a\, :\, \phi(\bar a.i)\}|$ is definable.
 
-\ceq{\hfill\sbar\phi(x^{\rm s};z,z^{\rm s})}
-{:}
-{\big(M^{\rm s}\big)^{|x|}\times M^{|z|}\times\big(M^{\rm s}\big)^{|z|}\ \ \longrightarrow\ \ \RR}.
+As in the integer-sort we can interpret the field of rational numbers, below we will freely use rational numbers when this clarify the notation. 
+For instance we define
 
-which is defined as follows
-
-\ceq{\hfill\sbar\phi(s\,;b,r)}
+\ceq{\hfill\Fr_{\bar a}\phi(x)}
 {=}
-{\sum\Big\{s(a)\ :\ \barM\models\phi(a\,;b,r)\Big\}}
+{\frac{|\{i<\lh\bar a\, :\, \phi(\bar a.i)\}|}{\lh\bar a}}
 
-When $\phi(x)$ is the formula $x=x$ we write $|x^{\rm s}|$ for $\sbar\phi(x^{\rm s})$.
-
+and use that it is a definable function in $\barL$.
 
 \begin{definition}
-  Let $\U$ be a monster model of cardinality $\kappa>|L|$ and let $\barU=\<\U,\RR,\U^{\rm s}\>$ be the corresponding expansion.
+  Let $\U$ be a monster model of inaccessible cardinality $\kappa>|L|$ and let $\<\U,\omega,\bar\U\>$ be the corresponding sample-expansion.
   %
-  We denote by \emph{$\barU^*$\/} a saturated elementary extension of $\barU$ of cardinality $\kappa$.
+  We denote by \emph{$\<\U,\omega^*,\bar\U^*\>$\/} a saturated elementary extension of $\<\U,\omega,\bar\U\>$ of cardinality $\kappa$.
   %
-  As all saturated models of cardinality $\kappa$ are isomorphic, we can assume that $\barU^*=\<\U,\,\RR^*,\U^{\rm s*}\>$, where $\RR^*$ and $\U^{\rm s*}$ are suitable saturated extensions of $\RR$, respectively $\U^{\rm s}$.
+  Note that we can assume that the home-sort of this extension is $\U$, in fact as all saturated models of cardinality $\kappa$ are isomorphic.
   %
-  Elements $\U^{\rm s}$ are called \emph{finite samples,} elements in $\U^{\rm s*}$ are called \emph{internal samples.}
-
-  Finally, a \emph{global sample\/} is a type $p(x^{\rm s})$ that is complete among formulas without quantifiers of sample-sort and with parameters in $\U,\barM$, where $M$ is a model which will be clear from the context.\QED
+  The elements of $\bar\U$ are called \emph{finite samples,} those of $\bar\U^*$ are called \emph{internal samples.}
 \end{definition}
 
+To any internal sample $\bar a$ we associate a finitely additive measure on the definable subsets of $\U$.
+Define 
+
+\ceq{\hfill\Pr_{\bar a}\big[\phi(\U)\big]}
+{=}
+{\sup\Big\{r\in\QQ\ :\ r<\Fr_{\bar a}\phi(x)\Big\}}
+
+\begin{definition}
+  Let $x$ be a tuple of variables of the home-sort. An \emph{external sample\/} is a global type $p(\bar x)\subseteq \bar L(\U,\omega^*,\bar\U^*)$ such that for every formula $\phi(x)\in \barL$ the set $\{i\in\omega^*:p(\bar x)\proves\phi(\bar x.i)\}$ is definable and bounded.\QED
+\end{definition}
+
+For every external sample $p(\bar x)$ there is an $n\in\omega^*$ such that $p(\bar x)\proves\lh\bar x =n$ and the (nonstandard) cardinality of the set $\{i\in\omega^*:p(\bar x)\proves\phi(\bar x.i)\}$ is well-defined.
+
+Therefore, to any external sample $p(\bar x)$ we associate a finitely additive probability measure on the definable subsets of $\U$.
+Define 
+
+\ceq{\hfill\Pr_{\bar p}\big[\phi(\U)\big]}
+{=}
+{\sup\bigg\{r\in\QQ\ :\ r<\frac{\big|\big\{i<\lh\bar x\ :\ p(\bar x)\proves\phi(\bar x.i)\big\}\big|}{\lh\bar x}\bigg\}}
 
 \begin{notation}
-  For any global type $p(x^{\rm s})\in S(\U,\barM)$, formula $\phi(x^{\rm s};z)\in\barL(\barM)$, and $b\in\U^{|z|}$ we write \emph{$\phi(p\,;b)$} for $\phi(x^{\rm s}; b)\in p$.
+  Let $z$ be a tuple of variables of the home-sort.
+  For any external sample $p(\bar x)$, and every formula $\phi(\bar x\,;z)\in\barL(\U,\omega^*,\bar\U^*)$, and $b\in\U^{|z|}$ we write \emph{$\phi(\bar p\,;b)$} for $p(\bar x)\proves\phi(\bar x; b)$.
   %
   We also write
 
-  \ceq{\hfill\emph{$\phi(p\,;\U)$}}{=}{\Big\{ b\in\U^{|z|}\ :\ \phi(p\,;b)\Big\}}
+  \ceq{\hfill\emph{$\phi(\bar p\,;\U)$}}{=}{\Big\{ b\in\U^{|z|}\ :\ \phi(\bar p\,;b)\Big\}}
 
   Sets of this form are called \emph{externally definable.}
   %
-  This notation intentionally confuses $p$ with any of its realizations in some elementary extension of $\barU$.\QED
+  This notation intentionally confuses $p(\bar x)$ with any of its realizations (suggestively denoted by $\bar p$) in some elementary extension of $\barU$.\QED
 \end{notation}
 
 The following notions are standard
 
 \begin{definition}\label{def_}
+  Let $z$ be a tuple of variables of the home-sort.
   Let $M$ be given.
   %
-  A global sample $p(x^{\rm s})$ is
+  An external sample $p(\bar x)$ is
   \begin{itemize}
-    \item[1.]\noindent\emph{invariant\/} if for every $\phi(x^{\rm s};z)\in\barL(\barM)$ the set $\phi(p\,;\U)$ is invariant over $\barM$;
-    \item[2.]\noindent\emph{finitely satisfiable\/} if for every $\phi(x^{\rm s})\in p$  there is an $r\in M^{\rm s}$ such that $\phi(p)\iff\phi(r)$;
-    \item[3.]\noindent\emph{definable\/} if for every $\phi(x^{\rm s};z)\in\barL(\barM)$ the set $\phi(p\,;\U)$ is definable over $\barM$.\QED
+    \item[1.]\noindent\emph{invariant\/} if for every $\phi(\bar x;z)\in\barL(\U,\omega^*,\bar\U^*)$ the set $\phi(\bar p\,;\U)$ is invariant over $M$;
+    \item[2.]\noindent\emph{finitely satisfiable\/} if for every formula $\phi(\bar x,\;z)\in\barL(\U,\omega^*,\bar\U^*)$ if $\phi(\bar p\,;\U)\neq\0$, then $\phi(\bar a\,;\U)\neq\0$ for some $a\in\bar M$;
+    \item[3.]\noindent\emph{definable\/} over $M$ if for every $\phi(\bar x;z)\in\barL(\U,\omega^*,\bar\U^*)$ the set $\phi(p\,;\U)$ is definable over $\bar M$.\QED
   \end{itemize}
 \end{definition}
 
-\begin{definition}\label{def_smooth_global}
-  Let $M$ be given.
-  %
-  A global sample is \emph{smooth\/} if it is invariant and internal (i.e.\@ realized in $\barU^*$).\QED
-\end{definition}
+\begin{fact}
+  If an external sample $p(\bar x)$ is finitely satisfiable in $M$, then for every $\epsilon>0$ there is an $\bar a\in\bar M$ such that 
 
-We recall the following evident fact.
+  \ceq{\hfill\Pr_{\bar p}\big[\phi(\U)\big]}
+  {\approx_\epsilon}
+  {\Fr_{\bar a}\phi(x)}
+
+\end{fact}
+
+As usual, finite satisfiability implies invariance.
 
 \begin{fact}
   Let $M$ be given.
   %
-  Let $p(x^{\rm s})$ be a finitely satisfiable global sample.
+  Let $p(\bar x)$ be a finitely satisfiable external sample.
   %
   Then $p$ is invariant.\QED
 \end{fact}
 
-%Note that a global sample $p(x^{\rm s})$ is finitely satisfiable if for every finite many $b_i\subseteq\U^{|z|}$ there is an $r\in M^{\rm s}$ such that $\phi(p\,;b_i)\iff\phi(r\,;b_i)$ for all $i$.
-
-\begin{definition}\label{def_ssf}
+\begin{definition}\label{def_ufs}
   Let $M$ be given.
   %
-  A global sample $p(x^{\rm s})$ is \emph{uniformly (finitely) satisfiable\/} if for every $\phi(x^{\rm s};z)\in\barL(\barM)$ there is a finite $R\subseteq M^{\rm s}$ such that for every $b\in\U^{|z|}$ we have $p\proves\phi(x^{\rm s};b)\iff\phi(r\,;b)$ for some $r\in R$.\QED
+  A external sample $p(\bar x)$ is \emph{uniformly satisfiable\/} if for every $\phi(\bar x;z)\in\barL(\bar M)$ there is an $r\subseteq M^{\rm s}$ such that $\phi(p\,;b)\iff\phi(r\,;b)$ for every $b\in\U^{|z|}$.\QED
 \end{definition}
 
-Let  $p(x^{\rm s})$ be a global sample. The support of $p(x^{\rm s})$  is the set of those $a\subseteq\U$ such that $p(x^{\rm s})\proves x^{\rm s}(a)\neq0$.
+Note that uniform satisfiability implies definability.
+
+\begin{definition}\label{def_smooth_global}
+  Let $M$ be given.
+  %
+  An external sample is \emph{smooth\/} if it is invariant and realized in $\barU^*$ (by some internal sample).\QED
+\end{definition}
+
+\begin{lemma}\label{lem_sus}
+  Let $M$ be given.
+  %
+  Then every smooth external sample $p(\bar x)$ is uniformly satisfiable.
+\end{lemma}
+
+\begin{proof}
+  Let $s\in\barU^{\rm s*}$ be an internal sample that realizes $p(\bar x)$.
+  %
+  Let $\phi(\bar x;z)\in L$ be given.
+  %
+  Firstly, note that $\phi(p\,;\U)=\phi(s\,;\U)$ is definable in $\barU^*$ hence, by invariance, it is definable in $\bar M$.
+  
+  Secondly, we prove that $p(\bar x)$ is finitely satisfiable.
+  %
+  Let $b\in\U^{|z|}$ be given and pick $b'\equiv_{\bar M}b$ be such that $s\cnonfork_{\bar M}b'$.
+  %
+  By invariance, $\phi(s\,;b')\iff\phi(s\,;b)$.
+  %
+  Therefore there is an $r\in M^{\rm s}$ such that $\phi(r\,;b')\iff\phi(s\,;b)$.
+  %
+  This proves finite satisfiability.
+  %
+  By finite satisfiability, the following type is inconsistent
+  
+  \ceq{\hfill q(z)}{=}{\bigg\{\phi(s\,;z)\niff\phi(r\,;z)\ :\ r\in M^{\rm s}\bigg\}}
+
+  Hence compatness yields some finitely many $r_i\subseteq M^{\rm s}$ such that
+  
+  \ceq{\hfill \A z}{\bigvee^n_{i=1}}{\big[\phi(s\,;z)\iff\phi(r_i\,;z)\big]}
+
+  By the definability of $p(\bar x)$, which we proved in \ssf{1}, there are some formulas $\theta_i(z)\in L(\bar M)$ equivalent to $\phi(s\,;z)\iff\phi(r_i\,;z)$.
+  %
+  Hence we have
+
+  \ceq{\hfill \A z}
+  {\bigwedge^n_{i=1}}
+  {\Big[\theta_i(z)\iff\big[\phi(s\,;z)\iff\phi(r_i\,;z)\big]\Big]}
+
+  By elementarity, there is an $r\in M^{\rm s}$ such that the formula above holds with $s$ replaced by $r$.
+  %
+  Therefore $\A z\,\big[\phi(s\,;z)\iff\phi(r\,;z)\big]$. 
+  %
+  Hence $r$ is as required by Definition~\ref{def_ufs}.
+\end{proof}
+
+
+
+
+
+
+%Note that a external sample $p(\bar x)$ is finitely satisfiable if for every finite many $b_i\subseteq\U^{|z|}$ there is an $r\in M^{\rm s}$ such that $\phi(p\,;b_i)\iff\phi(r\,;b_i)$ for all $i$.
+
+
+Let  $p(\bar x)$ be a external sample. The \emph{support\/} of $p(\bar x)$  is the set of those $a\in\U^{|x|}$ such that $p(\bar x)\proves \bar x(a)\neq0$.
 
 \begin{lemma}\label{lem_finsupp}
   Let $M$ be given.
   %
-  The support of a uniformly satisfiable samples is a finite subset of $M$.
+  Let $p(\bar x)$ be a uniformly satisfiable external sample.
+  %
+  Then the support of  $p(\bar x)$ is a finite subset of $M$.
 \end{lemma}
 
 \begin{proof}
-  Apply Definition~\ref{def_ssf} to the formula $x^{\rm s}(z)\neq0$.
+  Apply Definition~\ref{def_ufs} to the formula $\bar x(z)\neq0$.
   %
-  Then for every $b\in\U^{|z|}$ there is an $r\in R$.
+  Then there is an $r\in M^{\rm s}$ such that for every $b\in\U^{|z|}$.
 
-  \ceq{\hfill p(x^{\rm s})}{\proves}{x^{\rm s}(b)\neq0\imp r(b)\neq0.}
+  \ceq{\hfill p(\bar x)}{\proves}{\bar x(b)\neq0\imp r(b)\neq0.}
 
-  As each $r\in R$ has finite support, and $R$ is finite, the lemma follows.
+  As $r$ has finite support, the lemma follows.
 \end{proof}
 
 \begin{fact}\label{fact_finite_support}
   Let $M$ be given.
   %
-  Let $p(x^{\rm s})$ be a global type with finite support, say $A=\{a_1,\dots,a_n\}$.
+  Let $p(\bar x)$ be a global type with a finite support enumerated by the tuple $a$.
   %
-  Then  there is type $q(y)$, where $y=y_1,\dots,y_n$ is a tuple of variables of real-sort, with parameters in $\U,\barM$ and no variable of sample sort such that $p(x^{\rm s})$ is equivalrnt to
+  Then  there is type $q(y)$, where $y$ is a tuple of variables of real-sort of length $|a|$, with parameters in $\U,\bar M$ and no variable of sample-sort such that
 
-  \hfil$\E y\ \Big[ q(y)\ \cup\ \{x^{\rm s}(a_i)=y_i : i=1,\dots,n\}\Big]$
+  \ceq{\hfill p(\bar x)}
+  {\iff}
+  {\E y\ \Big[ q(y)\ \cup\ \{\bar x(a)=y\}\Big]}
 \end{fact}
 
-\begin{lemma}\label{lem_sfs}
-  Let $M$ be given.
-  %
-  For every smooth global sample $p(x^{\rm s})$ the following hold
-  \begin{itemize}
-    \item[1.] $p(x^{\rm s})$ is definable;
-    \item[2.] $p(x^{\rm s})$ is uniformly finitely satisfiable.
-  \end{itemize}
-\end{lemma}
-
 \begin{proof}
-  Let $s\in\barU^{\rm s*}$ be an internal sample that realizes $p(x^{\rm s})$.
-  %
-  Let $\phi(x^{\rm s};z)\in L$ be given.
-  \begin{itemize}
-    \item[1.] As $\phi(p\,;\U)=\phi(s\,;\U)$ is definable in $\barU^*$, 
-    by invariance it is definable in $\barM$.
-    \item[2.] First we prove that $p(x^{\rm s})$ is finitely satisfiable.
-    %
-    Let $b\in\U^{|z|}$ be given and pick $b'\equiv_{\barM}b$ be such that $s\cnonfork_{\barM}b'$.
-    %
-    By invariance, $\phi(s\,;b')\iff\phi(s\,;b)$.
-    %
-    Therefore there is an $r\in M^{\rm s}$ such that $\phi(r\,;b')\iff\phi(s\,;b)$.
-    %
-    This proves finite satisfiability.
-    %
-    By finite satisfiability, the following type is inconsistent
-    
-    \ceq{\hfill q(z)}{=}{\bigg\{\phi(s\,;z)\iff\phi(r\,;z)\ :\ r\in M^{\rm s}\bigg\}}
-
-    Hence compatness yields the required $R\subseteq M^{\rm s}$.\qedhere
-  \end{itemize}
+  
 \end{proof}
-
 
 
 \begin{lemma}
   Let $M$ be given.
   %
-  Let $p(x^{\rm s})$ be a global type, then the following are equivalent
+  Let $p(\bar x)$ be a global type, then the following are equivalent
   \begin{itemize}
-    \item[1.] $p(x^{\rm s})$ is smooth;
-    \item[2.] $p(x^{\rm s})$ is uniformly finitely satisfiable.
+    \item[1.] $p(\bar x)$ is smooth;
+    \item[2.] $p(\bar x)$ is uniformly satisfiable.
   \end{itemize}
 \end{lemma}
-
 
 \begin{proof}
   Implication \ssf{1}$\IMP$\ssf{2} has been proved in Lemma~\ref{lem_sfs}. 
   %
   Here we prove \ssf{2}$\IMP$\ssf{1}. 
   %
-  By Lemma~\ref{lem_finsupp},  $p(x^{\rm s})$ has a finite support $A\subseteq M$.   
+  By Lemma~\ref{lem_finsupp},  $p(\bar x)$ has a finite support $A\subseteq M$.   
   %
   Now apply Fact~\ref{fact_finite_support}.
   %
-  As the type $q(y)$ is relized in $\barU^*$, so is  $p(x^{\rm s})$.
+  As the type $q(y)$ is relized in $\barU^*$, so is  $p(\bar x)$.
   %
   Invariance is clear by finite satisfiability.
 \end{proof}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The Erd\H os-Hajnal property}\label{samples}
+
+Let $\phi(x\,;z)\in L$. We say that $\phi(x\,;z) $ has the \emph{Erd\H{o}s-Hajnal property\/} if there is a constant $\delta\in(0,1)$, which depends soley on $\phi(x\,;z)$, such that for every finite $A\subseteq\U^{|x|}$ and $B\subseteq\U^{|z|}$ there are $A_0\subseteq A$ and $B_0\subseteq B$ such that $|A_0|>\delta|A|$, \ $|B_0|>\delta|B|$ and $A_0\times B_0$ is either disjoint from or contained in $\phi(\U\,;\U)$.
+
+\begin{definition}
+  We say that  $\phi(x\,;z)\in L$ is a \emph{distal\/} formula if there are some formulas $\eta_i(z\,;\bar z)\in L$, where $i=0,1$ and $|\bar z|=n{\cdot}|z|$ for some $n$, such that for every $a\in\U^{|x|}$ and every finite set $B\subseteq\U^{|z|}$ there is a tuple $\bar b\in B^n$ such that $\phi(a\,;B)=\eta_i(B\,;\bar b)$ and $\eta_0(z\,;\bar b)\imp\phi(a\,;z)\imp\eta_1(z,\bar b)$.
+\end{definition}
+
+\begin{theorem}
+  Assume $\eta(x\,;z)\in L$ has {\sc vc}-dimension $k<\infty$. Then for every $\epsilon>0$ and every finite $B\subseteq\U^{|z|}$ there is a $B_0\subseteq B$ of cardinality $<(k/\epsilon^2)\ln(k/\epsilon)$.
+\end{theorem}
+
+\begin{theorem}[(Chernikov-Starchenko)]
+  Assume $T$ is nip.
+  %
+  Then every distal formula has the Erd\H{o}s-Hajnal property.
+\end{theorem}
+
+\begin{proof}
+  Let $\psi(x\,;\bar z)$ be the formula given by distality.
+  %
+  Write $\theta(z\,;\bar z)$ for the formula
+
+  \hfil$\A x\ \big[\psi(x\,;\bar z)\imp\phi(x\,;z)\big]\ \vee\ \A x\ \big[\psi(x\,;\bar z)\imp\neg\phi(x\,;z)\big]$.
+
+  Let $s\in\U^{\rm s}$ be the indicator function of $A$. 
+  %
+  Let $\bar b\in\U^{|\bar z|}$ be such that $\psi(s\,;\bar b)>\epsilon$.
+\end{proof}
+
+\begin{proposition} 
+  Let $\phi(x\,;z)\in L$ be given.
+  %
+  Below, we write $\bar z$ for the tuple of variables $z_1,\dots,z_n$, where $|z_i|=|z|$.
+  %
+  The following are equivalent
+   \begin{itemize}
+    \item[1.] there is a formula $\psi(x\,;\bar z)\in L$ such that for every finite set $B\subseteq\U^{|z|}$ and every $a\in\U^{|x|}$ there is a $\bar b\in B^n$ such that $\psi(a\,;\bar b)$ and $\psi(x\,;\bar b)$ decides all formulas $\phi(x\,; b)$ for $b\in B$;
+    \item[2.] there are two formulas $\eta_i(z\,;\bar z)$, where $i=0,1$, such that for every $a\in\U^{|x|}$ there is a $\bar b\in B^n$ such that $\phi(a\,;B)=\eta_i(B\,;\bar b)$ and $\eta_0(z\,;\bar b)\imp\phi(a\,;z)\imp\eta_1(z,\bar b)$.
+  \end{itemize}
+\end{proposition}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -527,7 +632,7 @@ We write \emph{$a\approx b$\/} if $a\approx_\epsilon b$ holds for every $\epsilo
   %
   Let $p(x^{\rm s})$ be smooth.
   %
-  Then for every $\epsilon$ there are finitely many formulas $\theta_i(x)\in L(M)$ such that for every $b\in\U^{|z|}$ we have $\theta_i(x)\imp\phi(x\,;b)\imp\theta_j(x)$ and $\sbar\theta_i(p)\approx_\epsilon\sbar\theta_j(p)$ for some $i,j$.
+  Then for every $\epsilon$ there are finitely many formulas $\theta_i(x)\in L(M)$ such that for every $b\in\U^{|z|}$ we have $\theta_i(x)\imp\phi(x\,;b)\imp\theta_j(x)$ and $\Fr\theta_i(p)\approx_\epsilon\Fr\theta_j(p)$ for some $i,j$.
 \end{lemma}
 
 \begin{proof}
@@ -556,7 +661,7 @@ $\phi(p\,;z) \iff r(z)>0$
 
 
 
-Let $p(x^{\rm s})$ be global sample that is uniformly finitely satisfiable w.r.t.\@ all $\phi(x^{\rm s}\,;z)\in L$.
+Let $p(x^{\rm s})$ be external sample that is uniformly finitely satisfiable w.r.t.\@ all $\phi(x^{\rm s}\,;z)\in L$.
 %
 Then there is an $r\in M^{\rm s}$ such that 
 
@@ -568,7 +673,7 @@ $x^{\rm s}(z_i)\approx_\epsilon\mu_i$
 \begin{fact}
   Let $M$ and $\phi(x\,;z)\in L$ be given.
   %
-  Let $p(x^{\rm s})$ be a definable, uniformly finitely satisfiable global sample.
+  Let $p(x^{\rm s})$ be a definable, uniformly finitely satisfiable external sample.
   %
   Then there are finitely many formulas $\theta_i(x)\in L(M)$ such that for every $b\in\U^{|z|}$ we have $\theta_i(x)\imp\phi(x\,;b)\imp\theta_j(x)$ and $\sbar\theta_i(p)\approx_\epsilon\sbar\theta_j(p)$ for some $i,j$.
 \end{fact}
@@ -622,7 +727,7 @@ Let $p(x^{\rm s})$ be weakly approximable. Then there is a finite cover of $\B$,
 \begin{fact}
   Let $M$ be given.
   %
-  Let $p(x^{\rm s})$ be global sample.
+  Let $p(x^{\rm s})$ be external sample.
   %
   Suppose for every $\phi(x)\in L(\U)$ and $\epsilon$ there are $\theta_1(x), \theta_2(x)\in L(M)$ such that $\theta_1(x)\imp\phi(x)\imp\theta_2(x)$ and $\sbar\theta_2(p)\approx_\epsilon\sbar\theta_1(p)$.
   %
@@ -632,13 +737,13 @@ Let $p(x^{\rm s})$ be weakly approximable. Then there is a finite cover of $\B$,
 \begin{proof}
   Let $\phi_i(x)$, for $0\le i<n$, be given.
   %
-  We claim that there is an $r\in \barM$ such that $\sbar\phi_i(p)\approx_{3\epsilon}\sbar\phi_i(r)$ for every $i$.
+  We claim that there is an $r\in \bar M$ such that $\sbar\phi_i(p)\approx_{3\epsilon}\sbar\phi_i(r)$ for every $i$.
 
   Let $\theta_{i,1}(x)$ and $\theta_{i,2}(x)$ be as in the fact.
   %
   As $\theta_{i,1}(p)\le\phi_i(p)\le\theta_{i,2}(p)$, then $\theta_{i,1}(p)\approx_\epsilon\phi_i(p)$.
   %
-  By elementarity there is an $r\in \barM$ such that $\theta_{i,1}(r)\approx_\epsilon\theta_{i,1}(p)$ and $\theta_{i,2}(r)\approx_\epsilon\theta_{i,2}(p)$.
+  By elementarity there is an $r\in \bar M$ such that $\theta_{i,1}(r)\approx_\epsilon\theta_{i,1}(p)$ and $\theta_{i,2}(r)\approx_\epsilon\theta_{i,2}(p)$.
   %
   Then the claim follows immediately.
 \end{proof}
@@ -648,12 +753,12 @@ Let $p(x^{\rm s})$ be weakly approximable. Then there is a finite cover of $\B$,
 
 
 \begin{lemma}
-  The following are equivalent for every global sample $p(x^{\rm s})$
+  The following are equivalent for every external sample $p(x^{\rm s})$
   \begin{itemize}
     \item[1.] $p$ is smooth and invariant;
-    \item[2.] for every finite $B\subseteq\U^{|z|}$ and every $\epsilon$, there is an $r\in \barM$ such that $\sbar\phi(p\,;b)\approx_\epsilon\sbar\phi(r\,;b)$ for all $b\in B$;
-    \item[2.] for every $\phi_i(x\,;z)\in L$, every $b_i\in\U^{|z|}$, and every $\epsilon$, there is an $r\in \barM$ such that $\sbar\phi_i(p\,;b_i)\approx_\epsilon\sbar\phi_i(r\,;b_i)$, for every $0\le i<n$;
-    \item[2.] for every $\psi_0(x),\dots,\psi_{n-1}(x)\in L(\U)$ and every $\epsilon$, there is an $r\in \barM$ such that $\sbar\psi_i(p)\approx_\epsilon\sbar\psi_i(r)$, for every $i<n$;
+    \item[2.] for every finite $B\subseteq\U^{|z|}$ and every $\epsilon$, there is an $r\in \bar M$ such that $\sbar\phi(p\,;b)\approx_\epsilon\sbar\phi(r\,;b)$ for all $b\in B$;
+    \item[2.] for every $\phi_i(x\,;z)\in L$, every $b_i\in\U^{|z|}$, and every $\epsilon$, there is an $r\in \bar M$ such that $\sbar\phi_i(p\,;b_i)\approx_\epsilon\sbar\phi_i(r\,;b_i)$, for every $0\le i<n$;
+    \item[2.] for every $\psi_0(x),\dots,\psi_{n-1}(x)\in L(\U)$ and every $\epsilon$, there is an $r\in \bar M$ such that $\sbar\psi_i(p)\approx_\epsilon\sbar\psi_i(r)$, for every $i<n$;
     \item[4.] there are finitely many formulas $\theta_i(x)\in L(M)$ such that for every $b\in\U^{|z|}$ we have that $\theta_i(x)\imp\phi(x\,;b)\imp\theta_j(x)$ and $\sbar\theta_j(p)-\sbar\theta_i(p)<\epsilon$ for some $i,j$.
   \end{itemize}
 \end{lemma}
@@ -668,13 +773,13 @@ Let $p(x^{\rm s})$ be weakly approximable. Then there is a finite cover of $\B$,
   %
   Let $\mu_i\in\RR$ be such that $\sbar\phi(p\,;b_i)\approx\mu_i$ for every $i<n$.
   %
-  Let $\bar b'$ be such that $s\cnonfork_{\barM}\bar b'\equiv_{\barM}\bar b$.
+  Let $\bar b'$ be such that $s\cnonfork_{\bar M}\bar b'\equiv_{\bar M}\bar b$.
   %
   By invariance, $\sbar\phi(s\,;b'_i)\approx\mu_i$.
   %
-  Therefore there is an $r\in \barM$ such that $\sbar\phi(r\,;b'_i)\approx_\epsilon\mu_i$ for every $i<n$.
+  Therefore there is an $r\in \bar M$ such that $\sbar\phi(r\,;b'_i)\approx_\epsilon\mu_i$ for every $i<n$.
   %
-  As $\bar b'\equiv_{\barM}\bar b$, we obtain  $\sbar\phi(r\,;b_i)\approx_\epsilon\mu_i$.
+  As $\bar b'\equiv_{\bar M}\bar b$, we obtain  $\sbar\phi(r\,;b_i)\approx_\epsilon\mu_i$.
 
 
   \ssf{1}$\IMP$\ssf{2}.
@@ -684,13 +789,13 @@ Let $p(x^{\rm s})$ be weakly approximable. Then there is a finite cover of $\B$,
   %
   Let $\mu_i\in\RR$ be such that $\sbar\phi_i(p\,;b_i)\approx\mu_i$.
   %
-  Let $\bar b'$ be such that $s\cnonfork_{\barM}\bar b'\equiv_{\barM}\bar b$.
+  Let $\bar b'$ be such that $s\cnonfork_{\bar M}\bar b'\equiv_{\bar M}\bar b$.
   %
   By invariance, $\sbar\phi_i(s\,;b'_i)\approx\mu_i$.
   %
-  Therefore there is an $r\in \barM$ such that $\sbar\phi_i(r\,;b'_i)\approx_\epsilon\mu_i$ for every $i<n$.
+  Therefore there is an $r\in \bar M$ such that $\sbar\phi_i(r\,;b'_i)\approx_\epsilon\mu_i$ for every $i<n$.
   %
-  As $\bar b'\equiv_{\barM}\bar b$, we obtain  $\sbar\phi_i(r\,;b_i)\approx_\epsilon\mu_i$.
+  As $\bar b'\equiv_{\bar M}\bar b$, we obtain  $\sbar\phi_i(r\,;b_i)\approx_\epsilon\mu_i$.
 
 
   \ssf{1}$\IMP$\ssf{3}.
@@ -699,11 +804,11 @@ Let $p(x^{\rm s})$ be weakly approximable. Then there is a finite cover of $\B$,
   %
   The type
 
-  \ceq{\hfill p(z)}{=}{\Big\{\sbar\phi(s\,;z)\not\approx_\epsilon\sbar\phi(r\,;z)\ :\ r\in \barM\Big\}}
+  \ceq{\hfill p(z)}{=}{\Big\{\sbar\phi(s\,;z)\not\approx_\epsilon\sbar\phi(r\,;z)\ :\ r\in \bar M\Big\}}
 
   is inconsistent by \ssf{2}.
   %
-  Hence compatness yields the required $r_1,\dots,r_n\in \barM$.
+  Hence compatness yields the required $r_1,\dots,r_n\in \bar M$.
 
   \ssf{3}$\IMP$\ssf{2}. Clear.
 
@@ -711,11 +816,11 @@ Let $p(x^{\rm s})$ be weakly approximable. Then there is a finite cover of $\B$,
   %
   We prove that $p$ is invariant.
   %
-  Pick some $b\equiv_{\barM}b'$ and some $\epsilon$.
+  Pick some $b\equiv_{\bar M}b'$ and some $\epsilon$.
   %
-  Let $r,r'\in \barM$ be such that $\sbar\phi(p\,;b)\approx_\epsilon\sbar\phi(r\,;b)$ and $\sbar\phi(p\,;b')\not\approx_\epsilon\sbar\phi(r';b')$.
+  Let $r,r'\in \bar M$ be such that $\sbar\phi(p\,;b)\approx_\epsilon\sbar\phi(r\,;b)$ and $\sbar\phi(p\,;b')\not\approx_\epsilon\sbar\phi(r';b')$.
   %
-  As $\sbar\phi(r\,;b)\approx\sbar\phi(r';b')$ follows from  $b\equiv_{\barM}b'$, we obtain $\sbar\phi(p\,;b)\approx_\epsilon\sbar\phi(p\,;b')$.
+  As $\sbar\phi(r\,;b)\approx\sbar\phi(r';b')$ follows from  $b\equiv_{\bar M}b'$, we obtain $\sbar\phi(p\,;b)\approx_\epsilon\sbar\phi(p\,;b')$.
 
   We prove that $p$ is smooth.
 
@@ -727,11 +832,11 @@ Let $p(x^{\rm s})$ be weakly approximable. Then there is a finite cover of $\B$,
 \begin{definition}\label{def_genstable}
   Let $\phi(x\,;z)\in L$ and $M$ be given.
   %
-  A global sample $p(x^{\rm s})$ is
+  A external sample $p(x^{\rm s})$ is
   \begin{itemize}
-    \item[1.]\noindent \emph{invariant\/} if $\bar\phi(p\,;b)\approx\bar\phi(p\,;b')$ for every $b\equiv_{\barM}b'$;
-    \item[2.]\noindent (pointwise) \emph{approximable\/} if, for every $b\in\U^{|z|}$ and every $\epsilon$, there is an $r\in \barM$ such that $\sbar\phi(p\,;b)\approx_\epsilon\sbar\phi(r\,;b)$;
-    \item[3.]\noindent \emph{definable\/} if, for every $\epsilon$, the set $\{b\in\U^{|z|}:\sbar\phi(p\,;b)<\epsilon\}$ is definable over $\barM$.\QED
+    \item[1.]\noindent \emph{invariant\/} if $\bar\phi(p\,;b)\approx\bar\phi(p\,;b')$ for every $b\equiv_{\bar M}b'$;
+    \item[2.]\noindent (pointwise) \emph{approximable\/} if, for every $b\in\U^{|z|}$ and every $\epsilon$, there is an $r\in \bar M$ such that $\sbar\phi(p\,;b)\approx_\epsilon\sbar\phi(r\,;b)$;
+    \item[3.]\noindent \emph{definable\/} if, for every $\epsilon$, the set $\{b\in\U^{|z|}:\sbar\phi(p\,;b)<\epsilon\}$ is definable over $\bar M$.\QED
   \end{itemize}
 \end{definition}
 
@@ -792,8 +897,8 @@ All definitions and facts in this section are relative to some given formula $\p
   \begin{itemize}
     \item[1.]\noindent \emph{invariant\/} if, for every $b,b'\in\U^{|z|}$ such that $b\equiv_Mb'$, we have $\sbar\phi(s\,;b)\approx\sbar\phi(s\,;b')$;
     \item[2.] \noindent \emph{definable\/} if, for every $\epsilon$, the set $\{b\in\U^{|z|}:\sbar\phi(s\,;b)<\epsilon\}$ is definable over $M$;
-          % \item [3.]\noindent  \emph{satisfiable\/} if, for all $b\in\U^{|z|}$, if $\sbar\phi(s\,;b)>\epsilon$, then  $\phi(r\,;b)>\epsilon$ for some $r\in \barM$.
-    \item [3.]\noindent  \emph{finitely satisfiable\/} if, for all $b\in\U^{|z|}$ there is an $r\in \barM$ such that  $\sbar\phi(s\,;b)\approx_\epsilon\sbar\phi(r\,;b)$;
+          % \item [3.]\noindent  \emph{satisfiable\/} if, for all $b\in\U^{|z|}$, if $\sbar\phi(s\,;b)>\epsilon$, then  $\phi(r\,;b)>\epsilon$ for some $r\in \bar M$.
+    \item [3.]\noindent  \emph{finitely satisfiable\/} if, for all $b\in\U^{|z|}$ there is an $r\in \bar M$ such that  $\sbar\phi(s\,;b)\approx_\epsilon\sbar\phi(r\,;b)$;
     \item[4.] \noindent  \emph{generically stable\/} if all of the above hold.\QED
   \end{itemize}
   %When $\phi(x\,;z)$ and $M$ are not clear from the context we add: \emph{for $\phi(x\,;z)$ over/in $M$.}
@@ -844,7 +949,7 @@ Smooth roughly means internal and invariant.
   %
   Let $\B\subseteq\U^{|z|}$ be arbitrary.
   %
-  We say that $s$ is \emph{(uniformly) approximable\/} on $\B$ if for every $\epsilon$ there is a finite sample $r\in \barM$ such that $\sbar\phi(s,b)\approx_\epsilon\sbar\phi(r,b)$ for every $b\in\B$. (The sample $r$ depends on $\epsilon$, not on $b$.)\QED
+  We say that $s$ is \emph{(uniformly) approximable\/} on $\B$ if for every $\epsilon$ there is a finite sample $r\in \bar M$ such that $\sbar\phi(s,b)\approx_\epsilon\sbar\phi(r,b)$ for every $b\in\B$. (The sample $r$ depends on $\epsilon$, not on $b$.)\QED
 \end{definition}
 
 \begin{lemma}\label{lem_cons}
@@ -854,7 +959,7 @@ Smooth roughly means internal and invariant.
 \end{lemma}
 
 \begin{proof}
-  Let $r\in \barM$ be as in Definition~\ref{def_approximable_sample}.
+  Let $r\in \bar M$ be as in Definition~\ref{def_approximable_sample}.
   %
   As $r$ is finite, we may assume that $\supp(r)=\{a_1,\dots,a_n\}$.
   %
@@ -932,7 +1037,7 @@ For smooth samples the Vapnik-Chervonenkis Theorem can be strengthened as follow
 \end{corollary}
 
 \begin{proof}
-  By Theorem~\ref{thm_VC}, there is an $r\in \barM$ such that $\sbar\phi(s\,;b)\approx_\epsilon\sbar\phi(r\,;b)$ for all $b\in M^{|z|}$.
+  By Theorem~\ref{thm_VC}, there is an $r\in \bar M$ such that $\sbar\phi(s\,;b)\approx_\epsilon\sbar\phi(r\,;b)$ for all $b\in M^{|z|}$.
 
   Suppose for a contradiction that $\sbar\phi(s\,;b')\not\approx_\epsilon\sbar\phi(r\,;b')$ for some $b'\in\U^{|z|}$.
   %
@@ -955,7 +1060,7 @@ For smooth samples the Vapnik-Chervonenkis Theorem can be strengthened as follow
   We say that $\phi(x\,;z)\in L$ is \emph{distal\/} if there is a formula $\psi(x_1,\dots,x_n\,;z)\in L$ such that for every finite set $A\subseteq\U^{|x|}$ and every $b\in\U^{|z|}$ there are $a_1,\dots,a_n\in A$ such that $\psi(a_1,\dots,a_n,\;z)$ and $\psi(a_1,\dots,a_n,\,z)$ decides all formulas $\phi(a\,; z)$ for $a\in A$.\QED
 \end{definition}
 
-For every finite sample $r\in \barM$ and every $\mu\in\RR$ there is a formula $\psi(z)\in L(\supp r)$ such that $\sbar\phi(r\,;z)=\mu \iff \psi(z)$. The formula $\psi(z)$ depends on $r$.
+For every finite sample $r\in \bar M$ and every $\mu\in\RR$ there is a formula $\psi(z)\in L(\supp r)$ such that $\sbar\phi(r\,;z)=\mu \iff \psi(z)$. The formula $\psi(z)$ depends on $r$.
 
 When $\phi(x\,;z)$ is distal
 
@@ -970,7 +1075,7 @@ If  $\phi(x\,;z)$ is distal then there is a formula $\psi$ such that  for every 
   \end{itemize}
 \end{theorem}
 
-There is a formula $\psi(x_1,\dots,x_n\,;z)$ such that for every $r\in \barM$
+There is a formula $\psi(x_1,\dots,x_n\,;z)$ such that for every $r\in \bar M$
 
 there are $a_1,\dots,a_n$ such that $\phi(r\,;b)=\mu$ $\psi(x_1,\dots,x_n\,;z)$
 
@@ -1144,7 +1249,7 @@ Clearly the infimum above is attained.
   %  
   Then the following are equivalent
   \begin{itemize}
-    \item[1.] $p(\bar x)$ is a uniform global sample;
+    \item[1.] $p(\bar x)$ is a uniform external sample;
     \item[2.] for every $\epsilon>0$, there is an $n$ and a formula $\theta(\bar x)\in p$ such that $\Av_n\big(\bar a;\phi(x,b)\big)$ is within $\epsilon$ from $\Av_p\phi(x,b)$ for all $b\in\U^{|z|}$ and all $\bar a\models\theta(\bar x)$.
   \end{itemize}
 \end{proposition}
