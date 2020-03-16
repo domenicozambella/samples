@@ -1,9 +1,9 @@
-\documentclass[10pt,openany]{article}
+\documentclass[10pt]{article}
 % \usepackage{fontspec}
 % \usepackage{unicode-math}
 \usepackage[utf8]{inputenc}
 \usepackage[a4paper,hmargin={4cm,4cm},vmargin={3.5cm,3.5cm}]{geometry}
-\usepackage[colorlinks=true,bookmarksopen=false,linkcolor=blue,citecolor=red]{hyperref}
+% \usepackage[colorlinks=true,bookmarksopen=false,linkcolor=blue, itecolor=red]{hyperref}
 \usepackage{subfiles}
 \usepackage{calc} 
 \usepackage{datetime}
@@ -307,6 +307,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}\label{intro}
 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -319,7 +321,6 @@
 \def\medrel#1{\parbox[t]{6ex}{\hfil$#1$}}
 \def\ceq#1#2#3{\parbox[t]{15ex}{$\displaystyle #1$}\medrel{\displaystyle #2}$\displaystyle  #3$}
 \def\uuu{{\mathds 1}}
-\def\gruuu{{\mathds 1}}
 \def\Av{{\rm Av}}
 \def\st{{\rm ft}}
 
@@ -327,25 +328,28 @@ Let $M$ be a structure of signature $L$.
 %
 The \emph{sample-expansion\/} of $M$ is a 3-sorted expansion $\<M,\omega,\bar M\>$, where $\bar M=M^{<\omega}$.
 These three sorts are called \emph{home-sort,} \emph{integer-sort,} and \emph{sample-sort,} respectively.
-We put a bar over the symbols that denotes elements of sample-sort.
+The symbol \emph{$x$\/} always denotes a tuple of variables of the home-sort.
+We put a bar over the symbols of sample-sort such as $\bar x$ and $\bar a$.
+Symbols as $m,n,i$ are of integer-sort; from the context it should be inferred whether they are variables or parameters.
+
 The \emph{size\/} of a sample $\bar a\in\bar M$ is the length of $\bar a$ as an element of $M^{<\omega}$.
 This is denoted by \emph{$\lh\bar a$.}
-The same symbol $\bar a$ may  be used for tuples of samples of the same size.
-The usual notation \emph{$|\bar a|$\/} is used the length of such tuples, for instance, if $\bar a\in\bar M^n$ then  $|\bar a|=n$.
+The same symbol $\bar a$ may  be used for tuples of samples $\bar a_1,\dots,\bar a_n$ with the implicit assumption that $\lh\bar a_i$.
+The symbol \emph{$|\bar a|$\/} is used the length of such tuples, for instance, if $\bar a\in\bar M^n$ then  $|\bar a|=n$.
 We write \emph{$\bar a.i$\/} for the $i$-th element of the sample $\bar a$.
-Then  $\bar a_i\in M^{|\bar a|}$.
+Note that if $\bar a\in\bar M^n$ then $\bar a.i\in M^n$.
+%Then  $\bar a_i\in M^{|\bar a|}$.
 %
 The language of this expansion is denoted by $\barL$; it comprises
 \begin{itemize}
-  \item[1.] all symbols of $L$, these apply to the home-sort;
-  \item[2.] $0,1,+,\cdot$ which apply to the integer-sort;
+  \item[1.] all symbols of $L$ that apply to the home-sort;
+  \item[2.] $0,1,+,\cdot$ that apply to the integer-sort;
   \item[3.] a ternary relation of sort $\bar M,\omega, M$ that holds if $\bar x.i=y$.
-  \item[4.] for every $\phi(x)\in\barL$, where here for clarity $|x|=1$,  there is relation symbol of sort $\bar M,\omega$ that holds for those $\bar a$ and $i<\lh\bar a$ such that $\phi(\bar a.i)$;
-  %\item[4'.]  for every $\phi(x\,;y,\bar z)\in\barL$ there is relation symbol of sort $\bar M,\omega$ that holds for those $\bar a$ and $i$ such that $\phi(\bar a.i)$;
+  \item[4.] for every formula $\phi(x\,;y)\in\barL$, where $y$ a tuple of mixed sort, there is relation symbol for $\phi(\bar x.i\,;y)$, where $i$ is a variable of integer-sort.
 \end{itemize}
-  
-When $\phi(x)$ is the formula $x=x$, then \ssf{4} above implies that $\lh\bar x$ is definable.
-Also, from \ssf{4} it easily follows that the function $|\{i<\lh\bar a\, :\, \phi(\bar a.i)\}|$ is definable.
+
+When $\phi(x)$ is the formula $x=x$, requirement \ssf{4} implies that $\lh\bar x$ is definable.
+Also, from \ssf{4} it easily follows that the function $|\{i<\lh\bar a\, :\, \phi(\bar a.i)\}|$ is definable, uniformly in the parameters of $\phi(x)$.
 
 As in the integer-sort we can interpret the field of rational numbers, below we will freely use rational numbers when this clarify the notation. 
 For instance we define
@@ -355,6 +359,7 @@ For instance we define
 {\frac{|\{i<\lh\bar a\, :\, \phi(\bar a.i)\}|}{\lh\bar a}}
 
 and use that it is a definable function in $\barL$.
+In particular we  will use that for every $s\in\QQ$ there is a formula saying $\Fr_{\bar a}\phi(x)\ge s$, uniformly in the parameter of $\phi(x)$.
 
 \begin{definition}
   Let $\U$ be a monster model of inaccessible cardinality $\kappa>|L|$ and let $\<\U,\omega,\bar\U\>$ be the corresponding sample-expansion.
@@ -366,29 +371,35 @@ and use that it is a definable function in $\barL$.
   The elements of $\bar\U$ are called \emph{finite samples,} those of $\bar\U^*$ are called \emph{internal samples.}
 \end{definition}
 
-To any internal sample $\bar a$ we associate a finitely additive measure on the definable subsets of $\U$.
-Define 
+To any internal sample $\bar a$ we associate a finitely additive measure on definable subsets of $\U^{|x|}$.
+For $\phi(x)\in\barL(\U,\omega^*,\bar\U^*)$ we define 
 
-\ceq{\hfill\Pr_{\bar a}\big[\phi(\U)\big]}
+\ceq{\hfill\Pr_{\bar a}\big[\phi(x)\big]}
 {=}
-{\sup\Big\{r\in\QQ\ :\ r<\Fr_{\bar a}\phi(x)\Big\}}
+{\sup\Big\{s\in\QQ\ :\ s<\Fr_{\bar a}\phi(x)\Big\}}
+
+Note that this measure is type-definable uniformly in the parameters of $\phi(x)$.
+Namely, let $r\in\RR$ and $\phi(x\,;y)\in\barL$, where $y$ is a tuple of mixed sort.
+Then there is a type $q(\bar x\,;y)\subseteq \bar L$ that defines $\Pr_{\bar x}\big[\phi(x\,;y)\big]\ge r$.
 
 \begin{definition}
-  Let $x$ be a tuple of variables of the home-sort. An \emph{external sample\/} is a global type $p(\bar x)\subseteq \bar L(\U,\omega^*,\bar\U^*)$ such that for every formula $\phi(x)\in \barL$ the set $\{i\in\omega^*:p(\bar x)\proves\phi(\bar x.i)\}$ is definable and bounded.\QED
+  Let $x$ be a tuple of variables of the home-sort. An \emph{external sample\/} is a global type $p(\bar x)\subseteq \bar L(\U,\omega^*,\bar\U^*)$ such that, for every formula $\phi(x)\in\bar L(\U,\omega^*,\bar\U^*)$, the set $\{i\in\omega^*:p(\bar x)\proves\phi(\bar x.i)\}$ is bounded and definable, uniformly in the parameters of $\phi(x)$.\QED
 \end{definition}
 
-For every external sample $p(\bar x)$ there is an $n\in\omega^*$ such that $p(\bar x)\proves\lh\bar x =n$ and the (nonstandard) cardinality of the set $\{i\in\omega^*:p(\bar x)\proves\phi(\bar x.i)\}$ is well-defined.
+For every external sample $p(\bar x)$ there is an $n\in\omega^*$ such that $p(\bar x)\proves\lh\bar x =n$ and $\big|\{i\in\omega^*:p(\bar x)\proves\phi(\bar x.i)\}\big|$ is definable uniformly on the parameters of $\phi(x)$.
 
-Therefore, to any external sample $p(\bar x)$ we associate a finitely additive probability measure on the definable subsets of $\U$.
-Define 
+In analogy to what done with internal samples, we associate to an external sample $p(\bar x)$ a finitely additive probability measure on the definable subsets of $\U$.
+Namely, we define
 
 \ceq{\hfill\Pr_{\bar p}\big[\phi(\U)\big]}
 {=}
 {\sup\bigg\{r\in\QQ\ :\ r<\frac{\big|\big\{i<\lh\bar x\ :\ p(\bar x)\proves\phi(\bar x.i)\big\}\big|}{\lh\bar x}\bigg\}}
 
+What claimed above for internal samples, apply also to external samples, that is, there is a type $q(\bar x\,;y)\subseteq \barL$ that defines $\Pr_{\bar p}\big[\phi(x\,;y)\big]\ge r$.
+
 \begin{notation}
   Let $z$ be a tuple of variables of the home-sort.
-  For any external sample $p(\bar x)$, and every formula $\phi(\bar x\,;z)\in\barL(\U,\omega^*,\bar\U^*)$, and $b\in\U^{|z|}$ we write \emph{$\phi(\bar p\,;b)$} for $p(\bar x)\proves\phi(\bar x; b)$.
+  For $p(\bar x)$ an external sample, $\phi(\bar x\,;z)\in\barL$, and $b\in\U^{|z|}$ we write \emph{$\phi(\bar p\,;b)$} for $p(\bar x)\proves\phi(\bar x; b)$.
   %
   We also write
 
@@ -399,28 +410,29 @@ Define
   This notation intentionally confuses $p(\bar x)$ with any of its realizations (suggestively denoted by $\bar p$) in some elementary extension of $\barU$.\QED
 \end{notation}
 
-The following notions are standard
+The additional \textit{weakly\/} in the definition below refers to the fact that we only to parameters in the home-sort. Beside that the definition is standard.
 
-\begin{definition}\label{def_}
+\begin{definition}\label{def_i}
   Let $z$ be a tuple of variables of the home-sort.
   Let $M$ be given.
   %
   An external sample $p(\bar x)$ is
   \begin{itemize}
-    \item[1.]\noindent\emph{invariant\/} if for every $\phi(\bar x;z)\in\barL(\U,\omega^*,\bar\U^*)$ the set $\phi(\bar p\,;\U)$ is invariant over $M$;
-    \item[2.]\noindent\emph{finitely satisfiable\/} if for every formula $\phi(\bar x,\;z)\in\barL(\U,\omega^*,\bar\U^*)$ if $\phi(\bar p\,;\U)\neq\0$, then $\phi(\bar a\,;\U)\neq\0$ for some $a\in\bar M$;
-    \item[3.]\noindent\emph{definable\/} over $M$ if for every $\phi(\bar x;z)\in\barL(\U,\omega^*,\bar\U^*)$ the set $\phi(p\,;\U)$ is definable over $\bar M$.\QED
-  \end{itemize}
+  \item[1.]\noindent\emph{weakly invariant\/} over $M$ if $\phi(\bar p\,;\U)$ is invariant over $M$ for every  $\phi(\bar x\,;z)\in\barL$;
+  \item[2.]\noindent\emph{weakly finitely satisfiable\/} in $\bar M$ if for every formula $\phi(\bar x)\in\barL(M)$ if $\phi(\bar x)\in p$, then $\phi(\bar a)$ for some $\bar a\in\bar M$.
+  \end{itemize}\QED
 \end{definition}
 
-\begin{fact}
-  If an external sample $p(\bar x)$ is finitely satisfiable in $M$, then for every $\epsilon>0$ there is an $\bar a\in\bar M$ such that 
+Note that in \ssf{2} above the requirement $\bar a\in\bar M$ entails in particular $\lh\bar a\in\omega$.
 
-  \ceq{\hfill\Pr_{\bar p}\big[\phi(\U)\big]}
-  {\approx_\epsilon}
-  {\Fr_{\bar a}\phi(x)}
+If an external sample $p(\bar x)$ is weakly finitely satisfiable in $\bar M$ then for every $\epsilon>0$ and every formula $\phi(x)$ there is an $\bar a\in M$ such that  
 
-\end{fact}
+
+\ceq{\hfill\Pr_{\bar p}\big[\phi(x)\big]}
+{\approx_\epsilon}
+{\Fr_{\bar a}\phi(x)}
+
+\end{document}
 
 As usual, finite satisfiability implies invariance.
 
@@ -491,8 +503,6 @@ Note that uniform satisfiability implies definability.
   %
   Hence $r$ is as required by Definition~\ref{def_ufs}.
 \end{proof}
-
-
 
 
 
