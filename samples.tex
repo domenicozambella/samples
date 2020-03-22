@@ -319,7 +319,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Abstract samples}\label{samples}
 \def\medrel#1{\parbox[t]{6ex}{\hfil$#1$}}
-\def\ceq#1#2#3{\parbox[t]{15ex}{$\displaystyle #1$}\medrel{\displaystyle #2}$\displaystyle  #3$}
+\def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\medrel{\displaystyle #2}$\displaystyle  #3$}
 \def\uuu{{\mathds 1}}
 \def\Av{{\rm Av}}
 \def\st{{\rm ft}}
@@ -334,32 +334,33 @@ Symbols as $m,n,i$ are of integer-sort; from the context it should be inferred w
 
 The \emph{size\/} of a sample $\bar a\in\bar M$ is the length of $\bar a$ as an element of $M^{<\omega}$.
 This is denoted by \emph{$\lh\bar a$.}
-The same symbol $\bar a$ may  be used for tuples of samples $\bar a_1,\dots,\bar a_n$ with the implicit assumption that $\lh\bar a_i$.
-The symbol \emph{$|\bar a|$\/} is used the length of such tuples, for instance, if $\bar a\in\bar M^n$ then  $|\bar a|=n$.
 We write \emph{$\bar a.i$\/} for the $i$-th element of the sample $\bar a$.
-Note that if $\bar a\in\bar M^n$ then $\bar a.i\in M^n$.
-%Then  $\bar a_i\in M^{|\bar a|}$.
-%
+The same symbol $\bar a$ may be used for tuples of samples such as $\bar a_1,\dots,\bar a_n$.
+Then by \emph{$|\bar a|$\/} we denote the length of this tuple (that is, $n$, for the tuple above).
+We always make the the implicit assumption that all $\bar a_i$ in a tuple have the same size.
+By this assumption, $\bar a.i$ is a well-defined element of $M^{|\bar a|}$.
+
 The language of this expansion is denoted by $\barL$; it comprises
 \begin{itemize}
   \item[1.] all symbols of $L$ that apply to the home-sort;
   \item[2.] $0,1,+,\cdot$ that apply to the integer-sort;
-  \item[3.] a ternary relation of sort $\bar M,\omega, M$ that holds if $\bar x.i=y$.
+  \item[3.] a ternary relation of sort $\bar M,\omega, M$ that holds if $\bar x.i=y$;
   \item[4.] for every formula $\phi(x\,;y)\in\barL$, where $y$ a tuple of mixed sort, there is relation symbol for $\phi(\bar x.i\,;y)$, where $i$ is a variable of integer-sort.
 \end{itemize}
 
 When $\phi(x)$ is the formula $x=x$, requirement \ssf{4} implies that $\lh\bar x$ is definable.
-Also, from \ssf{4} it easily follows that the function $|\{i<\lh\bar a\, :\, \phi(\bar a.i)\}|$ is definable, uniformly in the parameters of $\phi(x)$.
+By \ssf{2}, the cardinality of finite subsets of $\omega$ is definable.
+Therefore, from \ssf{4}, it easily follows that the function $|\{i<\lh\bar a\, :\, \phi(\bar a.i)\}|$ is definable, uniformly in the parameters of $\phi(x)$.
 
 As in the integer-sort we can interpret the field of rational numbers, below we will freely use rational numbers when this clarify the notation. 
 For instance we define
 
-\ceq{\hfill\Fr_{\bar a}\phi(x)}
+\ceq{\hfill\Fr_{\bar a}\big[\phi(x)\big]}
 {=}
 {\frac{|\{i<\lh\bar a\, :\, \phi(\bar a.i)\}|}{\lh\bar a}}
 
 and use that it is a definable function in $\barL$.
-In particular we  will use that for every $s\in\QQ$ there is a formula saying $\Fr_{\bar a}\phi(x)\ge s$, uniformly in the parameter of $\phi(x)$.
+In particular we  will use that for every $s\in\QQ$ there is a formula saying $\Fr_{\bar a}\big[\phi(x)\big]\ge s$, uniformly in the parameter of $\phi(x)$.
 
 \begin{definition}
   Let $\U$ be a monster model of inaccessible cardinality $\kappa>|L|$ and let $\<\U,\omega,\bar\U\>$ be the corresponding sample-expansion.
@@ -378,12 +379,22 @@ For $\phi(x)\in\barL(\U,\omega^*,\bar\U^*)$ we define
 {=}
 {\sup\Big\{s\in\QQ\ :\ s<\Fr_{\bar a}\phi(x)\Big\}}
 
-Note that this measure is type-definable uniformly in the parameters of $\phi(x)$.
+Note that this measure is type-definable, uniformly in the parameters of $\phi(x)$.
 Namely, let $r\in\RR$ and $\phi(x\,;y)\in\barL$, where $y$ is a tuple of mixed sort.
 Then there is a type $q(\bar x\,;y)\subseteq \bar L$ that defines $\Pr_{\bar x}\big[\phi(x\,;y)\big]\ge r$.
 
+Let $M$ be a given model. 
+By elementarity, for every $\epsilon>0$ and every formula $\phi(x)\in L(M,\omega,\bar M)$ there is an $\bar a'\in\bar M$ such that  
+
+\ceq{\hfill\Pr_{\bar a}\big[\phi(x)\big]}
+{\approx_\epsilon}
+{\Fr_{\bar a'}\phi(x)}
+
+Note that $\bar a$ need not have the same size of $\bar a'$.
+In fact, in general $\lh\bar a$ may be non standard, while $\lh\bar a'\in\omega$.
+
 \begin{definition}
-  Let $x$ be a tuple of variables of the home-sort. An \emph{external sample\/} is a global type $p(\bar x)\subseteq \bar L(\U,\omega^*,\bar\U^*)$ such that, for every formula $\phi(x)\in\bar L(\U,\omega^*,\bar\U^*)$, the set $\{i\in\omega^*:p(\bar x)\proves\phi(\bar x.i)\}$ is bounded and definable, uniformly in the parameters of $\phi(x)$.\QED
+  An \emph{external sample\/} is a global type $p(\bar x)\in S(\U,\omega^*,\bar\U^*)$ such that, for every formula $\phi(x)\in L(\U)$, the set $\{i\in\omega^*:p(\bar x)\proves\phi(\bar x.i)\}$ is bounded and definable; uniformly in the parameters of $\phi(x)$.\QED
 \end{definition}
 
 For every external sample $p(\bar x)$ there is an $n\in\omega^*$ such that $p(\bar x)\proves\lh\bar x =n$ and $\big|\{i\in\omega^*:p(\bar x)\proves\phi(\bar x.i)\}\big|$ is definable uniformly on the parameters of $\phi(x)$.
@@ -391,7 +402,7 @@ For every external sample $p(\bar x)$ there is an $n\in\omega^*$ such that $p(\b
 In analogy to what done with internal samples, we associate to an external sample $p(\bar x)$ a finitely additive probability measure on the definable subsets of $\U$.
 Namely, we define
 
-\ceq{\hfill\Pr_{\bar p}\big[\phi(\U)\big]}
+\ceq{\hfill\Pr_{\bar p}\big[\phi(x)\big]}
 {=}
 {\sup\bigg\{r\in\QQ\ :\ r<\frac{\big|\big\{i<\lh\bar x\ :\ p(\bar x)\proves\phi(\bar x.i)\big\}\big|}{\lh\bar x}\bigg\}}
 
@@ -399,7 +410,7 @@ What claimed above for internal samples, apply also to external samples, that is
 
 \begin{notation}
   Let $z$ be a tuple of variables of the home-sort.
-  For $p(\bar x)$ an external sample, $\phi(\bar x\,;z)\in\barL$, and $b\in\U^{|z|}$ we write \emph{$\phi(\bar p\,;b)$} for $p(\bar x)\proves\phi(\bar x; b)$.
+  For $p(\bar x)$ an external sample, $\phi(\bar x\,;z)\in\barL$, and $b\in\U^{|z|}$ we write \emph{$\phi(\bar p\,;b)$\/} for $p(\bar x)\proves\phi(\bar x\,; b)$.
   %
   We also write
 
@@ -407,31 +418,57 @@ What claimed above for internal samples, apply also to external samples, that is
 
   Sets of this form are called \emph{externally definable.}
   %
-  This notation intentionally confuses $p(\bar x)$ with any of its realizations (suggestively denoted by $\bar p$) in some elementary extension of $\barU$.\QED
+  This notation intentionally confuses $p(\bar x)$ with any of its realizations (suggestively denoted by $\bar p$) in some elementary extension of $\bar\U$.\QED
 \end{notation}
 
-The additional \textit{weakly\/} in the definition below refers to the fact that we only to parameters in the home-sort. Beside that the definition is standard.
 
-\begin{definition}\label{def_i}
+
+\begin{definition}[(with warning)]\label{def_i}
   Let $z$ be a tuple of variables of the home-sort.
   Let $M$ be given.
-  %
   An external sample $p(\bar x)$ is
   \begin{itemize}
-  \item[1.]\noindent\emph{weakly invariant\/} over $M$ if $\phi(\bar p\,;\U)$ is invariant over $M$ for every  $\phi(\bar x\,;z)\in\barL$;
-  \item[2.]\noindent\emph{weakly finitely satisfiable\/} in $\bar M$ if for every formula $\phi(\bar x)\in\barL(M)$ if $\phi(\bar x)\in p$, then $\phi(\bar a)$ for some $\bar a\in\bar M$.
-  \end{itemize}\QED
+    \item[1.]\noindent\emph{invariant\/} over $M$ if for every formula $\phi(\bar x\,;z)\in\barL(M,\omega,\bar M)$ the set $\phi(\bar p\,;\U)$ is invariant over $M$;
+    \item[2.]\noindent\emph{finitely satisfiable\/} in $M$ if every formula $\phi(\bar x)\in\barL(\U,\omega,\bar\U)$ in $p(x)$ is satisfied by some $\bar a\in\bar M$.
+  \end{itemize}
+  These notions are standard but for the important fact that only parameters in the home-sort are allowed.\QED
 \end{definition}
 
-Note that in \ssf{2} above the requirement $\bar a\in\bar M$ entails in particular $\lh\bar a\in\omega$.
+It is clear that satisfiable implies invariant.
 
-If an external sample $p(\bar x)$ is weakly finitely satisfiable in $\bar M$ then for every $\epsilon>0$ and every formula $\phi(x)$ there is an $\bar a\in M$ such that  
+% Note that in \ssf{2} above the requirement $\bar a\in\bar M$ entails in particular $\lh\bar a\in\omega$.
 
+If an external sample $p(\bar x)$ is weakly satisfiable in $\bar M$ then for every $\epsilon>0$ and every formula $\phi(x)$ there is an $\bar a\in\bar M$ such that  
 
 \ceq{\hfill\Pr_{\bar p}\big[\phi(x)\big]}
 {\approx_\epsilon}
 {\Fr_{\bar a}\phi(x)}
 
+Let $p(\bar x)$ external sample finitely satisfiable in $M$.
+A coheir sequence in  $p(\bar x)$ is sequence $\<\bar a_i:i<\omega\>$ such that
+
+\ceq{\hfill\psi(x\,;b_1,\dots,b_n)}
+{\imp}
+{\big[\phi(a\,; b)\ \iff\ \phi(x\,; b)\big]}
+
+\section{Distal formulas}
+
+The formula $\phi(x\,;z)\in L$ is \emph{distal\/} if there is a formula $\psi(x\,;z_1,\dots,z_n)\in L$ such that for every finite set $B\subseteq\U^{|z|}$ of cardinality at least $2$ and every $a\in\U^{|x|}$ there are some $b_1,\dots,b_n\in B$ such that $\psi(a\,;b_1,\dots,b_n)$ and
+    
+\ceq{\hfill\psi(x\,;b_1,\dots,b_n)}
+{\imp}
+{\big[\phi(a\,; b)\ \iff\ \phi(x\,; b)\big]}
+\hfill for all $b\in B$.
+
+% \begin{proposition}
+%   The following are equivalent
+%   \begin{itemize}
+%     \item[1.] $\phi(x\,;z)$ is distal;
+%     \item[2.] there are two formulas $\eta_i(z_1,\dots,z_n\,;z)$, where $i=0,1$, such that for every $a\in\U^{|x|}$ there is a tuple $b_1,\dots,b_n\in B$ such that $\phi(a\,;B)=\eta_i(b_1,\dots,b_n\,;B)$ and 
+    
+%     \hfil$\eta_0(b_1,\dots,b_n\,;z)\ \imp\ \phi(a\,;z)\ \imp\ \eta_1(b_1,\dots,b_n\,;z)$.
+% \end{itemize}
+% \end{proposition}
 \end{document}
 
 As usual, finite satisfiability implies invariance.
@@ -455,7 +492,7 @@ Note that uniform satisfiability implies definability.
 \begin{definition}\label{def_smooth_global}
   Let $M$ be given.
   %
-  An external sample is \emph{smooth\/} if it is invariant and realized in $\barU^*$ (by some internal sample).\QED
+  An external sample is \emph{smooth\/} if it is invariant and realized in $\bar\U^*$ (by some internal sample).\QED
 \end{definition}
 
 \begin{lemma}\label{lem_sus}
@@ -465,11 +502,11 @@ Note that uniform satisfiability implies definability.
 \end{lemma}
 
 \begin{proof}
-  Let $s\in\barU^{\rm s*}$ be an internal sample that realizes $p(\bar x)$.
+  Let $s\in\bar\U^{\rm s*}$ be an internal sample that realizes $p(\bar x)$.
   %
   Let $\phi(\bar x;z)\in L$ be given.
   %
-  Firstly, note that $\phi(p\,;\U)=\phi(s\,;\U)$ is definable in $\barU^*$ hence, by invariance, it is definable in $\bar M$.
+  Firstly, note that $\phi(p\,;\U)=\phi(s\,;\U)$ is definable in $\bar\U^*$ hence, by invariance, it is definable in $\bar M$.
   
   Secondly, we prove that $p(\bar x)$ is finitely satisfiable.
   %
@@ -485,7 +522,7 @@ Note that uniform satisfiability implies definability.
   
   \ceq{\hfill q(z)}{=}{\bigg\{\phi(s\,;z)\niff\phi(r\,;z)\ :\ r\in M^{\rm s}\bigg\}}
 
-  Hence compatness yields some finitely many $r_i\subseteq M^{\rm s}$ such that
+  Hence compactness yields some finitely many $r_i\subseteq M^{\rm s}$ such that
   
   \ceq{\hfill \A z}{\bigvee^n_{i=1}}{\big[\phi(s\,;z)\iff\phi(r_i\,;z)\big]}
 
@@ -566,7 +603,7 @@ Let  $p(\bar x)$ be a external sample. The \emph{support\/} of $p(\bar x)$  is t
   %
   Now apply Fact~\ref{fact_finite_support}.
   %
-  As the type $q(y)$ is relized in $\barU^*$, so is  $p(\bar x)$.
+  As the type $q(y)$ is relized in $\bar\U^*$, so is  $p(\bar x)$.
   %
   Invariance is clear by finite satisfiability.
 \end{proof}
@@ -665,7 +702,7 @@ In particular $p\proves \supp(x^{\rm s}) = A$ for some finite $A\subseteq M$.
 
 $\phi(p\,;z) \iff r(z)>0$
 
-% We assume that for every $\phi(x),\phi(x)\in\barL(\barU)$ if $\phi(x)\imp\phi(x)$ then $\sbar\phi(x^{\rm s})\le\sbar\phi(x^{\rm s})$.
+% We assume that for every $\phi(x),\phi(x)\in\barL(\bar\U)$ if $\phi(x)\imp\phi(x)$ then $\sbar\phi(x^{\rm s})\le\sbar\phi(x^{\rm s})$.
 
 
 
@@ -837,7 +874,7 @@ Let $p(x^{\rm s})$ be weakly approximable. Then there is a finite cover of $\B$,
   \ceq{\hfill p(x^{\rm s})}{=}{\Big\{\sbar\phi(x^{\rm s};b)\approx_\epsilon\mu_b\ :\ b\in\U^{|z|}\Big\}}
 \end{proof}
 
-%Clearly, if $s$ is an internal sample, then $p(x^{\rm s})=\tp(s/\barU)$ is a smooth sample w.r.t.\@ any given formula $\phi(x\,;z)\in L$.
+%Clearly, if $s$ is an internal sample, then $p(x^{\rm s})=\tp(s/\bar\U)$ is a smooth sample w.r.t.\@ any given formula $\phi(x\,;z)\in L$.
 
 \begin{definition}\label{def_genstable}
   Let $\phi(x\,;z)\in L$ and $M$ be given.
@@ -862,7 +899,7 @@ The following is a useful characterization of smooth samples.
 %
 We write \emph{$\supp(p)$\/} for the \emph{support\/} of $p$, that is, the set of those $a$ in $\U$ such that $p\proves (a\in x^{\rm s})>\epsilon$ for some standard positive $\epsilon$.
 %
-If $s$ is a smooth sample  \emph{$\supp(s)$\/} is defined to be  \emph{$\supp(p)$\/} for $p(x^{\rm s})=\tp(s/\barU)$.
+If $s$ is a smooth sample  \emph{$\supp(s)$\/} is defined to be  \emph{$\supp(p)$\/} for $p(x^{\rm s})=\tp(s/\bar\U)$.
 
 
 
@@ -932,7 +969,7 @@ Smooth roughly means internal and invariant.
   %
   Let $s$ be smooth and let $s'\equiv_Ms$ be any internal sample.
   %
-  If $b,b'\in\U^{|z|}$ and $b\equiv_Mb'$, then $b'=fb$ for some $f\in\Aut(\barU^*/M)$.
+  If $b,b'\in\U^{|z|}$ and $b\equiv_Mb'$, then $b'=fb$ for some $f\in\Aut(\bar\U^*/M)$.
   %
   Then $\sbar\phi(s';fb)\approx\sbar\phi(f^{-1}s'\,;b)$.
   %
@@ -948,7 +985,7 @@ Smooth roughly means internal and invariant.
   %
   Then $\sbar\phi(s''\,;b)\not\approx_\epsilon\sbar\phi(s\,;b)$.
   %
-  As $s''\equiv_Ms$ are both in $\barU^*$, then $s''=fs$ for some $f\in\Aut(\barU^*/M)$.
+  As $s''\equiv_Ms$ are both in $\bar\U^*$, then $s''=fs$ for some $f\in\Aut(\bar\U^*/M)$.
   %
   Hence we obtan $\sbar\phi(s\,;f^{-1}b)\not\approx_\epsilon\sbar\phi(s\,;b)$ which contradics the invariance of $s$.
 \end{proof}
