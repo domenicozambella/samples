@@ -94,7 +94,7 @@
 \def\atpmTh{\textrm{Th}_\atpm}
 \def\Mod{\mathop{\rm Mod}}
 \def\Rmod{{\mbox{\scriptsize $R$-mod}}}
-\def\Aut{\textrm{Aut\kern.15ex}}
+\def\Aut{{\rm Aut\kern.15ex}}
 \def\Autf{\mathord{\rm Aut\kern.15ex{f}\kern.15ex}}
 \def\Cb{\textrm{Cb\kern.15ex}}
 \def\orbit{\O}
@@ -302,6 +302,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}\label{intro}
 
+Al posto di $\RR$ si potrebbe usare $\QQ$ o anche meglio $\omega$.
+
+Per campioni si potrebbero prendere anche sequenze.
+
+Per semplicit\`a di notazione conviene usare misure con segno (e quindi campioni con segno). 
+Ma non so quale sia il modo giusto. 
+Per il momento faccio come se il problema non esistesse.
+
+Soprattutto manca un'operazione tra campioni.
+Cioè se $M$ è un semigruppo, vorrei avere un concetto di moltiplicazione tra campioni.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -319,42 +330,36 @@
 \def\Av{{\rm Av}}
 \def\st{{\rm ft}}
 
-Let $M$ be a structure of signature $L$.
+Let $M$ be a structure.
 %
-The \emph{finite (fractional) sample expansion\/} of $M$ is a many-sorted expansion that has a sort for $M$, which we call the home-sort, a sort for $\RR$, as ordered field, and for each $n$ a sort for $F_n$, which we say are of \emph{sample-sort.}
+The \emph{finite (fractional) sample expansion\/} of $M$ is a therefore-sorted expansion $\bar M=\<M,\RR,M^{\rm s}\>$ that has a domain for $M$, which we call the home-sort, a domain for $\RR$, as an ordered field, and a domain $M^{\rm s}$, which we call \emph{sample-sort,} which is an  $\RR$-vector space that we describe below.
 %
-Variables of sample-sort are denoted with symbols $x^{\rm s}, y^{\rm s}$ and variations thereof.   
+Variables and elements of sample-sort (or tuple thereof) are denoted with symbols $x^{\rm s}, a^{\rm s}$ and variations thereof.
+%
+The variable $x$ is reserved for the home-sort.
+%
+Otherwise we the context will clarify the sort.
 
-% These functions are interpreted as \emph{(signed and fractional) multisets}.
-% %
-% Namely $r(a)$ interpreted as the number of times $a$ occurs in $r$.
-% %
-% We use the following suggestive notation:
-% \begin{itemize}
-%   \item[1.] \ceq{\hfill\emph{$a\in r$}\vphantom{\sum_x} }
-%   {=}
-%   {|r(a)|}\hfill  this is called the  \emph{multiplicity\/} of $a$ in $r$;
-%   \item[2.] \ceq{\hfill\emph{$|r|$} }
-%   {=}
-%   {\sum_{a\in M} a\in r}\hfill  this is called the \emph{size\/} of $r$;
-%   \item[3.] 
-%   \ceq{\hfill\emph{$\big|\big\{a\in r\ :\ \phi(a\,;b)\big\}\big|$}}
-%   {=}
-%   {\sum_{a\,\models\phi(x;b)} a\in r.}
-% \end{itemize}
+An element $a^{\rm s}\in M^{\rm s}$ is a map $a^{\rm s}:M\to\RR$ which is, non negative and almost always zero.
+%
+These functions, which we call samples, are interpreted as (weighted) samples or as (signed) finite measures (up to normalization) that concentrated on the support of $a^s$.
 
-% We call these multisets \emph{samples\/} and refer to their sorts collectively as \emph{sample-sort}.
+%We write \emph{$\bar M$\/} for the three sorted expansion above.
+%
+The language of the expansion $\bar M$ is denoted by \emph{$L$.}
+%
+It expands the natural language of each sort: the language of $M$, the language ordered rings, and the language of $\RR$-vector spaces.
+%
+Moreover, for every formula $\phi(x\,; y)\in L$, where $y$ is a tuple a mixed sort, there is a symbol $\sbar\phi(x^{\rm s}\,;y)$ for a function $(M^s)^x\times M^{y}\to\RR$.
+%
+For $\phi(x)\in L(\bar M)$, we interpret $\sbar\phi(x^{\rm s})$ as the function that maps $a^{\rm s}\in M^{\rm s}$ to\medskip
 
-We write \emph{$M^{\rm f}$\/} for the expansion above.
-%
-The language of $M^{\rm f}$ is denoted by \emph{$L^{\rm f}$.}
-%
-It expands the natural laguage of each sort: $L$, the language ordered rings, and the language of $\RR$-vector spaces.
-%
-Moreover, for every $\phi(x\,;z)\in L$ in $L^{\rm f}$ there is a symbol $\sbar\phi(x^{\rm s}\,;z)$ for a function $F_{|x|}\times M^{|z|}\to\RR$.
-%
-%For the moment we only require that $\sbar\phi(f\,;b)\neq0$ then $\E x\,\phi(x\,;b)$.
-
+\ceq{\hfill\emph{$\sbar\phi(a^{\rm s})$} }
+{=}
+{\raisebox{0ex}{$\displaystyle\sum_{x\in\phi(M)}\kern-.8ex a^s(x)$}
+  \kern-1.2ex\raisebox{-2ex}{$\Bigg/$}\kern-1ex
+  \raisebox{-2ex}{$\displaystyle\sum_{x\in M} a^s(x)$}
+}\medskip
 
 Below, $\epsilon$ always ranges over the positive standard reals.
 %
@@ -366,61 +371,78 @@ We write \emph{$a\approx b$\/} if $a\approx_\epsilon b$ holds for every $\epsilo
 \begin{definition}
   Let $\U$ be a monster model of cardinality $\kappa>|L|$.
   %
-  We denote by \emph{$\U^{\rm f*}$\/} a saturated elementary extension of $\U^{\rm f}$ of cardinality $\kappa$.
+  Let \emph{$\bar\U=\<\U,\RR,\U^{\rm s}\>$\/} be as above and let \emph{$\bar\U^*$} be a saturated elementary extension of $\U^{\rm s}$ of cardinality $\kappa$.
+  As all saturated models of cardinality $\kappa$ are isomorphic, we can assume that $\U$ is the domain of the home-sort of $\bar\U^*$, hence we write $\bar\U^*=\<\U,\RR^*,\U^{\rm s*}\>$.  
   %
-  As all saturated models of cardinality $\kappa$ are isomorphic, we can assume that $\U$ is the home-sort of $\U^{\rm f*}$.
-  %
-  Elements $r\in\U^{\rm f}$ are called \emph{finite samples,} elements in $s\in\U^{\rm f*}$ are called \emph{internal samples.}
+  Elements of $\U^{\rm s}$ are called \emph{finite samples,} elements of $\U^{\rm s*}$ are called \emph{internal samples.}
 
-  Finally, a \emph{global sample\/} is a maximally consistent set of formulas of the form $\sbar\phi(x^{\rm s})\approx_\epsilon\mu$, where $\phi(x)\in L(\U)$, and $\epsilon,\mu\in\RR$.\QED
+  %Finally, a \emph{external sample\/} is a maximally consistent set of formulas of the form $\sbar\phi(x^{\rm s})\approx_\epsilon\mu$, where $\phi(x)\in L(\U^{\rm s*})$, and $\epsilon,\mu\in\RR$.
+  
+  Finally, an \emph{external sample\/} is a maximally consistent set of formulas $p(x^{\rm s})\subseteq L(\U,\RR,\U^{\rm s*})$. 
+  (Note these are not types over the full of $\bar\U$.)\QED
 \end{definition}
 
 \begin{notation}
-  For any global type $p(x)\in S(\U)$ and formula $\phi(x\,;z)\in L$ we write 
+  Let $y$ and $z$ be tuples of mixed sort.
+  For any type $p(y)$ and formula $\phi(y,z)\in L(\bar\U^*)$ we write 
   
-  \ceq{\hfill\emph{$\phi(p\,;\U)$}}{=}{\Big\{ b\in\U^{|z|}\ :\ \phi(x\,; b)\in p\Big\}}
+  \ceq{\hfill\emph{$\phi(p\,;\bar\U^*)$}}{=}{\Big\{ a\in(\bar\U^*)^z\ :\ p(y)\proves\phi(y\,;a)\Big\}}
   
-  This notation intentionally confuses $p$ with any of its realizations in some elementary extension of $\U$.
-  %
-  Sets of this form are called \emph{externally definable.}
-  %
-  A global type may be identified with a family of externally definable sets.
-  
-  We extend this notation to global samples.
-  %
-  If $\phi(x\,;z)\in L$ and $p(x^{\rm s})$ is a global sample, we write $\sbar\phi(p\,;b)$ for the unique $\mu\in\RR$ such that $p(x^{\rm s})\proves \bar\phi(x^{\rm s}\,;b)\approx\mu$.
-  %
-  In analogy to the terminology above, we may say that $\sbar\phi(p\,;z)$ is an \emph{externally definable\/} real valued function.
-  %
-  A global sample my be identified with a family of externally definable functions.
+  This notation intentionally confuses $p(y)$ with any of its realizations in some elementary extension of $\bar\U$.
   \QED
 \end{notation}
 
-\begin{definition}\label{def_smooth_global}
-  A global sample $p(x^{\rm s})$ is \emph{smooth\/} if it is realized in $\U^{\rm f*}$.\QED
-\end{definition}
-
 \begin{definition}\label{def_} 
   Let $M$ be given.
-  %
-  A global sample $p(x^{\rm s})$ is
+  Let $y$ be a tuple of the home-sort.
+  A external sample $p(x^{\rm s})$ is
   \begin{itemize}
-    \item[1.]\noindent\emph{invariant\/} if $\sbar\phi(p\,;b)\approx\sbar\phi(p\,;b')$ for every $b\equiv_{M^{\rm f}}b'$ and every  $\phi(x\,;z)\in L$.
-    \item[2.]\noindent\emph{finitely satisfiable\/} if for every finite subset of $p$ is realized in  $M^{\rm f}$.
-    \item[3.]\noindent\emph{definable\/} if, for every $\epsilon$, the set $\{b\in\U^{|z|}:\sbar\phi(p\,;b)<\epsilon\}$ is definable over $M^{\rm f}$.\QED
+    \item[1.]\noindent\emph{invariant\/} if $\phi(p\,;\U,\U^{\rm s*})$ is invariant over $\bar M$, for every $\phi(x\,;y,z^{\rm s})\in L$.
+    \item[2.]\noindent\emph{finitely satisfiable\/} if every formula in $p(x^{\rm s})$ is satisfied by some element of $M^{\rm s}$.
+    \item[3.]\noindent\emph{definable\/} if $\phi(p\,;\U,\U^{\rm s*})$ is definable over $\bar M$, for every $\phi(x\,;y,z^{\rm s})\in L$.\QED
   \end{itemize}
+  An external type is \emph{generically stable\/} if it is definable and finitely satisfiable in some $\bar M$.\QED
 \end{definition}
 
-Explicitely, \ssf{2} above means that if $\sbar\psi_i(x^{\rm s})\approx_\epsilon\mu_i$ are some finitely many formulas in $p$, then there is an $r\in M^{\rm f}$ such that $\sbar\psi_i(r)\approx_\epsilon\mu_i$ for all $i$.
-%
-We may also rephrase this by saying that for every finitely many $\psi_i(x)\in L(\U)$ there is an $r\in M^{\rm f}$ such that $\sbar\psi_i(r)\approx_\epsilon\sbar\psi_i(p)$ for all $i$.
+Clearly every finitely satisfiable external sample is invariant.
+
+We will use the symbol \emph{$\cnonfork_{\bar M}$} with the usual meaning.
+
+
+\end{document}
+
+% \begin{definition}\label{def_coheir_idepencence} 
+% For every $a^{\rm s}\in\U^{\rm s*}$ and $b^{\rm s}\in\U^{\rm s*}$ we define
+% %
+% \ceq{\hfill\emph{$a^{\rm s}\cnonfork_Mb^{\rm s}$}}
+% {\IFF}
+% {\phi(\U^{\rm s*},b^{\rm s})\cap M^{\rm s}\neq\0
+% \textrm{ for all }\phi(x^{\rm s}\,;z^{\rm s})\in L(M,\RR,M^{\rm s}) 
+% \textrm{ such that }\phi(a^{\rm s}\,;b^{\rm s})}.
+
+
+% We define the type
+
+% \ceq{\hfill\emph{$x\cnonfork_Mb$}}
+% {=}
+% {\Big\{\phi(x\,;{\gr z})
+% \ :\ 
+% \phi(x\,;b)\in L(M)
+% \textrm{ and } M^{|x|}\subseteq\phi(\U\,;b)\Big\}.}
+
+%   % 
+% We will use the symbol \emph{$a\equiv_Mx\cnonfork_Mb$} 
+% for the union of the types $x\cnonfork_Mb$ and 
+% $\tp(a/M)$.\QED
+% \end{definition}
+
 
 \begin{fact}\label{fact_smooth=>fs}
-  Let $M$ be given. Then every smooth invariant sample is finitely satisfiable and definable.
+  Let $M$ be given. Every smooth invariant sample is finitely satisfiable and definable.
 \end{fact}
 
 \begin{proof}
-  Let $s$ be an internal sample that realizes an invariant global sample $p(x^{\rm s})$.
+  Let $s$ be an internal sample that realizes an invariant external sample $p(x^{\rm s})$.
   %
   Let $\phi_i(x^{\rm s}\,;b)\approx_\epsilon\mu_i$ be some finitely many formulas in $p$.
   %
@@ -438,7 +460,7 @@ We may also rephrase this by saying that for every finitely many $\psi_i(x)\in L
 \end{proof}
 
 \begin{fact}
-  Let $M$ be given. Then every global sample that is finitely satisfiable is invariant.
+  Let $M$ be given. Then every external sample that is finitely satisfiable is invariant.
 \end{fact}
 
 \begin{proof}
@@ -483,7 +505,7 @@ In this section we assume that for every $\phi(x),\psi(x)\in L(\U)$ if $\phi(x)\
 \begin{fact}
   Let $M$ be given.
   %
-  Let $p(x^{\rm s})$ be global sample.
+  Let $p(x^{\rm s})$ be external sample.
   %
   Suppose for every $\phi(x)\in L(\U)$ and $\epsilon$ there are $\theta_1(x), \theta_2(x)\in L(M)$ such that $\theta_1(x)\imp\phi(x)\imp\theta_2(x)$ and $\sbar\theta_2(p)\approx_\epsilon\sbar\theta_1(p)$.
   %
@@ -499,7 +521,7 @@ In this section we assume that for every $\phi(x),\psi(x)\in L(\U)$ if $\phi(x)\
 
 
 \begin{lemma}
-  The following are equivalent for every global sample $p(x^{\rm s})$
+  The following are equivalent for every external sample $p(x^{\rm s})$
   \begin{itemize}
     \item[1.] $p$ is smooth and invariant;
     \item[2.] for every finite $B\subseteq\U^{|z|}$ and every $\epsilon$, there is an $r\in M^{\rm f}$ such that $\sbar\phi(p\,;b)\approx_\epsilon\sbar\phi(r\,;b)$ for all $b\in B$;
@@ -581,7 +603,7 @@ In this section we assume that for every $\phi(x),\psi(x)\in L(\U)$ if $\phi(x)\
 \begin{definition}\label{def_genstable}
   Let $\phi(x\,;z)\in L$ and $M$ be given.
   %
-  A global sample $p(x^{\rm s})$ is
+  A external sample $p(x^{\rm s})$ is
   \begin{itemize}
     \item[1.]\noindent \emph{invariant\/} if $\bar\phi(p\,;b)\approx\bar\phi(p\,;b')$ for every $b\equiv_{M^{\rm f}}b'$;
     \item[2.]\noindent (pointwise) \emph{approximable\/} if, for every $b\in\U^{|z|}$ and every $\epsilon$, there is an $r\in M^{\rm f}$ such that $\sbar\phi(p\,;b)\approx_\epsilon\sbar\phi(r\,;b)$;
@@ -967,7 +989,7 @@ Under the assumptions of the corollary, for every $\epsilon>0$ there is an $n$ a
       %  
       Then the following are equivalent 
       \begin{itemize}
-            \item[1.] $p(\bar x)$ is a uniform global sample;
+            \item[1.] $p(\bar x)$ is a uniform external sample;
             \item[2.] for every $\epsilon>0$, there is an $n$ and a formula $\theta(\bar x)\in p$ such that $\Av_n\big(\bar a;\phi(x,b)\big)$ is within $\epsilon$ from $\Av_p\phi(x,b)$ for all $b\in\U^{|z|}$ and all $\bar a\models\theta(\bar x)$.
       \end{itemize}
 \end{proposition}
