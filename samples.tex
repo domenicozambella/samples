@@ -192,7 +192,7 @@
      {1ex}%     Space after thm head: " " = normal interword space;
          %   \newline = linebreak
      {\llap{\thmnumber{#2}\hskip2mm}% Thm head spec (empty means `normal')
-      \thmname{#1}\thmnote{\bfseries{} #3}}
+      \thmname{#1}\thmnote{\bfseries{}#3}}
 
 \newtheoremstyle{liscio}% name
      {2\parskip}%      Space above
@@ -302,17 +302,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}\label{intro}
 
-Al posto di $\RR$ si potrebbe usare $\QQ$ o anche meglio $\omega$.
-
-Per campioni si potrebbero prendere anche sequenze.
-
-Per semplicit\`a di notazione conviene usare misure con segno (e quindi campioni con segno). 
-Ma non so quale sia il modo giusto. 
-Per il momento faccio come se il problema non esistesse.
-
-Soprattutto manca un'operazione tra campioni.
-Cioè se $M$ è un semigruppo, vorrei avere un concetto di moltiplicazione tra campioni.
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -328,33 +317,38 @@ Cioè se $M$ è un semigruppo, vorrei avere un concetto di moltiplicazione tra
 \def\uuu{{\mathds 1}}
 \def\gruuu{{\mathds 1}}
 \def\Av{{\rm Av}}
-\def\st{{\rm ft}}
+\def\st{{\rm st}}
 
-Let $M$ be a structure.
+Let $M$ be a semigroup.
 %
-The \emph{finite (fractional) sample expansion\/} of $M$ is a therefore-sorted expansion $\bar M=\<M,\RR,M^{\rm s}\>$ that has a domain for $M$, which we call the home-sort, a domain for $\RR$, as an ordered field, and a domain $M^{\rm s}$, which we call \emph{sample-sort,} which is an  $\RR$-vector space that we describe below.
+The \emph{finite (fractional) sample expansion\/} of $M$ is a 3-sorted expansion $\bar M=\<M,\RR,M^{\sf s}\>$ that has a domain for $M$, which we call the home-sort, a domain for $\RR$, as an ordered field, and a domain $M^{\sf s}$, which we call \emph{sample-sort,} which is an  $\RR$-vector space that we describe below.
 %
-Variables and elements of sample-sort (or tuple thereof) are denoted with symbols $x^{\rm s}, a^{\rm s}$ and variations thereof.
+Variables and elements of sample-sort (or tuple thereof) are denoted with symbols $x^{\sf s}, a^{\sf s}$ and variations.
 %
-The variable $x$ is reserved for the home-sort.
-%
-Otherwise we the context will clarify the sort.
+The variable $x$ is reserved for the home-sort, for all other variables we the context will clarify the sort.
 
-An element $a^{\rm s}\in M^{\rm s}$ is a map $a^{\rm s}:M\to\RR$ which is, non negative and almost always zero.
+An element $a^{\sf s}\in M^{\sf s}$ is a map $a^{\sf s}:M\to\RR$ which is almost always zero.
 %
-These functions, which we call samples, are interpreted as (weighted) samples or as (signed) finite measures (up to normalization) that concentrated on the support of $a^s$.
+These functions, which we call samples, are interpreted as (weighted) samples or as (signed) finite measures (up to normalization) that concentrated on the support of $a^{\sf s}$.
 
-%We write \emph{$\bar M$\/} for the three sorted expansion above.
-%
 The language of the expansion $\bar M$ is denoted by \emph{$L$.}
 %
-It expands the natural language of each sort: the language of $M$, the language ordered rings, and the language of $\RR$-vector spaces.
-%
-Moreover, for every formula $\phi(x\,; y)\in L$, where $y$ is a tuple a mixed sort, there is a symbol $\sbar\phi(x^{\rm s}\,;y)$ for a function $(M^s)^x\times M^{y}\to\RR$.
-%
-For $\phi(x)\in L(\bar M)$, we interpret $\sbar\phi(x^{\rm s})$ as the function that maps $a^{\rm s}\in M^{\rm s}$ to\medskip
+It expands the natural language of each sort: on $M$, the language of semigroups, on $\RR$, the language ordered rings, and, on $M^{\sf s}$, the language of algebras over $\RR$. 
+This algebra has the natural sum and the multiplication inherited from $M$
 
-\ceq{\hfill\emph{$\sbar\phi(a^{\rm s})$} }
+\ceq{\hfill (a^{\sf s} + b^{\sf s}) (z)}
+{=}
+{a^{\sf s}(z) + b^{\sf s} (z)};\smallskip
+
+\ceq{\hfill (a^{\sf s}\cdot b^{\sf s}) (z)}
+{=}
+{\sum_{x\cdot y=z}a^{\sf s}(x)\cdot b^{\sf s} (y)}.
+
+Finally, for every formula $\phi(x\,; y)\in L$, where $y$ is a tuple a mixed sort, there is a symbol $\sbar\phi(x^{\sf s}\,;y)$ for a function $(M^s)^x\times M^{y}\to\RR$.
+%
+For $\phi(x)\in L(\bar M)$, we interpret $\sbar\phi(x^{\sf s})$ as the function that maps $a^{\sf s}\in M^{\sf s}$ to\medskip
+
+\ceq{\hfill\emph{$\sbar\phi(a^{\sf s})$} }
 {=}
 {\raisebox{0ex}{$\displaystyle\sum_{x\in\phi(M)}\kern-.8ex a^s(x)$}
   \kern-1.2ex\raisebox{-2ex}{$\Bigg/$}\kern-1ex
@@ -371,14 +365,14 @@ We write \emph{$a\approx b$\/} if $a\approx_\epsilon b$ holds for every $\epsilo
 \begin{definition}
   Let $\U$ be a monster model of cardinality $\kappa>|L|$.
   %
-  Let \emph{$\bar\U=\<\U,\RR,\U^{\rm s}\>$\/} be as above and let \emph{$\bar\U^*$} be a saturated elementary extension of $\U^{\rm s}$ of cardinality $\kappa$.
-  As all saturated models of cardinality $\kappa$ are isomorphic, we can assume that $\U$ is the domain of the home-sort of $\bar\U^*$, hence we write $\bar\U^*=\<\U,\RR^*,\U^{\rm s*}\>$.  
+  Let \emph{$\bar\U=\<\U,\RR,\U^{\sf s}\>$\/} be as above and let \emph{$\bar\U^*$} be a saturated elementary extension of $\U^{\sf s}$ of cardinality $\kappa$.
+  As all saturated models of cardinality $\kappa$ are isomorphic, we can assume that $\U$ is the domain of the home-sort of $\bar\U^*$, hence we write $\bar\U^*=\<\U,\RR^*,\U^{\sf s*}\>$.  
   %
-  Elements of $\U^{\rm s}$ are called \emph{finite samples,} elements of $\U^{\rm s*}$ are called \emph{internal samples.}
+  Elements of $\U^{\sf s}$ are called \emph{finite samples,} elements of $\U^{\sf s*}$ are called \emph{internal samples.}
 
-  %Finally, a \emph{external sample\/} is a maximally consistent set of formulas of the form $\sbar\phi(x^{\rm s})\approx_\epsilon\mu$, where $\phi(x)\in L(\U^{\rm s*})$, and $\epsilon,\mu\in\RR$.
+  %Finally, a \emph{external sample\/} is a maximally consistent set of formulas of the form $\sbar\phi(x^{\sf s})\approx_\epsilon\mu$, where $\phi(x)\in L(\U^{\sf s*})$, and $\epsilon,\mu\in\RR$.
   
-  Finally, an \emph{external sample\/} is a maximally consistent set of formulas $p(x^{\rm s})\subseteq L(\U,\RR,\U^{\rm s*})$. 
+  Finally, an \emph{external sample\/} is a maximally consistent set of formulas $p(x^{\sf s})\subseteq L(\U,\RR,\U^{\sf s*})$. 
   (Note these are not types over the full of $\bar\U$.)\QED
 \end{definition}
 
@@ -395,11 +389,11 @@ We write \emph{$a\approx b$\/} if $a\approx_\epsilon b$ holds for every $\epsilo
 \begin{definition}\label{def_} 
   Let $M$ be given.
   Let $y$ be a tuple of the home-sort.
-  A external sample $p(x^{\rm s})$ is
+  A external sample $p(x^{\sf s})$ is
   \begin{itemize}
-    \item[1.]\noindent\emph{invariant\/} if $\phi(p\,;\U,\U^{\rm s*})$ is invariant over $\bar M$, for every $\phi(x\,;y,z^{\rm s})\in L$.
-    \item[2.]\noindent\emph{finitely satisfiable\/} if every formula in $p(x^{\rm s})$ is satisfied by some element of $M^{\rm s}$.
-    \item[3.]\noindent\emph{definable\/} if $\phi(p\,;\U,\U^{\rm s*})$ is definable over $\bar M$, for every $\phi(x\,;y,z^{\rm s})\in L$.\QED
+    \item[1.]\noindent\emph{invariant\/} if $\phi(p\,;\U,\U^{\sf s*})$ is invariant over $\bar M$, for every $\phi(x\,;y,z^{\sf s})\in L$.
+    \item[2.]\noindent\emph{finitely satisfiable\/} if every formula in $p(x^{\sf s})$ is satisfied by some element of $M^{\sf s}$.
+    \item[3.]\noindent\emph{definable\/} if $\phi(p\,;\U,\U^{\sf s*})$ is definable over $\bar M$, for every $\phi(x\,;y,z^{\sf s})\in L$.\QED
   \end{itemize}
   An external type is \emph{generically stable\/} if it is definable and finitely satisfiable in some $\bar M$.\QED
 \end{definition}
@@ -408,17 +402,66 @@ Clearly every finitely satisfiable external sample is invariant.
 
 We will use the symbol \emph{$\cnonfork_{\bar M}$} with the usual meaning.
 
+\section{Semigroup operation among samples}
+
+We work over a model $M$.
+We write $a_{\bar M}$ for the orbit of $a$ over $\bar M$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Szemer\'edi's regularity lemma}
+\def\medrel#1{\parbox[t]{6ex}{\hfil$#1$}}
+\def\ceq#1#2#3{\parbox[t]{29ex}{$\displaystyle #1$}\medrel{#2}$\displaystyle  #3$}
+
+Define
+
+\ceq{\hfill \big|\phi(a^{\rm s}\,;b^{\rm s})\big|)}
+{=}
+{\sum_{\phi(x\,;y)} a^{\rm s}(x)\cdot b^{\rm s}(y)}
+
+
+
+\ceq{\hfill d_\phi(r\,;s)}
+{=}
+{\frac{\big|\phi(r\,;s)\big|}{\big|r\times s\big|}}
+
+We say that the pair of samples $r,s$ is $\epsilon$-regular if for every $r'\subseteq r$ and $s'\subseteq s$ such that  $|r'|>\epsilon|r|$ and $|s'|>\epsilon|s|$ 
+
+\ceq{\hfill \big|d_\phi(r\,;s)-d_\phi(r';s') \big|}
+{<}
+{\epsilon}
+
+
+\begin{void_thm}[Szemer\'edi's Regularity Lemma]
+  For every $\epsilon>0$ and for every pair of samples $u,v\in{}^{*}\kern-.1ex\bar\U$ of hyperfinite cardinality there are some finite partitions of $u$ and $v$, say $r_1,\dots,r_n$ and  $s_1,\dots,s_m$, such that 
+
+  \ssf{1.}\quad $r_i,s_j$ is $\epsilon$-regular for every $i,j\in[n]\times[m]\sm E$,
+
+  where $E\subseteq[n]\times[m]$, called the exceptional set, is such that
+
+  \ceq{\ssf{2.}\hfill\sum_{\<i,j\>\in E}|r_i|{\cdot}|s_j|}{<}{\epsilon{\cdot}|u|{\cdot}|v|}
+\end{void_thm}
+
+\begin{proof}
+  Let $\st((d(u\,;v))$
+\end{proof}
 
 \end{document}
 
 % \begin{definition}\label{def_coheir_idepencence} 
-% For every $a^{\rm s}\in\U^{\rm s*}$ and $b^{\rm s}\in\U^{\rm s*}$ we define
+% For every $a^{\sf s}\in\U^{\sf s*}$ and $b^{\sf s}\in\U^{\sf s*}$ we define
 % %
-% \ceq{\hfill\emph{$a^{\rm s}\cnonfork_Mb^{\rm s}$}}
+% \ceq{\hfill\emph{$a^{\sf s}\cnonfork_Mb^{\sf s}$}}
 % {\IFF}
-% {\phi(\U^{\rm s*},b^{\rm s})\cap M^{\rm s}\neq\0
-% \textrm{ for all }\phi(x^{\rm s}\,;z^{\rm s})\in L(M,\RR,M^{\rm s}) 
-% \textrm{ such that }\phi(a^{\rm s}\,;b^{\rm s})}.
+% {\phi(\U^{\sf s*},b^{\sf s})\cap M^{\sf s}\neq\0
+% \textrm{ for all }\phi(x^{\sf s}\,;z^{\sf s})\in L(M,\RR,M^{\sf s}) 
+% \textrm{ such that }\phi(a^{\sf s}\,;b^{\sf s})}.
 
 
 % We define the type
@@ -442,9 +485,9 @@ We will use the symbol \emph{$\cnonfork_{\bar M}$} with the usual meaning.
 \end{fact}
 
 \begin{proof}
-  Let $s$ be an internal sample that realizes an invariant external sample $p(x^{\rm s})$.
+  Let $s$ be an internal sample that realizes an invariant external sample $p(x^{\sf s})$.
   %
-  Let $\phi_i(x^{\rm s}\,;b)\approx_\epsilon\mu_i$ be some finitely many formulas in $p$.
+  Let $\phi_i(x^{\sf s}\,;b)\approx_\epsilon\mu_i$ be some finitely many formulas in $p$.
   %
   Let $b'$ be such that $s\cnonfork_{M^{\rm f}}b'\equiv_{M^{\rm f}}b$.
   %
@@ -477,13 +520,13 @@ We will use the symbol \emph{$\cnonfork_{\bar M}$} with the usual meaning.
 \begin{fact}
   Let $M$ be given.
   %
-  Let $p(x^{\rm s})$ be a smooth sample.
+  Let $p(x^{\sf s})$ be a smooth sample.
   %
   Then for every $\phi(x\,;z)\in L$ and every $\epsilon$ there are some finitely many $r_i\in M^{\rm f}$, say $0\le i<n$, such that for every $b\in\U^{|z|}$ we have $\phi(p\,;b)\approx_\epsilon\phi(r_i\,;b)$ for some $i$.
 \end{fact}
 
 \begin{proof}
-  Let $s$ be an internal sample that realizes $p(x^{\rm s})$.
+  Let $s$ be an internal sample that realizes $p(x^{\sf s})$.
   %
   Let $\phi(x\,;z)\in L$ and $\epsilon$ be fixed.
   %
@@ -499,13 +542,13 @@ We will use the symbol \emph{$\cnonfork_{\bar M}$} with the usual meaning.
 
 \section{Concrete samples}
 
-In this section we assume that for every $\phi(x),\psi(x)\in L(\U)$ if $\phi(x)\imp\psi(x)$ then $\sbar\phi(x^{\rm s})\le\sbar\psi(x^{\rm s})$.
+In this section we assume that for every $\phi(x),\psi(x)\in L(\U)$ if $\phi(x)\imp\psi(x)$ then $\sbar\phi(x^{\sf s})\le\sbar\psi(x^{\sf s})$.
 
 
 \begin{fact}
   Let $M$ be given.
   %
-  Let $p(x^{\rm s})$ be external sample.
+  Let $p(x^{\sf s})$ be external sample.
   %
   Suppose for every $\phi(x)\in L(\U)$ and $\epsilon$ there are $\theta_1(x), \theta_2(x)\in L(M)$ such that $\theta_1(x)\imp\phi(x)\imp\theta_2(x)$ and $\sbar\theta_2(p)\approx_\epsilon\sbar\theta_1(p)$.
   %
@@ -521,7 +564,7 @@ In this section we assume that for every $\phi(x),\psi(x)\in L(\U)$ if $\phi(x)\
 
 
 \begin{lemma}
-  The following are equivalent for every external sample $p(x^{\rm s})$
+  The following are equivalent for every external sample $p(x^{\sf s})$
   \begin{itemize}
     \item[1.] $p$ is smooth and invariant;
     \item[2.] for every finite $B\subseteq\U^{|z|}$ and every $\epsilon$, there is an $r\in M^{\rm f}$ such that $\sbar\phi(p\,;b)\approx_\epsilon\sbar\phi(r\,;b)$ for all $b\in B$;
@@ -531,7 +574,7 @@ In this section we assume that for every $\phi(x),\psi(x)\in L(\U)$ if $\phi(x)\
   \end{itemize}
 \end{lemma}
 
-\begin{proof} Let $s$ be an internal sample that realizes $p(x^{\rm s})$.
+\begin{proof} Let $s$ be an internal sample that realizes $p(x^{\sf s})$.
 
   \ssf{1}$\IMP$\ssf{2}.
   %
@@ -592,18 +635,18 @@ In this section we assume that for every $\phi(x),\psi(x)\in L(\U)$ if $\phi(x)\
 
   We prove that $p$ is smooth. 
   
-  \ceq{\hfill p(x^{\rm s})}{=}{\Big\{\sbar\phi(x^{\rm s}\,;b)\approx_\epsilon\mu_b\ :\ b\in\U^{|z|}\Big\}}
+  \ceq{\hfill p(x^{\sf s})}{=}{\Big\{\sbar\phi(x^{\sf s}\,;b)\approx_\epsilon\mu_b\ :\ b\in\U^{|z|}\Big\}}
   
 \end{proof}
 
 
 
-%Clearly, if $s$ is an internal sample, then $p(x^{\rm s})=\tp(s/\U^{\rm f})$ is a smooth sample w.r.t.\@ any given formula $\phi(x\,;z)\in L$.
+%Clearly, if $s$ is an internal sample, then $p(x^{\sf s})=\tp(s/\U^{\rm f})$ is a smooth sample w.r.t.\@ any given formula $\phi(x\,;z)\in L$.
 
 \begin{definition}\label{def_genstable}
   Let $\phi(x\,;z)\in L$ and $M$ be given.
   %
-  A external sample $p(x^{\rm s})$ is
+  A external sample $p(x^{\sf s})$ is
   \begin{itemize}
     \item[1.]\noindent \emph{invariant\/} if $\bar\phi(p\,;b)\approx\bar\phi(p\,;b')$ for every $b\equiv_{M^{\rm f}}b'$;
     \item[2.]\noindent (pointwise) \emph{approximable\/} if, for every $b\in\U^{|z|}$ and every $\epsilon$, there is an $r\in M^{\rm f}$ such that $\sbar\phi(p\,;b)\approx_\epsilon\sbar\phi(r\,;b)$;
@@ -621,9 +664,9 @@ The following is a useful characterization of smooth samples.
 
  
  %
- We write \emph{$\supp(p)$\/} for the \emph{support\/} of $p$, that is, the set of those $a$ in $\U$ such that $p\proves (a\in x^{\rm s})>\epsilon$ for some standard positive $\epsilon$.
+ We write \emph{$\supp(p)$\/} for the \emph{support\/} of $p$, that is, the set of those $a$ in $\U$ such that $p\proves (a\in x^{\sf s})>\epsilon$ for some standard positive $\epsilon$.
  %
- If $s$ is a smooth sample  \emph{$\supp(s)$\/} is defined to be  \emph{$\supp(p)$\/} for $p(x^{\rm s})=\tp(s/\U^{\rm f})$. 
+ If $s$ is a smooth sample  \emph{$\supp(s)$\/} is defined to be  \emph{$\supp(p)$\/} for $p(x^{\sf s})=\tp(s/\U^{\rm f})$. 
  
 
 
