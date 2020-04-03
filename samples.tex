@@ -407,50 +407,6 @@ We will use the symbol \emph{$\cnonfork_{\bar M}$} with the usual meaning.
 We work over a model $M$.
 We write $a_{\bar M}$ for the orbit of $a$ over $\bar M$.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Szemer\'edi's regularity lemma}
-\def\medrel#1{\parbox[t]{6ex}{\hfil$#1$}}
-\def\ceq#1#2#3{\parbox[t]{29ex}{$\displaystyle #1$}\medrel{#2}$\displaystyle  #3$}
-
-Define
-
-\ceq{\hfill \big|\phi(a^{\rm s}\,;b^{\rm s})\big|)}
-{=}
-{\sum_{\phi(x\,;y)} a^{\rm s}(x)\cdot b^{\rm s}(y)}
-
-
-
-\ceq{\hfill d_\phi(r\,;s)}
-{=}
-{\frac{\big|\phi(r\,;s)\big|}{\big|r\times s\big|}}
-
-We say that the pair of samples $r,s$ is $\epsilon$-regular if for every $r'\subseteq r$ and $s'\subseteq s$ such that  $|r'|>\epsilon|r|$ and $|s'|>\epsilon|s|$ 
-
-\ceq{\hfill \big|d_\phi(r\,;s)-d_\phi(r';s') \big|}
-{<}
-{\epsilon}
-
-
-\begin{void_thm}[Szemer\'edi's Regularity Lemma]
-  For every $\epsilon>0$ and for every pair of samples $u,v\in{}^{*}\kern-.1ex\bar\U$ of hyperfinite cardinality there are some finite partitions of $u$ and $v$, say $r_1,\dots,r_n$ and  $s_1,\dots,s_m$, such that 
-
-  \ssf{1.}\quad $r_i,s_j$ is $\epsilon$-regular for every $i,j\in[n]\times[m]\sm E$,
-
-  where $E\subseteq[n]\times[m]$, called the exceptional set, is such that
-
-  \ceq{\ssf{2.}\hfill\sum_{\<i,j\>\in E}|r_i|{\cdot}|s_j|}{<}{\epsilon{\cdot}|u|{\cdot}|v|}
-\end{void_thm}
-
-\begin{proof}
-  Let $\st((d(u\,;v))$
-\end{proof}
 
 \end{document}
 
@@ -481,7 +437,8 @@ We say that the pair of samples $r,s$ is $\epsilon$-regular if for every $r'\sub
 
 
 \begin{fact}\label{fact_smooth=>fs}
-  Let $M$ be given. Every smooth invariant sample is finitely satisfiable and definable.
+  Let $M$ be given. 
+  Every smooth invariant sample is finitely satisfiable and definable.
 \end{fact}
 
 \begin{proof}
