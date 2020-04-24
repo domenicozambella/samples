@@ -461,7 +461,9 @@ We write \emph{$a\approx b$\/} if $a\approx_\epsilon b$ holds for every $\epsilo
   Let $y$ and $z$ be tuples of mixed sort.
   For any type $p(y)$ and formula $\phi(y,z)\in L(\bar\U^*)$ we write 
   
-  \ceq{\hfill\emph{$\phi(p\,;\bar\U^*)$}}{=}{\Big\{ a\in(\bar\U^*)^z\ :\ p(y)\proves\phi(y\,;a)\Big\}}
+  \ceq{\hfill\emph{$\phi(p\,;\bar\U^*)$}}
+  {=}
+  {\Big\{ a\in(\bar\U^*)^z\ :\ p(y)\proves\phi(y\,;a)\Big\}}
   
   This notation intentionally confuses $p(y)$ with any of its realizations in some elementary extension of $\bar\U$.
   \QED
@@ -515,13 +517,15 @@ We say that the pair of samples $r,s$ is $\epsilon$-regular if for every $r'\sub
 
 
 \begin{void_thm}[Szemer\'edi's Regularity Lemma]
-  For every $\epsilon>0$ and for every pair of samples $u,v\in{}^{*}\kern-.1ex\bar\U$ of hyperfinite cardinality there are some finite partitions of $u$ and $v$, say $r_1,\dots,r_n$ and  $s_1,\dots,s_m$, such that 
+  For every $\epsilon>0$ and for every pair of samples $u,v\in\bar\U^*$ of hyperfinite cardinality there are some finite partitions of $u$ and $v$, say $r_1,\dots,r_n$ and  $s_1,\dots,s_m$, such that 
 
-  \ssf{1.}\quad $r_i,s_j$ is $\epsilon$-regular for every $i,j\in[n]\times[m]\sm E$,
+  \ssf{1.}\quad $r_i,s_j$ is $\epsilon$-regular for every $i,j\in[n]\times[m]\sm X$,
 
-  where $E\subseteq[n]\times[m]$, called the exceptional set, is such that
+  where $X\subseteq[n]\times[m]$, called the exceptional set, is such that
 
-  \ceq{\ssf{2.}\hfill\sum_{\<i,j\>\in E}|r_i|{\cdot}|s_j|}{<}{\epsilon{\cdot}|u|{\cdot}|v|}
+  \ceq{\ssf{2.}\hfill\sum_{\<i,j\>\in X}|r_i|{\cdot}|s_j|}
+  {<}
+  {\epsilon{\cdot}|u|{\cdot}|v|}
 \end{void_thm}
 
 \begin{proof}
@@ -620,7 +624,9 @@ We say that the pair of samples $r,s$ is $\epsilon$-regular if for every $r'\sub
   %
   The type
 
-  \ceq{\hfill p(z)}{=}{\Big\{\sharpphi(s\,;z)\not\approx_\epsilon\sharpphi(r\,;z)\ :\ r\in M^{\rm f}\Big\}}
+  \ceq{\hfill p(z)}
+  {=}
+  {\Big\{\sharpphi(s\,;z)\not\approx_\epsilon\sharpphi(r\,;z)\ :\ r\in M^{\rm f}\Big\}}
   
   is inconsistent by Fact~\ref{fact_smooth=>fs}.
   %
@@ -724,10 +730,7 @@ In this section we assume that for every $\phi(x),\psi(x)\in L(\U)$ if $\phi(x)\
   We prove that $p$ is smooth. 
   
   \ceq{\hfill p(x^{\sf s})}{=}{\Big\{\sharpphi(x^{\sf s}\,;b)\approx_\epsilon\mu_b\ :\ b\in\U^{|z|}\Big\}}
-  
 \end{proof}
-
-
 
 %Clearly, if $s$ is an internal sample, then $p(x^{\sf s})=\tp(s/\U^{\rm f})$ is a smooth sample w.r.t.\@ any given formula $\phi(x\,;z)\in L$.
 
@@ -742,11 +745,7 @@ In this section we assume that for every $\phi(x),\psi(x)\in L(\U)$ if $\phi(x)\
   \end{itemize}
 \end{definition}
 
-
-
-
 The following is a useful characterization of smooth samples.
-
 
 \section{Old stuff/garbage}
 
