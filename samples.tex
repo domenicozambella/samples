@@ -1,4 +1,4 @@
-\documentclass[10pt,openany]{article}
+\documentclass[10pt]{article}
 % \usepackage{fontspec}
 % \usepackage{unicode-math}
 \usepackage[utf8]{inputenc}
@@ -62,6 +62,7 @@
 
 \def\E{\exists}
 \def\A{\forall}
+\def\Indicator{{\mathds 1}}
 \def\mdot{\mathord\cdot}
 \def\models{\vDash}
 \def\pmodels{\mathrel{\models\kern-1.5ex\raisebox{.5ex}{*}}}
@@ -93,6 +94,7 @@
 \def\Diag{{\rm Diag}}
 \def\atpmTh{\textrm{Th}_\atpm}
 \def\Mod{\mathop{\rm Mod}}
+\def\Fr{\mathop{\rm Fr}}
 \def\Rmod{{\mbox{\scriptsize $R$-mod}}}
 \def\Aut{{\rm Aut\kern.15ex}}
 \def\Autf{\mathord{\rm Aut\kern.15ex{f}\kern.15ex}}
@@ -294,15 +296,160 @@
    Poche idee, ben confuse.
 }
 
-\bigskip{\tt (Branch: Szemeredi)}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bigskip{\tt branch: Szemeredi}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Abstract samples}\label{samples}
+\def\medrel#1{\parbox[t]{6ex}{\hfil$#1$}}
+\def\ceq#1#2#3{\parbox[t]{19ex}{$\displaystyle #1$}\medrel{#2}$\displaystyle  #3$}
+\def\uuu{{\mathds 1}}
+\def\gruuu{{\mathds 1}}
+\def\Av{{\rm Av}}
+\def\st{{\rm st}}
+
+Let $M$ be a structure.
+%
+The \emph{finite (fractional) sample expansion\/} of $M$ is a 3-sorted expansion $\bar M=\<M,\RR,M^{\sf s}\>$ where
+\begin{itemize}
+  \item[1.] $M$ is called the \emph{home-sort;}
+  \item[2.] $\RR$ is the set of real numbers in the signature of ordered field;
+  \item[3.] $M^{\sf s}$ is an vector lattice space (a Riesz space) containing all functions $s:M\to\RR$ with finite support (i.e.\@ almost always zero); this we call the \emph{sample-sort.}
+\end{itemize}
+
+The elements $M^{\sf s}$ maybe thought as (signed) discrete measures concentrated on the support.
+
+Variables of sample-sort (or tuple thereof) are denoted with symbols $x^{\sf s}, y^{\sf s},\dots,$ and variations.
+Elements of sample-sort are denoted with the symbols $s,r,t$, and variations.
+%
+The variable $x$ is reserved for (tuples of) variables of the home-sort.
+The context will clarify the sort the other variables.
+
+The language of $\bar M$ is denoted by \emph{$L$.}
+It expands the language of the three sorts above with a function symbol for each formula $\phi(x\,; y)\in L$, where $y$ is a tuple a mixed sort. This is interpreted with function $f_{\phi(x\,; y)}:(M^s)^{|x|}\times M^{y}\to\RR$ as explained below.
+
+For legibility, substitute parameters for $y$. 
+So, for $\phi(x)\in L(\bar M)$ we define\medskip
+
+\ceq{\hfill f_{\phi(x)}(s)}
+{=}
+{\sum_{a\,\models\,\phi(x)}\kern-.8ex s(a)}
+\smallskip
+
+\ceq{\hfill \textrm{(or, for short)}}
+{=}
+{\ \ \emph{$\displaystyle\sum_{\phi(x)} s$}}
+\bigskip
+
+As usual with vector lattices, we write $s^+=s\vee 0$ for the nonnegative part of $s$ and $s^-=s\wedge 0$ for the nonpositive part of $s$. 
+Finally we define $|s|=s^++s^-$.
+The norm of $s$ is 
+
+
+\ceq{\hfill\emph{$\|s\|$}}
+{=}
+{\ \sum_{x=x} |s|.}
+
+\ceq{}
+{=}
+{\sum_{a\in\U^{|x|}} |s(a)|.}
+
+Finally we write 
+
+\ceq{\hfill\emph{$\displaystyle\Fr_{s}\phi(x)$}}
+{=}
+{\frac{1}{\|s\|}\sum_{\phi(x)} |s|.}
+
+When ambiguity is of concern we write \emph{$\displaystyle\Fr_{x\in s}\phi(x)$.}
+
+% Below, $\epsilon$ always ranges over the positive standard reals.
+% %
+% If $a$ and $b$ are (hyper)reals, we write \emph{$a\approx_\epsilon b$\/} for $|a-b|<\epsilon$.
+% %
+% We write \emph{$a\approx b$\/} if $a\approx_\epsilon b$ holds for every $\epsilon$.
+
+
+\begin{definition}
+  Let $\U$ be a monster model of cardinality $\kappa>|L|$.
+  %
+  Let \emph{$\bar\U=\<\U,\RR,\U^{\sf s}\>$\/} be as above and let \emph{$\bar\U^*$} be a saturated elementary extension of $\bar\U$ of cardinality $\kappa$.
+  As all saturated models of cardinality $\kappa$ are isomorphic, we can assume that $\U$ is the domain of the home-sort of $\bar\U^*$, hence we write $\bar\U^*=\<\U,\RR^*,\U^{\sf s*}\>$.  
+  %
+  Elements of $\U^{\sf s}$ are called \emph{finite samples,} elements of $\U^{\sf s*}$ are called \emph{hyperfinite samples.}\QED
+
+  %Finally, a \emph{external sample\/} is a maximally consistent set of formulas of the form $\sharpphi(x^{\sf s})\approx_\epsilon\mu$, where $\phi(x)\in L(\U^{\sf s*})$, and $\epsilon,\mu\in\RR$.
+  
+  % Finally, an \emph{external sample\/} is a maximally consistent set of formulas $p(x^{\sf s})\subseteq L(\U,\RR,\U^{\sf s*})$. 
+  % (Note these are not types over the full of $\bar\U$.)
+\end{definition}
+
+% If there is an $n\in\RR^*$ say that $\bar\U$ is a pseudofinite structure 
+
+\begin{remark}[(pseudofinite structures)]
+  Let $\{M_i:i<\omega\}$ be a set of structures and define 
+  
+  \ceq{\hfill M}
+  {=}
+  {\bigcup_{i<\omega}\{i\}\times M_i}
+
+  We stipulate that $M\models r(a)$ if $a=\<i,a_1\>,\dots,\<i,a_n\>$ for some $i$ and $M_i\models r(a_1,\dots,a_n)$.
+  Functions symbols are interpreted in a similar way (on mixed tuples function take some fixed but arbitrary value, say the first component of the tuple).
+  In the signature of $M$ we include also a symbol for an equivalence relation that has $\{i\}\times M_i$ as equivalence classes.
+  In $\U$, every equivalence class is a saturated elementary extension of some ultraproducts of $\{M_i:i<\omega\}$.
+  When the $M_i$ have finite unbounded cardinality we call each equivalence class in $\U$ a pseudofinite structure.
+  In this case each class is the support of some $0$-$1$ valued internal sample $s\in\U^{\sf s*}$.
+  In particular, every class not in $M$ has (properly) hyperfinite cardinality.\QED 
+\end{remark}
+
+
+
+Hyperfinite samples that are 0-1 valued are called \emph{hyperfinite sets}.
+We write $a\in s$ for $s(a)=1$, when $s$ is an hyperfinite set.
+
+Let $s$ be a hyperfinite set and fix some formula $\phi(x\,;y)\in L(\bar\U^*)$ where $x,y$ are variables of the home-sort.
+Define
+
+\ceq{\hfill a\sim_s a'}
+{=}
+{\A y\in s\big[\phi(a,y)\iff\phi(a',y)\big]}
+
+
+
+
+\begin{notation}
+  Let $y$ and $z$ be tuples of mixed sort.
+  For any type $p(y)$ and formula $\phi(y,z)\in L(\bar\U^*)$ we write 
+  
+  \ceq{\hfill\emph{$\phi(p\,;\bar\U^*)$}}
+  {=}
+  {\Big\{ a\in(\bar\U^*)^z\ :\ p(y)\proves\phi(y\,;a)\Big\}}
+  
+  This notation intentionally confuses $p(y)$ with any of its realizations in some elementary extension of $\bar\U$.
+  \QED
+\end{notation}
+
+\begin{definition}\label{def_} 
+  Let $M$ be given.
+  Let $y$ be a tuple of the home-sort.
+  A external sample $p(x^{\sf s})$ is
+  \begin{itemize}
+    \item[1.]\noindent\emph{invariant\/} if $\phi(p\,;\U,\U^{\sf s*})$ is invariant over $\bar M$, for every $\phi(x\,;y,z^{\sf s})\in L$.
+    \item[2.]\noindent\emph{finitely satisfiable\/} if every formula in $p(x^{\sf s})$ is satisfied by some element of $M^{\sf s}$.
+    \item[3.]\noindent\emph{definable\/} if $\phi(p\,;\U,\U^{\sf s*})$ is definable over $\bar M$, for every $\phi(x\,;y,z^{\sf s})\in L$.\QED
+  \end{itemize}
+  An external type is \emph{generically stable\/} if it is definable and finitely satisfiable in some $\bar M$.\QED
+\end{definition}
+
+Clearly every finitely satisfiable external sample is invariant.
+
+We will use the symbol \emph{$\cnonfork_{\bar M}$} with the usual meaning.
+
+
 \section{Type-definable functions}\label{tp-def-fun}
 
 \def\medrel#1{\parbox[t]{6ex}{\hfil$#1$}}
@@ -406,88 +553,6 @@ We always assume $\U$ has a larger cardinality than the topology of $X$ and that
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Abstract samples}\label{samples}
-\def\medrel#1{\parbox[t]{6ex}{\hfil$#1$}}
-\def\ceq#1#2#3{\parbox[t]{19ex}{$\displaystyle #1$}\medrel{#2}$\displaystyle  #3$}
-\def\uuu{{\mathds 1}}
-\def\gruuu{{\mathds 1}}
-\def\Av{{\rm Av}}
-\def\st{{\rm st}}
-
-Let $M$ be a structure.
-%
-The \emph{finite (fractional) sample expansion\/} of $M$ is a 3-sorted expansion $\bar M=\<M,\RR,M^{\sf s}\>$ that has a domain for $M$, which we call the home-sort, a domain for $\RR$, as an ordered field, and a domain $M^{\sf s}$, which we call \emph{sample-sort,} which is an  $\RR$-vector space that we describe below.
-%
-Variables of sample-sort (or tuple thereof) are denoted with symbols $x^{\sf s}, y^{\sf s},\dots,$ and variations.
-Elements of sample-sort are denoted with the symbols $s,r,t$, and variations.
-%
-The variable $x$ is reserved for (tuples of) variables of the home-sort.
-The context will clarify the sort the other variables.
-
-An element $s\in M^{\sf s}$ is a map $s:M\to\RR$ which is almost always zero.
-%
-These functions, which we call samples, are interpreted as (weighted) samples or as (signed) finite measures (up to normalization) that are concentrated on the support of $s$.
-
-The language of the expansion $\bar M$ is denoted by \emph{$L$.}
-
-For every formula $\phi(x\,; y)\in L$, where $y$ is a tuple a mixed sort, there is a symbol $\sharpphi(x^{\sf s}\,;y)$ for a function $(M^s)^{|x|}\times M^{y}\to\RR$.
-%
-For $\phi(x)\in L(\bar M)$, we interpret $\sharpphi(s)$ as the function that maps $a^{\sf s}\in M^{\sf s}$ to\medskip
-
-\ceq{\hfill\emph{$\sharpphi(s)$} }
-{=}
-{\sum_{a\,\models\,\phi(x)}\kern-.8ex s(x)}
-
-Below, $\epsilon$ always ranges over the positive standard reals.
-%
-If $a$ and $b$ are (hyper)reals, we write \emph{$a\approx_\epsilon b$\/} for $|a-b|<\epsilon$.
-%
-We write \emph{$a\approx b$\/} if $a\approx_\epsilon b$ holds for every $\epsilon$.
-
-
-\begin{definition}
-  Let $\U$ be a monster model of cardinality $\kappa>|L|$.
-  %
-  Let \emph{$\bar\U=\<\U,\RR,\U^{\sf s}\>$\/} be as above and let \emph{$\bar\U^*$} be a saturated elementary extension of $\bar\U$ of cardinality $\kappa$.
-  As all saturated models of cardinality $\kappa$ are isomorphic, we can assume that $\U$ is the domain of the home-sort of $\bar\U^*$, hence we write $\bar\U^*=\<\U,\RR^*,\U^{\sf s*}\>$.  
-  %
-  Elements of $\U^{\sf s}$ are called \emph{finite samples,} elements of $\U^{\sf s*}$ are called \emph{internal samples.}
-
-  %Finally, a \emph{external sample\/} is a maximally consistent set of formulas of the form $\sharpphi(x^{\sf s})\approx_\epsilon\mu$, where $\phi(x)\in L(\U^{\sf s*})$, and $\epsilon,\mu\in\RR$.
-  
-  Finally, an \emph{external sample\/} is a maximally consistent set of formulas $p(x^{\sf s})\subseteq L(\U,\RR,\U^{\sf s*})$. 
-  (Note these are not types over the full of $\bar\U$.)\QED
-\end{definition}
-
-\begin{notation}
-  Let $y$ and $z$ be tuples of mixed sort.
-  For any type $p(y)$ and formula $\phi(y,z)\in L(\bar\U^*)$ we write 
-  
-  \ceq{\hfill\emph{$\phi(p\,;\bar\U^*)$}}
-  {=}
-  {\Big\{ a\in(\bar\U^*)^z\ :\ p(y)\proves\phi(y\,;a)\Big\}}
-  
-  This notation intentionally confuses $p(y)$ with any of its realizations in some elementary extension of $\bar\U$.
-  \QED
-\end{notation}
-
-\begin{definition}\label{def_} 
-  Let $M$ be given.
-  Let $y$ be a tuple of the home-sort.
-  A external sample $p(x^{\sf s})$ is
-  \begin{itemize}
-    \item[1.]\noindent\emph{invariant\/} if $\phi(p\,;\U,\U^{\sf s*})$ is invariant over $\bar M$, for every $\phi(x\,;y,z^{\sf s})\in L$.
-    \item[2.]\noindent\emph{finitely satisfiable\/} if every formula in $p(x^{\sf s})$ is satisfied by some element of $M^{\sf s}$.
-    \item[3.]\noindent\emph{definable\/} if $\phi(p\,;\U,\U^{\sf s*})$ is definable over $\bar M$, for every $\phi(x\,;y,z^{\sf s})\in L$.\QED
-  \end{itemize}
-  An external type is \emph{generically stable\/} if it is definable and finitely satisfiable in some $\bar M$.\QED
-\end{definition}
-
-Clearly every finitely satisfiable external sample is invariant.
-
-We will use the symbol \emph{$\cnonfork_{\bar M}$} with the usual meaning.
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -500,7 +565,20 @@ We will use the symbol \emph{$\cnonfork_{\bar M}$} with the usual meaning.
 \def\medrel#1{\parbox[t]{6ex}{\hfil$#1$}}
 \def\ceq#1#2#3{\parbox[t]{29ex}{$\displaystyle #1$}\medrel{#2}$\displaystyle  #3$}
 
-Define
+An internal nonnegative sample $s\in\U^{\sf s*}$ is pseudorandom over $M$ if for every $0\le s'\le s$ such that $\|s'\|\approx\|s\|$ and for every $\phi(x)\in L(\bar M)$
+
+\ceq{\hfill\Fr_{s'}\phi(x)}
+{\approx}
+{\Fr_{s}\phi(x)}
+
+For every $\epsilon>0$ there is an $n=n(\epsilon)$ such that for every formula $\phi(x,z)$ and every finite nonnegative sample $a,b\in M^{\sf s}$ there are $0\le s_i\le a$ and $0\le t_i\le b$, for $i\in[n]$ and a set $\Sigma\subseteq[n]^2$ such that 
+
+and for every 
+
+\ceq{\hfill\big|\phi(A,B)-\Fr_{s_i,t_j}\phi(x,y)\big|}
+{ }
+{ }
+
 
 \ceq{\hfill \big|\phi(a^{\rm s}\,;b^{\rm s})\big|)}
 {=}
